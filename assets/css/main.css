@@ -1,0 +1,37 @@
+body{
+    background: #f3f0EC;
+}
+#wpcontent{
+    padding-left: 0;
+}
+.wpheader{
+    background: #fff;
+    padding: 10px 0;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(50,50,50,.3);
+    box-shadow: 0 3px 6px 0 rgba(50,50,50,.3);
+}
+.wpheader img{
+    display: block;
+    margin: auto;
+}
+.wpheader + .wrap{
+    padding-left: 20px;
+}
+.postbox-container{
+
+}
+.postbox-container .handlediv{
+    /*display: none !important;*/
+}
+.postbox-container .inside .admin-page-framework-sectionset .admin-page-framework-section table tr{
+    
+}
+.postbox-container .inside .admin-page-framework-sectionset,
+.postbox-container .inside .admin-page-framework-sectionset .admin-page-framework-section,
+.postbox-container .inside .admin-page-framework-sectionset .admin-page-framework-section table tr th{
+    margin: 0;
+}
+
+#iloveimg_compress_options table tr{
+    /*display: flex;*/
+}

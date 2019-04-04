@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6ba96b68aa631587ac9cefef5961fbb8",
+    "packages": [
+        {
+            "name": "ilovepdf/ilovepdf-php",
+            "version": "v1.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilovepdf/ilovepdf-php.git",
+                "reference": "19545db51e6110992c1448a4405b0e1b2b8ba977"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilovepdf/ilovepdf-php/zipball/19545db51e6110992c1448a4405b0e1b2b8ba977",
+                "reference": "19545db51e6110992c1448a4405b0e1b2b8ba977",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ilovepdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ilovepdf",
+                    "email": "info@ilovepdf.com"
+                }
+            ],
+            "description": "iLovePDF Php Api",
+            "homepage": "https://ilovepdf.com/",
+            "time": "2018-03-27T14:01:41+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
