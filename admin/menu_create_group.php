@@ -69,3 +69,4 @@ class iLoveIMG_CreatePageGroup extends AdminPageFramework {
     
     // There are more available filters and actions! Please refer to Demo 06 - Hooks.
 }
+

@@ -36,6 +36,7 @@ include( dirname( __FILE__ ) . '/admin/menu_create_group.php' );
 include( dirname( __FILE__ ) . '/admin/settings_account.php' );
 include( dirname( __FILE__ ) . '/admin/settings_compress.php' );
 include( dirname( __FILE__ ) . '/admin/settings_watermark.php' );
+include( dirname( __FILE__ ) . '/admin/media_bulk_optimized.php' );
 new iLoveIMG_CreatePageGroup;
 
 include( dirname( __FILE__ ) . '/lib/class-iloveimg-plugin.php' );

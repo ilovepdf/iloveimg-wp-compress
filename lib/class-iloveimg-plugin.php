@@ -21,6 +21,10 @@ class iLoveIMG_Plugin {
         wp_enqueue_script( self::NAME + '_admin',
         plugins_url( '/assets/js/main.js', dirname(__FILE__) ),
 			array(), self::VERSION, true
+        );
+        wp_enqueue_style( self::NAME + '_admin',
+        plugins_url( '/assets/css/bulk_optimized.css', dirname(__FILE__) ),
+			array(), self::VERSION
 		);
     }
     
@@ -68,9 +72,24 @@ class iLoveIMG_Plugin {
                 $imagesCompressed = iLoveIMG_Resources::getSizesCompressed($columnID);
                 
                 if($_sizes && $imagesCompressed):
+                    add_thickbox();
                     ?>
+                    <div id="iloveimg_detaills_compress" style="display:none;">
+                        <table>
+                            <tr>
+                                <th>Name</th><th>Initial</th><th>Compressed</th>
+                                <?php
+                                foreach($_sizes as $key => $size){
+                                    ?>
+                                    <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
+                                    <?php
+                                }
+                                ?>
+                            </tr>
+                        </table>
+                    </div>
                     <p>Now <?php echo iLoveIMG_Resources::getSaving($_sizes) ?>% smaller!</p>
-                    <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+                    <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
                     <?php
                 else:
                     ?>
