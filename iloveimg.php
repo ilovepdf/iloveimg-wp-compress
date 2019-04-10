@@ -27,18 +27,19 @@ use ilovepdf;
 require_once('vendor/autoload.php');
 
 
-include( dirname( __FILE__ ) . '/framework/admin-page-framework.php' );
+require_once( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 if ( ! class_exists( 'AdminPageFramework' ) ) {
     return;
 }
-include( dirname( __FILE__ ) . '/lib/class-resources.php' );
-include( dirname( __FILE__ ) . '/admin/menu_create_group.php' );
-include( dirname( __FILE__ ) . '/admin/settings_account.php' );
-include( dirname( __FILE__ ) . '/admin/settings_compress.php' );
-include( dirname( __FILE__ ) . '/admin/settings_watermark.php' );
-include( dirname( __FILE__ ) . '/admin/media_bulk_optimized.php' );
+
+require_once( dirname( __FILE__ ) . '/lib/class-resources.php' );
+require_once( dirname( __FILE__ ) . '/admin/menu_create_group.php' );
+require_once( dirname( __FILE__ ) . '/admin/settings_account.php' );
+require_once( dirname( __FILE__ ) . '/admin/settings_compress.php' );
+require_once( dirname( __FILE__ ) . '/admin/settings_watermark.php' );
+require_once( dirname( __FILE__ ) . '/admin/media_bulk_optimized.php' );
 new iLoveIMG_CreatePageGroup;
 
-include( dirname( __FILE__ ) . '/lib/class-iloveimg-plugin.php' );
-include( dirname( __FILE__ ) . '/lib/class-iloveimg-process.php' );
+require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-plugin.php' );
+require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-process.php' );
 new iLoveIMG_Plugin();
