@@ -75,12 +75,13 @@ class Media_Bukl_Optimized extends AdminPageFramework {
                     </div>
                 </div>
                 <div class="iloveimg__optimize__details-buttons">
-                     <input type="submit" name="id-start" id="id-start" class="button button-primary button-hero" value="Compress Images">
+                     <input type="submit" name="id-start" id="id-start" class="button button-primary button-hero" value="Compress All">
                 </div>
             </div>
             
         </div>
         <?php
+        render_list_images();
     }
 }
 // Instantiate the class object.

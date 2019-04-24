@@ -37,6 +37,7 @@ require_once( dirname( __FILE__ ) . '/admin/menu_create_group.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings_account.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings_compress.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings_watermark.php' );
+require_once( dirname( __FILE__ ) . '/admin/media_bulk_optimized_table.php' );
 require_once( dirname( __FILE__ ) . '/admin/media_bulk_optimized.php' );
 new iLoveIMG_CreatePageGroup;
 

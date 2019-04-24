@@ -56,9 +56,10 @@
             }
           });
     }
-
+    
     switch (adminpage) {
         case 'upload-php':
+        case 'media_page_iloveimg_image_optimized':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action]');
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action2]');
