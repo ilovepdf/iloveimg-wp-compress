@@ -67,7 +67,7 @@ class Media_Bukl_Optimized extends AdminPageFramework {
                                 </div>
                             </div>
                             <div class="iloveimg__col_2">
-                                100%
+                                <?php echo "hol2a" ?>
                             </div>
                         </div>
                     </div>
