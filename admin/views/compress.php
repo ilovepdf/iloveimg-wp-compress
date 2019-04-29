@@ -18,7 +18,7 @@
         <div>
             <label>Images Sizes:</label>
             <ul>
-            <?php foreach(iLoveIMG_Resources::getTypeImages() as $value): ?>
+            <?php foreach(iLoveIMG_Compress_Resources::getTypeImages() as $value): ?>
                 <li>
                     <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id'] ?>" <?php echo (in_array($value['field_id'], $options_value['iloveimg_field_sizes'])) ? "checked" : "" ?> />
                     <span><?php echo $value['label'] ?></span>

@@ -1,6 +1,6 @@
 <?php
 
-class iLoveIMG_Resources{
+class iLoveIMG_Compress_Resources{
 
     public function getTypeImages(){
         global $_wp_additional_image_sizes;
@@ -77,7 +77,7 @@ class iLoveIMG_Resources{
         if(strpos($post->post_mime_type, "image/") !== false):
             $_sizes = get_post_meta($columnID, 'iloveimg_compress', true);
             $status_compress = get_post_meta($columnID, 'iloveimg_status_compress', true);
-            $imagesCompressed = iLoveIMG_Resources::getSizesCompressed($columnID);
+            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
             
             if($_sizes && $imagesCompressed):
                 add_thickbox();
@@ -96,13 +96,13 @@ class iLoveIMG_Resources{
                         </tr>
                     </table>
                 </div>
-                <p>Now <?php echo iLoveIMG_Resources::getSaving($_sizes) ?>% smaller!</p>
+                <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
                 <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
                 <?php
             else:
                 ?>
-                    <p><?php echo iLoveIMG_Resources::getSizesEnabled() ?> sizes to be compressed</p>
-                    <?php if(iLoveIMG_Resources::getSizesEnabled()) : ?>
+                    <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p>
+                    <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
                         <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ((int)$status_compress === 1) ? 'disabled="disabled"' :  '' ?>>Compress</button>
                         <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ((int)$status_compress === 1) ? '' :  'display: none;' ?>" />
                     <?php else: ?>

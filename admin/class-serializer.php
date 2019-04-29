@@ -1,6 +1,6 @@
 <?php
 
-class Serializer {
+class iLoveIMG_Compress_Serializer {
  
     public function init() {
         add_action( 'admin_post', array( $this, 'save' ) );

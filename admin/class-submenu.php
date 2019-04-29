@@ -1,6 +1,6 @@
 <?php
 
-class iLoveIMG_Submenu {
+class iLoveIMG_Compress_Submenu {
  
 	/**
 	 * A reference the class responsible for rendering the submenu page.
@@ -41,6 +41,7 @@ class iLoveIMG_Submenu {
 			array( $this->submenu_page, 'renderParent' ),
 			'https://www.iloveimg.com/img/favicons-img/favicon-16x16.png'
 		);
+		
 
 		add_submenu_page(
 			'iloveimg-admin-page',
@@ -54,18 +55,6 @@ class iLoveIMG_Submenu {
 			)
 		);
 
-		add_submenu_page(
-			'iloveimg-admin-page',
-			'Watermark Options',
-			'Watermark Options',
-			'manage_options',
-			'iloveimg_watermark_options',
-			array(
-				$this->submenu_page,
-				'renderWatermark'
-			)
-		);
-		
 	}
 
 	public function settings_page() {

@@ -1,5 +1,5 @@
 <?php 
-use ilovepdf;
+//use iloveimg;
 /**
  * The plugin bootstrap file
  *
@@ -10,10 +10,10 @@ use ilovepdf;
  *
  * @link              https://iloveimg.com/
  * @since             1.0.0
- * @package           iloveimg
+ * @package           iloveimgcompress
  *
  * @wordpress-plugin
- * Plugin Name:       iLoveIMG
+ * Plugin Name:       iLoveIMG - Compress Images
  * Plugin URI:        https://developer.iloveimg.com/
  * Description:       Compress your images files and Stamp images or text into images files. This is the Official iLoveIMG plugin for Wordpress. You can optimize all your images and stamp them automatically as you do in iloveimg.com.
  * Version:           1.0.0
@@ -24,40 +24,33 @@ use ilovepdf;
  * Text Domain:       iloveimg
  * Domain Path:       /languages
  */
-require_once('vendor/autoload.php');
 
-// If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
      die;
 }
  
-// Include the dependencies needed to instantiate the plugin.
 foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
     include_once $file;
 }
  
-add_action( 'plugins_loaded', 'iloveimg_custom_admin_settings' );
-/**
- * Starts the plugin.
- *
- * @since 1.0.0
- */
+add_action( 'plugins_loaded', 'iloveimg_compress_custom_admin_settings' );
 
-global $iloveimg_db_version;
-$iloveimg_db_version = '1.0';
 
-function iloveimg_custom_admin_settings() {
+global $iloveimg_compress_db_version;
+$iloveimg_compress_db_version = '1.0';
+
+function iloveimg_compress_custom_admin_settings() {
     
-    $serializer = new Serializer();
+    $serializer = new iLoveIMG_Compress_Serializer();
     $serializer->init();
     
-    $plugin = new iLoveIMG_Submenu( new iLoveIMG_Submenu_Page() );
+    $plugin = new iLoveIMG_Compress_Submenu( new iLoveIMG_Compress_Submenu_Page() );
     $plugin->init();
  
 }
 
-function iloveimg_activate(){
-    add_option( 'iloveimg_db_version', $iloveimg_db_version );
+function iloveimg_compress_activate(){
+    add_option( 'iloveimg_compress_db_version', $iloveimg_compress_db_version );
     if(!get_option('iloveimg_options_compress')){
         update_option('iloveimg_options_compress', 
             serialize(
@@ -75,10 +68,7 @@ function iloveimg_activate(){
     }
 }
 
-register_activation_hook( __FILE__, 'iloveimg_activate' );
+register_activation_hook( __FILE__, 'iloveimg_compress_activate' );
 
-require_once( dirname( __FILE__ ) . '/lib/class-resources.php' );
-require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-plugin.php' );
-require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-process.php' );
-new iLoveIMG_Plugin();
+new iLoveIMG_Compress_Plugin();
 

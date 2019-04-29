@@ -13,7 +13,7 @@
  *
  * @package Custom_Admin_Settings
  */
-class iLoveIMG_Submenu_Page {
+class iLoveIMG_Compress_Submenu_Page {
  
         
         public function renderParent() {
@@ -25,8 +25,4 @@ class iLoveIMG_Submenu_Page {
                 require_once('views/compress.php');
 	}
 	
-	public function renderWatermark() {
-                $options_value = get_option('iloveimg_options_watermark');
-                require_once('views/watermark.php');
-        }
 }

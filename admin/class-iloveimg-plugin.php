@@ -1,8 +1,8 @@
 <?php
 
-class iLoveIMG_Plugin {
+class iLoveIMG_Compress_Plugin {
     const VERSION = '1.0.0';
-	const NAME = 'iloveimg_plugin';
+	const NAME = 'iloveimg_compress_plugin';
     public function __construct() {
         add_action( 'admin_init', array( $this, "admin_init" ));
     }
@@ -15,6 +15,9 @@ class iLoveIMG_Plugin {
         add_action( 'wp_ajax_iloveimg_compress_library_is_compressed', array($this, "iloveimg_compress_library_is_compressed") );
         add_filter( 'wp_generate_attachment_metadata', array($this,'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
+
+        require_once( dirname(dirname(__FILE__)) . '/iloveimg-php/init.php');
+        
     }
 
     public function enqueue_scripts(){
@@ -29,12 +32,12 @@ class iLoveIMG_Plugin {
     }
     
     public function iloveimg_compress_library(){
-        $ilove = new iLoveIMG_Process();
+        $ilove = new iLoveIMG_Compress_Process();
         $images = $ilove->compress($_POST['id']);
         
-        $imagesCompressed = iLoveIMG_Resources::getSizesCompressed($_POST['id']);
+        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
         ?>
-        <p>Now <?php echo iLoveIMG_Resources::getSaving($images) ?>% smaller!</p>
+        <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($images) ?>% smaller!</p>
         <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
         wp_die();
@@ -43,14 +46,14 @@ class iLoveIMG_Plugin {
     public function iloveimg_compress_library_is_compressed(){
         $status_compress = get_post_meta($_POST['id'], 'iloveimg_status_compress', true);
 
-        $imagesCompressed = iLoveIMG_Resources::getSizesCompressed($_POST['id']);
+        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
         if(((int)$status_compress === 1)){
             echo "processing";
         }else if((int)$status_compress === 2){
-            $imagesCompressed = iLoveIMG_Resources::getSizesCompressed($_POST['id']);
+            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
             $_sizes = get_post_meta($_POST['id'], 'iloveimg_compress', true);
             ?>
-            <p>Now <?php echo iLoveIMG_Resources::getSaving($_sizes) ?>% smaller!</p>
+            <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
             <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
         }
@@ -64,13 +67,13 @@ class iLoveIMG_Plugin {
 
     public function column_id_row($columnName, $columnID){
         if($columnName == 'iloveimg_compression'){
-            iLoveIMG_Resources::getStatusOfColumn($columnID);
+            iLoveIMG_Compress_Resources::getStatusOfColumn($columnID);
         }
     }
 
     public function process_attachment($metadata, $attachment_id){
         update_post_meta($attachment_id, 'iloveimg_status_compress', 0); //status no compressed
-        if((int)iLoveIMG_Resources::isAutoCompress() === 1){
+        if((int)iLoveIMG_Compress_Resources::isAutoCompress() === 1){
             wp_update_attachment_metadata($attachment_id, $metadata);
             $this->async_compress($attachment_id);
         }
