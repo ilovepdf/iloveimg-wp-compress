@@ -26,21 +26,59 @@ use ilovepdf;
  */
 require_once('vendor/autoload.php');
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+     die;
+}
+ 
+// Include the dependencies needed to instantiate the plugin.
+foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
+    include_once $file;
+}
+ 
+add_action( 'plugins_loaded', 'iloveimg_custom_admin_settings' );
+/**
+ * Starts the plugin.
+ *
+ * @since 1.0.0
+ */
 
-require_once( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
-if ( ! class_exists( 'AdminPageFramework' ) ) {
-    return;
+global $iloveimg_db_version;
+$iloveimg_db_version = '1.0';
+
+function iloveimg_custom_admin_settings() {
+    
+    $serializer = new Serializer();
+    $serializer->init();
+    
+    $plugin = new iLoveIMG_Submenu( new iLoveIMG_Submenu_Page() );
+    $plugin->init();
+ 
 }
 
-require_once( dirname( __FILE__ ) . '/lib/class-resources.php' );
-require_once( dirname( __FILE__ ) . '/admin/menu_create_group.php' );
-require_once( dirname( __FILE__ ) . '/admin/settings_account.php' );
-require_once( dirname( __FILE__ ) . '/admin/settings_compress.php' );
-require_once( dirname( __FILE__ ) . '/admin/settings_watermark.php' );
-require_once( dirname( __FILE__ ) . '/admin/media_bulk_optimized_table.php' );
-require_once( dirname( __FILE__ ) . '/admin/media_bulk_optimized.php' );
-new iLoveIMG_CreatePageGroup;
+function iloveimg_activate(){
+    add_option( 'iloveimg_db_version', $iloveimg_db_version );
+    if(!get_option('iloveimg_options_compress')){
+        update_option('iloveimg_options_compress', 
+            serialize(
+                    [
+                        'iloveimg_field_compress_activated' => 1,
+                        'iloveimg_field_autocompress' => 1,
+                        'iloveimg_field_sizes' => ['full', 'thumbnail', 'medium', 'medium_large', 'large'],
+                        'iloveimg_field_resize_full' => 0,
+                        'iloveimg_field_size_full_width' => 2048,
+                        'iloveimg_field_size_full_height' => 2048,
 
+                    ]
+                )
+            );
+    }
+}
+
+register_activation_hook( __FILE__, 'iloveimg_activate' );
+
+require_once( dirname( __FILE__ ) . '/lib/class-resources.php' );
 require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-plugin.php' );
 require_once( dirname( __FILE__ ) . '/lib/class-iloveimg-process.php' );
 new iLoveIMG_Plugin();
+

@@ -45,8 +45,8 @@ class iLoveIMG_Resources{
     }
 
     public function getSizesEnabled(){
-        $_aOptions = get_option( 'iLoveIMG_CreatePageGroup', array() );
-        $image_sizes = $_aOptions['image_sizes'];
+        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        $image_sizes = $_aOptions['iloveimg_field_sizes'];
         $count = 0;
         foreach($image_sizes as $image){
             if($image){
@@ -57,8 +57,8 @@ class iLoveIMG_Resources{
     }
 
     public function isAutoCompress(){
-        $_aOptions = get_option( 'iLoveIMG_CreatePageGroup', array() );
-        return $_aOptions['autocompress'];
+        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        return ($_aOptions['iloveimg_field_autocompress']) ? 1 : 0;
     }
 
     public function getSizesCompressed($columnID){

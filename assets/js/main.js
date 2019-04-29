@@ -61,6 +61,12 @@
         case 'upload-php':
         case 'media_page_iloveimg_image_optimized':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
+            jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
+              jQuery("button.iloveimg-compress").each(function(index, element){
+                var buttonCompress = jQuery(element);
+                buttonCompress.trigger("click");
+              });
+            });
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action]');
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action2]');
             jQuery('.iloveimg_compressing').each(function(index, element) {

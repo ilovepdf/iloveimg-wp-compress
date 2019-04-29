@@ -15,14 +15,14 @@ class iLoveIMG_Process{
             $_sizes = get_intermediate_image_sizes();
             
             array_unshift($_sizes,  "full");
-            $_aOptions = get_option( 'iLoveIMG_CreatePageGroup', array() );
+            $_aOptions = unserialize(get_option('iloveimg_options_compress'));
             
 
             foreach ( $_sizes as $_size ) {
                 $image = wp_get_attachment_image_src($imagesID, $_size);
                 $pathFile = $_SERVER["DOCUMENT_ROOT"] . str_replace(site_url(), "", $image[0]);
                 $images[$_size] = array("initial" => filesize($pathFile),  "compressed" => null);
-                if((int)$_aOptions['image_sizes'][$_size] !== 0){
+                if(in_array($_size, $_aOptions['iloveimg_field_sizes'])){
                     $myTask = new CompressimageTask($this->proyect_public, $this->secret_key);
                     $file = $myTask->addFile($pathFile);
                     $myTask->execute();
