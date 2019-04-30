@@ -49,6 +49,14 @@ function iloveimg_compress_custom_admin_settings() {
  
 }
 
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'iloveimg_compress_add_plugin_page_settings_link');
+function iloveimg_compress_add_plugin_page_settings_link( $links ) {
+	$links[] = '<a href="' .
+		admin_url( 'admin.php?page=iloveimg-admin-page' ) .
+		'">' . __('Settings') . '</a>';
+	return $links;
+}
+
 function iloveimg_compress_activate(){
     add_option( 'iloveimg_compress_db_version', $iloveimg_compress_db_version );
     if(!get_option('iloveimg_options_compress')){
