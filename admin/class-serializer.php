@@ -1,5 +1,6 @@
 <?php
 
+
 class iLoveIMG_Compress_Serializer {
  
     public function init() {
@@ -8,16 +9,62 @@ class iLoveIMG_Compress_Serializer {
  
     public function save() {
 		// First, validate the nonce and verify the user as permission to save.
-        if ( ! ( $this->has_valid_nonce() && current_user_can( 'manage_options' ) ) ) {
-            // TODO: Display an error message.
+        // if ( ! ( $this->has_valid_nonce() && current_user_can( 'manage_options' ) ) ) {
+            
+        // }
+        if ( ! (current_user_can( 'manage_options' ) ) ) {
+            die();
         }
-		$postsValue = [];
-		foreach($_POST as $key => $postValue){
-			if(strpos($key, "iloveimg_field_") === 0){
-				$postsValue[$key] = $postValue;
-			}
-		}
-		update_option('iloveimg_options_compress', serialize($postsValue));
+        
+        if($_POST['iloveimg_action'] == 'iloveimg_action_options_compress'){
+            $postsValue = [];
+            foreach($_POST as $key => $postValue){
+                if(strpos($key, "iloveimg_field_") === 0){
+                    $postsValue[$key] = $postValue;
+                }
+            }
+            update_option('iloveimg_options_compress', serialize($postsValue));
+        }
+
+        if($_POST['iloveimg_action'] == 'iloveimg_action_logout'){
+            delete_option('iloveimg_account');
+            delete_option('iloveimg_proyect');
+        }
+
+        if($_POST['iloveimg_action'] == 'iloveimg_action_login'){
+            $response = wp_remote_post(ILOVEIMG_LOGIN_URL, 
+                array(
+                    'body' => array(
+                        'email' => sanitize_email($_POST['iloveimg_field_email']), 
+                        'password' => sanitize_text_field($_POST['iloveimg_field_password']),
+                        'wordpress_id' => md5(get_option('siteurl').get_option('admin_email'))
+                    )
+                )
+            );
+            
+            update_option('iloveimg_account', $response["body"]);
+        }
+
+        
+
+        if($_POST['iloveimg_action'] == 'iloveimg_action_register'){
+            $response = wp_remote_post(ILOVEIMG_REGISTER_URL, 
+                array(
+                    'body' => array(
+                        'name' => sanitize_text_field($_POST['iloveimg_field_name']), 
+                        'email' => sanitize_email($_POST['iloveimg_field_email']), 
+                        'new_password' => sanitize_text_field($_POST['iloveimg_field_password']), 
+                        'free_files' => 0, 
+                        'wordpress_id' => md5(get_option('siteurl').get_option('admin_email'))
+                    )
+                )
+            );
+            update_option('iloveimg_account', $response["body"]);
+        }
+
+        if($_POST['iloveimg_action'] == 'iloveimg_action_proyect'){
+            update_option('iloveimg_proyect', sanitize_text_field($_POST['iloveimg_field_proyect']));
+        }
 		
         $this->redirect();
  

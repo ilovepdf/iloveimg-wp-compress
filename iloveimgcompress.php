@@ -80,3 +80,7 @@ register_activation_hook( __FILE__, 'iloveimg_compress_activate' );
 
 new iLoveIMG_Compress_Plugin();
 
+
+define('ILOVEIMG_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
+define('ILOVEIMG_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
+define('ILOVEIMG_USER_URL', 'https://api.ilovepdf.com/v1/user');
