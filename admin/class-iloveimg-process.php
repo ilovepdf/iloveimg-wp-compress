@@ -1,5 +1,6 @@
 <?php
 use Iloveimg\CompressImageTask;
+use Iloveimg\ResizeImageTask;
 
 class iLoveIMG_Compress_Process{
 
@@ -35,12 +36,27 @@ class iLoveIMG_Compress_Process{
                 $pathFile = $_SERVER["DOCUMENT_ROOT"] . str_replace(site_url(), "", $image[0]);
                 $images[$_size] = array("initial" => filesize($pathFile),  "compressed" => null);
                 if(in_array($_size, $_aOptions['iloveimg_field_sizes'])){
+                    if($_size == 'full'){
+                        if($_aOptions['iloveimg_field_resize_full'] == 'on'){
+                            $editor = wp_get_image_editor( $pathFile );
+                            if ( ! is_wp_error( $editor ) ) {
+                                $editor->resize( $_aOptions['iloveimg_field_size_full_width'], $_aOptions['iloveimg_field_size_full_height'], false );
+                                $editor->save( $pathFile );
+                            }
+                            $resize = $editor->get_size();
+                            $metadata = wp_get_attachment_metadata($imagesID);
+                            $metadata['width'] = $resize['width'];
+                            $metadata['height'] = $resize['height'];
+                            wp_update_attachment_metadata($imagesID, $metadata);
+                        }
+                    }
                     $myTask = new CompressImageTask($this->proyect_public, $this->secret_key);
                     $file = $myTask->addFile($pathFile);
                     $myTask->execute();
                     $myTask->download(dirname($pathFile));
-                    //$myTask->download($_SERVER["DOCUMENT_ROOT"] . "/a/");
                     $images[$_size]["compressed"] = filesize($pathFile);
+
+                    
                 }
             }
             update_post_meta($imagesID, 'iloveimg_compress', $images);
@@ -49,8 +65,7 @@ class iLoveIMG_Compress_Process{
 
             //print_r($imagesID);
         } catch (Exception $e)  {
-            print_r($e);
-            die();
+            
             return $images;
         }
         return false;
