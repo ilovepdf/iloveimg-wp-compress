@@ -2,7 +2,7 @@
 
 class iLoveIMG_Compress_Resources{
 
-    public function getTypeImages(){
+    public static function getTypeImages(){
         global $_wp_additional_image_sizes;
         
         $sizes = array();
@@ -33,7 +33,7 @@ class iLoveIMG_Compress_Resources{
         return $sizes;
     }
     
-    public function getSaving($images){
+    public static function getSaving($images){
         $initial = $compressed = 0;
         foreach($images as $image){
             if(!is_null($image['compressed'])){
@@ -44,7 +44,7 @@ class iLoveIMG_Compress_Resources{
         return round(100 - (($compressed * 100) / $initial));
     }
 
-    public function getSizesEnabled(){
+    public static function getSizesEnabled(){
         $_aOptions = unserialize(get_option('iloveimg_options_compress'));
         $image_sizes = $_aOptions['iloveimg_field_sizes'];
         $count = 0;
@@ -56,14 +56,16 @@ class iLoveIMG_Compress_Resources{
         return $count;
     }
 
-    public function isAutoCompress(){
+    public static function isAutoCompress(){
         $_aOptions = unserialize(get_option('iloveimg_options_compress'));
         return ($_aOptions['iloveimg_field_autocompress']) ? 1 : 0;
     }
 
-    public function getSizesCompressed($columnID){
+    public static function getSizesCompressed($columnID){
         $images = get_post_meta($columnID, 'iloveimg_compress', true);
         $count = 0;
+        if(!$images)
+            return $count;
         foreach($images as $image){
             if(!is_null($image['compressed'])){
                 $count++;
@@ -72,7 +74,7 @@ class iLoveIMG_Compress_Resources{
         return $count;
     }
 
-    public function getStatusOfColumn($columnID){
+    public static function getStatusOfColumn($columnID){
         $post = get_post($columnID);
         if(strpos($post->post_mime_type, "image/") !== false):
             $_sizes = get_post_meta($columnID, 'iloveimg_compress', true);

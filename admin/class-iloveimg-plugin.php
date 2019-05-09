@@ -21,11 +21,11 @@ class iLoveIMG_Compress_Plugin {
     }
 
     public function enqueue_scripts(){
-        wp_enqueue_script( self::NAME + '_admin',
+        wp_enqueue_script( self::NAME . '_admin',
         plugins_url( '/assets/js/main.js', dirname(__FILE__) ),
 			array(), self::VERSION, true
         );
-        wp_enqueue_style( self::NAME + '_admin',
+        wp_enqueue_style( self::NAME . '_admin',
         plugins_url( '/assets/css/bulk_optimized.css', dirname(__FILE__) ),
 			array(), self::VERSION
 		);
