@@ -3,14 +3,25 @@ use Iloveimg\CompressImageTask;
 
 class iLoveIMG_Compress_Process{
 
-    public $proyect_public = 'project_public_9ef8b6348283c8172cf1aede443d8df0_khhfA9126b563681d869d06b25f068422f53a';
-    public $secret_key = 'secret_key_d1db014351ae2a73188ddb3a5d89bf2f_28HLl90321141562466414763b3dd8491c4b9';
+    public $proyect_public = '';
+    public $secret_key = '';
 
     public function compress($imagesID){
         global $_wp_additional_image_sizes, $wpdb;
 
         $images = array();
         try { 
+
+            if(get_option('iloveimg_proyect')){
+                $proyect = explode("#", get_option('iloveimg_proyect'));
+                $this->proyect_public = $proyect[0];
+                $this->secret_key = $proyect[1];
+            }else if(get_option('iloveimg_account')){
+                $account = json_decode(get_option('iloveimg_account'), true);
+                $this->proyect_public = $account['projects'][0]['public_key'];
+                $this->secret_key = $account['projects'][0]['secret_key'];
+            }
+
             update_post_meta($imagesID, 'iloveimg_status_compress', 1); //status compressing
 
             $_sizes = get_intermediate_image_sizes();

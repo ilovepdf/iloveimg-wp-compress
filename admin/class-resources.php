@@ -58,7 +58,7 @@ class iLoveIMG_Compress_Resources{
 
     public static function isAutoCompress(){
         $_aOptions = unserialize(get_option('iloveimg_options_compress'));
-        return ($_aOptions['iloveimg_field_autocompress']) ? 1 : 0;
+        return (isset($_aOptions['iloveimg_field_autocompress'])) ? 1 : 0;
     }
 
     public static function getSizesCompressed($columnID){
