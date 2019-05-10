@@ -61,6 +61,9 @@ class iLoveIMG_Compress_Plugin {
     }
 
     public function column_id($columns){
+        if((int)iLoveIMG_Compress_Resources::isActivated() === 0){
+            return $columns;
+        }
         $columns['iloveimg_compression'] = __('iLoveIMG');
         return $columns;
     }
@@ -73,7 +76,7 @@ class iLoveIMG_Compress_Plugin {
 
     public function process_attachment($metadata, $attachment_id){
         update_post_meta($attachment_id, 'iloveimg_status_compress', 0); //status no compressed
-        if((int)iLoveIMG_Compress_Resources::isAutoCompress() === 1){
+        if((int)iLoveIMG_Compress_Resources::isAutoCompress() === 1 && iLoveIMG_Compress_Resources::isLoggued() && (int)iLoveIMG_Compress_Resources::isActivated() === 1){
             wp_update_attachment_metadata($attachment_id, $metadata);
             $this->async_compress($attachment_id);
         }

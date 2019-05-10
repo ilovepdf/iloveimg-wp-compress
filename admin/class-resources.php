@@ -61,6 +61,11 @@ class iLoveIMG_Compress_Resources{
         return (isset($_aOptions['iloveimg_field_autocompress'])) ? 1 : 0;
     }
 
+    public static function isActivated(){
+        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
+        return (isset($_aOptions['iloveimg_field_compress_activated'])) ? 1 : 0;
+    }
+
     public static function getSizesCompressed($columnID){
         $images = get_post_meta($columnID, 'iloveimg_compress', true);
         $count = 0;
@@ -72,6 +77,18 @@ class iLoveIMG_Compress_Resources{
             }
         }
         return $count;
+    }
+
+    public static function isLoggued(){
+        if(get_option('iloveimg_account')){
+            $account = json_decode(get_option('iloveimg_account'), true);
+            if(array_key_exists('error', $account)){
+                return false;
+            }
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static function getStatusOfColumn($columnID){
@@ -102,14 +119,20 @@ class iLoveIMG_Compress_Resources{
                 <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
                 <?php
             else:
-                ?>
-                    <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p>
-                    <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
-                        <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ((int)$status_compress === 1) ? 'disabled="disabled"' :  '' ?>>Compress</button>
-                        <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ((int)$status_compress === 1) ? '' :  'display: none;' ?>" />
-                    <?php else: ?>
-                        <button type="button" class="button button-small button-primary" data-id="<?php echo $columnID ?>">Enable</button>
-                <?php endif;
+                ?>                    
+                    <?php if(iLoveIMG_Compress_Resources::isLoggued()): ?>
+                        <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p>
+                        <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ((int)$status_compress === 1) ? 'disabled="disabled"' :  '' ?>>Compress</button>
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ((int)$status_compress === 1) ? '' :  'display: none;' ?>" />
+                        <?php else: ?>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
+                        <?php endif;
+                    else: ?>
+                        <p>You need to be registered</p>
+                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
+                    <?php
+                    endif;
                 if((int)$status_compress === 1){
                     //interval
                    ?><div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $columnID ?>"></div><?php
