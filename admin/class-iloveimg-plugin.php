@@ -13,11 +13,12 @@ class iLoveIMG_Compress_Plugin {
         add_filter( 'manage_media_custom_column', array( $this, "column_id_row" ), 10, 2 );
         add_action( 'wp_ajax_iloveimg_compress_library', array($this, "iloveimg_compress_library") );
         add_action( 'wp_ajax_iloveimg_compress_library_is_compressed', array($this, "iloveimg_compress_library_is_compressed") );
-        add_filter( 'wp_generate_attachment_metadata', array($this,'process_attachment' ), 10, 2);
+        add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
 
         require_once( dirname(dirname(__FILE__)) . '/iloveimg-php/init.php');
         
+        add_action( 'admin_notices', array($this, 'show_notices'));
     }
 
     public function enqueue_scripts(){
@@ -34,12 +35,17 @@ class iLoveIMG_Compress_Plugin {
     public function iloveimg_compress_library(){
         $ilove = new iLoveIMG_Compress_Process();
         $images = $ilove->compress($_POST['id']);
-        
-        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
-        ?>
-        <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($images) ?>% smaller!</p>
-        <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+        if($images !== false){
+            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
+            ?>
+            <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($images) ?>% smaller!</p>
+            <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
+        }else{
+            ?>
+            <p>You need more files</p>
+            <?php
+        }
         wp_die();
     }
     
@@ -110,5 +116,20 @@ class iLoveIMG_Compress_Plugin {
                 }
             }
         }
+    }
+
+    public function show_notices(){
+        if(!iLoveIMG_Compress_Resources::isLoggued()){
+        ?>
+            <div class="notice notice-warning is-dismissible">
+                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>">Go to settings</a></p>
+            </div>
+            <?php
+        }
+        ?>
+            <div class="notice notice-warning is-dismissible">
+                <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a></p>
+            </div>
+        <?php
     }
 }

@@ -65,8 +65,9 @@ class iLoveIMG_Compress_Process{
 
             //print_r($imagesID);
         } catch (Exception $e)  {
-            
-            return $images;
+            update_post_meta($imagesID, 'iloveimg_status_compress', 0);
+            //echo $e->getCode();
+            return false;
         }
         return false;
     }

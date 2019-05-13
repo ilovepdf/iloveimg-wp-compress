@@ -85,7 +85,7 @@
             <p><?php echo $account['files_used'] ?>/<?php echo $account['free_files_limit'] ?> processed files this month. Free Tier.</p>
             <?php if($account['subscription_files_limit']): ?>
                 <h4>Subscription</h4>
-                <p><?php echo $account['files_used'] ?>/<?php echo $account['subscription_files_limit'] ?> processed files this month.</p>
+                <p><?php echo (isset($account['subscription_files_used'])) ? $account['subscription_files_used'] : 0 ?>/<?php echo $account['subscription_files_limit'] ?> processed files this month.</p>
             <?php endif; ?>
             <?php if($account['package_files_limit']): ?>
                 <h4>Package</h4>

@@ -141,4 +141,6 @@ class iLoveIMG_Compress_Resources{
         endif;
     }
 
+    
+
 }
