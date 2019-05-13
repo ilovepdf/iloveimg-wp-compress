@@ -24,8 +24,6 @@ class iLoveIMG_Compress_Process{
             }
 
             
-
-
             
             $filesProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1" );
             if( $filesProcessing <  ILOVEIMG_NUM_MAX_FILES){
@@ -44,15 +42,27 @@ class iLoveIMG_Compress_Process{
                     if(in_array($_size, $_aOptions['iloveimg_field_sizes'])){
                         if($_size == 'full'){
                             if($_aOptions['iloveimg_field_resize_full'] == 'on'){
+                                $metadata = wp_get_attachment_metadata($imagesID);
                                 $editor = wp_get_image_editor( $pathFile );
                                 if ( ! is_wp_error( $editor ) ) {
                                     $editor->resize( $_aOptions['iloveimg_field_size_full_width'], $_aOptions['iloveimg_field_size_full_height'], false );
                                     $editor->save( $pathFile );
+                                    $resize = $editor->get_size();
+                                    $metadata['width'] = $resize['width'];
+                                    $metadata['height'] = $resize['height'];
+                                    
+                                }else{
+                                    //echo $editor->get_error_message();
+                                    $myTask = new ResizeImageTask($this->proyect_public, $this->secret_key);
+                                    $file = $myTask->addFile($pathFile);
+                                    $myTask->setPixelsWidth($_aOptions['iloveimg_field_size_full_width']);
+                                    $myTask->setPixelsHeight($_aOptions['iloveimg_field_size_full_height']);
+                                    $myTask->execute();
+                                    $myTask->download(dirname($pathFile));
+                                    list($width, $height) = getimagesize($pathFile);
+                                    $metadata['width'] = $width;
+                                    $metadata['height'] = $height;
                                 }
-                                $resize = $editor->get_size();
-                                $metadata = wp_get_attachment_metadata($imagesID);
-                                $metadata['width'] = $resize['width'];
-                                $metadata['height'] = $resize['height'];
                                 wp_update_attachment_metadata($imagesID, $metadata);
                             }
                         }
