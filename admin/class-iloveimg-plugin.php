@@ -53,7 +53,7 @@ class iLoveIMG_Compress_Plugin {
         $status_compress = get_post_meta($_POST['id'], 'iloveimg_status_compress', true);
 
         $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
-        if(((int)$status_compress === 1)){
+        if(((int)$status_compress === 1 || (int)$status_compress === 3)){
             echo "processing";
         }else if((int)$status_compress === 2){
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);

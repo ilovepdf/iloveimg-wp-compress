@@ -95,7 +95,7 @@ class iLoveIMG_Compress_Resources{
         $post = get_post($columnID);
         if(strpos($post->post_mime_type, "image/") !== false):
             $_sizes = get_post_meta($columnID, 'iloveimg_compress', true);
-            $status_compress = get_post_meta($columnID, 'iloveimg_status_compress', true);
+            $status_compress = (int)get_post_meta($columnID, 'iloveimg_status_compress', true);
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
             
             if($_sizes && $imagesCompressed):
@@ -123,8 +123,11 @@ class iLoveIMG_Compress_Resources{
                     <?php if(iLoveIMG_Compress_Resources::isLoggued()): ?>
                         <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p>
                         <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ((int)$status_compress === 1) ? 'disabled="disabled"' :  '' ?>>Compress</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ((int)$status_compress === 1) ? '' :  'display: none;' ?>" />
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_compress === 1 || $status_compress === 3) ? 'disabled="disabled"' :  '' ?>>Compress</button>
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_compress === 1 || $status_compress === 3) ? '' :  'display: none;' ?>" />
+                            <?php if($status_compress === 3): ?>
+                                <!-- <p>In queue...</p> -->
+                            <?php endif; ?>
                         <?php else: ?>
                             <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
                         <?php endif;
@@ -133,10 +136,9 @@ class iLoveIMG_Compress_Resources{
                         <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
                     <?php
                     endif;
-                if((int)$status_compress === 1){
-                    //interval
-                   ?><div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $columnID ?>"></div><?php
-                }
+                    if($status_compress === 1 || $status_compress === 3): ?>
+                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $columnID ?>"></div>
+                    <?php endif;
             endif;
         endif;
     }

@@ -84,5 +84,6 @@ new iLoveIMG_Compress_Plugin();
 define('ILOVEIMG_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
 define('ILOVEIMG_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
 define('ILOVEIMG_USER_URL', 'https://api.ilovepdf.com/v1/user');
+define('ILOVEIMG_NUM_MAX_FILES', 2);
 
 set_time_limit(300);
