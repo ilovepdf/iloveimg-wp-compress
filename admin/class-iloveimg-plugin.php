@@ -126,10 +126,34 @@ class iLoveIMG_Compress_Plugin {
             </div>
             <?php
         }
+        //do query
+        if(get_option('iloveimg_account')){
+            $account = json_decode(get_option('iloveimg_account'), true);
+            if(!array_key_exists('error', $account)){
+                $token = $account['token'];
+                $response = wp_remote_get(ILOVEIMG_USER_URL.'/'.$account['id'], 
+                    array(
+                        'headers' => array('Authorization' => 'Bearer '.$token)
+                    )
+                );
+
+                if (isset($response['response']['code']) && $response['response']['code'] == 200) {
+                    $account = json_decode($response["body"], true);
+                    // echo "<pre>";
+                    // print_r($account);
+                    // echo "</pre>";
+                    if($account['files_used'] >=  $account['free_files_limit'] and $account['package_files_used'] >=  $account['package_files_limit'] and @$account['subscription_files_used'] >=  $account['subscription_files_limit']){
+                        ?>
+                        <div class="notice notice-warning is-dismissible">
+                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a></p>
+                        </div>
+                        <?php
+                    }
+                }
+            }
+        }
         ?>
-            <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a></p>
-            </div>
+            
         <?php
     }
 }
