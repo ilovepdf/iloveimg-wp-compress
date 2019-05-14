@@ -19,6 +19,7 @@ class iLoveIMG_Compress_Plugin {
         require_once( dirname(dirname(__FILE__)) . '/iloveimg-php/init.php');
         
         add_action( 'admin_notices', array($this, 'show_notices'));
+        add_thickbox();
     }
 
     public function enqueue_scripts(){
@@ -37,9 +38,24 @@ class iLoveIMG_Compress_Plugin {
         $images = $ilove->compress($_POST['id']);
         if($images !== false){
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
+            $_sizes = get_post_meta($_POST['id'], 'iloveimg_compress', true);
             ?>
+            <div id="iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" style="display:none;">
+                <table>
+                    <tr>
+                        <th>Name</th><th>Initial</th><th>Compressed</th>
+                        <?php
+                        foreach($_sizes as $key => $size){
+                            ?>
+                            <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
+                            <?php
+                        }
+                        ?>
+                    </tr>
+                </table>
+            </div>
             <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($images) ?>% smaller!</p>
-            <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+            <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
         }else{
             ?>
@@ -59,8 +75,22 @@ class iLoveIMG_Compress_Plugin {
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
             $_sizes = get_post_meta($_POST['id'], 'iloveimg_compress', true);
             ?>
+            <div id="iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" style="display:none;">
+                <table>
+                    <tr>
+                        <th>Name</th><th>Initial</th><th>Compressed</th>
+                        <?php
+                        foreach($_sizes as $key => $size){
+                            ?>
+                            <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
+                            <?php
+                        }
+                        ?>
+                    </tr>
+                </table>
+            </div>
             <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
-            <p><a href="#"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+            <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
         }
         wp_die();

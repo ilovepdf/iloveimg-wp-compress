@@ -99,7 +99,6 @@ class iLoveIMG_Compress_Resources{
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
             
             if($_sizes && $imagesCompressed):
-                add_thickbox();
                 ?>
                 <div id="iloveimg_detaills_compress_<?php echo $columnID ?>" style="display:none;">
                     
