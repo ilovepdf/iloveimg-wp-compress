@@ -101,7 +101,8 @@ class iLoveIMG_Compress_Resources{
             if($_sizes && $imagesCompressed):
                 add_thickbox();
                 ?>
-                <div id="iloveimg_detaills_compress" style="display:none;">
+                <div id="iloveimg_detaills_compress_<?php echo $columnID ?>" style="display:none;">
+                    
                     <table>
                         <tr>
                             <th>Name</th><th>Initial</th><th>Compressed</th>
@@ -116,7 +117,7 @@ class iLoveIMG_Compress_Resources{
                     </table>
                 </div>
                 <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
-                <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+                <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $columnID ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
                 <?php
             else:
                 ?>                    

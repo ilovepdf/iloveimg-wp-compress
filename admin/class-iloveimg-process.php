@@ -75,6 +75,7 @@ class iLoveIMG_Compress_Process{
                         
                     }
                 }
+                ///print_r($images);
                 update_post_meta($imagesID, 'iloveimg_compress', $images);
                 update_post_meta($imagesID, 'iloveimg_status_compress', 2); //status compressed
                 return $images;

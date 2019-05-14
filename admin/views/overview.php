@@ -93,12 +93,6 @@
             <?php endif; ?>
 
             <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a>
-
-            <!-- <pre>
-            <?php 
-            print_r($account)
-            ?>
-            </pre> -->
         </div>
 
         <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
@@ -117,7 +111,13 @@
             <p>Select your working proyect
                 <select name="iloveimg_field_proyect">
                     <?php foreach ($account['projects'] as $key => $project):  ?>
-                        <option value="<?php echo $project['public_key'] ?>#<?php echo $project['secret_key'] ?>"><?php echo $project['name'] ?></option>
+                        <option value="<?php echo $project['public_key'] ?>#<?php echo $project['secret_key'] ?>" 
+                            <?php
+                                if(get_option('iloveimg_proyect') == $project['public_key'] . "#" . $project['secret_key']){
+                                    echo "selected";
+                                }
+                            ?>
+                        ><?php echo $project['name'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </p>
