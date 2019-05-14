@@ -15,6 +15,9 @@
     function compressImage(event) {
         var element = jQuery(event.target);
         var container = element.closest('td');
+        if(container){
+            container = element.closest('.iloveimg-compress-images');
+        }
         element.attr('disabled', 'disabled');
         element.next().show();
         jQuery.ajax({
@@ -38,6 +41,9 @@
     function statusCompressing(element, index){
         var element = jQuery(element);
         var container = element.closest('td');
+        if(container){
+            container = element.closest('.iloveimg-compress-images');
+        }
         jQuery.ajax({
             url: ajaxurl,
             type: 'POST',
@@ -60,6 +66,7 @@
     switch (adminpage) {
         case 'upload-php':
         case 'media_page_iloveimg_image_optimized':
+        case 'post-php':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
               jQuery("button.iloveimg-compress").each(function(index, element){

@@ -15,7 +15,7 @@ class iLoveIMG_Compress_Plugin {
         add_action( 'wp_ajax_iloveimg_compress_library_is_compressed', array($this, "iloveimg_compress_library_is_compressed") );
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
-
+        add_action( 'attachment_submitbox_misc_actions', array($this, 'show_media_info'));
         require_once( dirname(dirname(__FILE__)) . '/iloveimg-php/init.php');
         
         add_action( 'admin_notices', array($this, 'show_notices'));
@@ -37,26 +37,7 @@ class iLoveIMG_Compress_Plugin {
         $ilove = new iLoveIMG_Compress_Process();
         $images = $ilove->compress($_POST['id']);
         if($images !== false){
-            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
-            $_sizes = get_post_meta($_POST['id'], 'iloveimg_compress', true);
-            ?>
-            <div id="iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" style="display:none;">
-                <table>
-                    <tr>
-                        <th>Name</th><th>Initial</th><th>Compressed</th>
-                        <?php
-                        foreach($_sizes as $key => $size){
-                            ?>
-                            <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
-                            <?php
-                        }
-                        ?>
-                    </tr>
-                </table>
-            </div>
-            <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($images) ?>% smaller!</p>
-            <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
-        <?php
+            iLoveIMG_Compress_Resources::render_compress_details($_POST['id']);
         }else{
             ?>
             <p>You need more files</p>
@@ -72,26 +53,7 @@ class iLoveIMG_Compress_Plugin {
         if(((int)$status_compress === 1 || (int)$status_compress === 3)){
             echo "processing";
         }else if((int)$status_compress === 2){
-            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
-            $_sizes = get_post_meta($_POST['id'], 'iloveimg_compress', true);
-            ?>
-            <div id="iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" style="display:none;">
-                <table>
-                    <tr>
-                        <th>Name</th><th>Initial</th><th>Compressed</th>
-                        <?php
-                        foreach($_sizes as $key => $size){
-                            ?>
-                            <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
-                            <?php
-                        }
-                        ?>
-                    </tr>
-                </table>
-            </div>
-            <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
-            <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $_POST['id'] ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
-        <?php
+            iLoveIMG_Compress_Resources::render_compress_details($_POST['id']);
         }
         wp_die();
     }
@@ -169,9 +131,6 @@ class iLoveIMG_Compress_Plugin {
 
                 if (isset($response['response']['code']) && $response['response']['code'] == 200) {
                     $account = json_decode($response["body"], true);
-                    // echo "<pre>";
-                    // print_r($account);
-                    // echo "</pre>";
                     if($account['files_used'] >=  $account['free_files_limit'] and $account['package_files_used'] >=  $account['package_files_limit'] and @$account['subscription_files_used'] >=  $account['subscription_files_limit']){
                         ?>
                         <div class="notice notice-warning is-dismissible">
@@ -182,8 +141,27 @@ class iLoveIMG_Compress_Plugin {
                 }
             }
         }
-        ?>
-            
-        <?php
     }
+
+    public function show_media_info(){
+        global $post;
+        echo '<div class="misc-pub-section iloveimg-compress-images">';
+        echo '<h4>';
+        esc_html_e( 'iLoveIMG', 'iloveimg' );
+        echo '</h4>';
+        echo '<div class="iloveimg-container">';
+        
+        $status_compress = get_post_meta($post->ID, 'iloveimg_status_compress', true);
+
+        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($post->ID);
+        
+        if((int)$status_compress === 2){
+            iLoveIMG_Compress_Resources::render_compress_details($post->ID);
+        }else{
+            iLoveIMG_Compress_Resources::getStatusOfColumn($post->ID);
+        }
+        echo '</div>';
+        echo '</div>';
+    }
+
 }

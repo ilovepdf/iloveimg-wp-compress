@@ -91,6 +91,29 @@ class iLoveIMG_Compress_Resources{
         }
     }
 
+    public static function render_compress_details($imageID){
+        $_sizes = get_post_meta($imageID, 'iloveimg_compress', true);
+        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($imageID);
+        ?>
+        <div id="iloveimg_detaills_compress_<?php echo $imageID ?>" style="display:none;">
+            <table>
+                <tr>
+                    <th>Name</th><th>Initial</th><th>Compressed</th>
+                    <?php
+                    foreach($_sizes as $key => $size){
+                        ?>
+                        <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
+                        <?php
+                    }
+                    ?>
+                </tr>
+            </table>
+        </div>
+        <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
+        <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+        <?php
+    }
+
     public static function getStatusOfColumn($columnID){
         $post = get_post($columnID);
         if(strpos($post->post_mime_type, "image/") !== false):
@@ -99,25 +122,7 @@ class iLoveIMG_Compress_Resources{
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
             
             if($_sizes && $imagesCompressed):
-                ?>
-                <div id="iloveimg_detaills_compress_<?php echo $columnID ?>" style="display:none;">
-                    
-                    <table>
-                        <tr>
-                            <th>Name</th><th>Initial</th><th>Compressed</th>
-                            <?php
-                            foreach($_sizes as $key => $size){
-                                ?>
-                                <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
-                                <?php
-                            }
-                            ?>
-                        </tr>
-                    </table>
-                </div>
-                <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
-                <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $columnID ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
-                <?php
+                self::render_compress_details($columnID);
             else:
                 ?>                    
                     <?php if(iLoveIMG_Compress_Resources::isLoggued()): ?>
