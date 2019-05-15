@@ -33,49 +33,59 @@
     ?>
     <?php if(!$isLogged): ?>
             
-            <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-                <h3>Login</h3>
-                <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="iloveimg_field_email" required/>
+            <?php if(@$_GET['section'] != 'register'): ?>
+                <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
+                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture.svg") ?>" />
+                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                        <h3>Login to your account</h3>
+                        <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
+                        <div>
+                            <input type="email" name="iloveimg_field_email" placeholder="Email" required/>
+                        </div>
+                        <div>
+                            <input type="password" name="iloveimg_field_password" placeholder="Password" required/>
+                        </div>
+                        <a class="forget" href="https://developer.ilovepdf.com/login/reset" target="_blank">Forget Password?</a>
+                        <?php
+                        wp_nonce_field( 'iloveimg_login', 'iloveimg_nonce_login' );
+                        submit_button('Login');
+                        ?>
+                        <div>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page&section=register' ) ?>">Register as iLovePDF developer</a>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="iloveimg_field_password" required/>
+            <?php else: ?>
+                <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
+                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                        <h3>Register as iLovePDF developer</h3>
+                        <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />    
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" name="iloveimg_field_name" required/>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <input type="email" name="iloveimg_field_email" required/>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            <input type="password" name="iloveimg_field_password" required/>
+                        </div>
+                        <div>
+                            <label>Confirm Password:</label>
+                            <input type="password" name="iloveimg_field_password_confirm" required/>
+                        </div>
+                        <?php
+                        wp_nonce_field( 'iloveimg_register', 'iloveimg_nonce_register' );
+                        submit_button('Register');
+                        ?>
+                        <div>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>">Login to your account</a>
+                        </div>
+                    </form>
                 </div>
-            <?php
-            wp_nonce_field( 'iloveimg_login', 'iloveimg_nonce_login' );
-            submit_button('Login');
-            ?>
-            </form>
-
-            
-            
-            <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-                <h3>Register</h3>
-                <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />    
-                <div>
-                    <label>Name:</label>
-                    <input type="text" name="iloveimg_field_name" required/>
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="iloveimg_field_email" required/>
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="iloveimg_field_password" required/>
-                </div>
-                <div>
-                    <label>Confirm Password:</label>
-                    <input type="password" name="iloveimg_field_password_confirm" required/>
-                </div>
-            <?php
-            wp_nonce_field( 'iloveimg_register', 'iloveimg_nonce_register' );
-            submit_button('Register');
-            ?>
-            </form>
+            <?php endif; ?>
     <?php else: ?>
 
         <div>

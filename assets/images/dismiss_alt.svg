@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>dashicon/misc/dismiss_alt</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="14.705 4.705 13.295 3.295 9 7.59 4.705 3.295 3.295 4.705 7.59 9 3.295 13.295 4.705 14.705 9 10.41 13.295 14.705 14.705 13.295 10.41 9"></polygon>
+    </defs>
+    <g id="Plugin-WP-iLoveIMG" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Login" transform="translate(-1213.000000, -443.000000)">
+            <g id="dashicon/misc/dismiss_alt" transform="translate(1210.000000, 440.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="tint" stroke-width="1" fill-rule="evenodd" mask="url(#mask-2)" fill="#FFFFFF">
+                    <g id="tint/white">
+                        <rect id="white" x="0" y="0" width="18" height="18"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
