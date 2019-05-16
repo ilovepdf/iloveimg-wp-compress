@@ -35,7 +35,7 @@
             
             <?php if(@$_GET['section'] != 'register'): ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
-                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture.svg") ?>" />
+                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_login.svg") ?>" />
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
@@ -57,24 +57,27 @@
                 </div>
             <?php else: ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
+                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_register.svg") ?>" />
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                         <h3>Register as iLovePDF developer</h3>
-                        <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />    
+                        <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                         <div>
-                            <label>Name:</label>
-                            <input type="text" name="iloveimg_field_name" required/>
-                        </div>
-                        <div>
-                            <label>Email:</label>
-                            <input type="email" name="iloveimg_field_email" required/>
-                        </div>
-                        <div>
-                            <label>Password:</label>
-                            <input type="password" name="iloveimg_field_password" required/>
-                        </div>
-                        <div>
-                            <label>Confirm Password:</label>
-                            <input type="password" name="iloveimg_field_password_confirm" required/>
+                            <div>
+                                <div>
+                                    <input type="text" name="iloveimg_field_name" placeholder="Name" required/>
+                                </div>
+                                <div>
+                                    <input type="email" name="iloveimg_field_email" placeholder="Email" required/>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <input type="password" name="iloveimg_field_password" placeholder="Password" required/>
+                                </div>
+                                <div>
+                                    <input type="password" name="iloveimg_field_password_confirm" placeholder="Confirm Password" required/>
+                                </div>
+                            </div>
                         </div>
                         <?php
                         wp_nonce_field( 'iloveimg_register', 'iloveimg_nonce_register' );
@@ -87,54 +90,69 @@
                 </div>
             <?php endif; ?>
     <?php else: ?>
+        <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-logged">
+            <div class="iloveimg_settings__overview__account-logged__column_left">
+                <div class="iloveimg_settings__overview__account-logged__column_left__stadistics">
+                    <h4 style="color: #4D90FE">Free</h4>
+                    <div class="iloveimg_percent">
+                        <div class="iloveimg_percent-total" style="width: <?php echo ((($account['files_used']*100)/$account['free_files_limit'])) ?>%;"></div>
+                    </div>
+                    <p><?php echo $account['files_used'] ?>/<?php echo $account['free_files_limit'] ?> processed files this month. Free Tier.</p>
+                    <?php if($account['subscription_files_limit']): ?>
+                        <h4>Subscription files</h4>
+                        <div class="iloveimg_percent">
+                            <div class="iloveimg_percent-total" style="width: <?php echo @((($account['subscription_files_used']*100)/$account['subscription_files_limit'])) ?>%;"></div>
+                        </div>
+                        <p><?php echo (isset($account['subscription_files_used'])) ? $account['subscription_files_used'] : 0 ?>/<?php echo $account['subscription_files_limit'] ?> processed files this month.</p>
+                    <?php endif; ?>
+                    <?php if($account['package_files_limit']): ?>
+                        <h4>Package files</h4>
+                        <div class="iloveimg_percent">
+                            <div class="iloveimg_percent-total" style="width: <?php echo (($account['package_files_used']*100)/$account['package_files_limit']) ?>%;"></div>
+                        </div>
+                        <p><?php echo $account['package_files_used'] ?>/<?php echo $account['package_files_limit'] ?> processed files this month.</p>
+                    <?php endif; ?>
+                </div>
+                <div class="iloveimg_settings__overview__account-logged__column_left__details">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+                    <p>Duis rhoncus velit nec est condimentum feugiat. Donec aliquam augue nec gravida lobortis.</p>
+                    <a class="button button-secondary" href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a>
+                </div>
+            </div>
+            <div class="iloveimg_settings__overview__account-logged__column_right">
+                <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <input type="hidden" name="iloveimg_action" value="iloveimg_action_logout" />
+                    <h3>Account</h3>
+                    <p style="margin: 0"><?php echo $account['name'] ?></p>
+                    <p style="margin-top: 0; color: #4D90FE;"><?php echo $account['email'] ?></p>
+                    
+                    <?php  wp_nonce_field( 'iloveimg_logout', 'iloveimg_nonce_logout' );  ?>
+                    <?php submit_button('Logout'); ?>
+                </form>
 
-        <div>
-            <h3>Overview</h3>
-            <h4>Free</h4>
-            
-            <p><?php echo $account['files_used'] ?>/<?php echo $account['free_files_limit'] ?> processed files this month. Free Tier.</p>
-            <?php if($account['subscription_files_limit']): ?>
-                <h4>Subscription</h4>
-                <p><?php echo (isset($account['subscription_files_used'])) ? $account['subscription_files_used'] : 0 ?>/<?php echo $account['subscription_files_limit'] ?> processed files this month.</p>
-            <?php endif; ?>
-            <?php if($account['package_files_limit']): ?>
-                <h4>Package</h4>
-                <p><?php echo $account['package_files_used'] ?>/<?php echo $account['package_files_limit'] ?> processed files this month.</p>
-            <?php endif; ?>
-
-            <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a>
+                <form class="iloveimg_settings__overview__account-logged__column_right-proyects" method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <input type="hidden" name="iloveimg_action" value="iloveimg_action_proyect" />
+                    <p><label>
+                        Select your working proyect
+                    </label>
+                        <select name="iloveimg_field_proyect">
+                            <?php foreach ($account['projects'] as $key => $project):  ?>
+                                <option value="<?php echo $project['public_key'] ?>#<?php echo $project['secret_key'] ?>" 
+                                    <?php
+                                        if(get_option('iloveimg_proyect') == $project['public_key'] . "#" . $project['secret_key']){
+                                            echo "selected";
+                                        }
+                                    ?>
+                                ><?php echo $project['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="button button-secondary">Save</button>
+                    </p>
+                    <?php  wp_nonce_field( 'iloveimg_proyect', 'iloveimg_nonce_proyect' );  ?>
+                    
+                </form>
+            </div>
         </div>
-
-        <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-            <input type="hidden" name="iloveimg_action" value="iloveimg_action_logout" />
-            <h3>Account</h3>
-            <p>Name: <?php echo $account['name'] ?></p>
-            <p>Email: <?php echo $account['email'] ?></p>
-            
-            <?php  wp_nonce_field( 'iloveimg_logout', 'iloveimg_nonce_logout' );  ?>
-            <?php submit_button('Logout'); ?>
-        </form>
-
-        <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-            <input type="hidden" name="iloveimg_action" value="iloveimg_action_proyect" />
-            <h3>Proyects</h3>
-            <p>Select your working proyect
-                <select name="iloveimg_field_proyect">
-                    <?php foreach ($account['projects'] as $key => $project):  ?>
-                        <option value="<?php echo $project['public_key'] ?>#<?php echo $project['secret_key'] ?>" 
-                            <?php
-                                if(get_option('iloveimg_proyect') == $project['public_key'] . "#" . $project['secret_key']){
-                                    echo "selected";
-                                }
-                            ?>
-                        ><?php echo $project['name'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </p>
-            <?php  wp_nonce_field( 'iloveimg_proyect', 'iloveimg_nonce_proyect' );  ?>
-            <?php submit_button(); ?>
-        </form>
-
         
 
     <?php endif;?>

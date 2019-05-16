@@ -3,18 +3,20 @@ body.toplevel_page_iloveimg-admin-page{
 	.iloveimg_settings{
 		//width: 100%;
 		max-width: 1200px;
-		//margin: auto;
+		margin: auto;
 		@include placeholder {
 		    opacity: 0.5;
 			color: #555D66;
 			letter-spacing: 0.45px;
 			line-height: 18px;
+			font-weight: normal;
 		}
 		font-family: $font_family;
 		*{
 			font-size: $body_font_size;
 			color: $text_color;
 			letter-spacing: $letter_spacing;
+			box-sizing: border-box;
 		}
 		p.submit{
 			margin-bottom: 10px;
@@ -51,6 +53,68 @@ body.toplevel_page_iloveimg-admin-page{
 				&.iloveimg_settings__overview__account-login{
 					> img{
 						width: 75%;
+					}
+				}
+				&.iloveimg_settings__overview__account-register{
+					> img{
+						width: 55%;
+					}
+					form{
+						width: calc( 45% - 30px );
+						max-width: 485px;
+						> div{
+							display: flex;
+							align-content: stretch;
+							> div{
+								&:first-child{
+									margin-right: 12px;
+								}
+								width: 50%;
+							}
+						}
+					}
+				}
+				&.iloveimg_settings__overview__account-logged{
+					.iloveimg_settings__overview__account-logged__column_left{
+						width: 75%;
+						background-color: #F3F4F5;
+						margin-right: 30px;
+						padding: 20px 24px;
+						*{
+							color: #626870;
+						}
+						h4{
+							margin: 0 0 10px 0;
+						}
+						display: flex;
+						justify-content: space-between;
+						> div{
+							width: 45%;
+							&.iloveimg_settings__overview__account-logged__column_left__details{
+								position: relative;
+								p{
+									margin-top: 0;
+								}
+								.button{
+									position: absolute;
+								    right: 0px;
+								    bottom: 0;;
+								}
+							}
+						}
+					}
+					.iloveimg_settings__overview__account-logged__column_right{
+						form{
+							&.iloveimg_settings__overview__account-logged__column_right-proyects{
+								border-top: 1px solid #E1E1E1;
+								margin-top: 20px;
+								padding-top: 10px;
+								label{
+									display: block;
+									margin-bottom: 5px;
+								}
+							}
+						}
 					}
 				}
 			}

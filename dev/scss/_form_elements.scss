@@ -28,6 +28,32 @@ body.toplevel_page_iloveimg-admin-page{
 			margin: 0;
 			padding: 0;
 		}
+		.button{
+			&.button-secondary{
+				background-color: #383E45;
+				color: #fff !important;
+				border: 0;
+				&:hover{
+					opacity: .9;
+				}
+			}
+		}
+
+		.iloveimg_percent{
+			height: 16px;
+			width: 100%;
+			background-color: #fff;
+			padding: 4px;
+			overflow: hidden;
+			.iloveimg_percent-total{
+				height: 8px;
+				background: $primary_color;
+				max-width: 100%;
+			}
+			& + p{
+				margin: 5px 0 12px 0;
+			}
+		}
 
 		/* The switch - the box around the slider */
 		.switch {

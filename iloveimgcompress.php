@@ -63,8 +63,8 @@ function iloveimg_compress_activate(){
         update_option('iloveimg_options_compress', 
             serialize(
                     [
-                        'iloveimg_field_compress_activated' => 1,
-                        'iloveimg_field_autocompress' => 1,
+                        //'iloveimg_field_compress_activated' => 0,
+                        //'iloveimg_field_autocompress' => 1,
                         'iloveimg_field_sizes' => ['full', 'thumbnail', 'medium', 'medium_large', 'large'],
                         'iloveimg_field_resize_full' => 0,
                         'iloveimg_field_size_full_width' => 2048,

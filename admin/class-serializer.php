@@ -29,6 +29,11 @@ class iLoveIMG_Compress_Serializer {
         if($_POST['iloveimg_action'] == 'iloveimg_action_logout'){
             delete_option('iloveimg_account');
             delete_option('iloveimg_proyect');
+            $options = unserialize(get_option('iloveimg_options_compress'));
+            unset($options['iloveimg_field_compress_activated']);
+            unset($options['iloveimg_field_autocompress']);
+            unset($options['iloveimg_field_resize_full']);
+            update_option('iloveimg_options_compress', serialize($options));
         }
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_login'){
@@ -43,6 +48,11 @@ class iLoveIMG_Compress_Serializer {
             );
             
             update_option('iloveimg_account', $response["body"]);
+            $options = unserialize(get_option('iloveimg_options_compress'));
+            $options['iloveimg_field_compress_activated'] = 1;
+            $options['iloveimg_field_autocompress'] = 1;
+            update_option('iloveimg_options_compress', serialize($options));
+
         }
 
         
