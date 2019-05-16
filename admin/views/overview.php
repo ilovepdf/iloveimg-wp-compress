@@ -41,10 +41,10 @@
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                         <div>
-                            <input type="email" name="iloveimg_field_email" placeholder="Email" required/>
+                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required/>
                         </div>
                         <div>
-                            <input type="password" name="iloveimg_field_password" placeholder="Password" required/>
+                            <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
                         </div>
                         <a class="forget" href="https://developer.ilovepdf.com/login/reset" target="_blank">Forget Password?</a>
                         <?php
@@ -65,18 +65,18 @@
                         <div>
                             <div>
                                 <div>
-                                    <input type="text" name="iloveimg_field_name" placeholder="Name" required/>
+                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required/>
                                 </div>
                                 <div>
-                                    <input type="email" name="iloveimg_field_email" placeholder="Email" required/>
+                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required/>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <input type="password" name="iloveimg_field_password" placeholder="Password" required/>
+                                    <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
                                 </div>
                                 <div>
-                                    <input type="password" name="iloveimg_field_password_confirm" placeholder="Confirm Password" required/>
+                                    <input type="password" class="iloveimg_field_password" name="iloveimg_field_password_confirm" placeholder="Confirm Password" required/>
                                 </div>
                             </div>
                         </div>
@@ -95,21 +95,24 @@
             <div class="iloveimg_settings__overview__account-logged__column_left">
                 <div class="iloveimg_settings__overview__account-logged__column_left__stadistics">
                     <h4 style="color: #4D90FE">Free</h4>
-                    <div class="iloveimg_percent">
-                        <div class="iloveimg_percent-total" style="width: <?php echo ((($account['files_used']*100)/$account['free_files_limit'])) ?>%;"></div>
+                    <?php $percent = ((($account['files_used']*100)/$account['free_files_limit'])); ?>
+                    <div class="iloveimg_percent <?php echo ($percent >= 100) ? 'iloveimg_percent-exceeded':'' ?> <?php echo ($percent >= 90 and $percent < 100) ? 'iloveimg_percent-warning':'' ?>">
+                        <div class="iloveimg_percent-total" style="width: <?php echo $percent ?>%;"></div>
                     </div>
                     <p><?php echo $account['files_used'] ?>/<?php echo $account['free_files_limit'] ?> processed files this month. Free Tier.</p>
                     <?php if($account['subscription_files_limit']): ?>
                         <h4>Subscription files</h4>
-                        <div class="iloveimg_percent">
-                            <div class="iloveimg_percent-total" style="width: <?php echo @((($account['subscription_files_used']*100)/$account['subscription_files_limit'])) ?>%;"></div>
+                        <?php $percent = @((($account['subscription_files_used']*100)/$account['subscription_files_limit'])); ?>
+                        <div class="iloveimg_percent <?php echo ($percent >= 100) ? 'iloveimg_percent-exceeded':'' ?> <?php echo ($percent >= 90 and $percent < 100) ? 'iloveimg_percent-warning':'' ?>">
+                            <div class="iloveimg_percent-total" style="width: <?php echo $percent ?>%;"></div>
                         </div>
                         <p><?php echo (isset($account['subscription_files_used'])) ? $account['subscription_files_used'] : 0 ?>/<?php echo $account['subscription_files_limit'] ?> processed files this month.</p>
                     <?php endif; ?>
                     <?php if($account['package_files_limit']): ?>
                         <h4>Package files</h4>
-                        <div class="iloveimg_percent">
-                            <div class="iloveimg_percent-total" style="width: <?php echo (($account['package_files_used']*100)/$account['package_files_limit']) ?>%;"></div>
+                        <?php $percent = (($account['package_files_used']*100)/$account['package_files_limit']); ?>
+                        <div class="iloveimg_percent <?php echo ($percent >= 100) ? 'iloveimg_percent-exceeded':'' ?> <?php echo ($percent >= 90 and $percent < 100) ? 'iloveimg_percent-warning':'' ?>">
+                            <div class="iloveimg_percent-total" style="width: <?php echo $percent ?>%;"></div>
                         </div>
                         <p><?php echo $account['package_files_used'] ?>/<?php echo $account['package_files_limit'] ?> processed files this month.</p>
                     <?php endif; ?>
