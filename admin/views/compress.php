@@ -5,10 +5,20 @@
     <div class="iloveimg_settings__overview">
         <?php require_once "overview.php"; ?>
     </div>
+
+    <?php /*if(!$isLogged and !get_option('iloveimg_first_loggued')):*/ ?>
+    <?php if(!$isLogged): ?>    
+        <div class="iloveimg_settings__info">
+            <h3>Lorem ipsum dolor sit amet</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.Duis rhoncus velit nec est condimentum feugiat. Donec aliquam augue nec gravida lobortis. Nunc arcu mi, pretium quis dolor id, iaculis euismod ligula. Donec tincidunt gravida lacus eget lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+        </div>
+    <?php endif ?>
     
     <div class="iloveimg_settings__options">
         <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-            <?php submit_button(); ?>
+            <p class="submit">
+                <input <?php echo (!$isLogged) ? "disabled" : "" ?> type="submit" name="submit" id="submit" class="button button-secondary" value="Save Changes">
+            </p>
             <h3>Configure your Compress Images settings</h3>
             <input type="hidden" name="iloveimg_action" value="iloveimg_action_options_compress" />
             <div class="iloveimg_settings__options__field">
@@ -69,8 +79,11 @@
 
             <?php
             wp_nonce_field( 'iloveimg_settings_save', 'iloveimg_nonce_settings' );
-            submit_button();
+            
             ?>
+            <p class="submit">
+                <input <?php echo (!$isLogged) ? "disabled" : "" ?> type="submit" name="submit" id="submit" class="button button-secondary" value="Save Changes">
+            </p>
         </form>
     </div>
 </div><!-- .wrap -->

@@ -16,6 +16,7 @@
             delete_option('iloveimg_account');
         }else{
             $isLogged =  true;
+            update_option('iloveimg_first_loggued', 1);
             $token = $account['token'];
             $response = wp_remote_get(ILOVEIMG_USER_URL.'/'.$account['id'], 
                 array(
