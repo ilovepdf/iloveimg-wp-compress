@@ -55,6 +55,29 @@ class iLoveIMG_Compress_Submenu {
 			)
 		);
 
+		add_submenu_page(
+			'iloveimg-watermark-admin-page',
+			'Watermark Options',
+			'Watermark Options',
+			'manage_options',
+			'iloveimg-watermark-admin-page',
+			array(
+				$this->submenu_page,
+				'renderWatermark'
+			)
+		);
+
+		add_media_page(
+			'iLoveIMG Media', 
+			'Bulk Optimization', 
+			'manage_options', 
+			'iloveimg-media-page', 
+			array(
+				$this->submenu_page,
+				'renderMediaOptimization'
+			)
+		);
+
 	}
 
 	public function settings_page() {
