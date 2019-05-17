@@ -118,7 +118,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="iloveimg_settings__overview__account-logged__column_left__details">
-                    <p>Every month since your registry you will get 250 free file processes to use to compress or stamp your images.</p>
+                    <p>Every month since your registry you will get <?php echo $account['free_files_limit'] ?> free file processes to use to compress or stamp your images.</p>
                     <p>To increase your file processes amount you can either open one of our subscription plans to get a fixed amount of additional processes per month or buy a single package of file processes.</p>
                     <a class="button button-secondary" href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a>
                 </div>

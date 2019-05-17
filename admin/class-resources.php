@@ -109,7 +109,7 @@ class iLoveIMG_Compress_Resources{
                 </tr>
             </table>
         </div>
-        <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p>
+        <!-- <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p> -->
         <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
     }
@@ -126,7 +126,7 @@ class iLoveIMG_Compress_Resources{
             else:
                 ?>                    
                     <?php if(iLoveIMG_Compress_Resources::isLoggued()): ?>
-                        <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p>
+                        <!-- <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p> -->
                         <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
                             <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_compress === 1 || $status_compress === 3) ? 'disabled="disabled"' :  '' ?>>Compress</button>
                             <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_compress === 1 || $status_compress === 3) ? '' :  'display: none;' ?>" />

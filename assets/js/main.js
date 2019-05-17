@@ -15,9 +15,7 @@
     function compressImage(event) {
         var element = jQuery(event.target);
         var container = element.closest('td');
-        if(container){
-            container = element.closest('.iloveimg-compress-images');
-        }
+
         element.attr('disabled', 'disabled');
         element.next().show();
         jQuery.ajax({
@@ -41,9 +39,7 @@
     function statusCompressing(element, index){
         var element = jQuery(element);
         var container = element.closest('td');
-        if(container){
-            container = element.closest('.iloveimg-compress-images');
-        }
+        
         jQuery.ajax({
             url: ajaxurl,
             type: 'POST',

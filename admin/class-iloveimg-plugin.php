@@ -62,7 +62,7 @@ class iLoveIMG_Compress_Plugin {
         if((int)iLoveIMG_Compress_Resources::isActivated() === 0){
             return $columns;
         }
-        $columns['iloveimg_compression'] = __('iLoveIMG');
+        $columns['iloveimg_compression'] = __('Status');
         return $columns;
     }
 
@@ -150,7 +150,7 @@ class iLoveIMG_Compress_Plugin {
         esc_html_e( 'iLoveIMG', 'iloveimg' );
         echo '</h4>';
         echo '<div class="iloveimg-container">';
-        
+        echo '<table><tr><td>';
         $status_compress = get_post_meta($post->ID, 'iloveimg_status_compress', true);
 
         $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($post->ID);
@@ -160,6 +160,7 @@ class iLoveIMG_Compress_Plugin {
         }else{
             iLoveIMG_Compress_Resources::getStatusOfColumn($post->ID);
         }
+        echo '</td></tr></table>';
         echo '</div>';
         echo '</div>';
     }

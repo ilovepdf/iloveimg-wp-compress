@@ -84,11 +84,11 @@
                     <div class="iloveimg_settings__options__field__resize">
                         <div>
                             <label>Max width</label>
-                            <input type="text" name="iloveimg_field_size_full_width" value="<?php echo $options_value['iloveimg_field_size_full_width'] ?>" />
+                            <input type="number" name="iloveimg_field_size_full_width" value="<?php echo $options_value['iloveimg_field_size_full_width'] ?>" />
                         </div>
                         <div>
                             <label>Max height</label>
-                            <input type="text" name="iloveimg_field_size_full_height" value="<?php echo $options_value['iloveimg_field_size_full_height'] ?>" />  
+                            <input type="number" name="iloveimg_field_size_full_height" value="<?php echo $options_value['iloveimg_field_size_full_height'] ?>" />  
                         </div>
                     </div>      
                 </div>

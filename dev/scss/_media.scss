@@ -1,0 +1,27 @@
+body.media_page_iloveimg-media-page{
+	
+}
+body{
+	button.button.iloveimg-compress{
+		font-family: $font_family;
+		font-size: 13px;
+		color: #4D90FE;
+		letter-spacing: 0.2px;
+		text-align: center;
+		background-color: #fff;
+		text-shadow: none;
+		box-shadow: none;
+		border: 1px solid $primary_color;
+		line-height: 32px !important;
+		height: 32px !important;
+		padding: 0 16px !important;
+		border-radius: 16.5px;
+		&:hover{
+			background-color: $primary_color !important;
+		}
+		&:disabled{
+			background-color: $primary_color !important;
+			opacity: .7;
+		}
+	}
+}
