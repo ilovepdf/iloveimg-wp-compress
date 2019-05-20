@@ -70,6 +70,7 @@ class iLoveIMG_Compress_Process{
                         $file = $myTask->addFile($pathFile);
                         $myTask->execute();
                         $myTask->download(dirname($pathFile));
+                        //sleep(10);
                         $images[$_size]["compressed"] = filesize($pathFile);
 
                         

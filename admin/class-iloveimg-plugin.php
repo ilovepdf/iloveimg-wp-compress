@@ -99,6 +99,7 @@ class iLoveIMG_Compress_Plugin {
     }
 
     public function media_library_bulk_action(){
+        die();
         foreach($_REQUEST['media'] as $attachment_id){
             $post = get_post($attachment_id);
             if(strpos($post->post_mime_type, "image/") !== false){

@@ -1,5 +1,59 @@
 body.media_page_iloveimg-media-page{
-	
+	table.wp-list-table{
+		border: 0;
+		box-shadow: $box_shadow;
+		border-radius: 4px;
+		thead{
+			> tr{
+				height: 50px;
+				th,td{
+					border: 0;
+				}
+			}
+		}
+		tbody{
+			tr{
+				&:nth-child(odd){
+					background-color: #F3F4F5;
+				}
+				th, td{
+					vertical-align: middle;
+					&:first-child{
+						vertical-align: top;
+					}
+					.attachment-thumbnail{
+						width: 60px;
+						height: 60px;
+						margin-right: 5px;
+					}
+				}
+				td{
+					&.column-file{
+						> a{
+							display: flex;
+							&:hover{
+								color: $primary_color;
+							}
+						}
+					}
+				}
+			}
+		}
+		tr{
+
+			th{
+				color: $primary_color;
+				font-weight: bold;
+
+				a{
+					color: $primary_color;
+					span{
+						color: $primary_color;
+					}
+				}
+			}
+		}
+	}
 }
 body{
 	button.button.iloveimg-compress{
@@ -22,6 +76,28 @@ body{
 		&:disabled{
 			background-color: $primary_color !important;
 			opacity: .7;
+		}
+	}
+	table.table__details__sizes{
+		font-family: $font_family;
+		font-size: 13px;
+		color: #626870;
+		letter-spacing: 0.2px;
+		width: 360px;
+		//display: block;
+		margin: 20px auto;
+		border-spacing: 0;
+		tbody{
+			tr{
+				td, th{
+					line-height: 34px;
+					padding: 0 15px;
+					border: 0;
+				}
+				&:nth-child(even){
+					background-color: #F3F4F5;
+				}
+			}
 		}
 	}
 }

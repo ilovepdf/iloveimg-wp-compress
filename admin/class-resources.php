@@ -94,9 +94,10 @@ class iLoveIMG_Compress_Resources{
     public static function render_compress_details($imageID){
         $_sizes = get_post_meta($imageID, 'iloveimg_compress', true);
         $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($imageID);
+        
         ?>
         <div id="iloveimg_detaills_compress_<?php echo $imageID ?>" style="display:none;">
-            <table>
+            <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Initial</th><th>Compressed</th>
                     <?php
@@ -110,7 +111,7 @@ class iLoveIMG_Compress_Resources{
             </table>
         </div>
         <!-- <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=500&height=500&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
     }
 

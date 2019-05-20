@@ -60,12 +60,16 @@ function iloveimg_compress_add_plugin_page_settings_link( $links ) {
 function iloveimg_compress_activate(){
     add_option( 'iloveimg_compress_db_version', $iloveimg_compress_db_version );
     if(!get_option('iloveimg_options_compress')){
+        $iloveimg_thumbnails = ['full', 'thumbnail', 'medium', 'medium_large', 'large'];
+        if(!extension_loaded('gd')){
+            $iloveimg_thumbnails = ['full'];
+        }
         update_option('iloveimg_options_compress', 
             serialize(
                     [
                         //'iloveimg_field_compress_activated' => 0,
                         //'iloveimg_field_autocompress' => 1,
-                        'iloveimg_field_sizes' => ['full', 'thumbnail', 'medium', 'medium_large', 'large'],
+                        'iloveimg_field_sizes' => $iloveimg_thumbnails,
                         'iloveimg_field_resize_full' => 0,
                         'iloveimg_field_size_full_width' => 2048,
                         'iloveimg_field_size_full_height' => 2048,

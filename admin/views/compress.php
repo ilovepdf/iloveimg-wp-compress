@@ -58,21 +58,22 @@
                     <p>With autocompress enabled any image uploaded to your Media folder will be automatically compressed. Anyway you still will be able to compress uncompressed images from Media.</p>
                 </div>
                 
-                
-                <div class="iloveimg_settings__options__field">
-                    <label>Images Sizes:</label>
-                    <div class="iloveimg_settings__options__field__imagessizes">
-                        <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
-                        <ul>
-                        <?php foreach(iLoveIMG_Compress_Resources::getTypeImages() as $value): ?>
-                            <li>
-                                <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id'] ?>" <?php echo @(in_array($value['field_id'], $options_value['iloveimg_field_sizes'])) ? "checked" : "" ?> />
-                                <span><?php echo $value['label'] ?></span>
-                            </li>
-                        <?php endforeach; ?>
-                        </ul>
+                <?php if(extension_loaded('gd')): ?>
+                    <div class="iloveimg_settings__options__field">
+                        <label>Images Sizes:</label>
+                        <div class="iloveimg_settings__options__field__imagessizes">
+                            <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
+                            <ul>
+                            <?php foreach(iLoveIMG_Compress_Resources::getTypeImages() as $value): ?>
+                                <li>
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id'] ?>" <?php echo @(in_array($value['field_id'], $options_value['iloveimg_field_sizes'])) ? "checked" : "" ?> />
+                                    <span><?php echo $value['label'] ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
                 <div class="iloveimg_settings__options__field" style="margin-bottom: 30px">
                     <div class="switch">

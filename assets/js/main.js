@@ -58,10 +58,9 @@
             }
           });
     }
-    
     switch (adminpage) {
         case 'upload-php':
-        case 'media_page_iloveimg_image_optimized':
+        case 'media_page_iloveimg-media-page':
         case 'post-php':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
@@ -76,6 +75,17 @@
                 timesIntervals["ref_" + index] = setInterval(function(){
                     statusCompressing(element, index);
                 },  1000);
+            });
+
+            jQuery(document).on("submit", "form#images-filter, form#posts-filter", function(event){
+                if(jQuery(document).find("select#bulk-action-selector-top option:checked").val() == 'iloveimg_bulk_action'){
+                    event.preventDefault();
+                    jQuery("table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr").each(function(index, element){
+                        if(jQuery(element).find("th.check-column input[type='checkbox']").is(':checked')){
+                            jQuery(element).find("td.status button, td.iloveimg_compression button").trigger("click");
+                        }
+                    });
+                }
             });
             break;
     }
