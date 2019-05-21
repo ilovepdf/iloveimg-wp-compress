@@ -101,9 +101,24 @@ class iLoveIMG_Compress_Resources{
                 <tr>
                     <th>Name</th><th>Initial</th><th>Compressed</th>
                     <?php
+                    $total_size = 0;
+                    $total_compressed = 0;
                     foreach($_sizes as $key => $size){
                         ?>
-                        <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'Not compressed' ?></td></tr>
+                        <tr>
+                            <td><?php echo $key ?></td>
+                            <td><?php echo round($size['initial']/1024) ?> KB</td>
+                            <td><?php 
+                                if($size['compressed']){
+                                    echo round($size['compressed']/1024) . " KB";
+                                    $total_size = $total_size + (int)$size['initial'];
+                                    $total_compressed = $total_compressed + (int)$size['compressed'];
+                                    ?><small class="iloveimg__badge__percent">-<?php echo (100 - round(($size['compressed'] * 100) / $size['initial'])) ?>%</small><?php
+                                }else{
+                                    echo 'Not compressed';
+                                }
+                                ?></td>
+                            </tr>
                         <?php
                     }
                     ?>
@@ -111,7 +126,7 @@ class iLoveIMG_Compress_Resources{
             </table>
         </div>
         <!-- <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (100 - round(($total_compressed * 100) / $total_size)) ?>%</small></p>
         <?php
     }
 
