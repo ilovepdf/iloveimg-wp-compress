@@ -12,6 +12,7 @@ if(!class_exists('WP_List_Table')){
 
 class Media_List_Table extends WP_List_Table {
     
+    public $total_items;
     
     var $example_data = array(
             array(
@@ -275,25 +276,16 @@ class Media_List_Table extends WP_List_Table {
          * use sort and pagination data to build a custom query instead, as you'll
          * be able to use your precisely-queried data immediately.
          */
-        $data = $wpdb->get_results( "SELECT {$wpdb->prefix}posts.* FROM {$wpdb->prefix}posts,  {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND {$wpdb->prefix}posts.post_mime_type LIKE 'image/%' AND {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id AND {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_compress' AND {$wpdb->prefix}postmeta.meta_value < 2", ARRAY_A );
+
+        $order = "ORDER BY post_date DESC";
+        if(isset($_GET['orderby']) and isset($_GET['order'])){
+            $order = "ORDER BY " . $_GET['orderby'] . " " . $_GET['order'];
+        }
+
+        $data = $wpdb->get_results( "SELECT {$wpdb->prefix}posts.* FROM {$wpdb->prefix}posts,  {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND {$wpdb->prefix}posts.post_mime_type LIKE 'image/%' AND {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id AND {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_compress' AND {$wpdb->prefix}postmeta.meta_value < 2 " . $order, ARRAY_A );
 
         
-        /**
-         * This checks for sorting input and sorts the data in our array accordingly.
-         * 
-         * In a real-world situation involving a database, you would probably want 
-         * to handle sorting by passing the 'orderby' and 'order' values directly 
-         * to a custom query. The returned data will be pre-sorted, and this array
-         * sorting technique would be unnecessary.
-         */
-        function usort_reorder($a,$b){
-            $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'file'; //If no sort, default to title
-            $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'asc'; //If no order, default to asc
-            echo $orderby;
-            $result = strcmp($a[$orderby], $b[$orderby]); //Determine sort order
-            return ($order==='asc') ? $result : -$result; //Send final sort direction to usort
-        }
-        //usort($data, 'usort_reorder');
+        
         
         
                 
@@ -312,7 +304,7 @@ class Media_List_Table extends WP_List_Table {
          */
         $total_items = count($data);
         $per_page = $total_items;
-        
+        $this->total_items = $total_items;
         
         /**
          * The WP_List_Table class does not handle pagination for us, so we need
@@ -341,28 +333,4 @@ class Media_List_Table extends WP_List_Table {
     }
 
 
-}
-
-
-function render_list_images(){
-    
-    //Create an instance of our package class...
-    $testListTable = new Media_List_Table();
-    //Fetch, prepare, sort, and filter our data...
-    $testListTable->prepare_items();
-    
-    ?>
-    <div class="wrap">
-     
-        
-        <!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
-        <form id="images-filter" method="get">
-            <!-- For plugins, we also need to ensure that the form posts back to our current page -->
-            <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-            <!-- Now we can render the completed list table -->
-            <?php $testListTable->display() ?>
-        </form>
-        
-    </div>
-    <?php
 }

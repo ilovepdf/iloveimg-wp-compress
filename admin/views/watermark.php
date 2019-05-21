@@ -3,7 +3,7 @@
     <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" />
      
     <div class="iloveimg_settings__overview">
-        <?php require_once "overview.php"; ?>
+        <?php require_once "account.php"; ?>
     </div>
 
     <?php /*if(!$isLogged and !get_option('iloveimg_first_loggued')):*/ ?>

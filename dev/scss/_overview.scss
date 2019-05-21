@@ -1,0 +1,64 @@
+body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page{
+	.iloveimg_settings{
+		.iloveimg_settings__overview{
+			.iloveimg_settings__overview__statistics{
+				background-color: #F3F4F5;
+				padding: 20px 24px;
+				h4{
+					font-weight: normal;
+					color:  $primary_color;
+					strong{
+						color:  $primary_color;
+					}
+				}
+				> div{
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 30px;
+					> div{
+						width: 45%;
+					}
+				}
+				.iloveimg_saving{
+					padding: 20px;
+					*{
+						color:  $primary_color;
+					}
+					p{
+						margin: 0
+					}
+					margin-top: 10px;
+					display: flex;
+					align-items: center;
+					background-color: #fff;
+					.iloveimg_saving__number{
+						font-weight: bold;
+						font-size: 44px;
+						letter-spacing: 0;
+						line-height: 44px;
+						margin-right: 10px;
+					}
+				}
+				.iloveimg_settings__overview__statistics__column_right{
+					h4{
+
+						color:  #383E45;
+						strong{
+							color:  #383E45;
+						}
+					}
+					.iloveimg_saving{
+						*{
+							color:  #383E45;
+						}
+					}
+					.iloveimg_percent{
+						.iloveimg_percent-total{
+							    background: #383E45;
+						}
+					}
+				}
+			}
+		}
+	}
+}

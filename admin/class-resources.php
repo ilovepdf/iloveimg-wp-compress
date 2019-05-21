@@ -103,7 +103,7 @@ class iLoveIMG_Compress_Resources{
                     <?php
                     foreach($_sizes as $key => $size){
                         ?>
-                        <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'No compressed' ?></td></tr>
+                        <tr><td><?php echo $key ?></td><td><?php echo round($size['initial']/1024) ?> KB</td><td><?php echo $size['compressed'] ? round($size['compressed']/1024) . " KB": 'Not compressed' ?></td></tr>
                         <?php
                     }
                     ?>
@@ -111,7 +111,7 @@ class iLoveIMG_Compress_Resources{
             </table>
         </div>
         <!-- <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a></p>
         <?php
     }
 
@@ -135,11 +135,11 @@ class iLoveIMG_Compress_Resources{
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                         <?php endif;
                     else: ?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="button button-small button-primary">Go to settings</button>
+                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                     <?php
                     endif;
                     if($status_compress === 1 || $status_compress === 3): ?>
@@ -147,6 +147,43 @@ class iLoveIMG_Compress_Resources{
                     <?php endif;
             endif;
         endif;
+    }
+
+    public static function getFilesCompressed(){
+        global $wpdb;
+        return (int)$wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+    }
+
+    public static function getTotalImages(){
+        $query_img_args = array(
+        'post_type' => 'attachment',
+        'post_mime_type' =>array(
+                        'jpg|jpeg|jpe' => 'image/jpeg',
+                        'gif' => 'image/gif',
+                'png' => 'image/png',
+                ),
+        'post_status' => 'inherit',
+        'posts_per_page' => -1,
+        );
+        $query_img = new WP_Query( $query_img_args );
+        return (int)$query_img->post_count;
+    }
+
+    public static function getFilesSizes(){
+        global $wpdb;
+        $rows = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+        $total = 0;
+        $totalCompressed = 0;
+        foreach ( $rows as $row ) 
+        {
+            $stadistics = unserialize($row->meta_value);
+            foreach ($stadistics as $key => $value) {
+                $total = $total + (int)$value['initial'];
+                $totalCompressed = $totalCompressed + (int)$value['compressed'];
+            }
+        }
+        return [$total, $totalCompressed];
+
     }
 
     

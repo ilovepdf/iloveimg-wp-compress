@@ -51,7 +51,9 @@ class iLoveIMG_Compress_Plugin {
 
         $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
         if(((int)$status_compress === 1 || (int)$status_compress === 3)){
-            echo "processing";
+            //echo "processing";
+            http_response_code(404);
+            die();
         }else if((int)$status_compress === 2){
             iLoveIMG_Compress_Resources::render_compress_details($_POST['id']);
         }

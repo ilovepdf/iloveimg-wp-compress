@@ -1,4 +1,8 @@
 body.media_page_iloveimg-media-page{
+	input#doaction,
+	input#doaction2{
+		background-color: #383E45;
+	}
 	table.wp-list-table{
 		border: 0;
 		box-shadow: $box_shadow;
@@ -54,9 +58,17 @@ body.media_page_iloveimg-media-page{
 			}
 		}
 	}
+	.iloveimg_settings__overview__compress-all{
+		display: flex;
+		justify-content: center;
+		#iloveimg_allcompress{
+			margin-top: 20px;
+		}
+	}
 }
 body{
-	button.button.iloveimg-compress{
+	button.button.iloveimg-compress,
+	button.button.iloveimg-compress-all{
 		font-family: $font_family;
 		font-size: 13px;
 		color: #4D90FE;

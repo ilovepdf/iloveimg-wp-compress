@@ -11,6 +11,7 @@
         adminpage = window.adminpage;
     }
     var timesIntervals = new Array();
+    var timeReload;
 
     function compressImage(event) {
         var element = jQuery(event.target);
@@ -48,10 +49,9 @@
               id: element.data('id') || element.attr('data-id')
             },
             success: function(data) {
-                if(data != 'processing') {
-                    clearInterval(timesIntervals["ref_" + index]);
-                    container.html(data);
-                }
+                
+                clearInterval(timesIntervals["ref_" + index]);
+                container.html(data);
             },
             error: function() {
 
@@ -64,10 +64,17 @@
         case 'post-php':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
-              jQuery("button.iloveimg-compress").each(function(index, element){
-                var buttonCompress = jQuery(element);
-                buttonCompress.trigger("click");
-              });
+                jQuery("button#iloveimg_allcompress").attr('disabled', 'disabled');
+                jQuery("button.iloveimg-compress").each(function(index, element){
+                    var buttonCompress = jQuery(element);
+                    buttonCompress.trigger("click");
+                    timeReload = setInterval(function(){
+                        if(!jQuery("button.iloveimg-compress").length){
+                            clearInterval(timeReload);
+                            location.reload();
+                        }
+                    }, 1000)
+                });
             });
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action]');
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action2]');

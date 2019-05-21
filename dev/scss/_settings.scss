@@ -1,8 +1,9 @@
 body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page{
 	background-color: $background_color;
 	.iloveimg_settings{
+
 		//width: 100%;
-		max-width: 1200px;
+		//max-width: 1200px;
 		//margin: auto;
 		@include placeholder {
 		    opacity: 0.5;
@@ -18,6 +19,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 			letter-spacing: $letter_spacing;
 			box-sizing: border-box;
 		}
+		
 		p.submit{
 			margin-bottom: 10px;
 		}
@@ -46,18 +48,23 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				display: flex;
 				flex-direction: row;
 				align-items: flex-start;
-				
+				justify-content: space-between;
 				> img{
 					margin-right: 30px;
 				}
 				&.iloveimg_settings__overview__account-login{
 					> img{
 						width: 75%;
+						max-width: 870px;
+					}
+					> form{
+						margin-right: 56px;
 					}
 				}
 				&.iloveimg_settings__overview__account-register{
 					> img{
 						width: 55%;
+						max-width: 656px;
 					}
 					form{
 						width: calc( 45% - 30px );
@@ -105,6 +112,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						}
 					}
 					.iloveimg_settings__overview__account-logged__column_right{
+						flex: 1;
 						form{
 							&.iloveimg_settings__overview__account-logged__column_right-proyects{
 								border-top: 1px solid #E1E1E1;
@@ -175,6 +183,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				}
 			}
 			.iloveimg_settings__options-container{
+				flex: 1;
 				background-color: #fff;
 				padding: 30px;
 				box-shadow: $box_shadow;
@@ -226,10 +235,36 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						display: flex;
 						div{
 							margin-right: 20px;
+							width: 170px;
+							label{
+								display: block;
+								margin-bottom: 5px;
+							}
+							input{
+								width: 100%;
+								border: 1px solid #383E45;
+								background-color: #fff;
+							}
+							p{
+								margin-top: 5px;
+								font-size: 10px;
+								color: #383E45;
+								letter-spacing: 0.35px;
+								line-height: 13px;
+							}
 						}
 					}
 				}
 			}
+		}
+	}
+}
+body{
+	a.thickbox.iloveimg_sizes_compressed, a.iloveimg_link{
+		color: #626870;
+		text-decoration: underline;
+		&:hover{
+			color: $primary_color;
 		}
 	}
 }

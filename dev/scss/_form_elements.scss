@@ -29,6 +29,13 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 			    text-indent: 0;
 			}
 		}
+		select{
+			    border: 1px solid #383e48;
+		    max-width: 140px;
+		    height: 32px;
+		    border-radius: 0px;
+		    margin-right: 10px;
+		}
 		input[type="submit"], input[type="button"]{
 			background-color: $primary_color;
 			color: #fff;
@@ -45,6 +52,31 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 				opacity: .8;
 			}
 
+		}
+		input[type="checkbox"]{
+			appearance: none;
+			background: #FFFFFF;
+			border: 1px solid #969696;
+			box-shadow: none;
+			border-radius: 2px;
+			&:checked{
+				border-color: $primary_color;
+				color: red;
+				position: relative;
+				&:before{
+					color: $primary_color;
+				    content: "";
+				    background: url("../images/check.svg") no-repeat center center;
+				    display: block;
+				    background-size: 8px;
+				    position: absolute;
+				    top: 0;
+				    left: 0;
+				    right: 0;
+				    bottom: 0;
+				    margin: 0;
+				}
+			}
 		}
 		p.submit{
 			margin: 0;
@@ -137,6 +169,18 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 		  transition: .4s;
 		  border-radius: 25px;
 		  border: 1px solid #383E45;
+		  &:after{
+		  	content: "";
+		    position: absolute;
+		    width: 3px;
+		    height: 3px;
+		    top: 6px;
+		    right: 4px;
+		    border: 1px solid #383e45;
+		    border-radius: 100%;
+		    background-color: white;
+		  }
+
 		}
 
 		.slider:before {
@@ -155,6 +199,16 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 		input:checked + .slider {
 		  background-color: $primary_color;
 		  border: 1px solid $primary_color;
+		  &:after{
+		  	content: "";
+		    position: absolute;
+		    width: 1px;
+		    height: 6px;
+		    background: white;
+		    top: 5px;
+		    left: 6px;
+		    border: 0px;
+		  }
 		}
 
 		input:focus + .slider {

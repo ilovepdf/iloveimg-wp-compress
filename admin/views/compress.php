@@ -3,7 +3,7 @@
     <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" />
      
     <div class="iloveimg_settings__overview">
-        <?php require_once "overview.php"; ?>
+        <?php require_once "account.php"; ?>
     </div>
 
     <?php /*if(!$isLogged and !get_option('iloveimg_first_loggued')):*/ ?>
@@ -85,11 +85,13 @@
                     <div class="iloveimg_settings__options__field__resize">
                         <div>
                             <label>Max width</label>
-                            <input type="number" name="iloveimg_field_size_full_width" value="<?php echo $options_value['iloveimg_field_size_full_width'] ?>" />
+                            <input type="number" name="iloveimg_field_size_full_width" value="<?php echo $options_value['iloveimg_field_size_full_width'] ?>"  min="1"/>
+                            <p>Original image width won't exceed this value in pixels.</p>
                         </div>
                         <div>
                             <label>Max height</label>
-                            <input type="number" name="iloveimg_field_size_full_height" value="<?php echo $options_value['iloveimg_field_size_full_height'] ?>" />  
+                            <input type="number" name="iloveimg_field_size_full_height" value="<?php echo $options_value['iloveimg_field_size_full_height'] ?>"  min="1"/>
+                            <p>Original image height won't exceed this value in pixels.</p> 
                         </div>
                     </div>      
                 </div>
