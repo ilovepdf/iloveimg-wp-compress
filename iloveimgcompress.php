@@ -29,15 +29,21 @@ if ( ! defined( 'WPINC' ) ) {
      die;
 }
  
-foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
-    include_once $file;
-}
+// foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
+//     include_once $file;
+// }
+
+include_once "admin/class-iloveimg-plugin.php";
+include_once "admin/class-iloveimg-process.php";
+include_once "admin/class-resources.php";
+include_once "admin/class-serializer.php";
+include_once "admin/class-submenu-page.php";
+include_once "admin/class-submenu.php";
+include_once "admin/class-table-media-bulk-optimized.php";
  
 add_action( 'plugins_loaded', 'iloveimg_compress_custom_admin_settings' );
 
 
-global $iloveimg_compress_db_version;
-$iloveimg_compress_db_version = '1.0';
 
 function iloveimg_compress_custom_admin_settings() {
     
@@ -58,7 +64,7 @@ function iloveimg_compress_add_plugin_page_settings_link( $links ) {
 }
 
 function iloveimg_compress_activate(){
-    add_option( 'iloveimg_compress_db_version', $iloveimg_compress_db_version );
+    add_option( 'iloveimg_compress_db_version', ILOVEIMG_COMPRESS_DB_VERSION );
     if(!get_option('iloveimg_options_compress')){
         $iloveimg_thumbnails = ['full', 'thumbnail', 'medium', 'medium_large', 'large'];
         if(!extension_loaded('gd')){
@@ -89,5 +95,6 @@ define('ILOVEIMG_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
 define('ILOVEIMG_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
 define('ILOVEIMG_USER_URL', 'https://api.ilovepdf.com/v1/user');
 define('ILOVEIMG_NUM_MAX_FILES', 2);
+define('ILOVEIMG_COMPRESS_DB_VERSION', '1.0');
 
 set_time_limit(300);
