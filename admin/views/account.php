@@ -36,7 +36,8 @@
             
             <?php if(@$_GET['section'] != 'register'): ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
-                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_login.svg") ?>" />
+                    <!-- <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_login.svg") ?>" /> -->
+                    <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
@@ -58,7 +59,7 @@
                 </div>
             <?php else: ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
-                    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_register.svg") ?>" />
+                    <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                         <h3>Register as iLovePDF developer</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />

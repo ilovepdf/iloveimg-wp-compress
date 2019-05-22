@@ -19,6 +19,13 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 			letter-spacing: $letter_spacing;
 			box-sizing: border-box;
 		}
+		p{
+			a{
+				&:hover{
+					color: $primary_color !important;
+				}
+			}
+		}
 		
 		p.submit{
 			margin-bottom: 10px;
@@ -49,26 +56,37 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				flex-direction: row;
 				align-items: flex-start;
 				justify-content: space-between;
-				> img{
+				@media  (max-width: $width_small){
+					flex-direction: column;
+				}
+				.iloveimg_settings__overview__account__picture{
 					margin-right: 30px;
+					width: 100%;
+					height: 238px;
+					background: url("../images/iloveimg_picture_login.svg") no-repeat left center;
+					background: auto 100%;
+					@media  (max-width: $width_small){
+						margin-bottom: 20px;
+					}
 				}
 				&.iloveimg_settings__overview__account-login{
 					> img{
-						width: 75%;
+						width: calc(100% - 240px - 30px -  56px);
 						max-width: 870px;
 					}
 					> form{
+						width: 240px;
 						margin-right: 56px;
 					}
 				}
 				&.iloveimg_settings__overview__account-register{
 					> img{
-						width: 55%;
+						width: calc(100% - 30px - 460px);
 						max-width: 656px;
 					}
 					form{
-						width: calc( 45% - 30px );
-						max-width: 485px;
+						//width: calc( 45% - 30px );
+						width: 460px;
 						> div{
 							display: flex;
 							align-content: stretch;
@@ -88,6 +106,10 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						margin-right: 30px;
 						padding: 20px 24px;
 						min-height: 280px;
+						@media  (max-width: $width_small){
+							width: 100%;
+							margin-bottom: 20px;
+						}
 						*{
 							color: #626870;
 						}
@@ -96,23 +118,39 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						}
 						display: flex;
 						justify-content: space-between;
+						@media  (max-width: $width_medium){
+							flex-direction: column;
+						}
 						> div{
 							width: 45%;
+							@media  (max-width: $width_medium){
+								width: 100%;
+							}
 							&.iloveimg_settings__overview__account-logged__column_left__details{
 								position: relative;
 								p{
 									margin-top: 0;
+									@media  (max-width: $width_medium){
+										display: none;
+									}
 								}
 								.button{
 									position: absolute;
 								    right: 0px;
-								    bottom: 0;;
+								    bottom: 0;
+								    @media  (max-width: $width_medium){
+								    	position: static;
+								    	margin-top: 20px;
+								    }
 								}
 							}
 						}
 					}
 					.iloveimg_settings__overview__account-logged__column_right{
-						flex: 1;
+						width: 240px;
+						@media  (max-width: $width_small){
+							//margin-left: 24px;
+						}
 						form{
 							&.iloveimg_settings__overview__account-logged__column_right-proyects{
 								border-top: 1px solid #E1E1E1;
@@ -149,13 +187,22 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 		}
 		.iloveimg_settings__options{
 			display: flex;
+			@media  (max-width: $width_small){
+				flex-direction: column;
+			}
 			.iloveimg_settings__options-nav{
 				margin-right: 30px;
+				@media  (max-width: $width_small){
+					margin-right: 0;
+				}
 				ul{
 					margin: 0;
 					padding: 0;
 					list-style: none;
 					width: 173px;
+					@media  (max-width: $width_small){
+						display: flex;
+					}
 					li{
 						margin: 0 0 10px 0;
 						a{

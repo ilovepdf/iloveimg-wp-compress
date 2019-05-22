@@ -33,7 +33,8 @@
             </ul>
         </div>
         <div class="iloveimg_settings__options-container">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+            <p>You can also stamp images automatically as easy as you work with all our iLoveIMG plugins. Our iLoveIMG Watermark plugin let you stamp images or customizable text into all your Wordpress Media images at once or stamp only your new uploaded images. Combine it with the Compress iLoveIMG plugin to optimize your images at maximum!</p>
+            <p><a href="#" target="_blank">Discover all the Watermark iLoveIMG</a> features and install it now!</a></p>
         </div>
     </div>
 </div><!-- .wrap -->

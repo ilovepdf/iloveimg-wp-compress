@@ -12,6 +12,14 @@ body.media_page_iloveimg-media-page{
 				height: 50px;
 				th,td{
 					border: 0;
+					padding-top: 0px;
+    				padding-bottom: 0px;
+    				&.check-column{
+    					width: 3em;
+    					@media  (max-width: 2000px){
+    						
+    					}
+    				}
 				}
 			}
 		}

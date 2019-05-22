@@ -15,8 +15,17 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					display: flex;
 					justify-content: space-between;
 					margin-bottom: 30px;
+					@media  (max-width: $width_small){
+						flex-direction: column;
+					}
 					> div{
 						width: 45%;
+						@media  (max-width: $width_small){
+							width: 100%;
+							&.iloveimg_settings__overview__statistics__column_left{
+								margin-bottom: 30px;
+							}
+						}
 					}
 				}
 				.iloveimg_saving{
