@@ -50,3 +50,19 @@
   ::-moz-placeholder          {@content}
   :-ms-input-placeholder      {@content}  
 }
+
+
+@-webkit-keyframes anim-moema-2 {
+	to {
+		//opacity: 0;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes anim-moema-2 {
+	to {
+		//opacity: 0;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}

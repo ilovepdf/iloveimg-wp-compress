@@ -132,7 +132,7 @@ class iLoveIMG_Compress_Resources{
 
     public static function getStatusOfColumn($columnID){
         $post = get_post($columnID);
-        if(strpos($post->post_mime_type, "image/") !== false):
+        if(strpos($post->post_mime_type, "image/jpg") !== false or strpos($post->post_mime_type, "image/jpeg") !== false or strpos($post->post_mime_type, "image/png") !== false or strpos($post->post_mime_type, "image/gif") !== false):
             $_sizes = get_post_meta($columnID, 'iloveimg_compress', true);
             $status_compress = (int)get_post_meta($columnID, 'iloveimg_status_compress', true);
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
@@ -145,7 +145,7 @@ class iLoveIMG_Compress_Resources{
                         <!-- <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p> -->
                         <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
                             <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_compress === 1 || $status_compress === 3) ? 'disabled="disabled"' :  '' ?>>Compress</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_compress === 1 || $status_compress === 3) ? '' :  'display: none;' ?>" />
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_compress === 1 || $status_compress === 3) ? '' :  'display: none;' ?>; margin-top: 7px" />
                             <?php if($status_compress === 3): ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>

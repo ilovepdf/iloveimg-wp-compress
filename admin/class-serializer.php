@@ -8,11 +8,7 @@ class iLoveIMG_Compress_Serializer {
     }
  
     public function save() {
-		// First, validate the nonce and verify the user as permission to save.
-        // if ( ! ( $this->has_valid_nonce() && current_user_can( 'manage_options' ) ) ) {
-            
-        // }
-        if ( ! (current_user_can( 'manage_options' ) ) ) {
+		if ( ! (current_user_can( 'manage_options' ) ) ) {
             die();
         }
         
@@ -46,13 +42,15 @@ class iLoveIMG_Compress_Serializer {
                     )
                 )
             );
-            
-            update_option('iloveimg_account', $response["body"]);
-            $options = unserialize(get_option('iloveimg_options_compress'));
-            $options['iloveimg_field_compress_activated'] = 1;
-            $options['iloveimg_field_autocompress'] = 1;
-            update_option('iloveimg_options_compress', serialize($options));
-
+            if( wp_remote_retrieve_response_code($response) == 200 ){
+                update_option('iloveimg_account', $response["body"]);
+                $options = unserialize(get_option('iloveimg_options_compress'));
+                $options['iloveimg_field_compress_activated'] = 1;
+                $options['iloveimg_field_autocompress'] = 1;
+                update_option('iloveimg_options_compress', serialize($options));
+            }else{
+                update_option('iloveimg_account_error', serialize(["action" => "login", "email" => $_POST['iloveimg_field_email']]));
+            }
         }
 
         
@@ -69,8 +67,13 @@ class iLoveIMG_Compress_Serializer {
                     )
                 )
             );
-            update_option('iloveimg_account', $response["body"]);
+            if( wp_remote_retrieve_response_code($response) == 200 ){
+                update_option('iloveimg_account', $response["body"]);
+            }else{
+                update_option('iloveimg_account_error', serialize(["action" => "register", "email" => $_POST['iloveimg_field_email'], "name" => $_POST['iloveimg_field_name']]));
+            }
         }
+
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_proyect'){
             update_option('iloveimg_proyect', sanitize_text_field($_POST['iloveimg_field_proyect']));

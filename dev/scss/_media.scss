@@ -3,6 +3,15 @@ body.media_page_iloveimg-media-page{
 	input#doaction2{
 		background-color: #383E45;
 	}
+	.tablenav{
+		height: auto;
+		&.top{
+			margin-bottom: 14px;
+		}
+		&.bottom{
+			margin-top: 14px;
+		}
+	}
 	table.wp-list-table{
 		border: 0;
 		box-shadow: $box_shadow;

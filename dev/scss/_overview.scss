@@ -68,6 +68,43 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					}
 				}
 			}
+			.iloveimg_settings__overview__compressAll{
+				display: flex;
+				justify-content: center;
+				margin-top: 16px;
+				margin-bottom: -14px;
+				button{
+					font-size: 14px;
+				    line-height: 42px !important;
+				    height: 42px !important;
+				    width: 149px;
+				    border-radius: 21px;
+				    background-color: $primary_color;
+				    color: #fff;
+				    border: 0;
+				    position: relative;
+				    overflow: hidden;
+				    span{
+				    	color: #fff;
+				    	position: relative;
+				    	z-index: 10;
+				    }
+				    &:hover{
+						border: 0;
+						opacity: .9;
+				    }
+				    .iloveimg-compress-all__percent{
+				    	background: #6fe21c;
+				    	position: absolute;
+				    	top: 0px;
+				    	left: 0px;
+				    	bottom: 0px;
+				    	z-index: 0;
+				    	-webkit-transition: width 1s; /* Safari */
+  						transition: width 1s;
+				    }
+				}
+			}
 		}
 	}
 }

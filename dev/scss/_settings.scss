@@ -1,7 +1,9 @@
 body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page{
 	background-color: $background_color;
 	.iloveimg_settings{
-
+		h1{
+			padding: 0;
+		}
 		//width: 100%;
 		//max-width: 1200px;
 		//margin: auto;
@@ -86,10 +88,10 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					}
 					form{
 						//width: calc( 45% - 30px );
-						width: 460px;
+						width: 350px;
 						> div{
-							display: flex;
-							align-content: stretch;
+							//display: flex;
+							//align-content: stretch;
 							> div{
 								&:first-child{
 									margin-right: 12px;
@@ -101,7 +103,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				}
 				&.iloveimg_settings__overview__account-logged{
 					.iloveimg_settings__overview__account-logged__column_left{
-						width: 75%;
+						flex: 1;
 						background-color: #F3F4F5;
 						margin-right: 30px;
 						padding: 20px 24px;
@@ -159,6 +161,9 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 								label{
 									display: block;
 									margin-bottom: 5px;
+								}
+								select, button{
+									//margin-bottom: 10px;
 								}
 							}
 						}
@@ -254,6 +259,35 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					display: flex;
 					align-items: flex-end;
 					flex-direction: column;
+					button{
+						position: relative;
+						&:before{
+							content: '';
+						    position: absolute;
+						    top: -20px;
+						    left: -20px;
+						    bottom: -20px;
+						    right: -20px;
+						    background: inherit;
+						    border-radius: 3px;
+						    z-index: -1;
+						    opacity: 0.4;
+						    -webkit-transform: scale3d(0.8, 0.5, 1);
+						    transform: scale3d(0.8, 0.5, 1);
+						}
+						&:hover{
+							&:before{
+								display: none;
+							}
+						}
+						&.need_saving{
+							opacity: .7;
+							&:before{
+								-webkit-animation: anim-moema-2 1s 1s infinite;
+	    						animation: anim-moema-2 1s 1s infinite;
+							}
+						}
+					}
 				}
 				form{
 					> p.submit{

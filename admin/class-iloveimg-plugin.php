@@ -121,6 +121,23 @@ class iLoveIMG_Compress_Plugin {
             </div>
             <?php
         }
+
+        if(get_option('iloveimg_account_error')){
+            $iloveimg_account_error = unserialize(get_option('iloveimg_account_error'));
+            if($iloveimg_account_error['action'] == 'login'):
+        ?>
+            <div class="notice notice-error is-dismissible">
+                <p>Your email or password is wrong.</p>
+            </div>
+        <?php endif;  ?>
+        <?php if($iloveimg_account_error['action'] == 'register'): ?>
+            <div class="notice notice-error is-dismissible">
+                <p>This email address has already been taken.</p>
+            </div>
+        <?php endif;  ?>
+        <?php
+            
+        }
         //do query
         if(get_option('iloveimg_account')){
             $account = json_decode(get_option('iloveimg_account'), true);

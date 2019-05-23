@@ -1,6 +1,6 @@
 <div class="wrap iloveimg_settings">
- 
-    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" />
+    <h1><img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" /></h1>
+    
      
     <div class="iloveimg_settings__overview">
         <?php require_once "account.php"; ?>
@@ -35,7 +35,7 @@
         <div class="iloveimg_settings__options-container">
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <p class="submit">
-                    <input <?php echo (!$isLogged) ? "disabled" : "" ?> type="submit" name="submit" id="submit" class="button button-secondary" value="Save Changes">
+                    <button <?php echo (!$isLogged) ? "disabled" : "" ?> type="submit" name="submit" id="submit" class="button button-secondary">Save Changes</button>
                 </p>
                 <h3>Configure your Compress Images settings</h3>
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_options_compress" />

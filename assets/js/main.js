@@ -58,22 +58,27 @@
             }
           });
     }
+    var totalImagesToCompress = 0;
     switch (adminpage) {
         case 'upload-php':
         case 'media_page_iloveimg-media-page':
         case 'post-php':
             jQuery(document).on("click", "button.iloveimg-compress", compressImage);
             jQuery(document).on("click", "button#iloveimg_allcompress", function(event){
+                totalImagesToCompress = jQuery("button.iloveimg-compress").length;
+                
                 jQuery("button#iloveimg_allcompress").attr('disabled', 'disabled');
                 jQuery("button.iloveimg-compress").each(function(index, element){
                     var buttonCompress = jQuery(element);
                     buttonCompress.trigger("click");
                     timeReload = setInterval(function(){
+                        var _percent = ( 100 - (jQuery("button.iloveimg-compress").length*100)/totalImagesToCompress);
+                        jQuery("button#iloveimg_allcompress .iloveimg-compress-all__percent").width( _percent + "%" );
                         if(!jQuery("button.iloveimg-compress").length){
                             clearInterval(timeReload);
                             location.reload();
                         }
-                    }, 1000)
+                    }, 300)
                 });
             });
             jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action]');

@@ -2,33 +2,25 @@
     $isLogged = false;
     if(get_option('iloveimg_account')){
         $account = json_decode(get_option('iloveimg_account'), true);
-        if(array_key_exists('error', $account)){
-            ?>
-            <div>
-                <p><?php echo $account['error']['message'] ?></p>
-                <?php foreach($account['error']['param'] as $params): ?>
-                    <?php foreach($params as $value): ?>
-                    <p><?php echo $value ?></p>
-                    <?php endforeach; ?>
-                <?php endforeach; ?>
-            </div>
-            <?php
-            delete_option('iloveimg_account');
-        }else{
-            $isLogged =  true;
-            update_option('iloveimg_first_loggued', 1);
-            $token = $account['token'];
-            $response = wp_remote_get(ILOVEIMG_USER_URL.'/'.$account['id'], 
-                array(
-                    'headers' => array('Authorization' => 'Bearer '.$token)
-                )
-            );
+        
+        $isLogged =  true;
+        update_option('iloveimg_first_loggued', 1);
+        $token = $account['token'];
+        $response = wp_remote_get(ILOVEIMG_USER_URL.'/'.$account['id'], 
+            array(
+                'headers' => array('Authorization' => 'Bearer '.$token)
+            )
+        );
 
-            if (isset($response['response']['code']) && $response['response']['code'] == 200) {
-                $account = json_decode($response["body"], true);
-                $account['token'] = $token;
-                update_option('iloveimg_account', json_encode($account));
-            }
+        if (isset($response['response']['code']) && $response['response']['code'] == 200) {
+            $account = json_decode($response["body"], true);
+            $account['token'] = $token;
+            update_option('iloveimg_account', json_encode($account));
+        }
+    }else{
+        if(get_option('iloveimg_account_error')){
+            $iloveimg_account_error = unserialize(get_option('iloveimg_account_error'));
+            delete_option('iloveimg_account_error');
         }
     }
     ?>
@@ -38,11 +30,11 @@
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
                     <!-- <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_login.svg") ?>" /> -->
                     <div class="iloveimg_settings__overview__account__picture"></div>
-                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                         <div>
-                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required/>
+                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset($iloveimg_account_error['email']) ? $iloveimg_account_error['email'] : "" ?>" />
                         </div>
                         <div>
                             <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
@@ -60,25 +52,26 @@
             <?php else: ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-register">
                     <div class="iloveimg_settings__overview__account__picture"></div>
-                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                         <h3>Register as iLovePDF developer</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_register" />
                         <div>
-                            <div>
+                            <div style="width: 100%;">
                                 <div>
-                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required/>
+                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required value="<?php echo isset($iloveimg_account_error['name']) ? $iloveimg_account_error['name'] : "" ?>"/>
                                 </div>
                                 <div>
-                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required/>
+                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset($iloveimg_account_error['email']) ? $iloveimg_account_error['email'] : "" ?>"/>
                                 </div>
-                            </div>
-                            <div>
                                 <div>
                                     <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
                                 </div>
-                                <div>
+                            </div>
+                            <div>
+                                
+                                <!-- <div>
                                     <input type="password" class="iloveimg_field_password" name="iloveimg_field_password_confirm" placeholder="Confirm Password" required/>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <?php

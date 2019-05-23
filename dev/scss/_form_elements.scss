@@ -31,7 +31,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 		}
 		select{
 			    border: 1px solid #383e48;
-		    max-width: 140px;
+		    max-width: 130px;
 		    height: 32px;
 		    border-radius: 0px;
 		    margin-right: 10px;
@@ -102,6 +102,9 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 			background-color: #fff;
 			padding: 4px;
 			position: relative;
+			@media  (max-width: $width_medium){
+				width: calc(100% - 20px);
+			}
 			&.iloveimg_percent-exceeded{
 				&:after{
 					content: "";
