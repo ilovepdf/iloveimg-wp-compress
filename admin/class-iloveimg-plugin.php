@@ -16,7 +16,11 @@ class iLoveIMG_Compress_Plugin {
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
         add_action( 'attachment_submitbox_misc_actions', array($this, 'show_media_info'));
-        require_once( dirname(dirname(__FILE__)) . '/iloveimg-php/init.php');
+        
+        if(!class_exists('iLoveIMG_Library_init')){
+            require_once("class-iloveimg-library-init.php");
+            new iLoveIMG_Library_init();
+        }
         
         add_action( 'admin_notices', array($this, 'show_notices'));
         add_thickbox();
@@ -148,7 +152,7 @@ class iLoveIMG_Compress_Plugin {
             $account = json_decode(get_option('iloveimg_account'), true);
             if(!array_key_exists('error', $account)){
                 $token = $account['token'];
-                $response = wp_remote_get(ILOVEIMG_USER_URL.'/'.$account['id'], 
+                $response = wp_remote_get(ILOVEIMG_COMPRESS_USER_URL.'/'.$account['id'], 
                     array(
                         'headers' => array('Authorization' => 'Bearer '.$token)
                     )

@@ -26,7 +26,7 @@ class iLoveIMG_Compress_Process{
             
             
             $filesProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1" );
-            if( $filesProcessing <  ILOVEIMG_NUM_MAX_FILES){
+            if( $filesProcessing <  ILOVEIMG_COMPRESS_NUM_MAX_FILES){
                 update_post_meta($imagesID, 'iloveimg_status_compress', 1); //status compressing
 
                 $_sizes = get_intermediate_image_sizes();

@@ -33,7 +33,7 @@ class iLoveIMG_Compress_Serializer {
         }
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_login'){
-            $response = wp_remote_post(ILOVEIMG_LOGIN_URL, 
+            $response = wp_remote_post(ILOVEIMG_COMPRESS_LOGIN_URL, 
                 array(
                     'body' => array(
                         'email' => sanitize_email($_POST['iloveimg_field_email']), 
@@ -56,7 +56,7 @@ class iLoveIMG_Compress_Serializer {
         
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_register'){
-            $response = wp_remote_post(ILOVEIMG_REGISTER_URL, 
+            $response = wp_remote_post(ILOVEIMG_COMPRESS_REGISTER_URL, 
                 array(
                     'body' => array(
                         'name' => sanitize_text_field($_POST['iloveimg_field_name']), 
@@ -78,6 +78,10 @@ class iLoveIMG_Compress_Serializer {
                 }
                 if((int)get_option($key) <= 3){
                     update_option('iloveimg_account', $response["body"]);
+                    $options = unserialize(get_option('iloveimg_options_compress'));
+                    $options['iloveimg_field_compress_activated'] = 1;
+                    $options['iloveimg_field_autocompress'] = 1;
+                    update_option('iloveimg_options_compress', serialize($options));
                 }else{
                     update_option('iloveimg_account_error', serialize(["action" => "register_limit"]));
                 }

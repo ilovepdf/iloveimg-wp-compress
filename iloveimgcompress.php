@@ -41,11 +41,11 @@ include_once "admin/class-submenu-page.php";
 include_once "admin/class-submenu.php";
 include_once "admin/class-table-media-bulk-optimized.php";
  
-add_action( 'plugins_loaded', 'iloveimg_compress_custom_admin_settings' );
+add_action( 'plugins_loaded', 'iLoveIMG_Compress_custom_admin_settings' );
 
 
 
-function iloveimg_compress_custom_admin_settings() {
+function iLoveIMG_Compress_custom_admin_settings() {
     
     $serializer = new iLoveIMG_Compress_Serializer();
     $serializer->init();
@@ -55,8 +55,8 @@ function iloveimg_compress_custom_admin_settings() {
  
 }
 
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'iloveimg_compress_add_plugin_page_settings_link');
-function iloveimg_compress_add_plugin_page_settings_link( $links ) {
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'iLoveIMG_Compress_add_plugin_page_settings_link');
+function iLoveIMG_Compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-admin-page' ) .
 		'">' . __('Settings') . '</a>';
@@ -66,8 +66,8 @@ function iloveimg_compress_add_plugin_page_settings_link( $links ) {
 	return $links;
 }
 
-function iloveimg_compress_activate(){
-    add_option( 'iloveimg_compress_db_version', ILOVEIMG_COMPRESS_DB_VERSION );
+function iLoveIMG_Compress_activate(){
+    add_option( 'iloveimg_compress_db_version', ILOVEIMG_COMPRESS_COMPRESS_DB_VERSION );
     if(!get_option('iloveimg_options_compress')){
         $iloveimg_thumbnails = ['full', 'thumbnail', 'medium', 'medium_large', 'large'];
         if(!extension_loaded('gd')){
@@ -89,15 +89,15 @@ function iloveimg_compress_activate(){
     }
 }
 
-register_activation_hook( __FILE__, 'iloveimg_compress_activate' );
+register_activation_hook( __FILE__, 'iLoveIMG_Compress_activate' );
 
 new iLoveIMG_Compress_Plugin();
 
 
-define('ILOVEIMG_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
-define('ILOVEIMG_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
-define('ILOVEIMG_USER_URL', 'https://api.ilovepdf.com/v1/user');
-define('ILOVEIMG_NUM_MAX_FILES', 2);
-define('ILOVEIMG_COMPRESS_DB_VERSION', '1.0');
+define('ILOVEIMG_COMPRESS_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
+define('ILOVEIMG_COMPRESS_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
+define('ILOVEIMG_COMPRESS_USER_URL', 'https://api.ilovepdf.com/v1/user');
+define('ILOVEIMG_COMPRESS_NUM_MAX_FILES', 2);
+define('ILOVEIMG_COMPRESS_COMPRESS_DB_VERSION', '1.0');
 
 set_time_limit(300);
