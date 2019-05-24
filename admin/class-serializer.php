@@ -68,7 +68,19 @@ class iLoveIMG_Compress_Serializer {
                 )
             );
             if( wp_remote_retrieve_response_code($response) == 200 ){
-                update_option('iloveimg_account', $response["body"]);
+                $key = 'iloveimg_number_registered_' . date("Ym");
+                if(get_option($key)){
+                    $num = (int)get_option($key);
+                    $num = $num + 1;
+                    update_option($key, $num);
+                }else{
+                    update_option($key, 1);
+                }
+                if((int)get_option($key) <= 3){
+                    update_option('iloveimg_account', $response["body"]);
+                }else{
+                    update_option('iloveimg_account_error', serialize(["action" => "register_limit"]));
+                }
             }else{
                 update_option('iloveimg_account_error', serialize(["action" => "register", "email" => $_POST['iloveimg_field_email'], "name" => $_POST['iloveimg_field_name']]));
             }

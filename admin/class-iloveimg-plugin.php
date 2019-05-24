@@ -123,19 +123,24 @@ class iLoveIMG_Compress_Plugin {
         }
 
         if(get_option('iloveimg_account_error')){
-            $iloveimg_account_error = unserialize(get_option('iloveimg_account_error'));
+                $iloveimg_account_error = unserialize(get_option('iloveimg_account_error'));
             if($iloveimg_account_error['action'] == 'login'):
-        ?>
-            <div class="notice notice-error is-dismissible">
-                <p>Your email or password is wrong.</p>
-            </div>
-        <?php endif;  ?>
-        <?php if($iloveimg_account_error['action'] == 'register'): ?>
-            <div class="notice notice-error is-dismissible">
-                <p>This email address has already been taken.</p>
-            </div>
-        <?php endif;  ?>
-        <?php
+                ?>
+                <div class="notice notice-error is-dismissible">
+                    <p>Your email or password is wrong.</p>
+                </div>
+            <?php endif;  ?>
+            <?php if($iloveimg_account_error['action'] == 'register'): ?>
+                <div class="notice notice-error is-dismissible">
+                    <p>This email address has already been taken.</p>
+                </div>
+            <?php endif;  ?>
+            <?php if($iloveimg_account_error['action'] == 'register_limit'): ?>
+                <div class="notice notice-error is-dismissible">
+                    <p>You have reached limit of different users to use this Wordpress plugin. Please relogin with one of your existing users.</p>
+                </div>
+            <?php endif;  ?>
+            <?php
             
         }
         //do query

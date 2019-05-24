@@ -82,6 +82,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					}
 				}
 				&.iloveimg_settings__overview__account-register{
+
 					> img{
 						width: calc(100% - 30px - 460px);
 						max-width: 656px;
@@ -89,6 +90,9 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					form{
 						//width: calc( 45% - 30px );
 						width: 350px;
+						p.submit{
+							padding-top: 8px;
+						}
 						> div{
 							//display: flex;
 							//align-content: stretch;
@@ -261,7 +265,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					flex-direction: column;
 					button{
 						position: relative;
-						&:before{
+						/*&:before{
 							content: '';
 						    position: absolute;
 						    top: -20px;
@@ -286,7 +290,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 								-webkit-animation: anim-moema-2 1s 1s infinite;
 	    						animation: anim-moema-2 1s 1s infinite;
 							}
-						}
+						}*/
 					}
 				}
 				form{

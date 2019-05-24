@@ -101,4 +101,14 @@
             });
             break;
     }
+    jQuery(".iloveimg_settings__options-container form input").on("change", function(element){
+        if(!jQuery(".iloveimg_settings__options-container form .submit button").hasClass('need_saving')){
+            setTimeout(function(){
+                jQuery(".iloveimg_settings__options-container form .submit button").addClass('need_saving');
+                setTimeout(function(){
+                    jQuery(".iloveimg_settings__options-container form .submit button").removeClass('need_saving');
+                }, 5000);
+            }, 1000);
+        }
+    });
 }).call();

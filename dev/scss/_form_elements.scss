@@ -81,6 +81,11 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 		p.submit{
 			margin: 0;
 			padding: 0;
+			button[disabled]{
+				background: #ccc !important;
+				text-shadow: none !important;
+				cursor: not-allowed;
+			}
 		}
 		.button{
 			&.button-secondary{
@@ -233,6 +238,52 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 
 		.slider.round:before {
 		  border-radius: 50%;
+		}
+
+
+		.tooltip {
+		  position: relative;
+		  display: inline-block;
+		  border-bottom: 1px dotted black;
+		}
+
+		.tooltip .tooltiptext {
+			overflow: hidden;
+		    visibility: hidden;
+		    width: 350px;
+		    background-color: #000;
+		    color: #fff;
+		    text-align: center;
+		    border-radius: 6px;
+		    padding: 5px 0;
+		    position: absolute;
+		    z-index: 1;
+		    bottom: 115%;
+		    left: 50%;
+		    margin-left: -290px;
+		    font-size: 12px;
+		    line-height: 16px;
+		}
+
+		.tooltip .tooltiptext::after {
+		  content: "";
+		  position: absolute;
+		  top: 100%;
+		  left: 50%;
+		  margin-left: -5px;
+		  border-width: 5px;
+		  border-style: solid;
+		  border-color: black transparent transparent transparent;
+		}
+		.submit{
+			button.need_saving{
+				animation: shadow-pulse 1s infinite;
+			}
+			button[disabled]{
+				&.tooltip:hover .tooltiptext {
+				  visibility: visible;
+				}
+			}
 		}
 
 	}
