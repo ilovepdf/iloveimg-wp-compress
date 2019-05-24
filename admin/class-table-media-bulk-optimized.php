@@ -9,7 +9,7 @@ if(!class_exists('WP_List_Table')){
 
 
 
-class Media_List_Table extends WP_List_Table {
+class iLoveIMG_Compress_Media_List_Table extends WP_List_Table {
     
     public $total_items;
     

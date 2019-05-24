@@ -1,6 +1,6 @@
 <?php 
 //Create an instance of our package class...
-$testListTable = new Media_List_Table();
+$testListTable = new iLoveIMG_Compress_Media_List_Table();
 //Fetch, prepare, sort, and filter our data...
 $testListTable->prepare_items();
 
