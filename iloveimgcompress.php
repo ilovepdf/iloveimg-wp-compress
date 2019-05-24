@@ -60,6 +60,9 @@ function iloveimg_compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-admin-page' ) .
 		'">' . __('Settings') . '</a>';
+    $links[] = '<a href="' .
+        admin_url( 'upload.php?page=iloveimg-media-page' ) .
+        '">' . __('Bulk Optimization') . '</a>';
 	return $links;
 }
 

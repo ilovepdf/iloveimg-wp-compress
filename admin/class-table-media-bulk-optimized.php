@@ -167,7 +167,7 @@ class Media_List_Table extends WP_List_Table {
             }
         }
 
-        $data = $wpdb->get_results( "SELECT {$wpdb->prefix}posts.* FROM {$wpdb->prefix}posts,  {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND {$wpdb->prefix}posts.post_mime_type LIKE 'image/%' AND {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id AND {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_compress' AND {$wpdb->prefix}postmeta.meta_value < 2 " . $order, ARRAY_A );
+        $data = $wpdb->get_results( "SELECT {$wpdb->prefix}posts.* FROM {$wpdb->prefix}posts,  {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND {$wpdb->prefix}posts.post_mime_type IN ('image/jpg', 'image/jpeg', 'image/png', 'image/gif') AND {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id AND {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_compress' AND {$wpdb->prefix}postmeta.meta_value < 2 " . $order, ARRAY_A );
 
         
                 
