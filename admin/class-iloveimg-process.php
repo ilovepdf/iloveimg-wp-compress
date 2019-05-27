@@ -26,7 +26,7 @@ class iLoveIMG_Compress_Process{
             
             
             $filesProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_compress' AND meta_value = 1" );
-            if( $filesProcessing <  ILOVEIMG_COMPRESS_NUM_MAX_FILES){
+            if( $filesProcessing <  iLoveIMG_Compress_NUM_MAX_FILES){
                 update_post_meta($imagesID, 'iloveimg_status_compress', 1); //status compressing
 
                 $_sizes = get_intermediate_image_sizes();
@@ -52,7 +52,6 @@ class iLoveIMG_Compress_Process{
                                     $metadata['height'] = $resize['height'];
                                     
                                 }else{
-                                    //echo $editor->get_error_message();
                                     $myTask = new ResizeImageTask($this->proyect_public, $this->secret_key);
                                     $file = $myTask->addFile($pathFile);
                                     $myTask->setPixelsWidth($_aOptions['iloveimg_field_size_full_width']);
@@ -70,13 +69,11 @@ class iLoveIMG_Compress_Process{
                         $file = $myTask->addFile($pathFile);
                         $myTask->execute();
                         $myTask->download(dirname($pathFile));
-                        //sleep(10);
                         $images[$_size]["compressed"] = filesize($pathFile);
 
                         
                     }
                 }
-                ///print_r($images);
                 update_post_meta($imagesID, 'iloveimg_compress', $images);
                 update_post_meta($imagesID, 'iloveimg_status_compress', 2); //status compressed
                 return $images;

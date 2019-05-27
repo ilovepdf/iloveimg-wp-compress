@@ -33,7 +33,7 @@ class iLoveIMG_Compress_Serializer {
         }
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_login'){
-            $response = wp_remote_post(ILOVEIMG_COMPRESS_LOGIN_URL, 
+            $response = wp_remote_post(iLoveIMG_Compress_LOGIN_URL, 
                 array(
                     'body' => array(
                         'email' => sanitize_email($_POST['iloveimg_field_email']), 
@@ -56,7 +56,7 @@ class iLoveIMG_Compress_Serializer {
         
 
         if($_POST['iloveimg_action'] == 'iloveimg_action_register'){
-            $response = wp_remote_post(ILOVEIMG_COMPRESS_REGISTER_URL, 
+            $response = wp_remote_post(iLoveIMG_Compress_REGISTER_URL, 
                 array(
                     'body' => array(
                         'name' => sanitize_text_field($_POST['iloveimg_field_name']), 

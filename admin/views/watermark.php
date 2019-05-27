@@ -1,6 +1,6 @@
 <div class="wrap iloveimg_settings">
  
-    <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" />
+    <h1><img src="<?php echo plugins_url("/iloveimg-compress/assets/images/logo.svg") ?>" class="logo" /></h1>
      
     <div class="iloveimg_settings__overview">
         <?php require_once "account.php"; ?>

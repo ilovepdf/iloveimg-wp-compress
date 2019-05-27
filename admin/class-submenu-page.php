@@ -26,8 +26,9 @@ class iLoveIMG_Compress_Submenu_Page {
 	}
 
 	public function renderWatermark() {
-        $options_value = unserialize(get_option('iloveimg_options_compress'));
-        require_once('views/watermark.php');
+		if(!is_plugin_active('iloveimg-watermark/iloveimgwatermark.php')){
+        	require_once('views/watermark.php');
+    	}
 	}
 
 	public function renderMediaOptimization(){

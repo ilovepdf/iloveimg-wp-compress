@@ -24,7 +24,7 @@ class iLoveIMG_Compress_Submenu {
 	 * Adds a submenu for this plugin to the 'Tools' menu.
 	 */
 	public function init() {
-		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		add_action( 'admin_menu', array( $this, 'add_options_page' ), 9 );
 	}
 
 	/**
@@ -48,7 +48,7 @@ class iLoveIMG_Compress_Submenu {
 			'Compress Options',
 			'Compress Options',
 			'manage_options',
-			'iloveimg-admin-page',
+			'iloveimg-compress-admin-page',
 			array(
 				$this->submenu_page,
 				'renderCompress'
@@ -56,7 +56,7 @@ class iLoveIMG_Compress_Submenu {
 		);
 
 		add_submenu_page(
-			'iloveimg-watermark-admin-page',
+			'iloveimg-admin-page',
 			'Watermark Options',
 			'Watermark Options',
 			'manage_options',
@@ -77,6 +77,7 @@ class iLoveIMG_Compress_Submenu {
 				'renderMediaOptimization'
 			)
 		);
+		remove_submenu_page('iloveimg-admin-page', 'iloveimg-admin-page');
 
 	}
 

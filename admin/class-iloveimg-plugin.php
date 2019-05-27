@@ -2,7 +2,7 @@
 
 class iLoveIMG_Compress_Plugin {
     const VERSION = '1.0.0';
-	const NAME = 'iloveimg_compress_plugin';
+	const NAME = 'iLoveIMG_Compress_plugin';
     public function __construct() {
         add_action( 'admin_init', array( $this, "admin_init" ));
     }
@@ -11,8 +11,8 @@ class iLoveIMG_Compress_Plugin {
         add_action( 'admin_enqueue_scripts', array($this, "enqueue_scripts"));
         add_filter( 'manage_media_columns', array( $this, "column_id" ) );
         add_filter( 'manage_media_custom_column', array( $this, "column_id_row" ), 10, 2 );
-        add_action( 'wp_ajax_iloveimg_compress_library', array($this, "iloveimg_compress_library") );
-        add_action( 'wp_ajax_iloveimg_compress_library_is_compressed', array($this, "iloveimg_compress_library_is_compressed") );
+        add_action( 'wp_ajax_iLoveIMG_Compress_library', array($this, "iLoveIMG_Compress_library") );
+        add_action( 'wp_ajax_iLoveIMG_Compress_library_is_compressed', array($this, "iLoveIMG_Compress_library_is_compressed") );
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
         add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
         add_action( 'attachment_submitbox_misc_actions', array($this, 'show_media_info'));
@@ -37,7 +37,7 @@ class iLoveIMG_Compress_Plugin {
 		);
     }
     
-    public function iloveimg_compress_library(){
+    public function iLoveIMG_Compress_library(){
         $ilove = new iLoveIMG_Compress_Process();
         $images = $ilove->compress($_POST['id']);
         if($images !== false){
@@ -50,7 +50,7 @@ class iLoveIMG_Compress_Plugin {
         wp_die();
     }
     
-    public function iloveimg_compress_library_is_compressed(){
+    public function iLoveIMG_Compress_library_is_compressed(){
         $status_compress = get_post_meta($_POST['id'], 'iloveimg_status_compress', true);
 
         $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
@@ -93,7 +93,7 @@ class iLoveIMG_Compress_Plugin {
             'method' => 'POST',
             'timeout' => 0.01,
             'blocking' => false,
-            'body' => array( 'action' => 'iloveimg_compress_library', 'id' => $attachment_id ),
+            'body' => array( 'action' => 'iLoveIMG_Compress_library', 'id' => $attachment_id ),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
         );
@@ -152,7 +152,7 @@ class iLoveIMG_Compress_Plugin {
             $account = json_decode(get_option('iloveimg_account'), true);
             if(!array_key_exists('error', $account)){
                 $token = $account['token'];
-                $response = wp_remote_get(ILOVEIMG_COMPRESS_USER_URL.'/'.$account['id'], 
+                $response = wp_remote_get(iLoveIMG_Compress_USER_URL.'/'.$account['id'], 
                     array(
                         'headers' => array('Authorization' => 'Bearer '.$token)
                     )
