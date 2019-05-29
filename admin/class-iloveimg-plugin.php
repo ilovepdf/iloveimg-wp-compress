@@ -68,12 +68,12 @@ class iLoveIMG_Compress_Plugin {
         if((int)iLoveIMG_Compress_Resources::isActivated() === 0){
             return $columns;
         }
-        $columns['iloveimg_compression'] = __('Status');
+        $columns['iloveimg_status'] = __('Status');
         return $columns;
     }
 
     public function column_id_row($columnName, $columnID){
-        if($columnName == 'iloveimg_compression'){
+        if($columnName == 'iloveimg_status'){
             iLoveIMG_Compress_Resources::getStatusOfColumn($columnID);
         }
     }
