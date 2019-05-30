@@ -16,15 +16,19 @@ class WatermarkImageTask extends ImageTask
      */
     public $elements;
 
+    public $watermakFiles = [];
+
     /**
      * WatermarkTask constructor.
-     * @param null|string $publicKey
-     * @param null|string $secretKey
+     *
+     * @param null|string $publicKey    Your public key
+     * @param null|string $secretKey    Your secret key
+     * @param bool $makeStart           Set to false for chained tasks, because we don't need the start
      */
-    function __construct($publicKey, $secretKey)
+    function __construct($publicKey, $secretKey, $makeStart = true)
     {
         $this->tool = 'watermarkimage';
-        parent::__construct($publicKey, $secretKey, true);
+        parent::__construct($publicKey, $secretKey, $makeStart);
     }
 
     /**
@@ -37,20 +41,33 @@ class WatermarkImageTask extends ImageTask
         return $this;
     }
 
+
     /**
      * adds a watermark element
      *
-     * @param $element
-     * @return $this
+     * @param null $element
+     * @return \Iloveimg\Element|null
      */
-    public function addElement($element)
+    public function addElement($element = null)
     {
-        if (get_class($element) == 'Iloveimg\Element') {
-            $this->elements[] = $element;
-        } elseif (is_array($element)) {
-            $this->elements[] = new Element($element);
+        if (is_array($element)  || $element == null) {
+            $element = new Element($element);
         }
-        return $this;
-    }
 
+        if (get_class($element) !== 'Iloveimg\Element') {
+            throw new \InvalidArgumentException();
+        }
+
+        if($element->type == 'image'){
+            foreach($this->files as $key=>$file){
+                if($file->server_filename == $element->server_filename){
+                    $this->watermakFiles[] = $this->files[$key];
+                    unset($this->files[$key]);
+                }
+            }
+        }
+
+        $this->elements[] = $element;
+        return $element;
+    }
 }

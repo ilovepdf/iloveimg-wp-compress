@@ -55,7 +55,7 @@ function iLoveIMG_Compress_custom_admin_settings() {
 add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'iLoveIMG_Compress_add_plugin_page_settings_link');
 function iLoveIMG_Compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
-		admin_url( 'admin.php?page=iloveimg-admin-page' ) .
+		admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
 		'">' . __('Settings') . '</a>';
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
@@ -91,9 +91,9 @@ register_activation_hook( __FILE__, 'iLoveIMG_Compress_activate' );
 new iLoveIMG_Compress_Plugin();
 
 
-define('iLoveIMG_Compress_REGISTER_URL', 'https://api.ilovepdf.com/v1/user');
-define('iLoveIMG_Compress_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login');
-define('iLoveIMG_Compress_USER_URL', 'https://api.ilovepdf.com/v1/user');
+define('iLoveIMG_Compress_REGISTER_URL', 'https://api.iloveimg.com/v1/user');
+define('iLoveIMG_Compress_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login');
+define('iLoveIMG_Compress_USER_URL', 'https://api.iloveimg.com/v1/user');
 define('iLoveIMG_Compress_NUM_MAX_FILES', 2);
 define('iLoveIMG_Compress_COMPRESS_DB_VERSION', '1.0');
 

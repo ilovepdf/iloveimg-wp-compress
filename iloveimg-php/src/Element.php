@@ -89,7 +89,7 @@ class Element
     /**
      * @var string
      */
-    public $font_family;
+    public $font_family = 'Arial';
 
     private $fontFamilyValues = ['Arial', 'Arial Unicode MS', 'Verdana', 'Courier', 'Times New Roman', 'Comic Sans MS', 'WenQuanYi Zen Hei', 'Lohit Marathi'];
 
@@ -161,6 +161,7 @@ class Element
 
     /**
      * @param string $mode
+     * @return Element
      */
     public function setType($type)
     {
@@ -170,6 +171,7 @@ class Element
 
     /**
      * @param string $text
+     * @return Element
      */
     public function setText($text)
     {
@@ -178,11 +180,18 @@ class Element
     }
 
     /**
-     * @param strig $image
+     * @param string $image
+     * @return Element
      */
     public function setImage($image)
     {
-        $this->image = $image;
+        if (get_class($image) === 'Iloveimg\File') {
+            $this->image = $image->getServerFilename();
+        }
+        else{
+            $this->image = $image;
+        }
+        $this->setType('image');
         return $this;
     }
 

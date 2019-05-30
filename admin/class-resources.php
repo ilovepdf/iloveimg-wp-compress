@@ -150,11 +150,11 @@ class iLoveIMG_Compress_Resources{
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else: ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                         <?php endif;
                     else: ?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
+                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
                     <?php
                     endif;
                     if($status_compress === 1 || $status_compress === 3): ?>

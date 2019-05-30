@@ -26,12 +26,12 @@ class ResizeImageTask extends ImageTask
     /**
      * @var int
      */
-    public $pixels_width = 0;
+    public $pixels_width = null;
 
     /**
      * @var int
      */
-    public $pixels_height = 0;
+    public $pixels_height = null;
 
     /**
      * @var int
@@ -45,13 +45,15 @@ class ResizeImageTask extends ImageTask
 
     /**
      * CompressTask constructor.
-     * @param string $publicKey
-     * @param string $secretKey
+     *
+     * @param null|string $publicKey    Your public key
+     * @param null|string $secretKey    Your secret key
+     * @param bool $makeStart           Set to false for chained tasks, because we don't need the start
      */
-    function __construct($publicKey, $secretKey)
+    function __construct($publicKey, $secretKey, $makeStart = true)
     {
         $this->tool = 'resizeimage';
-        parent::__construct($publicKey, $secretKey, true);
+        parent::__construct($publicKey, $secretKey, $makeStart);
     }
 
     /**

@@ -20,6 +20,7 @@ require_once __DIR__ . '/src/Exceptions/PathException.php';
 //Iloveimg
 require_once __DIR__ . '/src/Iloveimg.php';
 require_once __DIR__ . '/src/ImageTask.php';
+require_once __DIR__ . '/src/Element.php';
 
 //Specific processes
 require_once __DIR__ . '/src/CompressImageTask.php';
@@ -29,3 +30,4 @@ require_once __DIR__ . '/src/ResizeImageTask.php';
 require_once __DIR__ . '/src/RotateImageTask.php';
 require_once __DIR__ . '/src/ConvertImageTask.php';
 require_once __DIR__ . '/src/CropImageTask.php';
+

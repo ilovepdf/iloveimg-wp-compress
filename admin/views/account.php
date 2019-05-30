@@ -39,13 +39,13 @@
                         <div>
                             <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
                         </div>
-                        <a class="forget" href="https://developer.ilovepdf.com/login/reset" target="_blank">Forget Password?</a>
+                        <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
                         <?php
                         wp_nonce_field( 'iloveimg_login', 'iloveimg_nonce_login' );
                         submit_button('Login');
                         ?>
                         <div>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page&section=register' ) ?>">Register as iLovePDF developer</a>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page&section=register' ) ?>">Register as iLovePDF developer</a>
                         </div>
                     </form>
                 </div>
@@ -79,7 +79,7 @@
                         submit_button('Register');
                         ?>
                         <div>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>">Login to your account</a>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>">Login to your account</a>
                         </div>
                     </form>
                 </div>
@@ -113,8 +113,8 @@
                 </div>
                 <div class="iloveimg_settings__overview__account-logged__column_left__details">
                     <p style="margin-top: 22px;">Every month since your registry you will get <?php echo $account['free_files_limit'] ?> free file processes to use to compress or stamp your images.</p>
-                    <p>To increase your file processes amount you can either open one of our <a href="https://developer.ilovepdf.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional processes per month or buy a <a href="https://developer.ilovepdf.com/pricing" target="_blank">single package</a> of file processes.</p>
-                    <a class="button button-secondary" href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a>
+                    <p>To increase your file processes amount you can either open one of our <a href="https://developer.iloveimg.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional processes per month or buy a <a href="https://developer.iloveimg.com/pricing" target="_blank">single package</a> of file processes.</p>
+                    <a class="button button-secondary" href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a>
                 </div>
             </div>
             <div class="iloveimg_settings__overview__account-logged__column_right">

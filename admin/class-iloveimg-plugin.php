@@ -121,7 +121,7 @@ class iLoveIMG_Compress_Plugin {
         if(!iLoveIMG_Compress_Resources::isLoggued()){
         ?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-admin-page' ) ?>">Go to settings</a></p>
+                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>">Go to settings</a></p>
             </div>
             <?php
         }
@@ -163,7 +163,7 @@ class iLoveIMG_Compress_Plugin {
                     if($account['files_used'] >=  $account['free_files_limit'] and $account['package_files_used'] >=  $account['package_files_limit'] and @$account['subscription_files_used'] >=  $account['subscription_files_limit']){
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.ilovepdf.com/pricing" target="_blank">Buy more files</a></p>
+                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
                         </div>
                         <?php
                     }
