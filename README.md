@@ -1,4 +1,5 @@
 === Image Compressor & Optimizer - iLoveIMG ===
+
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 3.0.1
