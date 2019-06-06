@@ -68,4 +68,13 @@ Yes, we do. You can integrate our image optimization tools into your software ap
 
 == Screenshots ==
 
+![Alt text](screenshots/Bulk.png?raw=true "Bulk")
+
+![Alt text](screenshots/Register.png?raw=true "Register")
+
+![Alt text](screenshots/Results.png?raw=true "Results")
+
+![Alt text](screenshots/Settings.png?raw=true "Settings")
+
+
 == Changelog ==

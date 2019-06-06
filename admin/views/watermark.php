@@ -10,8 +10,8 @@
     <?php if(!$isLogged): ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your Wordpress!</h3>
-            <p>Compress all your Media image files and Stamp other Images or text into your Wordpress pictures. This is the Official iLoveIMG plugin for WordPress. You can optimize all your Images and stamp them automatically as you do in iloveimg.com.</p>
-            <p>Register now to get 250 free uses and start working with iLoveIMG plugin now!</p>
+            <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your Wordpress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
+            <p>Register now to get 500 free uses and start working with iLoveIMG plugin now!</p>
         </div>
     <?php endif ?>
     

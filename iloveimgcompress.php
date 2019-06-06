@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
- * Description:       Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your Wordpress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
+ * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your Wordpress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
  * Version:           1.0.0
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
