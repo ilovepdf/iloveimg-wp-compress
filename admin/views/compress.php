@@ -68,8 +68,11 @@
                             <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
                             <ul>
                             <?php foreach(iLoveIMG_Compress_Resources::getTypeImages() as $value): ?>
+                            <?php
+                            $iloveimg_field_sizes = isset($options_value['iloveimg_field_sizes']) ? $options_value['iloveimg_field_sizes'] : [];
+                            ?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id'] ?>" <?php echo @(in_array($value['field_id'], $options_value['iloveimg_field_sizes'])) ? "checked" : "" ?> />
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id'] ?>" <?php echo (in_array($value['field_id'], $iloveimg_field_sizes)) ? "checked" : "" ?> />
                                     <span><?php echo $value['label'] ?></span>
                                 </li>
                             <?php endforeach; ?>
@@ -102,7 +105,7 @@
 
 
                 <?php
-                wp_nonce_field( 'iloveimg_settings_save', 'iloveimg_nonce_settings' );
+                wp_nonce_field();
                 
                 ?>
                 <p class="submit">

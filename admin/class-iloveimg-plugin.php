@@ -14,7 +14,6 @@ class iLoveIMG_Compress_Plugin {
         add_action( 'wp_ajax_iLoveIMG_Compress_library', array($this, "iLoveIMG_Compress_library") );
         add_action( 'wp_ajax_iLoveIMG_Compress_library_is_compressed', array($this, "iLoveIMG_Compress_library_is_compressed") );
         add_filter( 'wp_generate_attachment_metadata', array($this, 'process_attachment' ), 10, 2);
-        add_action( 'admin_action_iloveimg_bulk_action', array($this, "media_library_bulk_action"));
         add_action( 'attachment_submitbox_misc_actions', array($this, 'show_media_info'));
         
         if(!class_exists('iLoveIMG_Library_init')){
@@ -38,28 +37,34 @@ class iLoveIMG_Compress_Plugin {
     }
     
     public function iLoveIMG_Compress_library(){
-        $ilove = new iLoveIMG_Compress_Process();
-        $images = $ilove->compress($_POST['id']);
-        if($images !== false){
-            iLoveIMG_Compress_Resources::render_compress_details($_POST['id']);
-        }else{
-            ?>
-            <p>You need more files</p>
-            <?php
+        if(isset($_POST['id'])){
+            $ilove = new iLoveIMG_Compress_Process();
+            $attachment_id = intval($_POST['id']);
+            $images = $ilove->compress($attachment_id);
+            if($images !== false){
+                iLoveIMG_Compress_Resources::render_compress_details($attachment_id);
+            }else{
+                ?>
+                <p>You need more files</p>
+                <?php
+            }
         }
         wp_die();
     }
     
     public function iLoveIMG_Compress_library_is_compressed(){
-        $status_compress = get_post_meta($_POST['id'], 'iloveimg_status_compress', true);
+        if(isset($_POST['id'])){
+            $attachment_id = intval($_POST['id']);
+            $status_compress = get_post_meta($attachment_id, 'iloveimg_status_compress', true);
 
-        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($_POST['id']);
-        if(((int)$status_compress === 1 || (int)$status_compress === 3)){
-            //echo "processing";
-            http_response_code(404);
-            die();
-        }else if((int)$status_compress === 2){
-            iLoveIMG_Compress_Resources::render_compress_details($_POST['id']);
+            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($attachment_id);
+            if(((int)$status_compress === 1 || (int)$status_compress === 3)){
+                //echo "processing";
+                http_response_code(404);
+                die();
+            }else if((int)$status_compress === 2){
+                iLoveIMG_Compress_Resources::render_compress_details($attachment_id);
+            }
         }
         wp_die();
     }
@@ -97,24 +102,7 @@ class iLoveIMG_Compress_Plugin {
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
         );
-        if ( getenv( 'WORDPRESS_HOST' ) !== false ) {
-			wp_remote_post( getenv( 'WORDPRESS_HOST' ) . '/wp-admin/admin-ajax.php', $args );
-		} else {
-			wp_remote_post( admin_url( 'admin-ajax.php' ), $args );
-		}
-    }
-
-    public function media_library_bulk_action(){
-        die();
-        foreach($_REQUEST['media'] as $attachment_id){
-            $post = get_post($attachment_id);
-            if(strpos($post->post_mime_type, "image/") !== false){
-                $status_compress = get_post_meta($attachment_id, 'iloveimg_status_compress', true);
-                if((int)$status_compress === 0){
-                    $this->async_compress($attachment_id);
-                }
-            }
-        }
+        wp_remote_post( admin_url( 'admin-ajax.php' ), $args );
     }
 
     public function show_notices(){

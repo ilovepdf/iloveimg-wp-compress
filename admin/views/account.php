@@ -23,12 +23,11 @@
             delete_option('iloveimg_account_error');
         }
     }
+    $get_section = isset($_GET['section']) ? $_GET['section'] : "";
     ?>
     <?php if(!$isLogged): ?>
-            
-            <?php if(@$_GET['section'] != 'register'): ?>
+           <?php if($get_section != 'register'): ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
-                    <!-- <img src="<?php echo plugins_url("/iloveimg-compress/assets/images/iloveimg_picture_login.svg") ?>" /> -->
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
                         <h3>Login to your account</h3>
@@ -41,7 +40,7 @@
                         </div>
                         <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
                         <?php
-                        wp_nonce_field( 'iloveimg_login', 'iloveimg_nonce_login' );
+                        wp_nonce_field();
                         submit_button('Login');
                         ?>
                         <div>
@@ -75,7 +74,7 @@
                             </div>
                         </div>
                         <?php
-                        wp_nonce_field( 'iloveimg_register', 'iloveimg_nonce_register' );
+                        wp_nonce_field();
                         submit_button('Register');
                         ?>
                         <div>
@@ -124,7 +123,7 @@
                     <p style="margin: 0"><?php echo $account['name'] ?></p>
                     <p style="margin-top: 0; color: #4D90FE;"><?php echo $account['email'] ?></p>
                     
-                    <?php  wp_nonce_field( 'iloveimg_logout', 'iloveimg_nonce_logout' );  ?>
+                    <?php  wp_nonce_field();  ?>
                     <?php submit_button('Logout'); ?>
                 </form>
 
@@ -146,7 +145,7 @@
                         </select>
                         <button type="submit" class="button button-secondary">Save</button>
                     </p>
-                    <?php  wp_nonce_field( 'iloveimg_proyect', 'iloveimg_nonce_proyect' );  ?>
+                    <?php  wp_nonce_field();  ?>
                     
                 </form>
             </div>

@@ -37,7 +37,10 @@ class iLoveIMG_Compress_Process{
 
                 foreach ( $_sizes as $_size ) {
                     $image = wp_get_attachment_image_src($imagesID, $_size);
-                    $pathFile = $_SERVER["DOCUMENT_ROOT"] . str_replace(site_url(), "", $image[0]);
+                    $pathFile = str_replace(site_url(), "", $image[0]);
+                    if(isset($_SERVER["DOCUMENT_ROOT"])){
+                        $pathFile = sanitize_text_field(wp_unslash($_SERVER["DOCUMENT_ROOT"])) . $pathFile;
+                    }
                     $images[$_size] = array("initial" => filesize($pathFile),  "compressed" => null);
                     if(in_array($_size, $_aOptions['iloveimg_field_sizes'])){
                         if($_size == 'full'){

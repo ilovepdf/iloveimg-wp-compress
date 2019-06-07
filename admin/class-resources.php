@@ -46,7 +46,7 @@ class iLoveIMG_Compress_Resources{
 
     public static function getSizesEnabled(){
         $_aOptions = unserialize(get_option('iloveimg_options_compress'));
-        $image_sizes = $_aOptions['iloveimg_field_sizes'];
+        $image_sizes = isset($_aOptions['iloveimg_field_sizes']) ? $_aOptions['iloveimg_field_sizes'] : [];
         $count = 0;
         foreach($image_sizes as $image){
             if($image){
