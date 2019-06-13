@@ -95,5 +95,6 @@ define('iLoveIMG_Compress_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login');
 define('iLoveIMG_Compress_USER_URL', 'https://api.iloveimg.com/v1/user');
 define('iLoveIMG_Compress_NUM_MAX_FILES', 2);
 define('iLoveIMG_Compress_COMPRESS_DB_VERSION', '1.0');
+define('iLoveIMG_Compress_Plugin_URL', plugin_dir_url(__FILE__));
 
 set_time_limit(300);

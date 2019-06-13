@@ -35,6 +35,9 @@ class iLoveIMG_Compress_Serializer {
             }
 
             if($_POST['iloveimg_action'] == 'iloveimg_action_login'){
+                if(!isset($_POST['iloveimg_field_email']) and !isset($_POST['iloveimg_field_password'])){
+                    $this->redirect();
+                }
                 $response = wp_remote_post(iLoveIMG_Compress_LOGIN_URL, 
                     array(
                         'body' => array(
@@ -58,6 +61,9 @@ class iLoveIMG_Compress_Serializer {
             
 
             if($_POST['iloveimg_action'] == 'iloveimg_action_register'){
+                if(!isset($_POST['iloveimg_field_name']) and !isset($_POST['iloveimg_field_email']) and !isset($_POST['iloveimg_field_password'])){
+                    $this->redirect();
+                }
                 $response = wp_remote_post(iLoveIMG_Compress_REGISTER_URL, 
                     array(
                         'body' => array(
@@ -103,6 +109,9 @@ class iLoveIMG_Compress_Serializer {
 
 
             if($_POST['iloveimg_action'] == 'iloveimg_action_proyect'){
+                if(!isset($_POST['iloveimg_field_proyect'])){
+                    $this->redirect();
+                }
                 update_option('iloveimg_proyect', sanitize_text_field(wp_unslash($_POST['iloveimg_field_proyect'])));
             }
         }
