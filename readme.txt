@@ -16,7 +16,7 @@ Optimize your website images and improve your page load speed. Reduce the file s
 
 == Description ==
 
-Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitorís engagement and ultimately increase sales. 
+Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor's engagement and ultimately increase sales. 
 
 Trust reliable developers. **iLoveIMG Image Compressor** is brought to you by the same developers of iLoveIMG.com, popular image editor trusted by millions.
 
