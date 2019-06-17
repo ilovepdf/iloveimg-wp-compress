@@ -1,0 +1,110 @@
+body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, , body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page{
+	.iloveimg_settings{
+		.iloveimg_settings__overview{
+			.iloveimg_settings__overview__statistics{
+				background-color: #F3F4F5;
+				padding: 20px 24px;
+				h4{
+					font-weight: normal;
+					color:  $primary_color;
+					strong{
+						color:  $primary_color;
+					}
+				}
+				> div{
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 30px;
+					@media  (max-width: $width_small){
+						flex-direction: column;
+					}
+					> div{
+						width: 45%;
+						@media  (max-width: $width_small){
+							width: 100%;
+							&.iloveimg_settings__overview__statistics__column_left{
+								margin-bottom: 30px;
+							}
+						}
+					}
+				}
+				.iloveimg_saving{
+					padding: 20px;
+					*{
+						color:  $primary_color;
+					}
+					p{
+						margin: 0
+					}
+					margin-top: 10px;
+					display: flex;
+					align-items: center;
+					background-color: #fff;
+					.iloveimg_saving__number{
+						font-weight: bold;
+						font-size: 44px;
+						letter-spacing: 0;
+						line-height: 44px;
+						margin-right: 10px;
+					}
+				}
+				.iloveimg_settings__overview__statistics__column_right{
+					h4{
+
+						color:  #383E45;
+						strong{
+							color:  #383E45;
+						}
+					}
+					.iloveimg_saving{
+						*{
+							color:  #383E45;
+						}
+					}
+					.iloveimg_percent{
+						.iloveimg_percent-total{
+							    background: #383E45;
+						}
+					}
+				}
+			}
+			.iloveimg_settings__overview__compressAll{
+				display: flex;
+				justify-content: center;
+				margin-top: 16px;
+				margin-bottom: -14px;
+				button{
+					font-size: 14px;
+				    line-height: 42px !important;
+				    height: 42px !important;
+				    width: 149px;
+				    border-radius: 21px;
+				    background-color: $primary_color;
+				    color: #fff;
+				    border: 0;
+				    position: relative;
+				    overflow: hidden;
+				    span{
+				    	color: #fff;
+				    	position: relative;
+				    	z-index: 10;
+				    }
+				    &:hover{
+						border: 0;
+						opacity: .9;
+				    }
+				    .iloveimg-compress-all__percent{
+				    	background: #6fe21c;
+				    	position: absolute;
+				    	top: 0px;
+				    	left: 0px;
+				    	bottom: 0px;
+				    	z-index: 0;
+				    	-webkit-transition: width 1s; /* Safari */
+  						transition: width 1s;
+				    }
+				}
+			}
+		}
+	}
+}
