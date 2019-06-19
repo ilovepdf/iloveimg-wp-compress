@@ -72,17 +72,6 @@ iLoveIMG Compression plugin can optimize images in JPG, PNG and GIF format.
 
 Yes, we do. You can integrate our image optimization tools into your software apps. Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
 
-== Screenshots ==
-
-![Alt text](screenshots/Bulk.png?raw=true "Bulk")
-
-![Alt text](screenshots/Register.png?raw=true "Register")
-
-![Alt text](screenshots/Results.png?raw=true "Results")
-
-![Alt text](screenshots/Settings.png?raw=true "Settings")
-
-
 == Changelog ==
 
 = 1.0.1 =
