@@ -110,10 +110,17 @@ class iLoveIMG_Compress_Resources{
                             <td><?php echo round($size['initial']/1024) ?> KB</td>
                             <td><?php 
                                 if($size['compressed']){
-                                    echo round($size['compressed']/1024) . " KB";
+                                    $percent = (int) (100 - round(($size['compressed'] * 100) / $size['initial']));
                                     $total_size = $total_size + (int)$size['initial'];
                                     $total_compressed = $total_compressed + (int)$size['compressed'];
-                                    ?><small class="iloveimg__badge__percent">-<?php echo (100 - round(($size['compressed'] * 100) / $size['initial'])) ?>%</small><?php
+                                    if($percent > 0){
+                                    echo round($size['compressed']/1024) . " KB";
+                                    ?>
+                                    <small class="iloveimg__badge__percent">-<?php echo $percent ?>%</small>
+                                    <?php
+                                    }else{
+                                        echo "Not compressed";
+                                    }
                                 }else{
                                     echo 'Not compressed';
                                 }

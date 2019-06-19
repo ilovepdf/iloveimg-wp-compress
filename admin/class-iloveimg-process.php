@@ -72,8 +72,9 @@ class iLoveIMG_Compress_Process{
                         $file = $myTask->addFile($pathFile);
                         $myTask->execute();
                         $myTask->download(dirname($pathFile));
-                        $images[$_size]["compressed"] = filesize($pathFile);
-
+                        if($images[$_size]["compressed"] < $images[$_size]["initial"]){
+                            $images[$_size]["compressed"] = filesize($pathFile);
+                        }
                         
                     }
                 }
