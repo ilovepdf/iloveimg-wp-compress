@@ -1,6 +1,6 @@
 === Image Compressor & Optimizer - iLoveIMG ===
 Plugin Name: Image Compressor & Optimizer - iLoveIMG
-Version: 1.0.1
+Version: 1.0.2
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
