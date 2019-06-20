@@ -1,13 +1,13 @@
 === Image Compressor & Optimizer - iLoveIMG ===
 Plugin Name: Image Compressor & Optimizer - iLoveIMG
-Version: 1.0.1
+Version: 1.0.2
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 4.6
 Tested up to: 5.2.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -75,6 +75,10 @@ Yes, we do. You can integrate our image optimization tools into your software ap
 
 
 == Changelog ==
+
+= 1.0.2 =
+
+- Fix: Now Bulk Optimize shows all images
 
 = 1.0.1 =
 
