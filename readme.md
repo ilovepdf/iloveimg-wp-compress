@@ -76,6 +76,10 @@ Yes, we do. You can integrate our image optimization tools into your software ap
 
 == Changelog ==
 
+= 1.0.2 =
+
+- Fix: Now Bulk Optimize shows all images
+
 = 1.0.1 =
 
 - Fix: Avoid other plugins CSS override
