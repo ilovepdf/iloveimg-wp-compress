@@ -59,11 +59,11 @@ class iLoveIMG_Compress_Plugin {
 
             $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($attachment_id);
             if(((int)$status_compress === 1 || (int)$status_compress === 3)){
-                //echo "processing";
-                http_response_code(404);
-                die();
+                http_response_code(500);
             }else if((int)$status_compress === 2){
                 iLoveIMG_Compress_Resources::render_compress_details($attachment_id);
+            }else if((int)$status_compress === 0 && !$status_compress){
+                echo "Try again or buy more files";
             }
         }
         wp_die();
