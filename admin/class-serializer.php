@@ -4,14 +4,15 @@
 class iLoveIMG_Compress_Serializer {
  
     public function init() {
-        add_action( 'admin_post', array( $this, 'save' ) );
+        add_action( 'admin_post_update_compress', array( $this, 'save' ) );
     }
  
     public function save() {
-		if ( ! (current_user_can( 'manage_options' ) ) ) {
+        if ( ! (current_user_can( 'manage_options' ) ) ) {
             die();
         }
-        
+
+
         if(isset($_POST['iloveimg_action']) and $this->has_valid_nonce()){
 
             if($_POST['iloveimg_action'] == 'iloveimg_action_options_compress'){

@@ -34,6 +34,7 @@
         </div>
         <div class="iloveimg_settings__options-container">
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+                <input type="hidden" name="action" value="update_compress" />
                 <p class="submit">
                     <button <?php echo (!$isLogged) ? "disabled" : "" ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes

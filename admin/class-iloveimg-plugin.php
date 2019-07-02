@@ -22,6 +22,7 @@ class iLoveIMG_Compress_Plugin {
         }
         
         add_action( 'admin_notices', array($this, 'show_notices'));
+        add_action( 'iloveimg_watermarked_completed', array($this, "iloveimg_watermarked_completed"));
         add_thickbox();
     }
 
@@ -51,6 +52,12 @@ class iLoveIMG_Compress_Plugin {
         }
         wp_die();
     }
+
+    public function iloveimg_watermarked_completed($attachment_id){
+        if((int)iLoveIMG_Compress_Resources::isAutoCompress() === 1){
+            $this->async_compress($attachment_id);
+        }
+    }
     
     public function iLoveIMG_Compress_library_is_compressed(){
         if(isset($_POST['id'])){
@@ -73,12 +80,12 @@ class iLoveIMG_Compress_Plugin {
         if((int)iLoveIMG_Compress_Resources::isActivated() === 0){
             return $columns;
         }
-        $columns['iloveimg_status'] = __('Status');
+        $columns['iloveimg_status_compress'] = __('Status Compress');
         return $columns;
     }
 
     public function column_id_row($columnName, $columnID){
-        if($columnName == 'iloveimg_status'){
+        if($columnName == 'iloveimg_status_compress'){
             iLoveIMG_Compress_Resources::getStatusOfColumn($columnID);
         }
     }
