@@ -12,7 +12,7 @@ Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images.
+Optimize your website images and improve your page load speed. Reduce the size of your photos and gain maximum compression while keeping sharp images.
 
 == Description ==
 
