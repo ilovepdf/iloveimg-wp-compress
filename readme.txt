@@ -70,7 +70,13 @@ iLoveIMG Compression plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, we do. You can integrate our image optimization tools into your software apps. Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+
+**Do you care about the privacy of my images?**
+
+All our servers are strictly monitored as we comply with the European Data Privacy Regulation, one of the highest standards in the EU.  All uploaded files use https/SSL and include our end-to-end encryption for further privacy of your data. 
+
+Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
 
 == Changelog ==
 
