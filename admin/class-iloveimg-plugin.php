@@ -1,7 +1,7 @@
 <?php
 
 class iLoveIMG_Compress_Plugin {
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.5';
 	const NAME = 'iLoveIMG_Compress_plugin';
     public function __construct() {
         add_action( 'admin_init', array( $this, "admin_init" ));
