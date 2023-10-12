@@ -26,6 +26,9 @@
             "@phpcs",
             "@phpcbf"
         ],
+        "stan": [
+            "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table > ../../../phpstan-report-iloveimg.txt"
+        ],
         "phpcs": [
             "phpcs -s --ignore=*/vendor/*,*/lib/*,*/.github/* --report-file=../../../condesniffer-report-iloveimg.txt ./"
         ],
