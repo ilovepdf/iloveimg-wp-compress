@@ -1,130 +1,222 @@
 <?php
+/**
+ * Utility class for managing resources and functionality related to image compression.
+ *
+ * This class serves as a utility for managing various resources and functionality
+ * associated with image compression within the iLoveIMG plugin. It includes methods
+ * for handling image compression resources, status, and related operations.
+ *
+ * @since 1.0.0
+ */
+class iLoveIMG_Compress_Resources {
 
-class iLoveIMG_Compress_Resources{
-
-    public static function getTypeImages(){
+    /**
+     * Get an array of image size options for image type selection.
+     *
+     * This method retrieves an array of image size options to be used for image type selection
+     * in the settings. It includes options for the original image as well as available image sizes.
+     *
+     * @return array An array of image size options.
+     *
+     * @since 1.0.0
+     */
+    public static function getTypeImages() {
         global $_wp_additional_image_sizes;
-        
-        $sizes = array();
-        $sizes[] =  array(
-            'field_id'        => "full",
-            'type'            => 'checkbox',
-            'label'           =>  "Original image",
-            'default'           => true
+
+        $sizes   = array();
+        $sizes[] = array(
+            'field_id' => 'full',
+            'type'     => 'checkbox',
+            'label'    => 'Original image',
+            'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
-            if ( in_array( $_size, array('thumbnail', 'medium', 'medium_large', 'large') ) ) {
-                $width = get_option( "{$_size}_size_w" );
+            if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
+                $width  = get_option( "{$_size}_size_w" );
                 $height = get_option( "{$_size}_size_h" );
-            }elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
-                $width = $_wp_additional_image_sizes[ $_size ]['width'];
+            } elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+                $width  = $_wp_additional_image_sizes[ $_size ]['width'];
                 $height = $_wp_additional_image_sizes[ $_size ]['height'];
             }
 
-
-            $sizes[] =  array(
-                'field_id'        => $_size,
-                'type'            => 'checkbox',
-                'label'           =>  $_size . " (". (($width == "0")  ? "?" : $width) ."x". (($height == "0")  ? "?" : $height) .")",
-                'default'           => true
+            $sizes[] = array(
+                'field_id' => $_size,
+                'type'     => 'checkbox',
+                'label'    => $_size . ' (' . ( ( $width == '0' ) ? '?' : $width ) . 'x' . ( ( $height == '0' ) ? '?' : $height ) . ')',
+                'default'  => true,
             );
 
         }
         return $sizes;
     }
-    
-    public static function getSaving($images){
+
+    /**
+     * Calculate and return the savings achieved through image compression.
+     *
+     * This method calculates the percentage of savings achieved through image compression
+     * by comparing the initial image size with the compressed image size.
+     *
+     * @param array $images An array of image data including initial and compressed sizes.
+     * @return float The percentage of savings achieved.
+     *
+     * @since 1.0.0
+     */
+    public static function getSaving( $images ) {
         $initial = $compressed = 0;
-        foreach($images as $image){
-            if(!is_null($image['compressed'])){
-                $initial+=$image['initial'];
-                $compressed+=$image['compressed'];
+        foreach ( $images as $image ) {
+            if ( ! is_null( $image['compressed'] ) ) {
+                $initial    += $image['initial'];
+                $compressed += $image['compressed'];
             }
         }
-        return round(100 - (($compressed * 100) / $initial));
+        return round( 100 - ( ( $compressed * 100 ) / $initial ) );
     }
 
-    public static function getSizesEnabled(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
-        $image_sizes = isset($_aOptions['iloveimg_field_sizes']) ? $_aOptions['iloveimg_field_sizes'] : [];
-        $count = 0;
-        foreach($image_sizes as $image){
-            if($image){
-                $count++;
+    /**
+     * Get the count of enabled image sizes selected in the plugin settings.
+     *
+     * This method retrieves and returns the count of enabled image sizes selected in the plugin settings.
+     *
+     * @return int The count of enabled image sizes.
+     *
+     * @since 1.0.0
+     */
+    public static function getSizesEnabled() {
+        $_aOptions   = unserialize( get_option( 'iloveimg_options_compress' ) );
+        $image_sizes = isset( $_aOptions['iloveimg_field_sizes'] ) ? $_aOptions['iloveimg_field_sizes'] : array();
+        $count       = 0;
+        foreach ( $image_sizes as $image ) {
+            if ( $image ) {
+                ++$count;
             }
         }
         return $count;
     }
 
-    public static function isAutoCompress(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
-        return (isset($_aOptions['iloveimg_field_autocompress'])) ? 1 : 0;
+    /**
+     * Check if automatic image compression is enabled in the plugin settings.
+     *
+     * This method checks if automatic image compression is enabled in the plugin settings
+     * and returns 1 if it is enabled or 0 if it is not.
+     *
+     * @return int 1 if auto compression is enabled, 0 if not.
+     *
+     * @since 1.0.0
+     */
+    public static function isAutoCompress() {
+        $_aOptions = unserialize( get_option( 'iloveimg_options_compress' ) );
+        return ( isset( $_aOptions['iloveimg_field_autocompress'] ) ) ? 1 : 0;
     }
 
-    public static function isActivated(){
-        $_aOptions = unserialize(get_option('iloveimg_options_compress'));
-        return (isset($_aOptions['iloveimg_field_compress_activated'])) ? 1 : 0;
+    /**
+     * Check if image compression is activated in the plugin settings.
+     *
+     * This method checks if image compression is activated in the plugin settings
+     * and returns 1 if it is activated or 0 if it is not.
+     *
+     * @return int 1 if compression is activated, 0 if not.
+     *
+     * @since 1.0.0
+     */
+    public static function isActivated() {
+        $_aOptions = unserialize( get_option( 'iloveimg_options_compress' ) );
+        return ( isset( $_aOptions['iloveimg_field_compress_activated'] ) ) ? 1 : 0;
     }
 
-    public static function getSizesCompressed($columnID){
-        $images = get_post_meta($columnID, 'iloveimg_compress', true);
-        $count = 0;
-        if(!$images)
+    /**
+     * Get the count of image sizes that have been successfully compressed for a specific attachment.
+     *
+     * This method retrieves and returns the count of image sizes that have been successfully compressed
+     * for a specific attachment identified by its column ID.
+     *
+     * @param int $columnID The ID of the attachment in the WordPress media library.
+     * @return int The count of compressed image sizes for the attachment.
+     *
+     * @since 1.0.0
+     */
+    public static function getSizesCompressed( $columnID ) {
+        $images = get_post_meta( $columnID, 'iloveimg_compress', true );
+        $count  = 0;
+        if ( ! $images ) {
             return $count;
-        foreach($images as $image){
-            if(!is_null($image['compressed'])){
-                $count++;
+        }
+        foreach ( $images as $image ) {
+            if ( ! is_null( $image['compressed'] ) ) {
+                ++$count;
             }
         }
         return $count;
     }
 
-    public static function isLoggued(){
-        if(get_option('iloveimg_account')){
-            $account = json_decode(get_option('iloveimg_account'), true);
-            if(array_key_exists('error', $account)){
+    /**
+     * Check if the user is logged into the iLoveIMG service via the plugin.
+     *
+     * This method checks if the user is logged into the iLoveIMG service via the plugin
+     * and returns true if logged in, or false if not logged in.
+     *
+     * @return bool True if the user is logged in, false if not logged in.
+     *
+     * @since 1.0.0
+     */
+    public static function isLoggued() {
+        if ( get_option( 'iloveimg_account' ) ) {
+            $account = json_decode( get_option( 'iloveimg_account' ), true );
+            if ( array_key_exists( 'error', $account ) ) {
                 return false;
             }
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static function render_compress_details($imageID){
-        $_sizes = get_post_meta($imageID, 'iloveimg_compress', true);
-        $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($imageID);
-        
+    /**
+     * Render the details of image compression for a specific attachment.
+     *
+     * This method generates and displays the details of image compression for a specific attachment
+     * identified by its image ID. It includes information on each size of the image and its compression
+     * status.
+     *
+     * @param int $imageID The ID of the attachment in the WordPress media library.
+     *
+     * @since 1.0.0
+     */
+    public static function render_compress_details( $imageID ) {
+        $_sizes           = get_post_meta( $imageID, 'iloveimg_compress', true );
+        $imagesCompressed = self::getSizesCompressed( $imageID );
+
         ?>
-        <div id="iloveimg_detaills_compress_<?php echo $imageID ?>" style="display:none;">
+        <div id="iloveimg_detaills_compress_<?php echo $imageID; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Initial</th><th>Compressed</th>
                     <?php
-                    $total_size = 0;
+                    $total_size       = 0;
                     $total_compressed = 0;
-                    foreach($_sizes as $key => $size){
+                    foreach ( $_sizes as $key => $size ) {
                         ?>
                         <tr>
-                            <td><?php echo $key ?></td>
-                            <td><?php echo round($size['initial']/1024) ?> KB</td>
-                            <td><?php 
-                                if($size['compressed']){
-                                    $percent = (int) (100 - round(($size['compressed'] * 100) / $size['initial']));
-                                    $total_size = $total_size + (int)$size['initial'];
-                                    $total_compressed = $total_compressed + (int)$size['compressed'];
-                                    if($percent > 0){
-                                    echo round($size['compressed']/1024) . " KB";
+                            <td><?php echo $key; ?></td>
+                            <td><?php echo round( $size['initial'] / 1024 ); ?> KB</td>
+                            <td>
+                            <?php
+							if ( $size['compressed'] ) {
+								$percent          = (int) ( 100 - round( ( $size['compressed'] * 100 ) / $size['initial'] ) );
+								$total_size       = $total_size + (int) $size['initial'];
+								$total_compressed = $total_compressed + (int) $size['compressed'];
+								if ( $percent > 0 ) {
+                                    echo round( $size['compressed'] / 1024 ) . ' KB';
                                     ?>
-                                    <small class="iloveimg__badge__percent">-<?php echo $percent ?>%</small>
+                                    <small class="iloveimg__badge__percent">-<?php echo $percent; ?>%</small>
                                     <?php
-                                    }else{
-                                        echo "Not compressed";
-                                    }
-                                }else{
-                                    echo 'Not compressed';
-                                }
-                                ?></td>
+								} else {
+									echo 'Not compressed';
+								}
+							} else {
+								echo 'Not compressed';
+							}
+							?>
+                                </td>
                             </tr>
                         <?php
                     }
@@ -132,82 +224,123 @@ class iLoveIMG_Compress_Resources{
                 </tr>
             </table>
         </div>
-        <!-- <p>Now <?php echo iLoveIMG_Compress_Resources::getSaving($_sizes) ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title($imageID) ?>"><?php echo $imagesCompressed ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (100 - round(($total_compressed * 100) / $total_size)) ?>%</small></p>
+        <!-- <p>Now <?php echo self::getSaving( $_sizes ); ?>% smaller!</p> -->
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $imageID; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title( $imageID ); ?>"><?php echo $imagesCompressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
         <?php
     }
 
-    public static function getStatusOfColumn($columnID){
-        $post = get_post($columnID);
-        if(strpos($post->post_mime_type, "image/jpg") !== false or strpos($post->post_mime_type, "image/jpeg") !== false or strpos($post->post_mime_type, "image/png") !== false or strpos($post->post_mime_type, "image/gif") !== false):
-            $_sizes = get_post_meta($columnID, 'iloveimg_compress', true);
-            $status_compress = (int)get_post_meta($columnID, 'iloveimg_status_compress', true);
-            $imagesCompressed = iLoveIMG_Compress_Resources::getSizesCompressed($columnID);
-            
-            if($_sizes && $imagesCompressed):
-                self::render_compress_details($columnID);
-            else:
-                ?>                    
-                    <?php if(iLoveIMG_Compress_Resources::isLoggued()): ?>
-                        <!-- <p><?php echo iLoveIMG_Compress_Resources::getSizesEnabled() ?> sizes to be compressed</p> -->
-                        <?php if(iLoveIMG_Compress_Resources::getSizesEnabled()) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID ?>" <?php echo ($status_compress === 1 || $status_compress === 3) ? 'disabled="disabled"' :  '' ?>>Compress</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', dirname(__FILE__) ) ?>" width="20" height="20" style="<?php echo ($status_compress === 1 || $status_compress === 3) ? '' :  'display: none;' ?>; margin-top: 7px" />
-                            <?php if($status_compress === 3): ?>
+    /**
+     * Get and display the status of image compression for a specific attachment column.
+     *
+     * This method retrieves and displays the status of image compression for a specific attachment
+     * column identified by its column ID. It checks the image's MIME type and the status of compression
+     * and provides relevant actions or information to the user.
+     *
+     * @param int $columnID The ID of the attachment column in the WordPress media library.
+     *
+     * @since 1.0.0
+     */
+    public static function getStatusOfColumn( $columnID ) {
+        $post = get_post( $columnID );
+        if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
+            $_sizes           = get_post_meta( $columnID, 'iloveimg_compress', true );
+            $status_compress  = (int) get_post_meta( $columnID, 'iloveimg_status_compress', true );
+            $imagesCompressed = self::getSizesCompressed( $columnID );
+
+            if ( $_sizes && $imagesCompressed ) :
+                self::render_compress_details( $columnID );
+            else :
+                ?>
+                                    
+                    <?php if ( self::isLoggued() ) : ?>
+                        <!-- <p><?php echo self::getSizesEnabled(); ?> sizes to be compressed</p> -->
+                        <?php if ( self::getSizesEnabled() ) : ?>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $columnID; ?>" <?php echo ( $status_compress === 1 || $status_compress === 3 ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( $status_compress === 1 || $status_compress === 3 ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <?php if ( $status_compress === 3 ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
-                        <?php else: ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
-                        <?php endif;
-                    else: ?>
+                        <?php else : ?>
+                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+							<?php
+                        endif;
+                    else :
+						?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ?>" class="iloveimg_link">Go to settings</button>
-                    <?php
+                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+						<?php
                     endif;
-                    if($status_compress === 1 || $status_compress === 3): ?>
-                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $columnID ?>"></div>
-                    <?php endif;
+                    if ( $status_compress === 1 || $status_compress === 3 ) :
+						?>
+                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $columnID; ?>"></div>
+						<?php
+                    endif;
             endif;
         endif;
     }
 
-    public static function getFilesCompressed(){
+    /**
+     * Get the count of files with compressed images in the media library.
+     *
+     * This method retrieves and returns the count of files in the WordPress media library that have
+     * compressed images stored as metadata.
+     *
+     * @return int The count of files with compressed images.
+     *
+     * @since 1.0.0
+     */
+    public static function getFilesCompressed() {
         global $wpdb;
-        return (int)$wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
     }
 
-    public static function getTotalImages(){
+    /**
+     * Get the total count of images in the media library.
+     *
+     * This method retrieves and returns the total count of images in the WordPress media library.
+     *
+     * @return int The total count of images in the media library.
+     *
+     * @since 1.0.0
+     */
+    public static function getTotalImages() {
         $query_img_args = array(
-        'post_type' => 'attachment',
-        'post_mime_type' =>array(
-                        'jpg|jpeg|jpe' => 'image/jpeg',
-                        'gif' => 'image/gif',
-                'png' => 'image/png',
-                ),
-        'post_status' => 'inherit',
-        'posts_per_page' => -1,
+			'post_type'      => 'attachment',
+			'post_mime_type' => array(
+				'jpg|jpeg|jpe' => 'image/jpeg',
+				'gif'          => 'image/gif',
+				'png'          => 'image/png',
+			),
+			'post_status'    => 'inherit',
+			'posts_per_page' => -1,
         );
-        $query_img = new WP_Query( $query_img_args );
-        return (int)$query_img->post_count;
+        $query_img      = new WP_Query( $query_img_args );
+        return (int) $query_img->post_count;
     }
 
-    public static function getFilesSizes(){
+    /**
+     * Get the total file sizes and total compressed file sizes.
+     *
+     * This method retrieves and calculates the total file sizes and total compressed file sizes for
+     * images in the media library. It returns an array with two values: total file size and total
+     * compressed file size.
+     *
+     * @return array An array containing two integers: total file size and total compressed file size.
+     *
+     * @since 1.0.0
+     */
+    public static function getFilesSizes() {
         global $wpdb;
-        $rows = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
-        $total = 0;
+        $rows            = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+        $total           = 0;
         $totalCompressed = 0;
-        foreach ( $rows as $row ) 
-        {
-            $stadistics = unserialize($row->meta_value);
-            foreach ($stadistics as $key => $value) {
-                $total = $total + (int)$value['initial'];
-                $totalCompressed = $totalCompressed + (int)$value['compressed'];
+        foreach ( $rows as $row ) {
+            $stadistics = unserialize( $row->meta_value );
+            foreach ( $stadistics as $key => $value ) {
+                $total           = $total + (int) $value['initial'];
+                $totalCompressed = $totalCompressed + (int) $value['compressed'];
             }
         }
-        return [$total, $totalCompressed];
-
+        return array( $total, $totalCompressed );
     }
-
-    
-
 }

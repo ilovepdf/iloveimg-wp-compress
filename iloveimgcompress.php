@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
- * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your Wordpress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
+ * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
  * Version:           1.0.5
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
@@ -25,63 +25,88 @@
  */
 
 if ( ! defined( 'WPINC' ) ) {
-     die;
+    die;
 }
- 
 
-include_once "admin/class-iloveimg-plugin.php";
-include_once "admin/class-iloveimg-process.php";
-include_once "admin/class-resources.php";
-include_once "admin/class-serializer.php";
-include_once "admin/class-submenu-page.php";
-include_once "admin/class-submenu.php";
-include_once "admin/class-table-media-bulk-optimized.php";
- 
+require_once 'admin/class-iloveimg-plugin.php';
+require_once 'admin/class-iloveimg-process.php';
+require_once 'admin/class-resources.php';
+require_once 'admin/class-serializer.php';
+require_once 'admin/class-submenu-page.php';
+require_once 'admin/class-submenu.php';
+require_once 'admin/class-table-media-bulk-optimized.php';
+
 add_action( 'plugins_loaded', 'iLoveIMG_Compress_custom_admin_settings' );
 
-
-
+/**
+ * Initialize custom admin settings for the iLoveIMG Compress plugin.
+ *
+ * This function initializes custom admin settings for the iLoveIMG Compress plugin, including
+ * the serializer and submenu items.
+ *
+ * @since 1.0.0
+ */
 function iLoveIMG_Compress_custom_admin_settings() {
-    
+
     $serializer = new iLoveIMG_Compress_Serializer();
     $serializer->init();
-    
+
     $plugin = new iLoveIMG_Compress_Submenu( new iLoveIMG_Compress_Submenu_Page() );
     $plugin->init();
- 
 }
 
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'iLoveIMG_Compress_add_plugin_page_settings_link');
+/**
+ * Add settings and bulk optimization links to the plugin in the WordPress admin menu.
+ *
+ * This function adds links to the plugin's settings and bulk optimization pages in the WordPress
+ * admin menu.
+ *
+ * @since 1.0.0
+ *
+ * @param array $links An array of existing plugin links.
+ *
+ * @return array An updated array of plugin links with added settings and bulk optimization links.
+ */
 function iLoveIMG_Compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
-		'">' . __('Settings') . '</a>';
+		'">' . __( 'Settings' ) . '</a>';
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . __('Bulk Optimization') . '</a>';
+        '">' . __( 'Bulk Optimization' ) . '</a>';
 	return $links;
 }
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Compress_add_plugin_page_settings_link' );
 
-function iLoveIMG_Compress_activate(){
+/**
+ * Activation function for the iLoveIMG Compress plugin.
+ *
+ * This function is called when the plugin is activated. It sets the plugin's database version,
+ * initializes default options if they don't exist, and updates settings related to image sizes.
+ *
+ * @since 1.0.0
+ */
+function iLoveIMG_Compress_activate() {
     add_option( 'iLoveIMG_Compress_db_version', iLoveIMG_Compress_COMPRESS_DB_VERSION );
-    if(!get_option('iloveimg_options_compress')){
-        $iloveimg_thumbnails = ['full', 'thumbnail', 'medium', 'medium_large', 'large'];
-        if(!extension_loaded('gd')){
-            $iloveimg_thumbnails = ['full'];
+    if ( ! get_option( 'iloveimg_options_compress' ) ) {
+        $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
+        if ( ! extension_loaded( 'gd' ) ) {
+            $iloveimg_thumbnails = array( 'full' );
         }
-        update_option('iloveimg_options_compress', 
+        update_option(
+            'iloveimg_options_compress',
             serialize(
-                    [
-                        //'iloveimg_field_compress_activated' => 0,
-                        //'iloveimg_field_autocompress' => 1,
-                        'iloveimg_field_sizes' => $iloveimg_thumbnails,
-                        'iloveimg_field_resize_full' => 0,
-                        'iloveimg_field_size_full_width' => 2048,
-                        'iloveimg_field_size_full_height' => 2048,
+                array(
+					// 'iloveimg_field_compress_activated' => 0,
+					// 'iloveimg_field_autocompress' => 1,
+					'iloveimg_field_sizes'            => $iloveimg_thumbnails,
+					'iloveimg_field_resize_full'      => 0,
+					'iloveimg_field_size_full_width'  => 2048,
+					'iloveimg_field_size_full_height' => 2048,
 
-                    ]
-                )
-            );
+				)
+            )
+        );
     }
 }
 
@@ -89,12 +114,11 @@ register_activation_hook( __FILE__, 'iLoveIMG_Compress_activate' );
 
 new iLoveIMG_Compress_Plugin();
 
+define( 'iLoveIMG_Compress_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'iLoveIMG_Compress_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
+define( 'iLoveIMG_Compress_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'iLoveIMG_Compress_NUM_MAX_FILES', 2 );
+define( 'iLoveIMG_Compress_COMPRESS_DB_VERSION', '1.0' );
+define( 'iLoveIMG_Compress_Plugin_URL', plugin_dir_url( __FILE__ ) );
 
-define('iLoveIMG_Compress_REGISTER_URL', 'https://api.iloveimg.com/v1/user');
-define('iLoveIMG_Compress_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login');
-define('iLoveIMG_Compress_USER_URL', 'https://api.iloveimg.com/v1/user');
-define('iLoveIMG_Compress_NUM_MAX_FILES', 2);
-define('iLoveIMG_Compress_COMPRESS_DB_VERSION', '1.0');
-define('iLoveIMG_Compress_Plugin_URL', plugin_dir_url(__FILE__));
-
-set_time_limit(300);
+set_time_limit( 300 );
