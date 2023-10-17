@@ -24,10 +24,14 @@
         "post-install-cmd": [
             "@stan",
             "@phpcs",
+            "@phpcs-summary",
             "@phpcbf"
         ],
         "stan": [
             "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table > ../../../phpstan-report-iloveimg.txt"
+        ],
+        "phpcs-summary": [
+            "phpcs -s --report=summary --ignore=*/vendor/*,*/iloveimg-php/*,*/.github/* --report-file=../../../condesniffer-report-summary-iloveimg.txt ./"
         ],
         "phpcs": [
             "phpcs -s --ignore=*/vendor/*,*/iloveimg-php/*,*/.github/* --report-file=../../../condesniffer-report-iloveimg.txt ./"
