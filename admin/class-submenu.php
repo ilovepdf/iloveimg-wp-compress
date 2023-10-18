@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  */
-class iLoveIMG_Compress_Submenu {
+class Ilove_Img_Compress_Submenu {
 
 	/**
 	 * A reference the class responsible for rendering the submenu page.

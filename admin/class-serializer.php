@@ -6,7 +6,7 @@
 
  * @since 1.0.0
  */
-class iLoveIMG_Compress_Serializer {
+class Ilove_Img_Compress_Serializer {
 
     /**
      * Initializes the class and adds an action hook for saving settings.

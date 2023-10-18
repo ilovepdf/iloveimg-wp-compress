@@ -8,7 +8,7 @@
  *
  * @since 1.0.0
  */
-class iLoveIMG_Compress_Resources {
+class Ilove_Img_Compress_Resources {
 
     /**
      * Get an array of image size options for image type selection.
@@ -82,9 +82,9 @@ class iLoveIMG_Compress_Resources {
      * @since 1.0.0
      */
     public static function get_sizes_enabled() {
-        $options_compress   = unserialize( get_option( 'iloveimg_options_compress' ) );
-        $image_sizes = isset( $options_compress['iloveimg_field_sizes'] ) ? $options_compress['iloveimg_field_sizes'] : array();
-        $count       = 0;
+        $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
+        $image_sizes      = isset( $options_compress['iloveimg_field_sizes'] ) ? $options_compress['iloveimg_field_sizes'] : array();
+        $count            = 0;
         foreach ( $image_sizes as $image ) {
             if ( $image ) {
                 ++$count;
@@ -182,7 +182,7 @@ class iLoveIMG_Compress_Resources {
      * @since 1.0.0
      */
     public static function render_compress_details( $image_id ) {
-        $_sizes           = get_post_meta( $image_id, 'iloveimg_compress', true );
+        $_sizes            = get_post_meta( $image_id, 'iloveimg_compress', true );
         $images_compressed = self::get_sizes_compressed( $image_id );
 
         ?>
@@ -243,8 +243,8 @@ class iLoveIMG_Compress_Resources {
     public static function get_status_of_column( $column_id ) {
         $post = get_post( $column_id );
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false or strpos( $post->post_mime_type, 'image/jpeg' ) !== false or strpos( $post->post_mime_type, 'image/png' ) !== false or strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
-            $_sizes           = get_post_meta( $column_id, 'iloveimg_compress', true );
-            $status_compress  = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
+            $_sizes            = get_post_meta( $column_id, 'iloveimg_compress', true );
+            $status_compress   = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
             $images_compressed = self::get_sizes_compressed( $column_id );
 
             if ( $_sizes && $images_compressed ) :
@@ -331,13 +331,13 @@ class iLoveIMG_Compress_Resources {
      */
     public static function get_files_sizes() {
         global $wpdb;
-        $rows            = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
-        $total           = 0;
+        $rows             = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+        $total            = 0;
         $total_compressed = 0;
         foreach ( $rows as $row ) {
             $stadistics = unserialize( $row->meta_value );
             foreach ( $stadistics as $key => $value ) {
-                $total           = $total + (int) $value['initial'];
+                $total            = $total + (int) $value['initial'];
                 $total_compressed = $total_compressed + (int) $value['compressed'];
             }
         }

@@ -13,7 +13,7 @@
  *
  * @package iloveimgcompress
  */
-class iLoveIMG_Compress_Submenu_Page {
+class Ilove_Img_Compress_Submenu_Page {
 
 	/**
      * Render submenu parent.

@@ -11,7 +11,7 @@ use Iloveimg\ResizeImageTask;
  *
  * @since 1.0.0
  */
-class iLoveIMG_Compress_Process {
+class Ilove_Img_Compress_Process {
 
     /**
      * Public project key for iLoveIMG API.
@@ -73,7 +73,7 @@ class iLoveIMG_Compress_Process {
                 $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
 
                 foreach ( $_sizes as $_size ) {
-                    $image    = wp_get_attachment_image_src( $images_id, $_size );
+                    $image     = wp_get_attachment_image_src( $images_id, $_size );
                     $path_file = str_replace( site_url(), '', $image[0] );
                     if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
                         $path_file = sanitize_text_field( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) ) . $path_file;
@@ -96,7 +96,7 @@ class iLoveIMG_Compress_Process {
 
                                 } else {
                                     $my_task = new ResizeImageTask( $this->proyect_public, $this->secret_key );
-                                    $file   = $my_task->addFile( $path_file );
+                                    $file    = $my_task->addFile( $path_file );
                                     $my_task->setPixelsWidth( $options_compress['iloveimg_field_size_full_width'] );
                                     $my_task->setPixelsHeight( $options_compress['iloveimg_field_size_full_height'] );
                                     $my_task->execute();
@@ -109,7 +109,7 @@ class iLoveIMG_Compress_Process {
                             }
                         }
                         $my_task = new CompressImageTask( $this->proyect_public, $this->secret_key );
-                        $file   = $my_task->addFile( $path_file );
+                        $file    = $my_task->addFile( $path_file );
                         $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
                         if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {

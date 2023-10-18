@@ -68,7 +68,7 @@
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
                             <ul>
-                            <?php foreach ( iLoveIMG_Compress_Resources::get_type_images() as $value ) : ?>
+                            <?php foreach ( Ilove_Img_Compress_Resources::get_type_images() as $value ) : ?>
 								<?php
 								$iloveimg_field_sizes = isset( $options_value['iloveimg_field_sizes'] ) ? $options_value['iloveimg_field_sizes'] : array();
 								?>

@@ -8,7 +8,7 @@
  * @package    iloveimgcompress
  * @subpackage iloveimgcompress/admin
  */
-class iLoveIMG_Compress_Plugin {
+class Ilove_Img_Compress_Plugin {
 
     /**
 	 * The current version of the plugin.
@@ -26,7 +26,7 @@ class iLoveIMG_Compress_Plugin {
 	 * @access   public
 	 * @var      string    NAME    The string used to uniquely identify this plugin.
 	 */
-	const NAME = 'iLoveIMG_Compress_plugin';
+	const NAME = 'Ilove_Img_Compress_plugin';
 
     /**
 	 * This constructor defines the core functionality of the plugin.
@@ -69,9 +69,9 @@ class iLoveIMG_Compress_Plugin {
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
 
         // Check if the iLoveIMG library class exists, and initialize it if not.
-        if ( ! class_exists( 'iLoveIMG_Library_init' ) ) {
+        if ( ! class_exists( 'Ilove_Img_Library_init' ) ) {
             require_once 'class-iloveimg-library-init.php';
-            new iLoveIMG_Library_init();
+            new Ilove_Img_Library_init();
         }
 
         // Display admin notices.
@@ -114,18 +114,18 @@ class iLoveIMG_Compress_Plugin {
     /**
      * Handle the AJAX request to compress images using the iLoveIMG library.
      *
-     * This method is responsible for handling an AJAX request to compress images using the iLoveIMG library. It checks for the presence of an 'id' parameter in the POST request, initializes the iLoveIMG_Compress_Process class, and attempts to compress the specified attachment. If compression is successful, it renders the compression details; otherwise, it displays a message indicating the need for more files.
+     * This method is responsible for handling an AJAX request to compress images using the iLoveIMG library. It checks for the presence of an 'id' parameter in the POST request, initializes the Ilove_Img_Compress_Process class, and attempts to compress the specified attachment. If compression is successful, it renders the compression details; otherwise, it displays a message indicating the need for more files.
      *
      * @since 1.0.0
      * @access public
      */
     public function ilove_img_compress_library() {
         if ( isset( $_POST['id'] ) ) {
-            $ilove         = new iLoveIMG_Compress_Process();
+            $ilove         = new Ilove_Img_Compress_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->compress( $attachment_id );
             if ( $images !== false ) {
-                iLoveIMG_Compress_Resources::render_compress_details( $attachment_id );
+                Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
                 ?>
                 <p>You need more files</p>
@@ -146,7 +146,7 @@ class iLoveIMG_Compress_Plugin {
      * @access public
      */
     public function iloveimg_watermarked_completed( $attachment_id ) {
-        if ( (int) iLoveIMG_Compress_Resources::is_auto_compress() === 1 ) {
+        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 ) {
             $this->async_compress( $attachment_id );
         }
     }
@@ -164,11 +164,11 @@ class iLoveIMG_Compress_Plugin {
             $attachment_id   = intval( $_POST['id'] );
             $status_compress = get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
 
-            $images_compressed = iLoveIMG_Compress_Resources::get_sizes_compressed( $attachment_id );
+            $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $attachment_id );
             if ( ( (int) $status_compress === 1 || (int) $status_compress === 3 ) ) {
                 http_response_code( 500 );
             } elseif ( (int) $status_compress === 2 ) {
-                iLoveIMG_Compress_Resources::render_compress_details( $attachment_id );
+                Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } elseif ( (int) $status_compress === 0 && ! $status_compress ) {
                 echo 'Try again or buy more files';
             }
@@ -189,7 +189,7 @@ class iLoveIMG_Compress_Plugin {
      * @access public
      */
     public function column_id( $columns ) {
-        if ( (int) iLoveIMG_Compress_Resources::is_activated() === 0 ) {
+        if ( (int) Ilove_Img_Compress_Resources::is_activated() === 0 ) {
             return $columns;
         }
         $columns['iloveimg_status_compress'] = __( 'Status Compress' );
@@ -209,7 +209,7 @@ class iLoveIMG_Compress_Plugin {
      */
     public function column_id_row( $column_name, $column_id ) {
         if ( $column_name == 'iloveimg_status_compress' ) {
-            iLoveIMG_Compress_Resources::get_status_of_column( $column_id );
+            Ilove_Img_Compress_Resources::get_status_of_column( $column_id );
         }
     }
 
@@ -228,7 +228,7 @@ class iLoveIMG_Compress_Plugin {
      */
     public function process_attachment( $metadata, $attachment_id ) {
         update_post_meta( $attachment_id, 'iloveimg_status_compress', 0 ); // status no compressed
-        if ( (int) iLoveIMG_Compress_Resources::is_auto_compress() === 1 && iLoveIMG_Compress_Resources::is_loggued() && (int) iLoveIMG_Compress_Resources::is_activated() === 1 ) {
+        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 && Ilove_Img_Compress_Resources::is_loggued() && (int) Ilove_Img_Compress_Resources::is_activated() === 1 ) {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_compress( $attachment_id );
         }
@@ -270,7 +270,7 @@ class iLoveIMG_Compress_Plugin {
      * @access public
      */
     public function show_notices() {
-        if ( ! iLoveIMG_Compress_Resources::is_loggued() ) {
+        if ( ! Ilove_Img_Compress_Resources::is_loggued() ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>">Go to settings</a></p>
@@ -343,12 +343,12 @@ class iLoveIMG_Compress_Plugin {
         echo '<table><tr><td>';
         $status_compress = get_post_meta( $post->ID, 'iloveimg_status_compress', true );
 
-        $images_compressed = iLoveIMG_Compress_Resources::get_sizes_compressed( $post->ID );
+        $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
 
         if ( (int) $status_compress === 2 ) {
-            iLoveIMG_Compress_Resources::render_compress_details( $post->ID );
+            Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
         } else {
-            iLoveIMG_Compress_Resources::get_status_of_column( $post->ID );
+            Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );
         }
         echo '</td></tr></table>';
         echo '</div>';

@@ -48,10 +48,10 @@ add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
  */
 function ilove_img_compress_custom_admin_settings() {
 
-    $serializer = new iLoveIMG_Compress_Serializer();
+    $serializer = new Ilove_Img_Compress_Serializer();
     $serializer->init();
 
-    $plugin = new iLoveIMG_Compress_Submenu( new iLoveIMG_Compress_Submenu_Page() );
+    $plugin = new Ilove_Img_Compress_Submenu( new Ilove_Img_Compress_Submenu_Page() );
     $plugin->init();
 }
 
@@ -87,7 +87,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_com
  * @since 1.0.0
  */
 function ilove_img_compress_activate() {
-    add_option( 'iLoveIMG_Compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
+    add_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
     if ( ! get_option( 'iloveimg_options_compress' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
         if ( ! extension_loaded( 'gd' ) ) {
@@ -112,7 +112,7 @@ function ilove_img_compress_activate() {
 
 register_activation_hook( __FILE__, 'ilove_img_compress_activate' );
 
-new iLoveIMG_Compress_Plugin();
+new Ilove_Img_Compress_Plugin();
 
 define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );

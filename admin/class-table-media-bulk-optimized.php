@@ -11,7 +11,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
  *
  * @since 1.0.0
  */
-class iLoveIMG_Compress_Media_List_Table extends WP_List_Table {
+class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
 
     /**
 	 * Variable to track the total number of items.
@@ -63,7 +63,7 @@ class iLoveIMG_Compress_Media_List_Table extends WP_List_Table {
             case 'post_date':
                 return $item[ $column_name ];
             case 'status':
-                return iLoveIMG_Compress_Resources::get_status_of_column( $item['ID'] );
+                return Ilove_Img_Compress_Resources::get_status_of_column( $item['ID'] );
             default:
                 return print_r( $item, true ); // Show the whole array for troubleshooting purposes
         }
