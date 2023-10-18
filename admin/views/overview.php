@@ -2,13 +2,13 @@
 	<h3>Overview</h3>
 	<div>
 		<div class="iloveimg_settings__overview__statistics__column_left">
-			<?php $images_sizes = Ilove_Img_Compress_Resources::get_files_sizes(); ?>
-			<h4>Original size <strong><?php echo round( $images_sizes[0] / 1024 / 1024, 2 ); ?> MB</strong> / Optimized size <strong><?php echo round( $images_sizes[1] / 1024 / 1024, 2 ); ?> MB</strong></h4>
+			<?php $ilove_img_images_sizes = Ilove_Img_Compress_Resources::get_files_sizes(); ?>
+			<h4>Original size <strong><?php echo round( $ilove_img_images_sizes[0] / 1024 / 1024, 2 ); ?> MB</strong> / Optimized size <strong><?php echo round( $ilove_img_images_sizes[1] / 1024 / 1024, 2 ); ?> MB</strong></h4>
 			<div class="iloveimg_percent  ">
-                <div class="iloveimg_percent-total" style="width: <?php echo ( $images_sizes[0] > 0 ) ? ( 100 - ( ( $images_sizes[1] * 100 ) / $images_sizes[0] ) ) : 0; ?>%;"></div>
+                <div class="iloveimg_percent-total" style="width: <?php echo ( $ilove_img_images_sizes[0] > 0 ) ? ( 100 - ( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) ) : 0; ?>%;"></div>
             </div>
             <div class="iloveimg_saving">
-            	<p class="iloveimg_saving__number"><?php echo ( $images_sizes[0] > 0 ) ? ( 100 - round( ( $images_sizes[1] * 100 ) / $images_sizes[0] ) ) : 0; ?>%</p>
+            	<p class="iloveimg_saving__number"><?php echo ( $ilove_img_images_sizes[0] > 0 ) ? ( 100 - round( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) ) : 0; ?>%</p>
             	<p>Thats the size you saved by using iLoveIMG</p>
             </div>
 		</div>

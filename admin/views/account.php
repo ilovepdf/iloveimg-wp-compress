@@ -1,31 +1,31 @@
 <?php
-    $is_logged = false;
+    $ilove_img_is_logged = false;
 if ( get_option( 'iloveimg_account' ) ) {
-	$account = json_decode( get_option( 'iloveimg_account' ), true );
+	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
 
-	$is_logged = true;
+	$ilove_img_is_logged = true;
 	update_option( 'iloveimg_first_loggued', 1 );
-	$token    = $account['token'];
-	$response = wp_remote_get(
-        ILOVE_IMG_COMPRESS_USER_URL . '/' . $account['id'],
+	$ilove_img_token    = $ilove_img_account['token'];
+	$ilove_img_response = wp_remote_get(
+        ILOVE_IMG_COMPRESS_USER_URL . '/' . $ilove_img_account['id'],
 		array(
-			'headers' => array( 'Authorization' => 'Bearer ' . $token ),
+			'headers' => array( 'Authorization' => 'Bearer ' . $ilove_img_token ),
 		)
 	);
 
-	if ( isset( $response['response']['code'] ) && $response['response']['code'] == 200 ) {
-		$account          = json_decode( $response['body'], true );
-		$account['token'] = $token;
-		update_option( 'iloveimg_account', json_encode( $account ) );
+	if ( isset( $ilove_img_response['response']['code'] ) && $ilove_img_response['response']['code'] == 200 ) {
+		$ilove_img_account          = json_decode( $ilove_img_response['body'], true );
+		$ilove_img_account['token'] = $ilove_img_token;
+		update_option( 'iloveimg_account', json_encode( $ilove_img_account ) );
 	}
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
-		$iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
+		$ilove_img_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
 		delete_option( 'iloveimg_account_error' );
 }
-    $get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
+    $ilove_img_get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
 ?>
-    <?php if ( ! $is_logged ) : ?>
-            <?php if ( $get_section != 'register' ) : ?>
+    <?php if ( ! $ilove_img_is_logged ) : ?>
+            <?php if ( $ilove_img_get_section != 'register' ) : ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
@@ -33,7 +33,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                         <div>
-                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $iloveimg_account_error['email'] ) ? $iloveimg_account_error['email'] : ''; ?>" />
+                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? $ilove_img_account_error['email'] : ''; ?>" />
                         </div>
                         <div>
                             <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
@@ -58,10 +58,10 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <div>
                             <div style="width: 100%;">
                                 <div>
-                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required value="<?php echo isset( $iloveimg_account_error['name'] ) ? $iloveimg_account_error['name'] : ''; ?>"/>
+                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required value="<?php echo isset( $ilove_img_account_error['name'] ) ? $ilove_img_account_error['name'] : ''; ?>"/>
                                 </div>
                                 <div>
-                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $iloveimg_account_error['email'] ) ? $iloveimg_account_error['email'] : ''; ?>"/>
+                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? $ilove_img_account_error['email'] : ''; ?>"/>
                                 </div>
                                 <div>
                                     <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
@@ -89,30 +89,30 @@ if ( get_option( 'iloveimg_account' ) ) {
             <div class="iloveimg_settings__overview__account-logged__column_left">
                 <div class="iloveimg_settings__overview__account-logged__column_left__stadistics">
                     <h4 style="color: #4D90FE">Free</h4>
-                    <?php $percent = ( ( ( $account['files_used'] * 100 ) / $account['free_files_limit'] ) ); ?>
-                    <div class="iloveimg_percent <?php echo ( $percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $percent >= 90 and $percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                        <div class="iloveimg_percent-total" style="width: <?php echo $percent; ?>%;"></div>
+                    <?php $ilove_img_percent = ( ( ( $ilove_img_account['files_used'] * 100 ) / $ilove_img_account['free_files_limit'] ) ); ?>
+                    <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 and $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
+                        <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
                     </div>
-                    <p><?php echo $account['files_used']; ?>/<?php echo $account['free_files_limit']; ?> processed files this month. Free Tier.</p>
-                    <?php if ( $account['subscription_files_limit'] ) : ?>
+                    <p><?php echo $ilove_img_account['files_used']; ?>/<?php echo $ilove_img_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
+                    <?php if ( $ilove_img_account['subscription_files_limit'] ) : ?>
                         <h4>Subscription files</h4>
-                        <?php $percent = @( ( ( $account['subscription_files_used'] * 100 ) / $account['subscription_files_limit'] ) ); ?>
-                        <div class="iloveimg_percent <?php echo ( $percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $percent >= 90 and $percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo $percent; ?>%;"></div>
+                        <?php $ilove_img_percent = @( ( ( $ilove_img_account['subscription_files_used'] * 100 ) / $ilove_img_account['subscription_files_limit'] ) ); ?>
+                        <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 and $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
+                            <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo ( isset( $account['subscription_files_used'] ) ) ? $account['subscription_files_used'] : 0; ?>/<?php echo $account['subscription_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo $ilove_img_account['subscription_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
-                    <?php if ( $account['package_files_limit'] ) : ?>
+                    <?php if ( $ilove_img_account['package_files_limit'] ) : ?>
                         <h4>Package files</h4>
-                        <?php $percent = ( ( $account['package_files_used'] * 100 ) / $account['package_files_limit'] ); ?>
-                        <div class="iloveimg_percent <?php echo ( $percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $percent >= 90 and $percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo $percent; ?>%;"></div>
+                        <?php $ilove_img_percent = ( ( $ilove_img_account['package_files_used'] * 100 ) / $ilove_img_account['package_files_limit'] ); ?>
+                        <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 and $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
+                            <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo $account['package_files_used']; ?>/<?php echo $account['package_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo $ilove_img_account['package_files_used']; ?>/<?php echo $ilove_img_account['package_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
                 </div>
                 <div class="iloveimg_settings__overview__account-logged__column_left__details">
-                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo $account['free_files_limit']; ?> free file processes to use to compress or stamp your images.</p>
+                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo $ilove_img_account['free_files_limit']; ?> free file processes to use to compress or stamp your images.</p>
                     <p>To increase your file processes amount you can either open one of our <a href="https://developer.iloveimg.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional processes per month or buy a <a href="https://developer.iloveimg.com/pricing" target="_blank">single package</a> of file processes.</p>
                     <a class="button button-secondary" href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a>
                 </div>
@@ -122,8 +122,8 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <input type="hidden" name="action" value="update_compress" />
                     <input type="hidden" name="iloveimg_action" value="iloveimg_action_logout" />
                     <h3>Account</h3>
-                    <p style="margin: 0"><?php echo $account['name']; ?></p>
-                    <p style="margin-top: 0; color: #4D90FE;"><?php echo $account['email']; ?></p>
+                    <p style="margin: 0"><?php echo $ilove_img_account['name']; ?></p>
+                    <p style="margin-top: 0; color: #4D90FE;"><?php echo $ilove_img_account['email']; ?></p>
                     
                     <?php wp_nonce_field(); ?>
                     <?php submit_button( 'Logout' ); ?>
@@ -136,14 +136,14 @@ if ( get_option( 'iloveimg_account' ) ) {
                         Select your working proyect
                     </label>
                         <select name="iloveimg_field_proyect">
-                            <?php foreach ( $account['projects'] as $key => $project ) : ?>
-                                <option value="<?php echo $project['public_key']; ?>#<?php echo $project['secret_key']; ?>" 
+                            <?php foreach ( $ilove_img_account['projects'] as $ilove_img_key => $ilove_img_project ) : ?>
+                                <option value="<?php echo $ilove_img_project['public_key']; ?>#<?php echo $ilove_img_project['secret_key']; ?>" 
                                     <?php
-									if ( get_option( 'iloveimg_proyect' ) == $project['public_key'] . '#' . $project['secret_key'] ) {
+									if ( get_option( 'iloveimg_proyect' ) == $ilove_img_project['public_key'] . '#' . $ilove_img_project['secret_key'] ) {
 										echo 'selected';
 									}
                                     ?>
-                                ><?php echo $project['name']; ?></option>
+                                ><?php echo $ilove_img_project['name']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" class="button button-secondary">Save</button>

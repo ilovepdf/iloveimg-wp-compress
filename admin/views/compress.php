@@ -68,13 +68,13 @@
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
                             <ul>
-                            <?php foreach ( Ilove_Img_Compress_Resources::get_type_images() as $value ) : ?>
+                            <?php foreach ( Ilove_Img_Compress_Resources::get_type_images() as $ilove_img_sizes_value ) : ?>
 								<?php
-								$iloveimg_field_sizes = isset( $options_value['iloveimg_field_sizes'] ) ? $options_value['iloveimg_field_sizes'] : array();
+								$ilove_img_field_sizes = isset( $options_value['iloveimg_field_sizes'] ) ? $options_value['iloveimg_field_sizes'] : array();
 								?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $value['field_id']; ?>" <?php echo ( in_array( $value['field_id'], $iloveimg_field_sizes ) ) ? 'checked' : ''; ?> />
-                                    <span><?php echo $value['label']; ?></span>
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo $ilove_img_sizes_value['field_id']; ?>" <?php echo ( in_array( $ilove_img_sizes_value['field_id'], $ilove_img_field_sizes ) ) ? 'checked' : ''; ?> />
+                                    <span><?php echo $ilove_img_sizes_value['label']; ?></span>
                                 </li>
                             <?php endforeach; ?>
                             </ul>
