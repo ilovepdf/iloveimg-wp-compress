@@ -18,7 +18,7 @@ class iLoveIMG_Compress_Submenu_Page {
 	/**
      * Render submenu parent.
      */
-    public function renderParent() {
+    public function render_parent() {
     }
 
 	/**
@@ -29,7 +29,7 @@ class iLoveIMG_Compress_Submenu_Page {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function renderCompress() {
+	public function render_compress() {
         $options_value = unserialize( get_option( 'iloveimg_options_compress' ) );
         require_once 'views/compress.php';
 	}
@@ -42,7 +42,7 @@ class iLoveIMG_Compress_Submenu_Page {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function renderWatermark() {
+	public function render_watermark() {
 		if ( ! is_plugin_active( 'iloveimg-watermark/iloveimgwatermark.php' ) ) {
         	require_once 'views/watermark.php';
     	}
@@ -56,7 +56,7 @@ class iLoveIMG_Compress_Submenu_Page {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function renderMediaOptimization() {
+	public function render_media_optimization() {
 		$options_value = unserialize( get_option( 'iloveimg_options_compress' ) );
 		require_once 'views/media_bulk.php';
 	}

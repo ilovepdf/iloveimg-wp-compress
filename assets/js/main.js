@@ -17,7 +17,7 @@
 				url: ajaxurl,
 				type: 'POST',
 				data: {
-					action: 'iLoveIMG_Compress_library',
+					action: 'ilove_img_compress_library',
 					id: element.data( 'id' ) || element.attr( 'data-id' )
 				},
 				success: function (data) {
@@ -41,7 +41,7 @@
 				url: ajaxurl,
 				type: 'POST',
 				data: {
-					action: 'iLoveIMG_Compress_library_is_compressed',
+					action: 'ilove_img_compress_library_is_compressed',
 					id: element.data( 'id' ) || element.attr( 'data-id' )
 				},
 				success: function (data) {

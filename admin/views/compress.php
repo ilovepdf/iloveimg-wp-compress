@@ -6,8 +6,8 @@
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php /*if(!$isLogged and !get_option('iloveimg_first_loggued')):*/ ?>
-    <?php if ( ! $isLogged ) : ?>    
+    <?php /*if(!$is_logged and !get_option('iloveimg_first_loggued')):*/ ?>
+    <?php if ( ! $is_logged ) : ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
@@ -36,7 +36,7 @@
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_compress" />
                 <p class="submit">
-                    <button <?php echo ( ! $isLogged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>
@@ -68,7 +68,7 @@
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p>All uploaded images to media create alternative size versions. Select here which image versions you want to compress.</p>
                             <ul>
-                            <?php foreach ( iLoveIMG_Compress_Resources::getTypeImages() as $value ) : ?>
+                            <?php foreach ( iLoveIMG_Compress_Resources::get_type_images() as $value ) : ?>
 								<?php
 								$iloveimg_field_sizes = isset( $options_value['iloveimg_field_sizes'] ) ? $options_value['iloveimg_field_sizes'] : array();
 								?>
@@ -110,7 +110,7 @@
 
                 ?>
                 <p class="submit">
-                    <button <?php echo ( ! $isLogged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>

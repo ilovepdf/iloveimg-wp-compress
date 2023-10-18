@@ -43,7 +43,7 @@ class iLoveIMG_Compress_Submenu {
 			'iLoveIMG',
 			'manage_options',
 			'iloveimg-admin-page',
-			array( $this->submenu_page, 'renderParent' ),
+			array( $this->submenu_page, 'render_parent' ),
 			'https://www.iloveimg.com/img/favicons-img/favicon-16x16.png'
 		);
 
@@ -55,7 +55,7 @@ class iLoveIMG_Compress_Submenu {
 			'iloveimg-compress-admin-page',
 			array(
 				$this->submenu_page,
-				'renderCompress',
+				'render_compress',
 			)
 		);
 
@@ -67,7 +67,7 @@ class iLoveIMG_Compress_Submenu {
 			'iloveimg-watermark-admin-page',
 			array(
 				$this->submenu_page,
-				'renderWatermark',
+				'render_watermark',
 			)
 		);
 
@@ -78,7 +78,7 @@ class iLoveIMG_Compress_Submenu {
 			'iloveimg-media-page',
 			array(
 				$this->submenu_page,
-				'renderMediaOptimization',
+				'render_media_optimization',
 			)
 		);
 		remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-admin-page' );

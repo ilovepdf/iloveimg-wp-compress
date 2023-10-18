@@ -1,9 +1,9 @@
 <?php
-    $isLogged = false;
+    $is_logged = false;
 if ( get_option( 'iloveimg_account' ) ) {
 	$account = json_decode( get_option( 'iloveimg_account' ), true );
 
-	$isLogged = true;
+	$is_logged = true;
 	update_option( 'iloveimg_first_loggued', 1 );
 	$token    = $account['token'];
 	$response = wp_remote_get(
@@ -24,7 +24,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 }
     $get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
 ?>
-    <?php if ( ! $isLogged ) : ?>
+    <?php if ( ! $is_logged ) : ?>
             <?php if ( $get_section != 'register' ) : ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
                     <div class="iloveimg_settings__overview__account__picture"></div>

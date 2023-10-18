@@ -36,7 +36,7 @@ require_once 'admin/class-submenu-page.php';
 require_once 'admin/class-submenu.php';
 require_once 'admin/class-table-media-bulk-optimized.php';
 
-add_action( 'plugins_loaded', 'iLoveIMG_Compress_custom_admin_settings' );
+add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
 
 /**
  * Initialize custom admin settings for the iLoveIMG Compress plugin.
@@ -46,7 +46,7 @@ add_action( 'plugins_loaded', 'iLoveIMG_Compress_custom_admin_settings' );
  *
  * @since 1.0.0
  */
-function iLoveIMG_Compress_custom_admin_settings() {
+function ilove_img_compress_custom_admin_settings() {
 
     $serializer = new iLoveIMG_Compress_Serializer();
     $serializer->init();
@@ -67,7 +67,7 @@ function iLoveIMG_Compress_custom_admin_settings() {
  *
  * @return array An updated array of plugin links with added settings and bulk optimization links.
  */
-function iLoveIMG_Compress_add_plugin_page_settings_link( $links ) {
+function ilove_img_compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
 		'">' . __( 'Settings' ) . '</a>';
@@ -76,7 +76,7 @@ function iLoveIMG_Compress_add_plugin_page_settings_link( $links ) {
         '">' . __( 'Bulk Optimization' ) . '</a>';
 	return $links;
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Compress_add_plugin_page_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_compress_add_plugin_page_settings_link' );
 
 /**
  * Activation function for the iLoveIMG Compress plugin.
@@ -86,7 +86,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Comp
  *
  * @since 1.0.0
  */
-function iLoveIMG_Compress_activate() {
+function ilove_img_compress_activate() {
     add_option( 'iLoveIMG_Compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
     if ( ! get_option( 'iloveimg_options_compress' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
@@ -110,7 +110,7 @@ function iLoveIMG_Compress_activate() {
     }
 }
 
-register_activation_hook( __FILE__, 'iLoveIMG_Compress_activate' );
+register_activation_hook( __FILE__, 'ilove_img_compress_activate' );
 
 new iLoveIMG_Compress_Plugin();
 
