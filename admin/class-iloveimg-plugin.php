@@ -305,7 +305,7 @@ class iLoveIMG_Compress_Plugin {
             if ( ! array_key_exists( 'error', $account ) ) {
                 $token    = $account['token'];
                 $response = wp_remote_get(
-                    iLoveIMG_Compress_USER_URL . '/' . $account['id'],
+                    ILOVE_IMG_COMPRESS_USER_URL . '/' . $account['id'],
                     array(
                         'headers' => array( 'Authorization' => 'Bearer ' . $token ),
                     )

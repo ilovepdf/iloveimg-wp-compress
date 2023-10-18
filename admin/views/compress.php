@@ -1,5 +1,5 @@
 <div class="wrap iloveimg_settings">
-    <h1><img src="<?php echo iLoveIMG_Compress_Plugin_URL; ?>assets/images/logo.svg" class="logo" /></h1>
+    <h1><img src="<?php echo ILOVE_IMG_COMPRESS_PLUGIN_URL; ?>assets/images/logo.svg" class="logo" /></h1>
     
      
     <div class="iloveimg_settings__overview">

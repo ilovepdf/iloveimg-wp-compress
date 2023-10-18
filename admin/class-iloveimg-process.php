@@ -64,7 +64,7 @@ class iLoveIMG_Compress_Process {
 
             $imageWatermarkProcessing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_watermark' AND meta_value = 1 AND post_id =  " . $imagesID );
 
-            if ( $filesProcessing < iLoveIMG_Compress_NUM_MAX_FILES and $imageWatermarkProcessing == 0 ) {
+            if ( $filesProcessing < ILOVE_IMG_COMPRESS_NUM_MAX_FILES and $imageWatermarkProcessing == 0 ) {
                 update_post_meta( $imagesID, 'iloveimg_status_compress', 1 ); // status compressing
 
                 $_sizes = get_intermediate_image_sizes();

@@ -10,7 +10,7 @@ $testListTable->prepare_items();
 
 ?>
 <div class="wrap iloveimg_settings">
-	<img src="<?php echo iLoveIMG_Compress_Plugin_URL; ?>assets/images/logo.svg" class="logo" />
+	<img src="<?php echo ILOVE_IMG_COMPRESS_PLUGIN_URL; ?>assets/images/logo.svg" class="logo" />
 	<div class="iloveimg_settings__overview">
         <?php require_once 'overview.php'; ?>
         <?php if ( $testListTable->total_items ) : ?>

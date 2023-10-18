@@ -87,7 +87,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'iLoveIMG_Comp
  * @since 1.0.0
  */
 function iLoveIMG_Compress_activate() {
-    add_option( 'iLoveIMG_Compress_db_version', iLoveIMG_Compress_COMPRESS_DB_VERSION );
+    add_option( 'iLoveIMG_Compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
     if ( ! get_option( 'iloveimg_options_compress' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
         if ( ! extension_loaded( 'gd' ) ) {
@@ -114,11 +114,11 @@ register_activation_hook( __FILE__, 'iLoveIMG_Compress_activate' );
 
 new iLoveIMG_Compress_Plugin();
 
-define( 'iLoveIMG_Compress_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'iLoveIMG_Compress_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'iLoveIMG_Compress_USER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'iLoveIMG_Compress_NUM_MAX_FILES', 2 );
-define( 'iLoveIMG_Compress_COMPRESS_DB_VERSION', '1.0' );
-define( 'iLoveIMG_Compress_Plugin_URL', plugin_dir_url( __FILE__ ) );
+define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
+define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.0' );
+define( 'ILOVE_IMG_COMPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 set_time_limit( 300 );

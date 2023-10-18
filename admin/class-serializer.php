@@ -50,7 +50,7 @@ class iLoveIMG_Compress_Serializer {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
-                    iLoveIMG_Compress_LOGIN_URL,
+                    ILOVE_IMG_COMPRESS_LOGIN_URL,
                     array(
                         'body' => array(
                             'email'        => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ),
@@ -83,7 +83,7 @@ class iLoveIMG_Compress_Serializer {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
-                    iLoveIMG_Compress_REGISTER_URL,
+                    ILOVE_IMG_COMPRESS_REGISTER_URL,
                     array(
                         'body' => array(
                             'name'         => sanitize_text_field( wp_unslash( $_POST['iloveimg_field_name'] ) ),
