@@ -1,13 +1,11 @@
 <div class="wrap iloveimg_settings">
     <h1><img src="<?php echo ILOVE_IMG_COMPRESS_PLUGIN_URL; ?>assets/images/logo.svg" class="logo" /></h1>
     
-     
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php /*if(!$is_logged and !get_option('iloveimg_first_loggued')):*/ ?>
-    <?php if ( ! $is_logged ) : ?>    
+    <?php if ( ! $ilove_img_is_logged ) : ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
@@ -36,7 +34,7 @@
             <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_compress" />
                 <p class="submit">
-                    <button <?php echo ( ! $is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $ilove_img_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>
@@ -103,14 +101,12 @@
                     </div>      
                 </div>
                 
-
-
                 <?php
                 wp_nonce_field();
 
                 ?>
                 <p class="submit">
-                    <button <?php echo ( ! $is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
+                    <button <?php echo ( ! $ilove_img_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
                         Save Changes
                         <span class="tooltiptext">Register and login with us to save settings changes</span>
                     </button>

@@ -6,8 +6,7 @@
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php /*if(!$is_logged and !get_option('iloveimg_first_loggued')):*/ ?>
-    <?php if ( ! $is_logged ) : ?>    
+    <?php if ( ! $ilove_img_is_logged ) : ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
