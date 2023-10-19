@@ -7,10 +7,10 @@
  *
  * @since 1.0.0
  */
-class Ilove_Img_Library_init {
+class Ilove_Img_Library_Init {
 
 	/**
-     * Constructs an instance of the Ilove_Img_Library_init class.
+     * Constructs an instance of the Ilove_Img_Library_Init class.
      */
 	public function __construct() {
 		require_once dirname( __DIR__ ) . '/iloveimg-php/init.php';

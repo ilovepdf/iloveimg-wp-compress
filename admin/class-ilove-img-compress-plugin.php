@@ -69,9 +69,9 @@ class Ilove_Img_Compress_Plugin {
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
 
         // Check if the iLoveIMG library class exists, and initialize it if not.
-        if ( ! class_exists( 'Ilove_Img_Library_init' ) ) {
+        if ( ! class_exists( 'Ilove_Img_Library_Init' ) ) {
             require_once 'class-ilove-img-library-init.php';
-            new Ilove_Img_Library_init();
+            new Ilove_Img_Library_Init();
         }
 
         // Display admin notices.
