@@ -29,7 +29,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @since 1.0.0
      */
-    function __construct() {
+    public function __construct() {
         global $status, $page;
 
         // Set parent defaults
@@ -54,7 +54,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @return string              The HTML content to display in the specified column.
      */
-    function column_default( $item, $column_name ) {
+    protected function column_default( $item, $column_name ) {
         switch ( $column_name ) {
             case 'file':
                 return "<a href='" . admin_url( 'post.php?post=' . $item['ID'] . '&action=edit' ) . "'>" . wp_get_attachment_image( $item['ID'] ) . $item['post_title'] . '</a>';
@@ -80,7 +80,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @return string The HTML content for the checkbox column.
      */
-    function column_cb( $item ) {
+    protected function column_cb( $item ) {
         return sprintf(
             '<input type="checkbox" name="%1$s[]" value="%2$s" />',
             /*$1%s*/ $this->_args['singular'],  // Let's simply repurpose the table's singular label ("movie")
@@ -95,7 +95,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @return array An associative array of column names and their corresponding labels.
      */
-    function get_columns() {
+    public function get_columns() {
         $columns = array(
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
             'file'        => 'File',
@@ -113,7 +113,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @return array An associative array of sortable column names and their sorting options.
      */
-    function get_sortable_columns() {
+    protected function get_sortable_columns() {
         $sortable_columns = array(
             'file'        => array( 'file', false ),     // true means it's already sorted
             'post_author' => array( 'post_author', false ),
@@ -129,7 +129,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @return array An associative array of bulk action names and their labels.
      */
-    function get_bulk_actions() {
+    protected function get_bulk_actions() {
         $actions = array(
             'delete' => 'Delete',
         );
@@ -143,7 +143,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @since 1.0.0
      */
-    function process_bulk_action() {
+    public function process_bulk_action() {
 
         // Detect when a bulk action is being triggered...
         if ( 'delete' === $this->current_action() ) {
@@ -158,7 +158,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      *
      * @since 1.0.0
      */
-    function prepare_items() {
+    public function prepare_items() {
         global $wpdb; // This is used only if making any database queries
 
         /**
