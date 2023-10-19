@@ -70,7 +70,7 @@ class Ilove_Img_Compress_Plugin {
 
         // Check if the iLoveIMG library class exists, and initialize it if not.
         if ( ! class_exists( 'Ilove_Img_Library_init' ) ) {
-            require_once 'class-iloveimg-library-init.php';
+            require_once 'class-ilove-img-library-init.php';
             new Ilove_Img_Library_init();
         }
 

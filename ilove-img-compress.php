@@ -28,13 +28,13 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-require_once 'admin/class-iloveimg-plugin.php';
-require_once 'admin/class-iloveimg-process.php';
-require_once 'admin/class-resources.php';
-require_once 'admin/class-serializer.php';
-require_once 'admin/class-submenu-page.php';
-require_once 'admin/class-submenu.php';
-require_once 'admin/class-table-media-bulk-optimized.php';
+require_once 'admin/class-ilove-img-compress-plugin.php';
+require_once 'admin/class-ilove-img-compress-process.php';
+require_once 'admin/class-ilove-img-compress-resources.php';
+require_once 'admin/class-ilove-img-compress-serializer.php';
+require_once 'admin/class-ilove-img-compress-submenu-page.php';
+require_once 'admin/class-ilove-img-compress-submenu.php';
+require_once 'admin/class-ilove-img-compress-media-list-table.php';
 
 add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
 
