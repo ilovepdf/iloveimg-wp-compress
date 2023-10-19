@@ -42,7 +42,7 @@ class Ilove_Img_Compress_Resources {
             $sizes[] = array(
                 'field_id' => $_size,
                 'type'     => 'checkbox',
-                'label'    => $_size . ' (' . ( ( $width == '0' ) ? '?' : $width ) . 'x' . ( ( $height == '0' ) ? '?' : $height ) . ')',
+                'label'    => $_size . ' (' . ( ( '0' == $width ) ? '?' : $width ) . 'x' . ( ( '0' == $height ) ? '?' : $height ) . ')',
                 'default'  => true,
             );
 
@@ -255,9 +255,9 @@ class Ilove_Img_Compress_Resources {
                     <?php if ( self::is_loggued() ) : ?>
                         <!-- <p><?php echo self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( $status_compress === 1 || $status_compress === 3 ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( $status_compress === 1 || $status_compress === 3 ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
-                            <?php if ( $status_compress === 3 ) : ?>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
+                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <?php if ( 3 === $status_compress ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
@@ -270,7 +270,7 @@ class Ilove_Img_Compress_Resources {
                         <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
 						<?php
                     endif;
-                    if ( $status_compress === 1 || $status_compress === 3 ) :
+                    if ( 1 === $status_compress || 3 === $status_compress ) :
 						?>
                         <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $column_id; ?>"></div>
 						<?php

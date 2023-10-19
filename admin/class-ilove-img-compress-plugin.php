@@ -124,7 +124,7 @@ class Ilove_Img_Compress_Plugin {
             $ilove         = new Ilove_Img_Compress_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->compress( $attachment_id );
-            if ( $images !== false ) {
+            if ( false !== $images ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
                 ?>
@@ -165,11 +165,11 @@ class Ilove_Img_Compress_Plugin {
             $status_compress = get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
 
             $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $attachment_id );
-            if ( ( (int) $status_compress === 1 || (int) $status_compress === 3 ) ) {
+            if ( ( 1 === (int) $status_compress || 3 === (int) $status_compress ) ) {
                 http_response_code( 500 );
-            } elseif ( (int) $status_compress === 2 ) {
+            } elseif ( 2 === (int) $status_compress ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
-            } elseif ( (int) $status_compress === 0 && ! $status_compress ) {
+            } elseif ( 0 === (int) $status_compress && ! $status_compress ) {
                 echo 'Try again or buy more files';
             }
         }
@@ -208,7 +208,7 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function column_id_row( $column_name, $column_id ) {
-        if ( $column_name == 'iloveimg_status_compress' ) {
+        if ( 'iloveimg_status_compress' == $column_name ) {
             Ilove_Img_Compress_Resources::get_status_of_column( $column_id );
         }
     }
@@ -280,18 +280,18 @@ class Ilove_Img_Compress_Plugin {
 
         if ( get_option( 'iloveimg_account_error' ) ) {
                 $iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
-            if ( $iloveimg_account_error['action'] == 'login' ) :
+            if ( 'login' == $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
                     <p>Your email or password is wrong.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( $iloveimg_account_error['action'] == 'register' ) : ?>
+            <?php if ( 'register' == $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>This email address has already been taken.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( $iloveimg_account_error['action'] == 'register_limit' ) : ?>
+            <?php if ( 'register_limit' == $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.</p>
                 </div>
@@ -311,7 +311,7 @@ class Ilove_Img_Compress_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && $response['response']['code'] == 200 ) {
+                if ( isset( $response['response']['code'] ) && 200 == $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
                     if ( $account['files_used'] >= $account['free_files_limit'] and $account['package_files_used'] >= $account['package_files_limit'] and @$account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
                         ?>
@@ -345,7 +345,7 @@ class Ilove_Img_Compress_Plugin {
 
         $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
 
-        if ( (int) $status_compress === 2 ) {
+        if ( 2 === (int) $status_compress ) {
             Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
         } else {
             Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );

@@ -13,7 +13,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_response['response']['code'] ) && $ilove_img_response['response']['code'] == 200 ) {
+	if ( isset( $ilove_img_response['response']['code'] ) && 200 == $ilove_img_response['response']['code'] ) {
 		$ilove_img_account          = json_decode( $ilove_img_response['body'], true );
 		$ilove_img_account['token'] = $ilove_img_token;
 		update_option( 'iloveimg_account', json_encode( $ilove_img_account ) );
@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
     $ilove_img_get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
 ?>
     <?php if ( ! $ilove_img_is_logged ) : ?>
-            <?php if ( $ilove_img_get_section != 'register' ) : ?>
+            <?php if ( 'register' != $ilove_img_get_section ) : ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">

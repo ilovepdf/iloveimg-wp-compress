@@ -25,7 +25,7 @@ class Ilove_Img_Compress_Serializer {
 
         if ( isset( $_POST['iloveimg_action'] ) and $this->has_valid_nonce() ) {
 
-            if ( $_POST['iloveimg_action'] == 'iloveimg_action_options_compress' ) {
+            if ( 'iloveimg_action_options_compress' == $_POST['iloveimg_action'] ) {
                 $posts_value = array();
                 foreach ( $_POST as $key => $post_value ) {
                     if ( strpos( $key, 'iloveimg_field_' ) === 0 ) {
@@ -35,7 +35,7 @@ class Ilove_Img_Compress_Serializer {
                 update_option( 'iloveimg_options_compress', serialize( $posts_value ) );
             }
 
-            if ( $_POST['iloveimg_action'] == 'iloveimg_action_logout' ) {
+            if ( 'iloveimg_action_logout' == $_POST['iloveimg_action'] ) {
                 delete_option( 'iloveimg_account' );
                 delete_option( 'iloveimg_proyect' );
                 $options = unserialize( get_option( 'iloveimg_options_compress' ) );
@@ -45,7 +45,7 @@ class Ilove_Img_Compress_Serializer {
                 update_option( 'iloveimg_options_compress', serialize( $options ) );
             }
 
-            if ( $_POST['iloveimg_action'] == 'iloveimg_action_login' ) {
+            if ( 'iloveimg_action_login' == $_POST['iloveimg_action'] ) {
                 if ( ! isset( $_POST['iloveimg_field_email'] ) and ! isset( $_POST['iloveimg_field_password'] ) ) {
                     $this->redirect();
                 }
@@ -78,7 +78,7 @@ class Ilove_Img_Compress_Serializer {
                 }
             }
 
-            if ( $_POST['iloveimg_action'] == 'iloveimg_action_register' ) {
+            if ( 'iloveimg_action_register' == $_POST['iloveimg_action'] ) {
                 if ( ! isset( $_POST['iloveimg_field_name'] ) and ! isset( $_POST['iloveimg_field_email'] ) and ! isset( $_POST['iloveimg_field_password'] ) ) {
                     $this->redirect();
                 }
@@ -126,7 +126,7 @@ class Ilove_Img_Compress_Serializer {
                 }
             }
 
-            if ( $_POST['iloveimg_action'] == 'iloveimg_action_proyect' ) {
+            if ( 'iloveimg_action_proyect' == $_POST['iloveimg_action'] ) {
                 if ( ! isset( $_POST['iloveimg_field_proyect'] ) ) {
                     $this->redirect();
                 }
