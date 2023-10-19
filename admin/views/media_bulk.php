@@ -1,6 +1,8 @@
 <?php
 /**
  * Media Bulk View.
+ *
+ * @package iloveimgcompress
  */
 
 // Create an instance of our package class...

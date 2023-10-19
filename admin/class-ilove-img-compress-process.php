@@ -126,11 +126,8 @@ class Ilove_Img_Compress_Process {
                 sleep( 2 );
                 return $this->compress( $images_id );
             }
-
-            // print_r($images_id);
-        } catch ( Exception $e ) {
+		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
-            // echo $e->getCode();
             return false;
         }
         return false;

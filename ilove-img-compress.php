@@ -97,8 +97,6 @@ function ilove_img_compress_activate() {
             'iloveimg_options_compress',
             serialize(
                 array(
-					// 'iloveimg_field_compress_activated' => 0,
-					// 'iloveimg_field_autocompress' => 1,
 					'iloveimg_field_sizes'            => $iloveimg_thumbnails,
 					'iloveimg_field_resize_full'      => 0,
 					'iloveimg_field_size_full_width'  => 2048,
