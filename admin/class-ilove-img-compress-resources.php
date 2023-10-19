@@ -42,7 +42,7 @@ class Ilove_Img_Compress_Resources {
             $sizes[] = array(
                 'field_id' => $_size,
                 'type'     => 'checkbox',
-                'label'    => $_size . ' (' . ( ( '0' == $width ) ? '?' : $width ) . 'x' . ( ( '0' == $height ) ? '?' : $height ) . ')',
+                'label'    => $_size . ' (' . ( ( 0 === (int) $width ) ? '?' : $width ) . 'x' . ( ( 0 === (int) $height ) ? '?' : $height ) . ')',
                 'default'  => true,
             );
 

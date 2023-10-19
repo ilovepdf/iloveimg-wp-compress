@@ -13,7 +13,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		)
 	);
 
-	if ( isset( $ilove_img_response['response']['code'] ) && 200 == $ilove_img_response['response']['code'] ) {
+	if ( isset( $ilove_img_response['response']['code'] ) && 200 === (int) $ilove_img_response['response']['code'] ) {
 		$ilove_img_account          = json_decode( $ilove_img_response['body'], true );
 		$ilove_img_account['token'] = $ilove_img_token;
 		update_option( 'iloveimg_account', json_encode( $ilove_img_account ) );
@@ -139,7 +139,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                             <?php foreach ( $ilove_img_account['projects'] as $ilove_img_key => $ilove_img_project ) : ?>
                                 <option value="<?php echo $ilove_img_project['public_key']; ?>#<?php echo $ilove_img_project['secret_key']; ?>" 
                                     <?php
-									if ( get_option( 'iloveimg_proyect' ) == $ilove_img_project['public_key'] . '#' . $ilove_img_project['secret_key'] ) {
+									if ( get_option( 'iloveimg_proyect' ) === $ilove_img_project['public_key'] . '#' . $ilove_img_project['secret_key'] ) {
 										echo 'selected';
 									}
                                     ?>

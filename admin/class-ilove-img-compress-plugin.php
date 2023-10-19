@@ -208,7 +208,7 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function column_id_row( $column_name, $column_id ) {
-        if ( 'iloveimg_status_compress' == $column_name ) {
+        if ( 'iloveimg_status_compress' === $column_name ) {
             Ilove_Img_Compress_Resources::get_status_of_column( $column_id );
         }
     }
@@ -256,7 +256,7 @@ class Ilove_Img_Compress_Plugin {
 				'id'     => $attachment_id,
 			),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
-            'sslverify' => apply_filters( 'https_local_ssl_verify', false ),// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+            'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
         );
         wp_remote_post( admin_url( 'admin-ajax.php' ), $args );
     }
@@ -280,18 +280,18 @@ class Ilove_Img_Compress_Plugin {
 
         if ( get_option( 'iloveimg_account_error' ) ) {
                 $iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
-            if ( 'login' == $iloveimg_account_error['action'] ) :
+            if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
                     <p>Your email or password is wrong.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( 'register' == $iloveimg_account_error['action'] ) : ?>
+            <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>This email address has already been taken.</p>
                 </div>
             <?php endif; ?>
-            <?php if ( 'register_limit' == $iloveimg_account_error['action'] ) : ?>
+            <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
                     <p>You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.</p>
                 </div>
@@ -311,9 +311,10 @@ class Ilove_Img_Compress_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && 200 == $response['response']['code'] ) {
+                if ( isset( $response['response']['code'] ) && 200 === (int) $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
-                    if ( $account['files_used'] >= $account['free_files_limit'] && $account['package_files_used'] >= $account['package_files_limit'] && @$account['subscription_files_used'] >= $account['subscription_files_limit'] ) {
+
+                    if ( (int) $account['files_used'] >= (int) $account['free_files_limit'] && (int) $account['package_files_used'] >= (int) $account['package_files_limit'] && (int) @$account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
                             <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
