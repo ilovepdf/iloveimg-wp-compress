@@ -23,7 +23,7 @@ class Ilove_Img_Compress_Serializer {
             die();
         }
 
-        if ( isset( $_POST['iloveimg_action'] ) and $this->has_valid_nonce() ) {
+        if ( isset( $_POST['iloveimg_action'] ) && $this->has_valid_nonce() ) {
 
             if ( 'iloveimg_action_options_compress' == $_POST['iloveimg_action'] ) {
                 $posts_value = array();
@@ -46,7 +46,7 @@ class Ilove_Img_Compress_Serializer {
             }
 
             if ( 'iloveimg_action_login' == $_POST['iloveimg_action'] ) {
-                if ( ! isset( $_POST['iloveimg_field_email'] ) and ! isset( $_POST['iloveimg_field_password'] ) ) {
+                if ( ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
@@ -79,7 +79,7 @@ class Ilove_Img_Compress_Serializer {
             }
 
             if ( 'iloveimg_action_register' == $_POST['iloveimg_action'] ) {
-                if ( ! isset( $_POST['iloveimg_field_name'] ) and ! isset( $_POST['iloveimg_field_email'] ) and ! isset( $_POST['iloveimg_field_password'] ) ) {
+                if ( ! isset( $_POST['iloveimg_field_name'] ) && ! isset( $_POST['iloveimg_field_email'] ) && ! isset( $_POST['iloveimg_field_password'] ) ) {
                     $this->redirect();
                 }
                 $response = wp_remote_post(
