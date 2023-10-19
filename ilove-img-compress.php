@@ -70,10 +70,10 @@ function ilove_img_compress_custom_admin_settings() {
 function ilove_img_compress_add_plugin_page_settings_link( $links ) {
 	$links[] = '<a href="' .
 		admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
-		'">' . __( 'Settings' ) . '</a>';
+		'">' . __( 'Settings', 'iloveimg' ) . '</a>';
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . __( 'Bulk Optimization' ) . '</a>';
+        '">' . __( 'Bulk Optimization', 'iloveimg' ) . '</a>';
 	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_compress_add_plugin_page_settings_link' );

@@ -192,7 +192,7 @@ class Ilove_Img_Compress_Plugin {
         if ( (int) Ilove_Img_Compress_Resources::is_activated() === 0 ) {
             return $columns;
         }
-        $columns['iloveimg_status_compress'] = __( 'Status Compress' );
+        $columns['iloveimg_status_compress'] = __( 'Status Compress', 'iloveimg' );
         return $columns;
     }
 
