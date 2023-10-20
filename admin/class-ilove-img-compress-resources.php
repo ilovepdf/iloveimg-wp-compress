@@ -62,7 +62,8 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function get_saving( $images ) {
-        $initial = $compressed = 0;
+        $initial    = 0;
+        $compressed = 0;
         foreach ( $images as $image ) {
             if ( ! is_null( $image['compressed'] ) ) {
                 $initial    += $image['initial'];
