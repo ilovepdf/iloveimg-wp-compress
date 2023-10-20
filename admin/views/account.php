@@ -22,7 +22,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		$ilove_img_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
 		delete_option( 'iloveimg_account_error' );
 }
-    $ilove_img_get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
+    $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
 ?>
     <?php if ( ! $ilove_img_is_logged ) : ?>
             <?php if ( 'register' !== $ilove_img_get_section ) : ?>
@@ -33,7 +33,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <h3>Login to your account</h3>
                         <input type="hidden" name="iloveimg_action" value="iloveimg_action_login" />
                         <div>
-                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? $ilove_img_account_error['email'] : ''; ?>" />
+                            <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? esc_html( $ilove_img_account_error['email'] ) : ''; ?>" />
                         </div>
                         <div>
                             <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
@@ -44,7 +44,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         submit_button( 'Login' );
                         ?>
                         <div>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page&section=register' ); ?>">Register as iLovePDF developer</a>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page&section=register' ) ); ?>">Register as iLovePDF developer</a>
                         </div>
                     </form>
                 </div>
@@ -58,10 +58,10 @@ if ( get_option( 'iloveimg_account' ) ) {
                         <div>
                             <div style="width: 100%;">
                                 <div>
-                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required value="<?php echo isset( $ilove_img_account_error['name'] ) ? $ilove_img_account_error['name'] : ''; ?>"/>
+                                    <input type="text" class="iloveimg_field_name" name="iloveimg_field_name" placeholder="Name" required value="<?php echo isset( $ilove_img_account_error['name'] ) ? esc_html( $ilove_img_account_error['name'] ) : ''; ?>"/>
                                 </div>
                                 <div>
-                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? $ilove_img_account_error['email'] : ''; ?>"/>
+                                    <input type="email" class="iloveimg_field_email" name="iloveimg_field_email" placeholder="Email" required value="<?php echo isset( $ilove_img_account_error['email'] ) ? esc_html( $ilove_img_account_error['email'] ) : ''; ?>"/>
                                 </div>
                                 <div>
                                     <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
@@ -79,7 +79,7 @@ if ( get_option( 'iloveimg_account' ) ) {
                         submit_button( 'Register' );
                         ?>
                         <div>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>">Login to your account</a>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>">Login to your account</a>
                         </div>
                     </form>
                 </div>
@@ -91,28 +91,28 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <h4 style="color: #4D90FE">Free</h4>
                     <?php $ilove_img_percent = ( ( ( $ilove_img_account['files_used'] * 100 ) / $ilove_img_account['free_files_limit'] ) ); ?>
                     <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                        <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
+                        <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
                     </div>
-                    <p><?php echo $ilove_img_account['files_used']; ?>/<?php echo $ilove_img_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
+                    <p><?php echo (int) $ilove_img_account['files_used']; ?>/<?php echo (int) $ilove_img_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
                     <?php if ( $ilove_img_account['subscription_files_limit'] ) : ?>
                         <h4>Subscription files</h4>
                         <?php $ilove_img_percent = @( ( ( $ilove_img_account['subscription_files_used'] * 100 ) / $ilove_img_account['subscription_files_limit'] ) ); ?>
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
+                            <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo $ilove_img_account['subscription_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? (int) $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo (int) $ilove_img_account['subscription_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
                     <?php if ( $ilove_img_account['package_files_limit'] ) : ?>
                         <h4>Package files</h4>
                         <?php $ilove_img_percent = ( ( $ilove_img_account['package_files_used'] * 100 ) / $ilove_img_account['package_files_limit'] ); ?>
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo $ilove_img_percent; ?>%;"></div>
+                            <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo $ilove_img_account['package_files_used']; ?>/<?php echo $ilove_img_account['package_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo (int) $ilove_img_account['package_files_used']; ?>/<?php echo (int) $ilove_img_account['package_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
                 </div>
                 <div class="iloveimg_settings__overview__account-logged__column_left__details">
-                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo $ilove_img_account['free_files_limit']; ?> free file processes to use to compress or stamp your images.</p>
+                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo (int) $ilove_img_account['free_files_limit']; ?> free file processes to use to compress or stamp your images.</p>
                     <p>To increase your file processes amount you can either open one of our <a href="https://developer.iloveimg.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional processes per month or buy a <a href="https://developer.iloveimg.com/pricing" target="_blank">single package</a> of file processes.</p>
                     <a class="button button-secondary" href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a>
                 </div>
@@ -122,8 +122,8 @@ if ( get_option( 'iloveimg_account' ) ) {
                     <input type="hidden" name="action" value="update_compress" />
                     <input type="hidden" name="iloveimg_action" value="iloveimg_action_logout" />
                     <h3>Account</h3>
-                    <p style="margin: 0"><?php echo $ilove_img_account['name']; ?></p>
-                    <p style="margin-top: 0; color: #4D90FE;"><?php echo $ilove_img_account['email']; ?></p>
+                    <p style="margin: 0"><?php echo esc_html( $ilove_img_account['name'] ); ?></p>
+                    <p style="margin-top: 0; color: #4D90FE;"><?php echo esc_html( $ilove_img_account['email'] ); ?></p>
                     
                     <?php wp_nonce_field(); ?>
                     <?php submit_button( 'Logout' ); ?>
@@ -137,13 +137,13 @@ if ( get_option( 'iloveimg_account' ) ) {
                     </label>
                         <select name="iloveimg_field_proyect">
                             <?php foreach ( $ilove_img_account['projects'] as $ilove_img_key => $ilove_img_project ) : ?>
-                                <option value="<?php echo $ilove_img_project['public_key']; ?>#<?php echo $ilove_img_project['secret_key']; ?>" 
+                                <option value="<?php echo esc_attr( $ilove_img_project['public_key'] ); ?>#<?php echo esc_attr( $ilove_img_project['secret_key'] ); ?>" 
                                     <?php
 									if ( get_option( 'iloveimg_proyect' ) === $ilove_img_project['public_key'] . '#' . $ilove_img_project['secret_key'] ) {
 										echo 'selected';
 									}
                                     ?>
-                                ><?php echo $ilove_img_project['name']; ?></option>
+                                ><?php echo esc_html( $ilove_img_project['name'] ); ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" class="button button-secondary">Save</button>

@@ -187,7 +187,7 @@ class Ilove_Img_Compress_Resources {
         $images_compressed = self::get_sizes_compressed( $image_id );
 
         ?>
-        <div id="iloveimg_detaills_compress_<?php echo $image_id; ?>" style="display:none;">
+        <div id="iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
                     <th>Name</th><th>Initial</th><th>Compressed</th>
@@ -197,8 +197,8 @@ class Ilove_Img_Compress_Resources {
                     foreach ( $_sizes as $key => $size ) {
                         ?>
                         <tr>
-                            <td><?php echo $key; ?></td>
-                            <td><?php echo round( $size['initial'] / 1024 ); ?> KB</td>
+                            <td><?php echo esc_attr( $key ); ?></td>
+                            <td><?php echo (float) round( $size['initial'] / 1024 ); ?> KB</td>
                             <td>
                             <?php
 							if ( $size['compressed'] ) {
@@ -206,9 +206,9 @@ class Ilove_Img_Compress_Resources {
 								$total_size       = $total_size + (int) $size['initial'];
 								$total_compressed = $total_compressed + (int) $size['compressed'];
 								if ( $percent > 0 ) {
-                                    echo round( $size['compressed'] / 1024 ) . ' KB';
+                                    echo (float) round( $size['compressed'] / 1024 ) . ' KB';
                                     ?>
-                                    <small class="iloveimg__badge__percent">-<?php echo $percent; ?>%</small>
+                                    <small class="iloveimg__badge__percent">-<?php echo (int) $percent; ?>%</small>
                                     <?php
 								} else {
 									echo 'Not compressed';
@@ -225,8 +225,8 @@ class Ilove_Img_Compress_Resources {
                 </tr>
             </table>
         </div>
-        <!-- <p>Now <?php echo self::get_saving( $_sizes ); ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo get_the_title( $image_id ); ?>"><?php echo $images_compressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
+        <!-- <p>Now <?php echo (float) self::get_saving( $_sizes ); ?>% smaller!</p> -->
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_compressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (int) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
         <?php
     }
 
@@ -254,26 +254,26 @@ class Ilove_Img_Compress_Resources {
                 ?>
                                     
                     <?php if ( self::is_loggued() ) : ?>
-                        <!-- <p><?php echo self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
+                        <!-- <p><?php echo (int) self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
-                            <img src="<?php echo plugins_url( '/assets/images/spinner.gif', __DIR__ ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
+                            <img src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_compress ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
 							<?php
                         endif;
                     else :
 						?>
                         <p>You need to be registered</p>
-                        <a href="<?php echo admin_url( 'admin.php?page=iloveimg-compress-admin-page' ); ?>" class="iloveimg_link">Go to settings</button>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
 						<?php
                     endif;
                     if ( 1 === $status_compress || 3 === $status_compress ) :
 						?>
-                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo $column_id; ?>"></div>
+                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo (int) $column_id; ?>"></div>
 						<?php
                     endif;
             endif;

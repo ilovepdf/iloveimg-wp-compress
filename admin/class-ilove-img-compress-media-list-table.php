@@ -200,12 +200,11 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
          * use sort and pagination data to build a custom query instead, as you'll
          * be able to use your precisely-queried data immediately.
          */
-
         $order = 'ORDER BY post_date DESC';
         if ( isset( $_GET['orderby'] ) && isset( $_GET['order'] ) ) {
-            $order = 'ORDER BY ' . sanitize_text_field( $_GET['orderby'] ) . ' ' . sanitize_text_field( $_GET['order'] );
+            $order = 'ORDER BY ' . sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) . ' ' . sanitize_text_field( wp_unslash( $_GET['order'] ) );
             if ( 'file' === $_GET['orderby'] ) {
-                $order = 'ORDER BY post_title ' . sanitize_text_field( $_GET['order'] );
+                $order = 'ORDER BY post_title ' . sanitize_text_field( wp_unslash( $_GET['order'] ) );
             }
         }
 
