@@ -25,7 +25,7 @@ if ( get_option( 'iloveimg_account' ) ) {
     $ilove_img_get_section = isset( $_GET['section'] ) ? $_GET['section'] : '';
 ?>
     <?php if ( ! $ilove_img_is_logged ) : ?>
-            <?php if ( 'register' != $ilove_img_get_section ) : ?>
+            <?php if ( 'register' !== $ilove_img_get_section ) : ?>
                 <div class="iloveimg_settings__overview__account iloveimg_settings__overview__account-login">
                     <div class="iloveimg_settings__overview__account__picture"></div>
                     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>" autocomplete="off">
