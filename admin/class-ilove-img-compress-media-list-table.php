@@ -65,7 +65,8 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
             case 'status':
                 return Ilove_Img_Compress_Resources::get_status_of_column( $item['ID'] );
             default:
-                return print_r( $item, true ); // Show the whole array for troubleshooting purposes
+                // Show the whole array for troubleshooting purposes
+                return print_r( $item, true ); // phpcs:ignore
         }
     }
 
