@@ -82,7 +82,7 @@ class Ilove_Img_Compress_Process {
 						'initial'    => filesize( $path_file ),
 						'compressed' => null,
 					);
-                    if ( in_array( $_size, $options_compress['iloveimg_field_sizes'] ) ) {
+                    if ( in_array( $_size, $options_compress['iloveimg_field_sizes'], true ) ) {
                         if ( 'full' === $_size ) {
                             if ( 'on' === $options_compress['iloveimg_field_resize_full'] ) {
                                 $metadata = wp_get_attachment_metadata( $images_id );

@@ -71,7 +71,7 @@
 								$ilove_img_field_sizes = isset( $options_value['iloveimg_field_sizes'] ) ? $options_value['iloveimg_field_sizes'] : array();
 								?>
                                 <li>
-                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_sizes_value['field_id'] ); ?>" <?php echo ( in_array( $ilove_img_sizes_value['field_id'], $ilove_img_field_sizes ) ) ? 'checked' : ''; ?> />
+                                    <input type="checkbox" name="iloveimg_field_sizes[]" value="<?php echo esc_html( $ilove_img_sizes_value['field_id'] ); ?>" <?php echo ( in_array( $ilove_img_sizes_value['field_id'], $ilove_img_field_sizes, true ) ) ? 'checked' : ''; ?> />
                                     <span><?php echo esc_html( $ilove_img_sizes_value['label'] ); ?></span>
                                 </li>
                             <?php endforeach; ?>

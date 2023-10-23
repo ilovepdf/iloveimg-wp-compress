@@ -31,7 +31,7 @@ class Ilove_Img_Compress_Resources {
             'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
-            if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
+            if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ), true ) ) {
                 $width  = get_option( "{$_size}_size_w" );
                 $height = get_option( "{$_size}_size_h" );
             } elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
