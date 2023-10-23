@@ -98,7 +98,7 @@ class Ilove_Img_Compress_Serializer {
                     $key = 'iloveimg_number_registered_' . date( 'Ym' );
                     if ( get_option( $key ) ) {
                         $num = (int) get_option( $key );
-                        $num = $num + 1;
+                        ++$num;
                         update_option( $key, $num );
                     } else {
                         update_option( $key, 1 );
