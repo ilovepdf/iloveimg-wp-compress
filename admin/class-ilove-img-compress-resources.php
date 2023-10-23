@@ -292,7 +292,8 @@ class Ilove_Img_Compress_Resources {
      */
     public static function get_files_compressed() {
         global $wpdb;
-        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+
+        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" ); // phpcs:ignore
     }
 
     /**
@@ -332,7 +333,7 @@ class Ilove_Img_Compress_Resources {
      */
     public static function get_files_sizes() {
         global $wpdb;
-        $rows             = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" );
+        $rows             = $wpdb->get_results( "SELECT * FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" ); // phpcs:ignore
         $total            = 0;
         $total_compressed = 0;
         foreach ( $rows as $row ) {

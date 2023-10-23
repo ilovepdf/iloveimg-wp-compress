@@ -208,17 +208,16 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
             }
         }
 
-        $data = $wpdb->get_results(
+        $data = $wpdb->get_results( // phpcs:ignore
             "
             SELECT {$wpdb->prefix}posts.* 
             FROM {$wpdb->prefix}posts
             WHERE {$wpdb->prefix}posts.post_type = 'attachment' AND 
                 {$wpdb->prefix}posts.post_mime_type IN ('image/jpg', 'image/jpeg', 'image/png', 'image/gif') AND 
                 {$wpdb->prefix}posts.ID NOT IN (SELECT post_id FROM {$wpdb->prefix}postmeta WHERE {$wpdb->prefix}postmeta.meta_key = 'iloveimg_status_compress' AND {$wpdb->prefix}postmeta.meta_value = 2)
-                " . $order,
+                " . $order, // phpcs:ignore
             ARRAY_A
         );
-
         /**
          * REQUIRED for pagination. Let's figure out what page the user is currently
          * looking at. We'll need this later, so you should always include it in
