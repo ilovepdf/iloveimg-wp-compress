@@ -18,7 +18,8 @@
 				type: 'POST',
 				data: {
 					action: 'ilove_img_compress_library',
-					id: element.data( 'id' ) || element.attr( 'data-id' )
+					id: element.data( 'id' ) || element.attr( 'data-id' ),
+					imgnonce: element.data( 'imgnonce' ) || element.attr( 'data-imgnonce' )
 				},
 				success: function (data) {
 					element.removeAttr( 'disabled' );
@@ -42,7 +43,8 @@
 				type: 'POST',
 				data: {
 					action: 'ilove_img_compress_library_is_compressed',
-					id: element.data( 'id' ) || element.attr( 'data-id' )
+					id: element.data( 'id' ) || element.attr( 'data-id' ),
+                    imgnonce: element.data( 'imgnonce' ) || element.attr( 'data-imgnonce' )
 				},
 				success: function (data) {
 

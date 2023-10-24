@@ -1,5 +1,6 @@
 <?php
-    $ilove_img_is_logged = false;
+$ilove_img_is_logged = false;
+
 if ( get_option( 'iloveimg_account' ) ) {
 	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
 
@@ -22,7 +23,8 @@ if ( get_option( 'iloveimg_account' ) ) {
 		$ilove_img_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
 		delete_option( 'iloveimg_account_error' );
 }
-    $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
+
+$ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 ?>
     <?php if ( ! $ilove_img_is_logged ) : ?>
             <?php if ( 'register' !== $ilove_img_get_section ) : ?>
@@ -153,6 +155,4 @@ if ( get_option( 'iloveimg_account' ) ) {
                 </form>
             </div>
         </div>
-        
-
     <?php endif; ?>

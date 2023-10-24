@@ -29,6 +29,15 @@ class Ilove_Img_Compress_Plugin {
 	const NAME = 'Ilove_Img_Compress_plugin';
 
     /**
+	 * The unique nonce identifier.
+	 *
+	 * @since    1.0.6
+	 * @access   public
+	 * @var      string    $img_nonce    The string used to uniquely nonce identify.
+	 */
+	protected static $img_nonce;
+
+    /**
 	 * This constructor defines the core functionality of the plugin.
      *
      * In this method, we set the plugin's name and version for reference throughout the codebase. We also load any necessary dependencies, define the plugin's locale for translation purposes, and set up hooks for the admin area.
@@ -51,6 +60,9 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 */
     public function admin_init() {
+        // create nonce
+        self::$img_nonce = wp_create_nonce();
+
         // Enqueue scripts for the admin area.
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
@@ -120,7 +132,8 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function ilove_img_compress_library() {
-        if ( isset( $_POST['id'] ) ) {
+
+        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
             $ilove         = new Ilove_Img_Compress_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->compress( $attachment_id );
@@ -160,7 +173,7 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function ilove_img_compress_library_is_compressed() {
-        if ( isset( $_POST['id'] ) ) {
+        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
             $attachment_id   = intval( $_POST['id'] );
             $status_compress = get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
 
@@ -252,8 +265,9 @@ class Ilove_Img_Compress_Plugin {
             'timeout'   => 0.01,
             'blocking'  => false,
             'body'      => array(
-				'action' => 'ilove_img_compress_library',
-				'id'     => $attachment_id,
+				'action'   => 'ilove_img_compress_library',
+				'id'       => $attachment_id,
+                'imgnonce' => self::get_img_nonce(),
 			),
             'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
@@ -354,5 +368,15 @@ class Ilove_Img_Compress_Plugin {
         echo '</td></tr></table>';
         echo '</div>';
         echo '</div>';
+    }
+
+    /**
+     * Return Nonce seucrity code.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public static function get_img_nonce() {
+        return self::$img_nonce;
     }
 }
