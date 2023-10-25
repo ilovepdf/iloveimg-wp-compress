@@ -91,9 +91,11 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
             <div class="iloveimg_settings__overview__account-logged__column_left">
                 <div class="iloveimg_settings__overview__account-logged__column_left__stadistics">
                     <h4 style="color: #4D90FE">Free</h4>
-                    <?php $ilove_img_percent = ( ( ( $ilove_img_account['files_used'] * 100 ) / $ilove_img_account['free_files_limit'] ) ); ?>
+                    <?php
+                    $ilove_img_percent = ( ( ( $ilove_img_account['files_used'] * 100 ) / $ilove_img_account['free_files_limit'] ) );
+					?>
                     <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                        <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
+                        <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                     </div>
                     <p><?php echo (int) $ilove_img_account['files_used']; ?>/<?php echo (int) $ilove_img_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
                     <?php if ( $ilove_img_account['subscription_files_limit'] ) : ?>
@@ -105,7 +107,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                         }
                         ?>
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
+                            <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                         </div>
                         <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? (int) $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo (int) $ilove_img_account['subscription_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
@@ -113,7 +115,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                         <h4>Package files</h4>
                         <?php $ilove_img_percent = ( ( $ilove_img_account['package_files_used'] * 100 ) / $ilove_img_account['package_files_limit'] ); ?>
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
-                            <div class="iloveimg_percent-total" style="width: <?php echo (int) $ilove_img_percent; ?>%;"></div>
+                            <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                         </div>
                         <p><?php echo (int) $ilove_img_account['package_files_used']; ?>/<?php echo (int) $ilove_img_account['package_files_limit']; ?> processed files this month.</p>
                     <?php endif; ?>
