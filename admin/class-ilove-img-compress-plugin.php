@@ -328,7 +328,9 @@ class Ilove_Img_Compress_Plugin {
                 if ( isset( $response['response']['code'] ) && 200 === (int) $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
 
-                    if ( (int) $account['files_used'] >= (int) $account['free_files_limit'] && (int) $account['package_files_used'] >= (int) $account['package_files_limit'] && (int) @$account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) {
+                    if ( (int) $account['files_used'] >= (int) $account['free_files_limit'] &&
+                    (int) $account['package_files_used'] >= (int) $account['package_files_limit'] &&
+                    ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
                             <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
