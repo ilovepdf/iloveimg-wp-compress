@@ -242,7 +242,11 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function get_status_of_column( $column_id ) {
+
         $post = get_post( $column_id );
+
+        $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce();
+
         if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
             $_sizes            = get_post_meta( $column_id, 'iloveimg_compress', true );
             $status_compress   = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
@@ -256,7 +260,6 @@ class Ilove_Img_Compress_Resources {
                     <?php if ( self::is_loggued() ) : ?>
                         <!-- <p><?php echo (int) self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
-                            <?php $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce(); ?>
                             <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
                             <img class="iloveimg-spinner" src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_compress ) : ?>
