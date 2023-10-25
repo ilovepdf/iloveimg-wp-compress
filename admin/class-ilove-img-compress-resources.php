@@ -257,7 +257,7 @@ class Ilove_Img_Compress_Resources {
                         <!-- <p><?php echo (int) self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
                             <?php $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce(); ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo $img_nonce; ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
                             <img class="iloveimg-spinner" src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_compress ) : ?>
                                 <!-- <p>In queue...</p> -->
@@ -274,7 +274,7 @@ class Ilove_Img_Compress_Resources {
                     endif;
                     if ( 1 === $status_compress || 3 === $status_compress ) :
 						?>
-                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo (int) $column_id; ?>" data-imgnonce="<?php echo $img_nonce; ?>"></div>
+                        <div class="iloveimg_compressing" style="display: none;" data-id="<?php echo (int) $column_id; ?>" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>"></div>
 						<?php
                     endif;
             endif;
