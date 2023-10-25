@@ -95,7 +95,7 @@ class Ilove_Img_Compress_Serializer {
                     )
                 );
                 if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
-                    $key = 'iloveimg_number_registered_' . date( 'Ym' );
+                    $key = 'iloveimg_number_registered_' . gmdate( 'Ym' );
                     if ( get_option( $key ) ) {
                         $num = (int) get_option( $key );
                         ++$num;
