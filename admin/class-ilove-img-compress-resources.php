@@ -226,7 +226,7 @@ class Ilove_Img_Compress_Resources {
             </table>
         </div>
         <!-- <p>Now <?php echo (float) self::get_saving( $_sizes ); ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_compressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (int) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_compressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (float) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
         <?php
     }
 
