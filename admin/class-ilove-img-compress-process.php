@@ -70,7 +70,8 @@ class Ilove_Img_Compress_Process {
                 $_sizes = get_intermediate_image_sizes();
 
                 array_unshift( $_sizes, 'full' );
-                $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
+
+                $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
 
                 foreach ( $_sizes as $_size ) {
                     $image     = wp_get_attachment_image_src( $images_id, $_size );

@@ -32,17 +32,18 @@ class Ilove_Img_Compress_Serializer {
                         $posts_value[ $key ] = wp_unslash( $post_value );
                     }
                 }
-                update_option( 'iloveimg_options_compress', serialize( $posts_value ) );
+
+                update_option( 'iloveimg_options_compress', wp_json_encode( $posts_value ) );
             }
 
             if ( 'iloveimg_action_logout' === $_POST['iloveimg_action'] ) {// phpcs:ignore WordPress.Security.NonceVerification.Missing
                 delete_option( 'iloveimg_account' );
                 delete_option( 'iloveimg_proyect' );
-                $options = unserialize( get_option( 'iloveimg_options_compress' ) );
+                $options = json_decode( get_option( 'iloveimg_options_compress' ), true );
                 unset( $options['iloveimg_field_compress_activated'] );
                 unset( $options['iloveimg_field_autocompress'] );
                 unset( $options['iloveimg_field_resize_full'] );
-                update_option( 'iloveimg_options_compress', serialize( $options ) );
+                update_option( 'iloveimg_options_compress', wp_json_encode( $options ) );
             }
 
             if ( 'iloveimg_action_login' === $_POST['iloveimg_action'] ) {// phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -61,14 +62,14 @@ class Ilove_Img_Compress_Serializer {
                 );
                 if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
                     update_option( 'iloveimg_account', $response['body'] );
-                    $options                                      = unserialize( get_option( 'iloveimg_options_compress' ) );
+                    $options                                      = json_decode( get_option( 'iloveimg_options_compress' ), true );
                     $options['iloveimg_field_compress_activated'] = 1;
                     $options['iloveimg_field_autocompress']       = 1;
-                    update_option( 'iloveimg_options_compress', serialize( $options ) );
+                    update_option( 'iloveimg_options_compress', wp_json_encode( $options ) );
                 } else {
                     update_option(
                         'iloveimg_account_error',
-                        serialize(
+                        wp_json_encode(
                             array(
 								'action' => 'login',
 								'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -105,17 +106,17 @@ class Ilove_Img_Compress_Serializer {
                     }
                     if ( (int) get_option( $key ) <= 3 ) {
                         update_option( 'iloveimg_account', $response['body'] );
-                        $options                                      = unserialize( get_option( 'iloveimg_options_compress' ) );
+                        $options                                      = json_decode( get_option( 'iloveimg_options_compress' ) );
                         $options['iloveimg_field_compress_activated'] = 1;
                         $options['iloveimg_field_autocompress']       = 1;
-                        update_option( 'iloveimg_options_compress', serialize( $options ) );
+                        update_option( 'iloveimg_options_compress', wp_json_encode( $options ) );
                     } else {
-                        update_option( 'iloveimg_account_error', serialize( array( 'action' => 'register_limit' ) ) );
+                        update_option( 'iloveimg_account_error', wp_json_encode( array( 'action' => 'register_limit' ) ) );
                     }
                 } else {
                     update_option(
                         'iloveimg_account_error',
-                        serialize(
+                        wp_json_encode(
                             array(
                                 'action' => 'register',
                                 'email'  => sanitize_email( wp_unslash( $_POST['iloveimg_field_email'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing

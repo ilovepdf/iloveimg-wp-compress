@@ -293,7 +293,8 @@ class Ilove_Img_Compress_Plugin {
         }
 
         if ( get_option( 'iloveimg_account_error' ) ) {
-                $iloveimg_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
+            $iloveimg_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
+
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">

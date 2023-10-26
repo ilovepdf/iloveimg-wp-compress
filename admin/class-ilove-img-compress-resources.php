@@ -83,7 +83,7 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function get_sizes_enabled() {
-        $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
+        $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
         $image_sizes      = isset( $options_compress['iloveimg_field_sizes'] ) ? $options_compress['iloveimg_field_sizes'] : array();
         $count            = 0;
         foreach ( $image_sizes as $image ) {
@@ -105,7 +105,7 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function is_auto_compress() {
-        $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
+        $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
         return ( isset( $options_compress['iloveimg_field_autocompress'] ) ) ? 1 : 0;
     }
 
@@ -120,7 +120,7 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function is_activated() {
-        $options_compress = unserialize( get_option( 'iloveimg_options_compress' ) );
+        $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
         return ( isset( $options_compress['iloveimg_field_compress_activated'] ) ) ? 1 : 0;
     }
 
@@ -341,7 +341,7 @@ class Ilove_Img_Compress_Resources {
         $total            = 0;
         $total_compressed = 0;
         foreach ( $rows as $row ) {
-            $stadistics = unserialize( $row->meta_value );
+            $stadistics = json_decode( $row->meta_value, true );
             foreach ( $stadistics as $key => $value ) {
                 $total            = $total + (int) $value['initial'];
                 $total_compressed = $total_compressed + (int) $value['compressed'];

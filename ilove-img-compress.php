@@ -87,7 +87,8 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_com
  * @since 1.0.0
  */
 function ilove_img_compress_activate() {
-    add_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
+    update_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
+
     if ( ! get_option( 'iloveimg_options_compress' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
         if ( ! extension_loaded( 'gd' ) ) {
@@ -95,13 +96,12 @@ function ilove_img_compress_activate() {
         }
         update_option(
             'iloveimg_options_compress',
-            serialize(
+            wp_json_encode(
                 array(
 					'iloveimg_field_sizes'            => $iloveimg_thumbnails,
 					'iloveimg_field_resize_full'      => 0,
 					'iloveimg_field_size_full_width'  => 2048,
 					'iloveimg_field_size_full_height' => 2048,
-
 				)
             )
         );
@@ -116,7 +116,7 @@ define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
 define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.iloveimg.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
-define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.0' );
+define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.1' );
 define( 'ILOVE_IMG_COMPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 set_time_limit( 300 );

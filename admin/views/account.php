@@ -20,7 +20,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_account ) );
 	}
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
-		$ilove_img_account_error = unserialize( get_option( 'iloveimg_account_error' ) );
+		$ilove_img_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
 		delete_option( 'iloveimg_account_error' );
 }
 
