@@ -108,8 +108,8 @@ function ilove_img_compress_activate() {
     } else {
         $old_data = get_option( 'iloveimg_options_compress' );
 
-        if( is_serialized( $old_data ) ) {
-            $old_data_serialize = unserialize( get_option( 'iloveimg_options_compress' ) );
+        if ( is_serialized( $old_data ) ) {
+            $old_data_serialize = unserialize( get_option( 'iloveimg_options_compress' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
             update_option( 'iloveimg_options_compress', wp_json_encode( $old_data_serialize ) );
         }
     }
