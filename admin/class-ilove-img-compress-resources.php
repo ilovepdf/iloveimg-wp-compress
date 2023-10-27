@@ -73,7 +73,12 @@ class Ilove_Img_Compress_Resources {
                 $compressed += $image['compressed'];
             }
         }
-        return round( 100 - ( ( $compressed * 100 ) / $initial ) );
+
+        if ( 0 !== $initial ) {
+            return round( 100 - ( ( $compressed * 100 ) / $initial ) );
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -229,7 +234,18 @@ class Ilove_Img_Compress_Resources {
             </table>
         </div>
         <!-- <p>Now <?php echo (float) self::get_saving( $_sizes ); ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>"><?php echo (int) $images_compressed; ?> sizes compressed</a><small class="iloveimg__badge__percent">-<?php echo (float) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ); ?>%</small></p>
+        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
+            <?php echo (int) $images_compressed; ?> sizes compressed
+        </a>
+        <small class="iloveimg__badge__percent">
+            <?php
+            if ( 0 !== $total_size ) {
+                return sprintf( '-%d%%', (float) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ) );
+            } else {
+                echo 0 . '%';
+            }
+            ?>
+        </small></p>
         <?php
     }
 
