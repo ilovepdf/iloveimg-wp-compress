@@ -1,11 +1,11 @@
 <div class="wrap iloveimg_settings">
-    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" /></h1>
+    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
     
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
     </div>
 
-    <?php if ( ! $ilove_img_is_logged ) : ?>    
+    <?php if ( ! $ilove_img_is_logged ) : // @phpstan-ignore-line ?>    
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
@@ -90,12 +90,12 @@
                     <div class="iloveimg_settings__options__field__resize">
                         <div>
                             <label>Max width</label>
-                            <input type="number" name="iloveimg_field_size_full_width" value="<?php echo (int) $options_value['iloveimg_field_size_full_width']; ?>"  min="1"/>
+                            <input type="number" name="iloveimg_field_size_full_width" value="<?php echo (int) $options_value['iloveimg_field_size_full_width']; // @phpstan-ignore-line ?>"  min="1"/>
                             <p>Original image width won't exceed this value in pixels.</p>
                         </div>
                         <div>
                             <label>Max height</label>
-                            <input type="number" name="iloveimg_field_size_full_height" value="<?php echo (int) $options_value['iloveimg_field_size_full_height']; ?>"  min="1"/>
+                            <input type="number" name="iloveimg_field_size_full_height" value="<?php echo (int) $options_value['iloveimg_field_size_full_height']; // @phpstan-ignore-line ?>"  min="1"/>
                             <p>Original image height won't exceed this value in pixels.</p> 
                         </div>
                     </div>      
