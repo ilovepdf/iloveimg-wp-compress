@@ -131,6 +131,5 @@ class Ilove_Img_Compress_Process {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
             return false;
         }
-        return false;
     }
 }
