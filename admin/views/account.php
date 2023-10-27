@@ -1,5 +1,6 @@
 <?php
 $ilove_img_is_logged = false;
+$ilove_img_account   = array();
 
 if ( get_option( 'iloveimg_account' ) ) {
 	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
