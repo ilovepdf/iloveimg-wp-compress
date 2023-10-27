@@ -11,7 +11,7 @@ class Ilove_Img_Compress_Submenu {
 	/**
 	 * A reference the class responsible for rendering the submenu page.
 	 *
-	 * @var    Submenu_Page
+	 * @var    Ilove_Img_Compress_Submenu_Page
 	 * @access private
 	 */
 	private $submenu_page;
@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Submenu {
 	/**
 	 * Initializes all of the partial classes.
 	 *
-	 * @param Submenu_Page $submenu_page A reference to the class that renders the page for the plugin.
+	 * @param Ilove_Img_Compress_Submenu_Page $submenu_page A reference to the class that renders the page for the plugin.
 	 */
 	public function __construct( $submenu_page ) {
 		$this->submenu_page = $submenu_page;
