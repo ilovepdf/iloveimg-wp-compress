@@ -269,7 +269,7 @@ class Ilove_Img_Compress_Plugin {
 				'id'       => $attachment_id,
                 'imgnonce' => self::get_img_nonce(),
 			),
-            'cookies'   => isset( $_COOKIE ) && is_array( $_COOKIE ) ? $_COOKIE : array(),
+            'cookies'   => $_COOKIE,
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
         );
         wp_remote_post( admin_url( 'admin-ajax.php' ), $args );
