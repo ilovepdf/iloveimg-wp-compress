@@ -23,6 +23,9 @@ class Ilove_Img_Compress_Resources {
     public static function get_type_images() {
         global $_wp_additional_image_sizes;
 
+        $width  = 0;
+        $height = 0;
+
         $sizes   = array();
         $sizes[] = array(
             'field_id' => 'full',
