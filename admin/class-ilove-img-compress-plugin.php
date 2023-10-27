@@ -137,8 +137,7 @@ class Ilove_Img_Compress_Plugin {
             $ilove         = new Ilove_Img_Compress_Process();
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->compress( $attachment_id );
-            error_log('images ');
-            error_log(print_r($images, true));
+
             if ( false !== $images ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
