@@ -142,7 +142,7 @@ class Ilove_Img_Compress_Plugin {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
                 ?>
-                <p>You need more files</p>
+                <p>There was a problem processing your image.</p>
                 <?php
             }
         }
