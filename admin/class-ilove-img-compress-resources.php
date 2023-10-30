@@ -364,9 +364,12 @@ class Ilove_Img_Compress_Resources {
         $total_compressed = 0;
         foreach ( $rows as $row ) {
             $stadistics = json_decode( $row->meta_value, true );
-            foreach ( $stadistics as $key => $value ) {
-                $total            = $total + (int) $value['initial'];
-                $total_compressed = $total_compressed + (int) $value['compressed'];
+
+            if ( $stadistics ) {
+                foreach ( $stadistics as $key => $value ) {
+                    $total            = $total + (int) $value['initial'];
+                    $total_compressed = $total_compressed + (int) $value['compressed'];
+                }
             }
         }
         return array( $total, $total_compressed );
