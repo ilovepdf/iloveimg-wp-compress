@@ -74,11 +74,14 @@ class Ilove_Img_Compress_Process {
                 $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
 
                 foreach ( $_sizes as $_size ) {
-                    $image     = wp_get_attachment_image_src( $images_id, $_size );
-                    $path_file = str_replace( site_url(), '', $image[0] );
+                    $path_file       = '';
+                    $image           = wp_get_attachment_image_src( $images_id, $_size );
+                    $parse_image_url = wp_parse_url( $image[0] );
+
                     if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
-                        $path_file = sanitize_text_field( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) ) . $path_file;
+                        $path_file = sanitize_text_field( wp_unslash( $_SERVER['DOCUMENT_ROOT'] ) ) . $parse_image_url['path'];
                     }
+
                     $images[ $_size ] = array(
 						'initial'    => filesize( $path_file ),
 						'compressed' => null,
