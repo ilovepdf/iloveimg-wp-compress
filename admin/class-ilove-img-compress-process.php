@@ -136,7 +136,7 @@ class Ilove_Img_Compress_Process {
             }
 		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
-
+            error_log('Exception on Compress Method: ' . print_r($e, true)); // phpcs:ignore
             return false;
         }
     }
