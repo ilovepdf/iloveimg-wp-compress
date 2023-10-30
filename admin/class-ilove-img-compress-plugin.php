@@ -179,7 +179,9 @@ class Ilove_Img_Compress_Plugin {
             $status_compress = get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
 
             $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $attachment_id );
+
             if ( ( 1 === (int) $status_compress || 3 === (int) $status_compress ) ) {
+                update_post_meta( $attachment_id, 'iloveimg_status_compress', 0 );
                 http_response_code( 500 );
             } elseif ( 2 === (int) $status_compress ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
