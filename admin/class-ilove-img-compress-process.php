@@ -83,11 +83,13 @@ class Ilove_Img_Compress_Process {
 						'initial'    => filesize( $path_file ),
 						'compressed' => null,
 					);
+
                     if ( in_array( $_size, $options_compress['iloveimg_field_sizes'], true ) ) {
                         if ( 'full' === $_size ) {
                             if ( 'on' === $options_compress['iloveimg_field_resize_full'] ) {
                                 $metadata = wp_get_attachment_metadata( $images_id );
                                 $editor   = wp_get_image_editor( $path_file );
+
                                 if ( ! is_wp_error( $editor ) ) {
                                     $editor->resize( $options_compress['iloveimg_field_size_full_width'], $options_compress['iloveimg_field_size_full_height'], false );
                                     $editor->save( $path_file );
@@ -113,6 +115,7 @@ class Ilove_Img_Compress_Process {
                         $file    = $my_task->addFile( $path_file );
                         $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
+
                         if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
                             $images[ $_size ]['compressed'] = filesize( $path_file );
                         }
@@ -120,15 +123,17 @@ class Ilove_Img_Compress_Process {
                 }
                 update_post_meta( $images_id, 'iloveimg_compress', $images );
                 update_post_meta( $images_id, 'iloveimg_status_compress', 2 ); // status compressed
+
                 return $images;
 
             } else {
                 update_post_meta( $images_id, 'iloveimg_status_compress', 3 ); // status queue
-                sleep( 2 );
-                return $this->compress( $images_id );
+
+                return false;
             }
 		} catch ( Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
+
             return false;
         }
     }
