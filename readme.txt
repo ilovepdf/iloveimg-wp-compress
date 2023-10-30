@@ -96,6 +96,7 @@ Changed
 * Update DB Version to 1.1.
 * variable $_COOKIE no need to check.
 * Unreachable statement, return false delete.
+* Update iloveimg-php library to V1.1.16
 
 Added
 * missing documentation.
@@ -116,6 +117,7 @@ Fixed
 * Variables $height, $width, $ilove_img_account not be defined.
 * Division by zero.
 * An infinite loop was generated. The method itself called itself every time the process failed.
+* on some servers, the $path_file variable did not contain the correct url.
 
 = 1.0.4 =
 
