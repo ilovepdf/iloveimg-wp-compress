@@ -80,11 +80,11 @@
                                     jQuery( "button#iloveimg_allcompress .iloveimg-compress-all__percent" ).width( _percent + "%" );
                                     if ( ! jQuery( "button.iloveimg-compress" ).length) {
                                         clearInterval( timeReload );
-                                        location.reload();
                                     }
                                 },
                                 300
-                            )
+                            );
+                            location.reload();
                         }
 					);
 				}
