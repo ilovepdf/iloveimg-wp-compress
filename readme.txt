@@ -119,6 +119,9 @@ Fixed
 * An infinite loop was generated. The method itself called itself every time the process failed.
 * on some servers, the $path_file variable did not contain the correct url.
 
+= 1.0.5 =
+* match version and tag
+
 = 1.0.4 =
 
 - Fix: Fixed Bulk action loops.
