@@ -191,7 +191,7 @@ class Ilove_Img_Compress_Resources {
      * @since 1.0.0
      */
     public static function render_compress_details( $image_id ) {
-        $_sizes            = get_post_meta( $image_id, 'iloveimg_compress', true );
+        $_sizes            = get_post_meta( $image_id, 'iloveimg_compress', true ) ? get_post_meta( $image_id, 'iloveimg_compress', true ) : false;
         $images_compressed = self::get_sizes_compressed( $image_id );
 
         ?>
@@ -202,32 +202,35 @@ class Ilove_Img_Compress_Resources {
                     <?php
                     $total_size       = 0;
                     $total_compressed = 0;
-                    foreach ( $_sizes as $key => $size ) {
-                        ?>
-                        <tr>
-                            <td><?php echo esc_attr( $key ); ?></td>
-                            <td><?php echo (float) round( $size['initial'] / 1024 ); ?> KB</td>
-                            <td>
+
+                    if ( $_sizes ) {
+                        foreach ( $_sizes as $key => $size ) {
+                            ?>
+                            <tr>
+                                <td><?php echo esc_attr( $key ); ?></td>
+                                <td><?php echo (float) round( $size['initial'] / 1024 ); ?> KB</td>
+                                <td>
+                                <?php
+                                if ( $size['compressed'] ) {
+                                    $percent          = (int) ( 100 - round( ( $size['compressed'] * 100 ) / $size['initial'] ) );
+                                    $total_size       = $total_size + (int) $size['initial'];
+                                    $total_compressed = $total_compressed + (int) $size['compressed'];
+                                    if ( $percent > 0 ) {
+                                        echo (float) round( $size['compressed'] / 1024 ) . ' KB';
+                                        ?>
+                                        <small class="iloveimg__badge__percent">-<?php echo (int) $percent; ?>%</small>
+                                        <?php
+                                    } else {
+                                        echo 'Not compressed';
+                                    }
+                                } else {
+                                    echo 'Not compressed';
+                                }
+                                ?>
+                                    </td>
+                                </tr>
                             <?php
-							if ( $size['compressed'] ) {
-								$percent          = (int) ( 100 - round( ( $size['compressed'] * 100 ) / $size['initial'] ) );
-								$total_size       = $total_size + (int) $size['initial'];
-								$total_compressed = $total_compressed + (int) $size['compressed'];
-								if ( $percent > 0 ) {
-                                    echo (float) round( $size['compressed'] / 1024 ) . ' KB';
-                                    ?>
-                                    <small class="iloveimg__badge__percent">-<?php echo (int) $percent; ?>%</small>
-                                    <?php
-								} else {
-									echo 'Not compressed';
-								}
-							} else {
-								echo 'Not compressed';
-							}
-							?>
-                                </td>
-                            </tr>
-                        <?php
+                        }
                     }
                     ?>
                 </tr>
