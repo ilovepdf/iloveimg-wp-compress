@@ -257,7 +257,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
             array(
 				'total_items' => $total_items,                  // WE have to calculate the total number of items
 				'per_page'    => $per_page,                     // WE have to determine how many items to show on a page
-				'total_pages' => ( $per_page ) ? ceil( $total_items / $per_page ) : 0,   // WE have to calculate the total number of pages
+				'total_pages' => ( $per_page ) ? (int) ceil( $total_items / $per_page ) : 0,   // WE have to calculate the total number of pages
             )
         );
     }
