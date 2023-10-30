@@ -114,6 +114,8 @@ Fixed
 * Fix conversion from number to float.
 * Serialized data has known vulnerability problems with Object Injection. Changed to JSON Encode.
 * Variables $height, $width, $ilove_img_account not be defined.
+* Division by zero.
+* An infinite loop was generated. The method itself called itself every time the process failed.
 
 = 1.0.4 =
 
