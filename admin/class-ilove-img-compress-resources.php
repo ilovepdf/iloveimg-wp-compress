@@ -243,7 +243,7 @@ class Ilove_Img_Compress_Resources {
         <small class="iloveimg__badge__percent">
             <?php
             if ( 0 !== $total_size ) {
-                return sprintf( '-%d%%', (float) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ) );
+                printf( '-%d%%', (float) ( 100 - round( ( $total_compressed * 100 ) / $total_size ) ) );
             } else {
                 echo 0 . '%';
             }
