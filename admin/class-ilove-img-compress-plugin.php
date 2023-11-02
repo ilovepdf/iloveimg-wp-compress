@@ -385,4 +385,36 @@ class Ilove_Img_Compress_Plugin {
     public static function get_img_nonce() {
         return self::$img_nonce;
     }
+
+    /**
+     * Check if any 'iloveimg' related plugins are activated.
+     *
+     * This function iterates through all installed plugins and checks if any of them are related to 'iloveimg'. It specifically
+     * looks for plugins with names that start with 'iloveimg'. If such a plugin is found, it further checks if it is active.
+     * If an active 'iloveimg' plugin related to 'watermark' is found, it returns true.
+     *
+     * @return bool True if an active 'iloveimg' related plugin is found, false otherwise.
+     */
+    public static function check_iloveimg_plugins_is_activated() {
+        $all_plugins = get_plugins();
+
+        $iloveimg_watermark_found = false;
+
+        foreach ( $all_plugins as $plugin_file => $plugin_info ) {
+
+            if ( strpos( $plugin_file, 'iloveimg' ) === 0 ) {
+
+                if ( is_plugin_active( $plugin_file ) ) {
+
+                    if ( strpos( $plugin_file, 'watermark' ) !== false ) {
+                        $iloveimg_watermark_found = true;
+
+                        return $iloveimg_watermark_found;
+                    }
+                }
+            }
+        }
+
+        return $iloveimg_watermark_found;
+    }
 }

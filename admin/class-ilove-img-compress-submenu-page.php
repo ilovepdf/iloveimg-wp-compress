@@ -43,7 +43,7 @@ class Ilove_Img_Compress_Submenu_Page {
 	 * @access public
 	 */
 	public function render_watermark() {
-		if ( ! is_plugin_active( 'iloveimg-watermark/iloveimgwatermark.php' ) ) {
+		if ( ! Ilove_Img_Compress_Plugin::check_iloveimg_plugins_is_activated() ) {
         	require_once 'views/watermark.php';
     	}
 	}
