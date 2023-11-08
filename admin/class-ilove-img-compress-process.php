@@ -89,7 +89,7 @@ class Ilove_Img_Compress_Process {
 
                     if ( in_array( $_size, $options_compress['iloveimg_field_sizes'], true ) ) {
                         if ( 'full' === $_size ) {
-                            if ( 'on' === $options_compress['iloveimg_field_resize_full'] ) {
+                            if ( isset( $options_compress['iloveimg_field_resize_full'] ) && 'on' === $options_compress['iloveimg_field_resize_full'] ) {
                                 $metadata = wp_get_attachment_metadata( $images_id );
                                 $editor   = wp_get_image_editor( $path_file );
 
