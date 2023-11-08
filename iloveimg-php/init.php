@@ -7,7 +7,7 @@ require_once __DIR__ . '/src/Request/Method.php';
 require_once __DIR__ . '/src/Request/Response.php';
 require_once __DIR__ . '/src/Request/Request.php';
 require_once __DIR__ . '/src/Request/Body.php';
-
+require_once __DIR__ . '/src/Element.php';
 //Exceptions
 require_once __DIR__ . '/src/Exceptions/ExtendedException.php';
 require_once __DIR__ . '/src/Exceptions/DownloadException.php';
@@ -20,7 +20,6 @@ require_once __DIR__ . '/src/Exceptions/PathException.php';
 //Iloveimg
 require_once __DIR__ . '/src/Iloveimg.php';
 require_once __DIR__ . '/src/ImageTask.php';
-require_once __DIR__ . '/src/Element.php';
 
 //Specific processes
 require_once __DIR__ . '/src/CompressImageTask.php';

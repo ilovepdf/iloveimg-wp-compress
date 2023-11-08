@@ -1,11 +1,17 @@
 <?php
+/**
+ * Class for managing the iLoveIMG plugin's submenu and pages.
+ *
+ * This class is responsible for adding a submenu to the 'Tools' menu in the WordPress admin area and rendering the plugin's settings and content pages. It initializes the submenu and adds individual pages for compress settings, watermark settings, and media optimization.
+ *
+ * @since 1.0.0
+ */
+class Ilove_Img_Compress_Submenu {
 
-class iLoveIMG_Compress_Submenu {
- 
 	/**
 	 * A reference the class responsible for rendering the submenu page.
 	 *
-	 * @var    Submenu_Page
+	 * @var    Ilove_Img_Compress_Submenu_Page
 	 * @access private
 	 */
 	private $submenu_page;
@@ -13,8 +19,7 @@ class iLoveIMG_Compress_Submenu {
 	/**
 	 * Initializes all of the partial classes.
 	 *
-	 * @param Submenu_Page $submenu_page A reference to the class that renders the
-	 *                                                                   page for the plugin.
+	 * @param Ilove_Img_Compress_Submenu_Page $submenu_page A reference to the class that renders the page for the plugin.
 	 */
 	public function __construct( $submenu_page ) {
 		$this->submenu_page = $submenu_page;
@@ -38,10 +43,9 @@ class iLoveIMG_Compress_Submenu {
 			'iLoveIMG',
 			'manage_options',
 			'iloveimg-admin-page',
-			array( $this->submenu_page, 'renderParent' ),
+			array( $this->submenu_page, 'render_parent' ),
 			'https://www.iloveimg.com/img/favicons-img/favicon-16x16.png'
 		);
-		
 
 		add_submenu_page(
 			'iloveimg-admin-page',
@@ -51,7 +55,7 @@ class iLoveIMG_Compress_Submenu {
 			'iloveimg-compress-admin-page',
 			array(
 				$this->submenu_page,
-				'renderCompress'
+				'render_compress',
 			)
 		);
 
@@ -63,24 +67,26 @@ class iLoveIMG_Compress_Submenu {
 			'iloveimg-watermark-admin-page',
 			array(
 				$this->submenu_page,
-				'renderWatermark'
+				'render_watermark',
 			)
 		);
 
 		add_media_page(
-			'iLoveIMG Media', 
-			'Bulk Optimization', 
-			'manage_options', 
-			'iloveimg-media-page', 
+			'iLoveIMG Media',
+			'Bulk Optimization',
+			'manage_options',
+			'iloveimg-media-page',
 			array(
 				$this->submenu_page,
-				'renderMediaOptimization'
+				'render_media_optimization',
 			)
 		);
-		remove_submenu_page('iloveimg-admin-page', 'iloveimg-admin-page');
-
+		remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-admin-page' );
 	}
 
+	/**
+	 * Placeholder for the settings page content.
+	 */
 	public function settings_page() {
 		echo 'This is the page content';
 	}
