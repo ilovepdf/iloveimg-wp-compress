@@ -1,13 +1,13 @@
 === Image Compressor & Optimizer - iLoveIMG ===
 Plugin Name: Image Compressor & Optimizer - iLoveIMG
-Version: 1.0.5
+Version: 1.0.6
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 4.6
 Tested up to: 5.8.2
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,48 @@ Moreover, all processed files are automatically deleted from our servers after b
 
 
 == Changelog ==
+
+= 1.0.6 =
+Changed
+* Formatting and comment files according to php/wordpress standards.
+* constant names in uppercase
+* function names is not snake case format.
+* variables name is not snake case format and include prefix.
+* classes name with prefix and capital letter.
+* classes files rename.
+* remove comments.
+* Use Yoda Conditions to check.
+* change from json_encode() to wp_json_encode().
+* Increment operators.
+* gmdate() instead date().
+* Update DB Version to 1.1.
+* variable $_COOKIE no need to check.
+* Unreachable statement, return false delete.
+* Update iloveimg-php library to V1.1.16
+
+Added
+* missing documentation.
+* Escape/sanitize data.
+* using strict comparison for in_array
+
+Fixed
+* Visibility must be declared on method
+* Logical operator "and" changed to "&&"
+* Logical operator "or" changed to "||"
+* Missing $domain parameter in function call to __().
+* Loose comparisons are not allowed.
+* Assignments must be the first block of code on a line.
+* Noce verification
+* Error checking.
+* Fix conversion from number to float.
+* Serialized data has known vulnerability problems with Object Injection. Changed to JSON Encode.
+* Variables $height, $width, $ilove_img_account not be defined.
+* Division by zero.
+* An infinite loop was generated. The method itself called itself every time the process failed.
+* on some servers, the $path_file variable did not contain the correct url.
+
+= 1.0.5 =
+* match version and tag
 
 = 1.0.4 =
 
