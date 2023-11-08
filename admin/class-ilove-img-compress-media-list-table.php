@@ -95,6 +95,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      * @since 1.0.0
      *
      * @return array An associative array of column names and their corresponding labels.
+     * @phpstan-ignore-next-line
      */
     public function get_columns() {
         $columns = array(
@@ -253,7 +254,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
         /**
          * REQUIRED. We also have to register our pagination options & calculations.
          */
-        $this->set_pagination_args(
+        $this->set_pagination_args( // @phpstan-ignore-line
             array(
 				'total_items' => $total_items,                  // WE have to calculate the total number of items
 				'per_page'    => $per_page,                     // WE have to determine how many items to show on a page

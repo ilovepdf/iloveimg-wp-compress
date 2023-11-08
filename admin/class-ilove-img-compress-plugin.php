@@ -379,7 +379,7 @@ class Ilove_Img_Compress_Plugin {
     /**
      * Return Nonce seucrity code.
      *
-     * @since 1.0.0
+     * @since 1.0.6
      * @access public
      */
     public static function get_img_nonce() {
@@ -393,6 +393,7 @@ class Ilove_Img_Compress_Plugin {
      * looks for plugins with names that start with 'iloveimg'. If such a plugin is found, it further checks if it is active.
      * If an active 'iloveimg' plugin related to 'watermark' is found, it returns true.
      *
+     * @since 1.0.6
      * @return bool True if an active 'iloveimg' related plugin is found, false otherwise.
      */
     public static function check_iloveimg_plugins_is_activated() {
@@ -402,7 +403,7 @@ class Ilove_Img_Compress_Plugin {
 
         foreach ( $all_plugins as $plugin_file => $plugin_info ) {
 
-            if ( strpos( $plugin_file, 'iloveimg' ) === 0 ) {
+            if ( strpos( $plugin_file, 'iloveimg' ) || strpos( $plugin_file, 'ilove-img' ) ) {
 
                 if ( is_plugin_active( $plugin_file ) ) {
 
