@@ -114,9 +114,9 @@ class Ilove_Img_Compress_Process {
                                 wp_update_attachment_metadata( $images_id, $metadata );
                             }
                         }
-                        $my_task = new CompressImageTask( $this->proyect_public, $this->secret_key );
-                        $file    = $my_task->addFile( $path_file );
-                        $my_task->execute();
+                        $my_task          = new CompressImageTask( $this->proyect_public, $this->secret_key );
+                        $file             = $my_task->addFile( $path_file );
+                        $execute_compress = $my_task->execute();
                         $my_task->download( dirname( $path_file ) );
 
                         if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
