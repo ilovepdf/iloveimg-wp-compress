@@ -118,9 +118,9 @@ class Ilove_Img_Compress_Process {
                         $file             = $my_task->addFile( $path_file );
                         $execute_compress = $my_task->execute();
 
-                        if ( $file ) {
+                        if ( $execute_compress ) { // @phpstan-ignore-line
                             $my_task->download( dirname( $path_file ) );
-    
+
                             if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
                                 $images[ $_size ]['compressed'] = filesize( $path_file );
                             }
