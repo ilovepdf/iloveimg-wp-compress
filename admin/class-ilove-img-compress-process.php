@@ -117,10 +117,15 @@ class Ilove_Img_Compress_Process {
                         $my_task          = new CompressImageTask( $this->proyect_public, $this->secret_key );
                         $file             = $my_task->addFile( $path_file );
                         $execute_compress = $my_task->execute();
-                        $my_task->download( dirname( $path_file ) );
 
-                        if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
-                            $images[ $_size ]['compressed'] = filesize( $path_file );
+                        if ( $file ) {
+                            $my_task->download( dirname( $path_file ) );
+    
+                            if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
+                                $images[ $_size ]['compressed'] = filesize( $path_file );
+                            }
+                        } else {
+                            return false;
                         }
 					}
                 }
