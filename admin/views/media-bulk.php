@@ -11,8 +11,8 @@ $ilove_img_test_list_table = new Ilove_Img_Compress_Media_List_Table();
 $ilove_img_test_list_table->prepare_items();
 
 ?>
-<div class="wrap iloveimg_settings"><?php // @phpstan-ignore-line ?>
-	<img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" />
+<div class="wrap iloveimg_settings">
+	<img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" />
 	<div class="iloveimg_settings__overview">
         <?php require_once 'overview.php'; ?>
         <?php if ( $ilove_img_test_list_table->total_items ) : ?>
