@@ -89,7 +89,7 @@ class Ilove_Img_Compress_Process {
 
                     if ( in_array( $_size, $options_compress['iloveimg_field_sizes'], true ) ) {
                         if ( 'full' === $_size ) {
-                            if ( 'on' === $options_compress['iloveimg_field_resize_full'] ) {
+                            if ( isset( $options_compress['iloveimg_field_resize_full'] ) && 'on' === $options_compress['iloveimg_field_resize_full'] ) {
                                 $metadata = wp_get_attachment_metadata( $images_id );
                                 $editor   = wp_get_image_editor( $path_file );
 
@@ -114,13 +114,18 @@ class Ilove_Img_Compress_Process {
                                 wp_update_attachment_metadata( $images_id, $metadata );
                             }
                         }
-                        $my_task = new CompressImageTask( $this->proyect_public, $this->secret_key );
-                        $file    = $my_task->addFile( $path_file );
-                        $my_task->execute();
-                        $my_task->download( dirname( $path_file ) );
+                        $my_task          = new CompressImageTask( $this->proyect_public, $this->secret_key );
+                        $file             = $my_task->addFile( $path_file );
+                        $execute_compress = $my_task->execute();
 
-                        if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
-                            $images[ $_size ]['compressed'] = filesize( $path_file );
+                        if ( $execute_compress ) { // @phpstan-ignore-line
+                            $my_task->download( dirname( $path_file ) );
+
+                            if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
+                                $images[ $_size ]['compressed'] = filesize( $path_file );
+                            }
+                        } else {
+                            return false;
                         }
 					}
                 }
