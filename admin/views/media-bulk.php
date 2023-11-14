@@ -5,6 +5,8 @@
  * @package iloveimgcompress
  */
 
+use Ilove_Img_Compress\Ilove_Img_Compress_Media_List_Table;
+
 // Create an instance of our package class...
 $ilove_img_test_list_table = new Ilove_Img_Compress_Media_List_Table();
 // Fetch, prepare, sort, and filter our data...

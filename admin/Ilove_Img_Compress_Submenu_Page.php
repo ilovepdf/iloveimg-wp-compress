@@ -5,6 +5,8 @@
  * @package iloveimgcompress
  */
 
+namespace Ilove_Img_Compress;
+
 /**
  * Creates the submenu page for the plugin.
  *

@@ -1,3 +1,6 @@
+<?php
+use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
+?>
 <div class="wrap iloveimg_settings">
     <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
     

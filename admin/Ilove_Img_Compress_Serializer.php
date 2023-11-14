@@ -1,9 +1,11 @@
 <?php
+namespace Ilove_Img_Compress;
+
 /**
  * Class for handling serialization and management of iLoveIMG plugin settings.
  *
  * This class is responsible for managing the serialization and deserialization of iLoveIMG plugin settings, including options for compression, login, registration, and project settings. It also handles the validation of nonces and redirects based on user actions.
-
+ *
  * @since 1.0.0
  */
 class Ilove_Img_Compress_Serializer {

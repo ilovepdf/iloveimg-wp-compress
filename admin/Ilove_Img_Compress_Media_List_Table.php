@@ -1,7 +1,7 @@
 <?php
-if ( ! class_exists( 'WP_List_Table' ) ) {
-    require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
-}
+namespace Ilove_Img_Compress;
+
+use WP_List_Table;
 
 /**
  * Custom table class for managing and displaying compressed media information in the WordPress media library.

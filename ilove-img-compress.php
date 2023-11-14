@@ -30,13 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-require_once 'admin/class-ilove-img-compress-plugin.php';
-require_once 'admin/class-ilove-img-compress-process.php';
-require_once 'admin/class-ilove-img-compress-resources.php';
-require_once 'admin/class-ilove-img-compress-serializer.php';
-require_once 'admin/class-ilove-img-compress-submenu-page.php';
-require_once 'admin/class-ilove-img-compress-submenu.php';
-require_once 'admin/class-ilove-img-compress-media-list-table.php';
+require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+
+use Ilove_Img_Compress\Ilove_Img_Compress_Plugin;
+use Ilove_Img_Compress\Ilove_Img_Compress_Serializer;
+use Ilove_Img_Compress\Ilove_Img_Compress_Submenu;
+use Ilove_Img_Compress\Ilove_Img_Compress_Submenu_Page;
 
 add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
 

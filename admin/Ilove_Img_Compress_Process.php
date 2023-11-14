@@ -1,4 +1,6 @@
 <?php
+namespace Ilove_Img_Compress;
+
 use Iloveimg\CompressImageTask;
 use Iloveimg\ResizeImageTask;
 
@@ -139,7 +141,7 @@ class Ilove_Img_Compress_Process {
 
                 return false;
             }
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
             error_log('Exception on Compress Method: ' . print_r($e, true)); // phpcs:ignore
             return false;
