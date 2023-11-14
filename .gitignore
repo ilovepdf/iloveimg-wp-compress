@@ -1,6 +1,9 @@
 # Node/composer artifact files
 node_modules/
-vendor/
+vendor/*
+!/vendor/autoload.php
+!/vendor/composer/
+!/vendor/ilovepdf/
 composer.lock
 package-lock.json
 dev/package-lock.json

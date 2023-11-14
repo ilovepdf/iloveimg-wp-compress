@@ -1,3 +1,6 @@
+<?php
+use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
+?>
 <div class="iloveimg_settings__overview__statistics">
 	<h3>Overview</h3>
 	<div>
