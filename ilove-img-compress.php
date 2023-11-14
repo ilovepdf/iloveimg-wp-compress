@@ -15,7 +15,7 @@
  * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
  * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -30,13 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-require_once 'admin/class-ilove-img-compress-plugin.php';
-require_once 'admin/class-ilove-img-compress-process.php';
-require_once 'admin/class-ilove-img-compress-resources.php';
-require_once 'admin/class-ilove-img-compress-serializer.php';
-require_once 'admin/class-ilove-img-compress-submenu-page.php';
-require_once 'admin/class-ilove-img-compress-submenu.php';
-require_once 'admin/class-ilove-img-compress-media-list-table.php';
+require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+
+use Ilove_Img_Compress\Ilove_Img_Compress_Plugin;
+use Ilove_Img_Compress\Ilove_Img_Compress_Serializer;
+use Ilove_Img_Compress\Ilove_Img_Compress_Submenu;
+use Ilove_Img_Compress\Ilove_Img_Compress_Submenu_Page;
 
 add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
 

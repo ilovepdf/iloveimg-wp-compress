@@ -1,4 +1,6 @@
 <?php
+namespace Ilove_Img_Compress;
+
 /**
  * Class for managing the iLoveIMG plugin's submenu and pages.
  *

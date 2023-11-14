@@ -101,11 +101,6 @@ class Element
     /**
      * @var string
      */
-    public $font_weight = null;
-
-    /**
-     * @var string
-     */
     public $font_color = '#000000';
 
     /**
@@ -146,11 +141,7 @@ class Element
     public $layer;
 
 
-    /**
-     * @var bool
-     */
     public $bold = false;
-
     /**
      * string
      * @var
@@ -234,15 +225,6 @@ class Element
     }
 
     /**
-     * @param string $font_weight
-     */
-    public function setFontWeight($font_weight)
-    {
-        $this->font_weight = $font_weight;
-        return $this;
-    }
-
-    /**
      * @param int $font_size
      */
     public function setFontSize($font_size)
@@ -313,7 +295,7 @@ class Element
     /**
      * @param int $horizontal_position_adjustment
      */
-    public function setHorizontalAdjustmentPercent($horizontal_adjustment_percent): Element
+    public function setHorizontalAdjustmentPercent($horizontal_adjustment_percent)
     {
         $this->horizontal_adjustment_percent = $horizontal_adjustment_percent;
         return $this;
@@ -323,7 +305,7 @@ class Element
      * @param $gravity
      * @return $this
      */
-    public function setGravity($gravity): Element
+    public function setGravity($gravity)
     {
         $this->checkValues($gravity, $this->gravityValues);
 
@@ -335,7 +317,7 @@ class Element
      * @param int $width_percent
      * @return $this
      */
-    public function setWidthPercent(int $width_percent): Element
+    public function setWidthPercent(int $width_percent)
     {
         $this->width_percent = $width_percent;
         return $this;
@@ -350,18 +332,8 @@ class Element
     public function checkValues($value, $allowedValues)
     {
         if (!in_array($value, $allowedValues)) {
-            throw new \InvalidArgumentException('Invalid value "' . $value . '". Must be one of: ' . implode(',', $allowedValues));
+            throw new \InvalidArgumentException('Invalid ' . $this->tool . ' value "' . $value . '". Must be one of: ' . implode(',', $allowedValues));
         }
-    }
-
-    /**
-     * @param bool $mosaic
-     * @return Element
-     */
-    public function setMosaic(bool $mosaic): Element
-    {
-        $this->mosaic = $mosaic;
-        return $this;
     }
 
 }
