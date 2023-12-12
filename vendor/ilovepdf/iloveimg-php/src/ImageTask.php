@@ -179,6 +179,10 @@ class ImageTask extends Iloveimg
      */
     public function uploadFile($task, $filepath)
     {
+        if(!file_exists($filepath)){
+            throw new \InvalidArgumentException('File '.$filepath.' does not exists');
+        }
+
         $data = array('task' => $task, 'v' => self::VERSION);
         $files = array('file' => $filepath);
         $body = Request\Body::multipart($data, $files);
@@ -285,11 +289,12 @@ class ImageTask extends Iloveimg
         $data = array('v' => self::VERSION);
         $body = Request\Body::Form($data);
         $response = parent::sendRequest('get', 'download/' . $task, $body);
+        $contentDispoition = $response->headers['Content-Disposition'] ?? $response->headers['content-disposition'];
 
-        if (preg_match("/filename\*\=utf-8\'\'([\W\w]+)/", $response->headers['Content-Disposition'], $matchesUtf)) {
+        if (preg_match("/filename\*\=utf-8\'\'([\W\w]+)/", $contentDispoition, $matchesUtf)) {
             $filename = urldecode(str_replace('"', '', $matchesUtf[1]));
         } else {
-            preg_match('/ .*filename=\"([\W\w]+)\"/', $response->headers['Content-Disposition'], $matches);
+            preg_match('/ .*filename=\"([\W\w]+)\"/', $contentDispoition, $matches);
             $filename = str_replace('"', '', $matches[1]);
         }
 
