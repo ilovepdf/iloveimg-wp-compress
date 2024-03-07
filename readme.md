@@ -1,13 +1,13 @@
 === Image Compressor & Optimizer - iLoveIMG ===
 Plugin Name: Image Compressor & Optimizer - iLoveIMG
-Version: 2.0.2
+Version: 2.0.3
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 5.3
-Tested up to: 6.4.2
-Stable tag: 2.0.2
+Tested up to: 6.4.3
+Stable tag: 2.0.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,11 @@ Moreover, all processed files are automatically deleted from our servers after b
 
 
 == Changelog ==
+
+== 2.0.3 ==
+Added
+* Update libraries.
+* Assets files were optimized.
 
 == 2.0.2 ==
 Added

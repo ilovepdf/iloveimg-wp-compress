@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.0.2';
+    const VERSION = '2.0.3';
 
     /**
 	 * The unique identifier of this plugin.
@@ -104,7 +104,7 @@ class Ilove_Img_Compress_Plugin {
         // Enqueue the main JavaScript file.
         wp_enqueue_script(
             self::NAME . '_admin',
-            plugins_url( '/assets/js/main.js', __DIR__ ),
+            plugins_url( '/assets/js/main.min.js', __DIR__ ),
 			array(),
             self::VERSION,
             true
@@ -113,7 +113,7 @@ class Ilove_Img_Compress_Plugin {
         // Enqueue the main CSS file.
         wp_enqueue_style(
             self::NAME . '_admin',
-            plugins_url( '/assets/css/app.css', __DIR__ ),
+            plugins_url( '/assets/css/app.min.css', __DIR__ ),
 			array(),
             self::VERSION
 		);
