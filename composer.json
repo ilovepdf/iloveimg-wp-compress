@@ -25,7 +25,7 @@
     },
     "scripts": {
         "stan": "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table > ./phpstan-report-iloveimg.log",
-        "phpcs": "phpcs -s --ignore=*/node_modules/*,*/vendor/*,*/iloveimg-php/*,*/.github/*,*/assets/*,*/dev/* --report-file=./condesniffer-report-iloveimg.log ./",
+        "phpcs": "phpcs -s --ignore=*/node_modules/*,*/vendor/*,*/iloveimg-php/*,*/.github/*,*/assets/*,*/dev/* --report-file=./codesniffer-report-iloveimg.log ./",
         "phpcbf": "phpcbf --ignore=node_modules/,vendor/,iloveimg-php/,assets/,dev/,.github/ ./",
         "autoload-dev": "composer dump-autoload",
         "autoload-prod": "composer dump-autoload --no-dev"
