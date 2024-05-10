@@ -1,6 +1,6 @@
 <div class="wrap iloveimg_settings">
  
-    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
+    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" /></h1>
      
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
