@@ -361,28 +361,35 @@ class Ilove_Img_Compress_Plugin {
 
      * @since 1.0.0
      * @access public
+     * @param \WP_Post $post Post object.
      */
-    public function show_media_info() {
-        global $post;
-        echo '<div class="misc-pub-section iloveimg-compress-images">';
-        echo '<h4>';
-        esc_html_e( 'iLoveIMG', 'iloveimg' );
-        echo '</h4>';
-        echo '<div class="iloveimg-container">';
-        echo '<table><tr><td>';
-        $status_compress = get_post_meta( $post->ID, 'iloveimg_status_compress', true );
+    public function show_media_info( $post ) {
+        $mime_type_accepted = array( 'image/jpeg', 'image/png' );
 
-        $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
+        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) ) {
 
-        if ( 2 === (int) $status_compress ) {
-            Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
-            Ilove_Img_Compress_Resources::render_button_restore( $post->ID );
-        } else {
-            Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );
+            global $post;
+
+            echo '<div class="misc-pub-section iloveimg-compress-images">';
+            echo '<h4>';
+            esc_html_e( 'iLoveIMG', 'iloveimg' );
+            echo '</h4>';
+            echo '<div class="iloveimg-container">';
+            echo '<table><tr><td>';
+            $status_compress = get_post_meta( $post->ID, 'iloveimg_status_compress', true );
+
+            $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
+
+            if ( 2 === (int) $status_compress ) {
+                Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
+                Ilove_Img_Compress_Resources::render_button_restore( $post->ID );
+            } else {
+                Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );
+            }
+            echo '</td></tr></table>';
+            echo '</div>';
+            echo '</div>';
         }
-        echo '</td></tr></table>';
-        echo '</div>';
-        echo '</div>';
     }
 
     /**
