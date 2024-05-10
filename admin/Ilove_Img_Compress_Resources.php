@@ -280,6 +280,7 @@ class Ilove_Img_Compress_Resources {
 
             if ( $_sizes && $images_compressed ) :
                 self::render_compress_details( $column_id );
+                self::render_button_restore( $column_id );
             else :
                 ?>
                                     
@@ -509,5 +510,43 @@ class Ilove_Img_Compress_Resources {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Render the restore button for an image.
+     *
+     * This method generates and displays button restore of image compression for a specific attachment
+     * identified by its image ID.
+     *
+     * @param int $image_id The ID of the attachment in the WordPress media library.
+     *
+     * @since 2.1.0
+     */
+    public static function render_button_restore( $image_id ) {
+        $iloveimg_options_compress  = json_decode( get_option( 'iloveimg_options_compress' ), true );
+        $iloveimg_options_watermark = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $backup_activated           = false;
+
+        if ( ( isset( $iloveimg_options_compress['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_compress['iloveimg_field_backup'] ) || ( isset( $iloveimg_options_watermark['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_watermark['iloveimg_field_backup'] ) ) {
+            $backup_activated = true;
+        }
+
+        $images_restore = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+        $img_nonce      = Ilove_Img_Compress_Plugin::get_img_nonce();
+
+        ?>
+            <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
+                <div class="iloveimg_restore_button_wrapper">
+                    <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
+                        <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
+                    </button>
+                    <br/>
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg' ); ?>...</span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg' ); ?></span></p>
+                </div>
+            <?php endif; ?>
+        <?php
     }
 }

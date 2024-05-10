@@ -47,7 +47,7 @@ class Ilove_Img_Compress_Process {
      * @access public
      */
     public function compress( $images_id ) {
-        global $_wp_additional_image_sizes, $wpdb;
+        global $wpdb;
 
         $images = array();
         try {
@@ -73,7 +73,22 @@ class Ilove_Img_Compress_Process {
 
                 array_unshift( $_sizes, 'full' );
 
-                $options_compress = json_decode( get_option( 'iloveimg_options_compress' ), true );
+                $options_compress  = json_decode( get_option( 'iloveimg_options_compress' ), true );
+                $options_watermark = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+                $images_restore    = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+
+                if ( ( isset( $options_compress['iloveimg_field_backup'] ) || isset( $options_watermark['iloveimg_field_backup'] ) ) && ! in_array( $images_id, $images_restore, true ) ) {
+
+                    $attached_file = get_attached_file( $images_id );
+
+                    Ilove_Img_Compress_Resources::rcopy( $attached_file, ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
+
+					$images_restore[] = $images_id;
+
+                    $images_restore = array_unique( $images_restore );
+
+					update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
+                }
 
                 foreach ( $_sizes as $_size ) {
                     $path_file       = '';
