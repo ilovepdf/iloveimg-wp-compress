@@ -32,6 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
 
+if ( ini_get( 'max_execution_time' ) < 300 ) {
+    set_time_limit( 300 );
+}
+
 $ilove_img_compress_upload_path = wp_upload_dir();
 
 define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
@@ -135,5 +139,3 @@ function ilove_img_compress_activate() {
 register_activation_hook( __FILE__, 'ilove_img_compress_activate' );
 
 new Ilove_Img_Compress_Plugin();
-
-set_time_limit( 300 );
