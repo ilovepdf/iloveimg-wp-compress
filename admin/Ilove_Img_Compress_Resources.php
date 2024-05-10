@@ -378,4 +378,136 @@ class Ilove_Img_Compress_Resources {
         }
         return array( $total, $total_compressed );
     }
+
+    /**
+     * Recursively remove a directory and its contents.
+     *
+     * This method recursively deletes the specified directory and all its contents, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $dir The path to the directory to be removed.
+     */
+    public static function rrmdir( $dir ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+			);
+		}
+
+        global $wp_filesystem;
+
+        if ( is_dir( $dir ) ) {
+            $files = scandir( $dir );
+
+            foreach ( $files as $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
+					self::rrmdir( "$dir/$file" );
+				}
+            }
+
+            $wp_filesystem->rmdir( $dir );
+
+        } elseif ( file_exists( $dir ) ) {
+			wp_delete_file( $dir );
+        }
+    }
+
+    /**
+     * Recursively copy a directory and its contents to a destination directory.
+     *
+     * This method recursively copies the contents of the source directory to the destination directory, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $src The source directory to be copied.
+     * @param string $dst The destination directory where the contents will be copied to.
+     */
+    public static function rcopy( $src, $dst ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+			);
+		}
+
+        global $wp_filesystem;
+
+        if ( is_dir( $src ) ) {
+            $wp_filesystem->mkdir( $dst );
+
+            $files = scandir( $src );
+
+            foreach ( $files as $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
+					self::rcopy( "$src/$file", "$dst/$file" );
+				}
+            }
+		} elseif ( file_exists( $src ) ) {
+            $base_file_name             = basename( $src );
+            $compare_dst_base_file_name = basename( $dst );
+
+            if ( ! file_exists( $dst ) ) {
+                $wp_filesystem->mkdir( $dst );
+            }
+
+            if ( $compare_dst_base_file_name === $base_file_name ) {
+                copy( $src, $dst );
+            } else {
+                copy( $src, $dst . '/' . $base_file_name );
+            }
+        }
+    }
+
+    /**
+     * Check if a backup directory exists.
+     *
+     * This method checks for the existence of a backup directory within the specified folder.
+     *
+     * @since 2.1.0
+     * @return bool True if the backup directory exists, false otherwise.
+     */
+    public static function is_there_backup() {
+        return is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
+    }
+
+    /**
+     * Calculate the size of a folder and its contents recursively.
+     *
+     * This method calculates the total size of a folder and all its contents, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $dir The path to the folder for which the size should be calculated.
+     * @return int The total size of the folder and its contents in bytes.
+     */
+    public static function folder_size( $dir ) {
+        $size = 0;
+
+        foreach ( glob( rtrim( $dir, '/' ) . '/*', GLOB_NOSORT ) as $each ) {
+            $size += is_file( $each ) ? filesize( $each ) : self::folder_size( $each );
+        }
+
+        return $size;
+    }
+
+    /**
+     * Get the size of the backup folder in megabytes (MB).
+     *
+     * This method checks if a backup directory exists and calculates its size in megabytes.
+     *
+     * @since 2.1.0
+     * @return float The size of the backup folder in megabytes (MB). Returns 0 if the backup directory doesn't exist.
+     */
+    public static function get_size_backup() {
+        if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
+            $folder = ILOVE_IMG_COMPRESS_BACKUP_FOLDER;
+
+            $size = self::folder_size( $folder );
+
+            return ( $size / 1024 ) / 1024;
+        } else {
+            return 0;
+        }
+    }
 }
