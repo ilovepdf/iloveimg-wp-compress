@@ -143,9 +143,9 @@
     jQuery( ".iloveimg_page_iloveimg-compress-admin-page #iloveimg_restore_all" ).on(
         'click',
         function (event) {
-			let element = jQuery( event.currentTarget );
-			element.attr( 'disabled', 'disabled' );
             event.preventDefault();
+
+			let element = jQuery( event.currentTarget );
 
             Swal.fire({
                 title: 'Attention!',
@@ -160,6 +160,8 @@
             }).then(
                 (result) => {
                     if (result.isConfirmed) {
+                        element.attr( 'disabled', 'disabled' );
+
                         jQuery.ajax(
                             {
                                 url: ajaxurl,
@@ -185,13 +187,13 @@
     jQuery( ".iloveimg_page_iloveimg-compress-admin-page #iloveimg_clear_backup" ).on(
         'click',
         function (event) {
-            let element = jQuery( event.currentTarget );
-			element.attr( 'disabled', 'disabled' );
             event.preventDefault();
+
+            let element = jQuery( event.currentTarget );
 
             Swal.fire({
                 title: 'Attention!',
-                text: 'The changes applied by all the tools will be lost. Do you want to continue?',
+                text: 'All files inside iloveimg-backup folder will be deleted. Do you want to continue?',
                 icon: 'warning',
                 confirmButtonText: 'Yes',
                 showCloseButton: true,
@@ -202,6 +204,8 @@
             }).then(
                 (result) => {
                     if (result.isConfirmed) {
+                        element.attr( 'disabled', 'disabled' );
+
                         jQuery.ajax(
                             {
                                 url: ajaxurl,
