@@ -374,8 +374,6 @@ class Ilove_Img_Compress_Plugin {
 
         if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) ) {
 
-            global $post;
-
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
             esc_html_e( 'iLoveIMG', 'iloveimg' );
