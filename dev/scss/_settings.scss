@@ -298,6 +298,28 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						margin-bottom: 20px;
 					}
 				}
+				.iloveimg_settings__options__field-backup{
+					display: flex;
+					justify-content: space-between;
+					@media  (max-width: $width_medium){
+						flex-direction: column;
+					}
+					.iloveimg_settings__options__field{
+						width: 50%;
+						border: 0;
+						@media  (max-width: $width_medium){
+							width: 100%;
+						}
+					}
+					button.button{
+						+ span{
+							display: inline-block;
+						    margin-top: 8px;
+						    margin-left: 6px;
+						    font-style: italic;
+						}
+					}
+				}
 				.iloveimg_settings__options__field{
 					padding: 30px 0;
 					border-bottom: 1px solid #E1E1E1;
