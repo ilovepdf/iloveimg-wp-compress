@@ -370,7 +370,7 @@ class Ilove_Img_Compress_Plugin {
      * @param \WP_Post $post Post object.
      */
     public function show_media_info( $post ) {
-        $mime_type_accepted = array( 'image/jpeg', 'image/png' );
+        $mime_type_accepted = array( 'image/jpeg', 'image/png', 'image/gif' );
 
         if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) ) {
 
