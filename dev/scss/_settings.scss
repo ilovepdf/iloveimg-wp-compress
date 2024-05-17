@@ -1,12 +1,14 @@
-body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page{
+body.toplevel_page_iloveimg-admin-page,
+body.media_page_iloveimg-media-page,
+body.admin_page_iloveimg-watermark-admin-page,
+body.iloveimg_page_iloveimg-compress-admin-page,
+body.iloveimg_page_iloveimg-watermark-options-admin-page,
+body.iloveimg_page_iloveimg-watermark-admin-page {
 	background-color: $background_color;
 	.iloveimg_settings{
 		h1{
 			padding: 0;
 		}
-		//width: 100%;
-		//max-width: 1200px;
-		//margin: auto;
 		@include placeholder {
 		    opacity: 0.5;
 			color: #555D66;
@@ -88,14 +90,11 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						max-width: 656px;
 					}
 					form{
-						//width: calc( 45% - 30px );
 						width: 350px;
 						p.submit{
 							padding-top: 8px;
 						}
 						> div{
-							//display: flex;
-							//align-content: stretch;
 							> div{
 								&:first-child{
 									margin-right: 12px;
@@ -154,9 +153,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					}
 					.iloveimg_settings__overview__account-logged__column_right{
 						width: 240px;
-						@media  (max-width: $width_small){
-							//margin-left: 24px;
-						}
+
 						form{
 							&.iloveimg_settings__overview__account-logged__column_right-proyects{
 								border-top: 1px solid #E1E1E1;
@@ -165,9 +162,6 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 								label{
 									display: block;
 									margin-bottom: 5px;
-								}
-								select, button{
-									//margin-bottom: 10px;
 								}
 							}
 						}
@@ -249,8 +243,8 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					padding-bottom: 15px;
 					margin-bottom: 0px;
 				}
-				input[type="submit"], input[type="button"]{
-					//background-color: #B4B4B4;
+				input[type="submit"],
+				input[type="button"] {
 					text-shadow: none !important;
 					&:disabled{
 						opacity: 1;
@@ -265,37 +259,33 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 					flex-direction: column;
 					button{
 						position: relative;
-						/*&:before{
-							content: '';
-						    position: absolute;
-						    top: -20px;
-						    left: -20px;
-						    bottom: -20px;
-						    right: -20px;
-						    background: inherit;
-						    border-radius: 3px;
-						    z-index: -1;
-						    opacity: 0.4;
-						    -webkit-transform: scale3d(0.8, 0.5, 1);
-						    transform: scale3d(0.8, 0.5, 1);
-						}
-						&:hover{
-							&:before{
-								display: none;
-							}
-						}
-						&.need_saving{
-							opacity: .7;
-							&:before{
-								-webkit-animation: anim-moema-2 1s 1s infinite;
-	    						animation: anim-moema-2 1s 1s infinite;
-							}
-						}*/
 					}
 				}
 				form{
 					> p.submit{
 						margin-bottom: 20px;
+					}
+				}
+				.iloveimg_settings__options__field-backup{
+					display: flex;
+					justify-content: space-between;
+					@media  (max-width: $width_medium){
+						flex-direction: column;
+					}
+					.iloveimg_settings__options__field{
+						width: 50%;
+						border: 0;
+						@media  (max-width: $width_medium){
+							width: 100%;
+						}
+					}
+					button.button{
+						+ span{
+							display: inline-block;
+						    margin-top: 8px;
+						    margin-left: 6px;
+						    font-style: italic;
+						}
 					}
 				}
 				.iloveimg_settings__options__field{
@@ -345,7 +335,8 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 	}
 }
 body{
-	a.thickbox.iloveimg_sizes_compressed, a.iloveimg_link{
+	a.thickbox.iloveimg_sizes_compressed,
+	a.iloveimg_link {
 		color: #626870;
 		text-decoration: underline;
 		&:hover{

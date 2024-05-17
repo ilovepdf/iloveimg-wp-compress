@@ -139,4 +139,151 @@
 			}
 		}
     );
+
+    jQuery( ".iloveimg_page_iloveimg-compress-admin-page #iloveimg_restore_all" ).on(
+        'click',
+        function (event) {
+            event.preventDefault();
+
+			let element = jQuery( event.currentTarget );
+
+            Swal.fire({
+                title: 'Attention!',
+                text: 'The changes applied by all the tools will be lost. Do you want to continue?',
+                icon: 'warning',
+                confirmButtonText: 'Yes',
+                showCloseButton: true,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'button-primary',
+                },
+            }).then(
+                (result) => {
+                    if (result.isConfirmed) {
+                        element.attr( 'disabled', 'disabled' );
+
+                        jQuery.ajax(
+                            {
+                                url: ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'ilove_img_compress_restore_all'
+                                },
+                                success: function () {
+                                    element.removeAttr( 'disabled' );
+                                    location.reload();
+                                },
+                                error: function () {
+                                    element.removeAttr( 'disabled' );
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+		}
+    );
+
+    jQuery( ".iloveimg_page_iloveimg-compress-admin-page #iloveimg_clear_backup" ).on(
+        'click',
+        function (event) {
+            event.preventDefault();
+
+            let element = jQuery( event.currentTarget );
+
+            Swal.fire({
+                title: 'Attention!',
+                text: 'All files inside iloveimg-backup folder will be deleted. Do you want to continue?',
+                icon: 'warning',
+                confirmButtonText: 'Yes',
+                showCloseButton: true,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'button-primary',
+                },
+            }).then(
+                (result) => {
+                    if (result.isConfirmed) {
+                        element.attr( 'disabled', 'disabled' );
+
+                        jQuery.ajax(
+                            {
+                                url: ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'ilove_img_compress_clear_backup'
+                                },
+                                success: function () {
+                                    element.removeAttr( 'disabled' );
+                                    location.reload();
+                                },
+                                error: function () {
+                                    element.removeAttr( 'disabled' );
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+		}
+    );
+
+    jQuery( ".iloveimg-compress.iloveimg_restore_button_wrapper .iloveimg_restore_button" ).on(
+        'click',
+        function (event) {
+            event.preventDefault();
+
+            let element = jQuery( event.currentTarget );
+            let fieldNonce = jQuery( event.currentTarget ).siblings( "#_wpnonce" );
+            fieldNonce = fieldNonce.val();
+            let action = element.data('action');
+            let imageId = element.data('id');
+
+			element.hide();
+            element.nextAll('.loading').show();
+
+            Swal.fire({
+                title: 'Attention!',
+                text: 'The changes applied by all the tools will be lost. Do you want to continue?',
+                icon: 'warning',
+                confirmButtonText: 'Yes',
+                showCloseButton: true,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'button-primary',
+                },
+            }).then(
+                (result) => {
+                    if (result.isConfirmed) {
+                        jQuery.ajax(
+                            {
+                                url: ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    'action': action,
+                                    'id': imageId,
+                                    '_wpnonce': fieldNonce
+                                },
+                                dataType: 'json',
+                                success: function (data) {
+                                    element.nextAll('.loading').hide();
+                                    element.nextAll('.success').html( data.data ).show();
+                                    location.reload();
+                                },
+                                error: function (error) {
+                                    element.nextAll('.loading').hide();
+                                    element.nextAll('.error').html( error.responseJSON.data ).show();
+                                    element.show();
+                                }
+                            }
+                        );
+                    } else {
+                        element.show();
+                        element.nextAll('.loading').hide();
+                    }
+                }
+            );
+		}
+    );
+
 }).call();

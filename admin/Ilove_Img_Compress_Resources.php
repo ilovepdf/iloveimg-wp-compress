@@ -280,6 +280,7 @@ class Ilove_Img_Compress_Resources {
 
             if ( $_sizes && $images_compressed ) :
                 self::render_compress_details( $column_id );
+                self::render_button_restore( $column_id );
             else :
                 ?>
                                     
@@ -377,5 +378,193 @@ class Ilove_Img_Compress_Resources {
             }
         }
         return array( $total, $total_compressed );
+    }
+
+    /**
+     * Recursively remove a directory and its contents.
+     *
+     * This method recursively deletes the specified directory and all its contents, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $dir The path to the directory to be removed.
+     */
+    public static function rrmdir( $dir ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+			);
+		}
+
+        global $wp_filesystem;
+
+        if ( is_dir( $dir ) ) {
+            $files = scandir( $dir );
+
+            foreach ( $files as $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
+					self::rrmdir( "$dir/$file" );
+				}
+            }
+
+            $wp_filesystem->rmdir( $dir );
+
+        } elseif ( file_exists( $dir ) ) {
+			wp_delete_file( $dir );
+        }
+    }
+
+    /**
+     * Recursively copy a directory and its contents to a destination directory.
+     *
+     * This method recursively copies the contents of the source directory to the destination directory, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $src The source directory to be copied.
+     * @param string $dst The destination directory where the contents will be copied to.
+     */
+    public static function rcopy( $src, $dst ) {
+
+        if ( ! WP_Filesystem() ) {
+			return new \WP_Error(
+				'Unable Filesystem',
+				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+			);
+		}
+
+        global $wp_filesystem;
+
+        if ( is_dir( $src ) ) {
+            $wp_filesystem->mkdir( $dst );
+
+            $files = scandir( $src );
+
+            foreach ( $files as $file ) {
+				if ( '.' !== $file && '..' !== $file ) {
+					self::rcopy( "$src/$file", "$dst/$file" );
+				}
+            }
+		} elseif ( file_exists( $src ) ) {
+            $base_file_name             = basename( $src );
+            $compare_dst_base_file_name = basename( $dst );
+
+            if ( ! file_exists( $dst ) ) {
+                $wp_filesystem->mkdir( $dst );
+            }
+
+            if ( $compare_dst_base_file_name === $base_file_name ) {
+                copy( $src, $dst );
+            } else {
+                copy( $src, $dst . '/' . $base_file_name );
+            }
+        }
+    }
+
+    /**
+     * Check if a backup directory exists.
+     *
+     * This method checks for the existence of a backup directory within the specified folder.
+     *
+     * @since 2.1.0
+     * @return bool True if the backup directory exists, false otherwise.
+     */
+    public static function is_there_backup() {
+        return is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
+    }
+
+    /**
+     * Calculate the size of a folder and its contents recursively.
+     *
+     * This method calculates the total size of a folder and all its contents, including files and subdirectories.
+     *
+     * @since 2.1.0
+     * @param string $dir The path to the folder for which the size should be calculated.
+     * @return int The total size of the folder and its contents in bytes.
+     */
+    public static function folder_size( $dir ) {
+        $size = 0;
+
+        foreach ( glob( rtrim( $dir, '/' ) . '/*', GLOB_NOSORT ) as $each ) {
+            $size += is_file( $each ) ? filesize( $each ) : self::folder_size( $each );
+        }
+
+        return $size;
+    }
+
+    /**
+     * Get the size of the backup folder in megabytes (MB).
+     *
+     * This method checks if a backup directory exists and calculates its size in megabytes.
+     *
+     * @since 2.1.0
+     * @return float The size of the backup folder in megabytes (MB). Returns 0 if the backup directory doesn't exist.
+     */
+    public static function get_size_backup() {
+        if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
+            $folder = ILOVE_IMG_COMPRESS_BACKUP_FOLDER;
+
+            $size = self::folder_size( $folder );
+
+            return ( $size / 1024 ) / 1024;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Render the restore button for an image.
+     *
+     * This method generates and displays button restore of image compression for a specific attachment
+     * identified by its image ID.
+     *
+     * @param int $image_id The ID of the attachment in the WordPress media library.
+     *
+     * @since 2.1.0
+     */
+    public static function render_button_restore( $image_id ) {
+        $iloveimg_options_compress  = json_decode( get_option( 'iloveimg_options_compress' ), true );
+        $iloveimg_options_watermark = json_decode( get_option( 'iloveimg_options_watermark' ), true );
+        $backup_activated           = false;
+
+        if ( ( isset( $iloveimg_options_compress['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_compress['iloveimg_field_backup'] ) || ( isset( $iloveimg_options_watermark['iloveimg_field_backup'] ) && 'on' === $iloveimg_options_watermark['iloveimg_field_backup'] ) ) {
+            $backup_activated = true;
+        }
+
+        $images_restore = get_option( 'iloveimg_images_to_restore' ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+        $img_nonce      = Ilove_Img_Compress_Plugin::get_img_nonce();
+
+        ?>
+            <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
+                <div class="iloveimg-compress iloveimg_restore_button_wrapper">
+                    <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
+                        <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
+                    </button>
+                    <br/>
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg' ); ?>...</span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg' ); ?></span></p>
+                </div>
+            <?php endif; ?>
+        <?php
+    }
+
+    /**
+     * Regenerate attachment metadata
+     *
+     * @since      2.1.0
+     * @param int $attachment_id File ID.
+     */
+    public static function regenerate_attachment_data( $attachment_id ) {
+
+        if ( ! $attachment_id ) {
+            return;
+        }
+
+        $filename = get_attached_file( $attachment_id ); // Get Filename of attachment
+        $metadata = wp_generate_attachment_metadata( $attachment_id, $filename ); // Regenerate attachment metadata
+
+        wp_update_attachment_metadata( $attachment_id, $metadata ); // Update new attachment metadata
     }
 }

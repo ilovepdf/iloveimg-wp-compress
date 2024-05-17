@@ -2,6 +2,8 @@ parameters:
 	level: 5
 	paths:
 			- ./
+	ignoreErrors:
+			- "#Constant ILOVE_IMG_COMPRESS_PLUGIN_URL not found#"
 	excludePaths:
 			analyseAndScan:
 					- vendor
