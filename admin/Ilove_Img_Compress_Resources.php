@@ -536,7 +536,7 @@ class Ilove_Img_Compress_Resources {
 
         ?>
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
-                <div class="iloveimg_restore_button_wrapper">
+                <div class="iloveimg-compress iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
                         <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
                     </button>

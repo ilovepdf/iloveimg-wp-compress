@@ -228,9 +228,11 @@
 		}
     );
 
-    jQuery( ".iloveimg_restore_button_wrapper .iloveimg_restore_button" ).on(
+    jQuery( ".iloveimg-compress.iloveimg_restore_button_wrapper .iloveimg_restore_button" ).on(
         'click',
         function (event) {
+            event.preventDefault();
+
             let element = jQuery( event.currentTarget );
             let fieldNonce = jQuery( event.currentTarget ).siblings( "#_wpnonce" );
             fieldNonce = fieldNonce.val();
@@ -239,8 +241,6 @@
 
 			element.hide();
             element.nextAll('.loading').show();
-
-            event.preventDefault();
 
             Swal.fire({
                 title: 'Attention!',
