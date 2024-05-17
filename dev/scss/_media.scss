@@ -111,10 +111,16 @@ body{
 		border-radius: 16.5px;
 		&:hover{
 			background-color: $primary_color !important;
+			border: 1px solid $primary_color;
+			color: #fff;
+			text-shadow: none !important;
 		}
 		&:disabled{
 			background-color: $primary_color !important;
-			opacity: .7;
+			opacity: .5;
+			color: #fff !important;
+			font-weight: normal !important;
+			text-shadow: none !important;
 		}
 	}
 	table.table__details__sizes{
