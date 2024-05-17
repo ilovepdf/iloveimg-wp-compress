@@ -15,7 +15,7 @@
  * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
  * Plugin URI:        https://developer.iloveimg.com/
  * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
- * Version:           2.0.3
+ * Version:           2.1.0
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -31,6 +31,21 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
+
+if ( ini_get( 'max_execution_time' ) < 300 ) {
+    set_time_limit( 300 );
+}
+
+$ilove_img_compress_upload_path = wp_upload_dir();
+
+define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
+define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.1' );
+define( 'ILOVE_IMG_COMPRESS_UPLOAD_FOLDER', $ilove_img_compress_upload_path['basedir'] );
+define( 'ILOVE_IMG_COMPRESS_BACKUP_FOLDER', $ilove_img_compress_upload_path['basedir'] . '/iloveimg-backup/' );
+define( 'ILOVE_IMG_COMPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 use Ilove_Img_Compress\Ilove_Img_Compress_Plugin;
 use Ilove_Img_Compress\Ilove_Img_Compress_Serializer;
@@ -90,6 +105,10 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_com
 function ilove_img_compress_activate() {
     update_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
 
+    if ( ! file_exists( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
+        wp_mkdir_p( ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
+    }
+
     if ( ! get_option( 'iloveimg_options_compress' ) ) {
         $iloveimg_thumbnails = array( 'full', 'thumbnail', 'medium', 'medium_large', 'large' );
         if ( ! extension_loaded( 'gd' ) ) {
@@ -103,6 +122,7 @@ function ilove_img_compress_activate() {
 					'iloveimg_field_resize_full'      => 0,
 					'iloveimg_field_size_full_width'  => 2048,
 					'iloveimg_field_size_full_height' => 2048,
+					'iloveimg_field_backup'           => 'on',
 				)
             )
         );
@@ -119,12 +139,3 @@ function ilove_img_compress_activate() {
 register_activation_hook( __FILE__, 'ilove_img_compress_activate' );
 
 new Ilove_Img_Compress_Plugin();
-
-define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
-define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.1' );
-define( 'ILOVE_IMG_COMPRESS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
-set_time_limit( 300 );

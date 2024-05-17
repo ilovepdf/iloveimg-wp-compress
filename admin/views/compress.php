@@ -2,7 +2,7 @@
 use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 ?>
 <div class="wrap iloveimg_settings">
-    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); // @phpstan-ignore-line ?>" class="logo" /></h1>
+    <h1><img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" /></h1>
     
     <div class="iloveimg_settings__overview">
         <?php require_once 'account.php'; ?>
@@ -102,6 +102,31 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                             <p>Original image height won't exceed this value in pixels.</p> 
                         </div>
                     </div>      
+                </div>
+
+                <div class="iloveimg_settings__options__field-backup">
+                    <div class="iloveimg_settings__options__field" style="border-bottom: 0;">
+                        
+                        <div class="switch">
+                            <input type="checkbox" name="iloveimg_field_backup" <?php echo isset( $options_value['iloveimg_field_backup'] ) ? 'checked' : ''; ?> />
+                            <span class="slider"></span>
+                        </div>
+                        <label>Backup original Images</label>
+                        <p>Enable this option to make a backup of your images before being compress or watermarked. These backups will allow you to restore your original images at cost of taking server memory space.</p>
+                        <p>You can find the original files at: <code>wp-content/uploads/iloveimg-backup</code></p>
+                        
+                    </div>
+                    
+                    <div class="iloveimg_settings__options__field">
+                        
+                        <label>Restore Original Images</label>
+                        <p>All backup images can be restored. This action will recover the original images as they were before being stamped with Compress or Watermark. <span style="color: red;">Warning: Any changes made AFTER Watermark/Compress would be also restored.</span></p>
+                        <p>You can also clear all your backup images to free memory space. <span style="color: red;">Warning: Clear backups will prevent you to restore original images.</span></p>
+                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Restore All</button>
+                        
+                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::is_there_backup() ) ? '' : 'disabled'; ?>>Clear backup</button>
+                            <span><?php echo (float) round( Ilove_Img_Compress_Resources::get_size_backup(), 2 ); ?> MB</span>
+                    </div>
                 </div>
                 
                 <?php

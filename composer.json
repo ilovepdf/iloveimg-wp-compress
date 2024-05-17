@@ -24,10 +24,9 @@
         }
     },
     "scripts": {
-        "stan": "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table > ../../../phpstan-report-iloveimg.txt",
-        "phpcs-summary": "phpcs -s --report=summary --ignore=*/node_modules/*,*/vendor/*,*/iloveimg-php/*,*/.github/*,*/assets/css/*,*/assets/js/* --report-file=../../../condesniffer-report-summary-iloveimg.txt ./",
-        "phpcs": "phpcs -s --ignore=*/node_modules/*,*/vendor/*,*/iloveimg-php/*,*/.github/*,*/assets/js/*,*/assets/css/* --report-file=../../../condesniffer-report-iloveimg.txt ./",
-        "phpcbf": "phpcbf --ignore=node_modules/,vendor/,iloveimg-php/,assets/js/,assets/css/,.github/ ./",
+        "stan": "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table > ./phpstan-report-iloveimg.log",
+        "phpcs": "phpcs -s --ignore=*/node_modules/*,*/vendor/*,*/iloveimg-php/*,*/.github/*,*/assets/*,*/dev/* --report-file=./codesniffer-report-iloveimg.log ./",
+        "phpcbf": "phpcbf --ignore=node_modules/,vendor/,iloveimg-php/,assets/,dev/,.github/ ./",
         "autoload-dev": "composer dump-autoload",
         "autoload-prod": "composer dump-autoload --no-dev"
     },

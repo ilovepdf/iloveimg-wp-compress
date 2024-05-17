@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.0.3';
+    const VERSION = '2.1.0';
 
     /**
 	 * The unique identifier of this plugin.
@@ -75,6 +75,9 @@ class Ilove_Img_Compress_Plugin {
         // Handle AJAX requests for the library.
         add_action( 'wp_ajax_ilove_img_compress_library', array( $this, 'ilove_img_compress_library' ) );
         add_action( 'wp_ajax_ilove_img_compress_library_is_compressed', array( $this, 'ilove_img_compress_library_is_compressed' ) );
+        add_action( 'wp_ajax_ilove_img_compress_restore_all', array( $this, 'ilove_img_restore_all' ) );
+        add_action( 'wp_ajax_ilove_img_compress_clear_backup', array( $this, 'ilove_img_compress_clear_backup' ) );
+        add_action( 'wp_ajax_ilove_img_compress_restore', array( $this, 'ilove_img_restore' ) );
 
         // Process attachment metadata.
         add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 10, 2 );
@@ -101,22 +104,37 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 */
     public function enqueue_scripts() {
-        // Enqueue the main JavaScript file.
-        wp_enqueue_script(
-            self::NAME . '_admin',
-            plugins_url( '/assets/js/main.min.js', __DIR__ ),
-			array(),
-            self::VERSION,
-            true
-        );
 
-        // Enqueue the main CSS file.
-        wp_enqueue_style(
-            self::NAME . '_admin',
-            plugins_url( '/assets/css/app.min.css', __DIR__ ),
-			array(),
-            self::VERSION
-		);
+        global $pagenow, $hook_suffix;
+
+		if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
+
+            // Enqueue the Sweet alert JavaScript file.
+            wp_enqueue_script(
+                self::NAME . '_sweetalert2',
+                plugins_url( '/assets/js/sweetalert2.all.min.js', __DIR__ ),
+                array(),
+                '11.11.0',
+                true
+            );
+
+            // Enqueue the main JavaScript file.
+            wp_enqueue_script(
+                self::NAME . '_admin',
+                plugins_url( '/assets/js/main.min.js', __DIR__ ),
+                array( self::NAME . '_sweetalert2' ),
+                self::VERSION,
+                true
+            );
+
+            // Enqueue the main CSS file.
+            wp_enqueue_style(
+                self::NAME . '_admin',
+                plugins_url( '/assets/css/app.min.css', __DIR__ ),
+                array(),
+                self::VERSION
+            );
+		}
     }
 
     /**
@@ -349,27 +367,33 @@ class Ilove_Img_Compress_Plugin {
 
      * @since 1.0.0
      * @access public
+     * @param \WP_Post $post Post object.
      */
-    public function show_media_info() {
-        global $post;
-        echo '<div class="misc-pub-section iloveimg-compress-images">';
-        echo '<h4>';
-        esc_html_e( 'iLoveIMG', 'iloveimg' );
-        echo '</h4>';
-        echo '<div class="iloveimg-container">';
-        echo '<table><tr><td>';
-        $status_compress = get_post_meta( $post->ID, 'iloveimg_status_compress', true );
+    public function show_media_info( $post ) {
+        $mime_type_accepted = array( 'image/jpeg', 'image/png', 'image/gif' );
 
-        $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
+        if ( in_array( $post->post_mime_type, $mime_type_accepted, true ) ) {
 
-        if ( 2 === (int) $status_compress ) {
-            Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
-        } else {
-            Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );
+            echo '<div class="misc-pub-section iloveimg-compress-images">';
+            echo '<h4>';
+            esc_html_e( 'iLoveIMG', 'iloveimg' );
+            echo '</h4>';
+            echo '<div class="iloveimg-container">';
+            echo '<table><tr><td>';
+            $status_compress = get_post_meta( $post->ID, 'iloveimg_status_compress', true );
+
+            $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $post->ID );
+
+            if ( 2 === (int) $status_compress ) {
+                Ilove_Img_Compress_Resources::render_compress_details( $post->ID );
+                Ilove_Img_Compress_Resources::render_button_restore( $post->ID );
+            } else {
+                Ilove_Img_Compress_Resources::get_status_of_column( $post->ID );
+            }
+            echo '</td></tr></table>';
+            echo '</div>';
+            echo '</div>';
         }
-        echo '</td></tr></table>';
-        echo '</div>';
-        echo '</div>';
     }
 
     /**
@@ -413,5 +437,91 @@ class Ilove_Img_Compress_Plugin {
         }
 
         return $iloveimg_watermark_found;
+    }
+
+    /**
+     * Handle the AJAX request to restore all watermarked/compressed images.
+     *
+     * This method is responsible for processing an AJAX request to restore all watermarked/compressed images. It checks for the presence of a backup folder, restores the original images from the backup, and removes associated metadata and options related to watermarked and compressed images.
+     *
+     * @since 2.1.0
+     */
+    public function ilove_img_restore_all() {
+        if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
+            $folders = array_diff( scandir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ), array( '..', '.' ) );
+
+            foreach ( $folders as $key => $folder ) {
+                Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . $folder, ILOVE_IMG_COMPRESS_UPLOAD_FOLDER . '/' . $folder );
+            }
+
+            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore' ), true );
+
+            foreach ( $images_restore as $key => $value ) {
+                delete_post_meta( $value, 'iloveimg_status_watermark' );
+                delete_post_meta( $value, 'iloveimg_watermark' );
+                delete_post_meta( $value, 'iloveimg_status_compress' );
+                delete_post_meta( $value, 'iloveimg_compress' );
+                delete_option( 'iloveimg_images_to_restore' );
+            }
+        }
+
+        wp_die();
+    }
+
+    /**
+     * Handle the AJAX request to restore an watermarked/compressed image.
+     *
+     * This method is responsible for processing an AJAX request to restore an watermarked/compressed image. It checks for the presence of a backup folder, restores the original images from the backup, and removes associated metadata and options related to watermarked and compressed images.
+     *
+     * @since 2.1.0
+     */
+    public function ilove_img_restore() {
+
+        if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
+            wp_send_json_error( 'Error processing your request. Invalid Nonce code', 401 );
+        }
+
+        if ( ! isset( $_POST['id'] ) ) {
+            wp_send_json_error( 'Error processing your request. Invalid Image ID', 400 );
+        }
+
+        $attachment_id  = intval( $_POST['id'] );
+        $images_restore = null !== get_option( 'iloveimg_images_to_restore', null ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+        $key_founded    = array_search( $attachment_id, $images_restore, true );
+
+        if ( ! in_array( $attachment_id, $images_restore, true ) ) {
+            wp_send_json_error( 'Sorry. There is no backup for this file', 404 );
+        }
+
+        Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
+
+        Ilove_Img_Compress_Resources::regenerate_attachment_data( $attachment_id );
+
+        delete_post_meta( $attachment_id, 'iloveimg_status_watermark' );
+        delete_post_meta( $attachment_id, 'iloveimg_watermark' );
+        delete_post_meta( $attachment_id, 'iloveimg_status_compress' );
+        delete_post_meta( $attachment_id, 'iloveimg_compress' );
+
+        if ( ! $key_founded ) {
+            unset( $images_restore[ $key_founded ] );
+        }
+
+        wp_send_json_success( __( 'It was restored correctly', 'iloveimg' ), 200 );
+    }
+
+    /**
+     * Handle the AJAX request to clear the backup of watermarked/compressed images.
+     *
+     * This method is responsible for processing an AJAX request to clear the backup of watermarked/compressed images. It checks for the presence of a backup folder and, if found, deletes the entire backup folder and related options.
+     *
+     * @since 2.1.0
+     */
+    public function ilove_img_compress_clear_backup() {
+        if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
+            Ilove_Img_Compress_Resources::rrmdir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
+            delete_option( 'iloveimg_images_to_restore' );
+        }
+
+        wp_die();
     }
 }

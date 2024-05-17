@@ -1,5 +1,13 @@
-body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page{
-	.iloveimg_settings{
+body.toplevel_page_iloveimg-admin-page,
+body.media_page_iloveimg-media-page,
+body.admin_page_iloveimg-watermark-admin-page,
+body.iloveimg_page_iloveimg-compress-admin-page,
+body.iloveimg_page_iloveimg-watermark-options-admin-page,
+body.iloveimg_page_iloveimg-watermark-admin-page,
+body.upload-php,
+body.post-php {
+	.iloveimg_settings,
+	.iloveimg_restore_button_wrapper {
 		input[type="text"], input[type="email"], input[type="password"]{
 			background: #FFFFFF;
 			border: 1px solid #969696;
@@ -284,6 +292,22 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page,  bo
 				  visibility: visible;
 				}
 			}
+		}
+
+		.success,
+		.compress-success,
+		.applied-success {
+			display: none;
+			color: #46b450;
+		}
+		
+		.error,
+		.compress-error,
+		.applied-error,
+		.compress-abort,
+		.applied-abort {
+			display: none;
+			color: #a00;
 		}
 
 	}
