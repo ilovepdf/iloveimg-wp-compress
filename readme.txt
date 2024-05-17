@@ -86,7 +86,7 @@ Added
 * Now you can restore all the files or just the ones you need.
 
 Improved
-* Update Node Libraries.
+* Update Libraries.
 * Time limit is set for PHP when it is less than 300.
 * On the individual page of a file, iloveimg compress buttons are now displayed whenever the file is a IMAGE.
 
