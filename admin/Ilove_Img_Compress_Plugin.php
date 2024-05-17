@@ -495,6 +495,8 @@ class Ilove_Img_Compress_Plugin {
 
         Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
 
+        Ilove_Img_Compress_Resources::regenerate_attachment_data( $attachment_id );
+
         delete_post_meta( $attachment_id, 'iloveimg_status_watermark' );
         delete_post_meta( $attachment_id, 'iloveimg_watermark' );
         delete_post_meta( $attachment_id, 'iloveimg_status_compress' );

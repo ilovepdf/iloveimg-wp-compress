@@ -549,4 +549,22 @@ class Ilove_Img_Compress_Resources {
             <?php endif; ?>
         <?php
     }
+
+    /**
+     * Regenerate attachment metadata
+     *
+     * @since      2.1.0
+     * @param int $attachment_id File ID.
+     */
+    public static function regenerate_attachment_data( $attachment_id ) {
+
+        if ( ! $attachment_id ) {
+            return;
+        }
+
+        $filename = get_attached_file( $attachment_id ); // Get Filename of attachment
+        $metadata = wp_generate_attachment_metadata( $attachment_id, $filename ); // Regenerate attachment metadata
+
+        wp_update_attachment_metadata( $attachment_id, $metadata ); // Update new attachment metadata
+    }
 }
