@@ -200,7 +200,7 @@ class Ilove_Img_Compress_Plugin {
             } elseif ( 2 === (int) $status_compress ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } elseif ( 0 === (int) $status_compress && ! $status_compress ) {
-                echo 'Try again or buy more files';
+                echo 'Try again or buy more credits';
             }
         }
         wp_die();
@@ -351,7 +351,7 @@ class Ilove_Img_Compress_Plugin {
                     ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
+                            <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
                         </div>
                         <?php
                     }

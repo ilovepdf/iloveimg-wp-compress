@@ -10,7 +10,7 @@
         <div class="iloveimg_settings__info">
             <h3>The power of iLoveIMG in your WordPress!</h3>
             <p>Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.</p>
-            <p>Register now to get 500 free uses and start working with iLoveIMG plugin now!</p>
+            <p>Register now to get 2500 free credits and start working with iLoveIMG plugin now!</p>
         </div>
     <?php endif ?>
     

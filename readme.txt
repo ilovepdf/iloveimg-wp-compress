@@ -36,7 +36,7 @@ Trust reliable developers. **iLoveIMG Image Compressor** is brought to you by th
 -   **Good for eCommerce** - Works great for eCommerce websites using WooCommerce, NextGen Gallery and other plugins for e-commerce.
 -   **Security first** -  Your data is not stored nor collect on our services. We are GDPR compliant.
 -   **Robust and frequently updated**
--   **Freemium service** - Freely process up to 500 images per month. Need more? Subscribe our [Premium plan](https://developer.iloveimg.com/pricing) or buy a [prepaid package](https://developer.iloveimg.com/pricing) to use at your convenience.
+-   **Freemium service** - Freely up to 2500 credits per month. Need more? Subscribe our [Premium plan](https://iloveapi.com/pricing) or buy a [prepaid package](https://iloveapi.com/pricing) to use at your convenience.
 
 iLoveIMG optimizes your visual assets to improve your page load speed, delivering high-quality images rescaled for every device. With a quick and easy installation, you can start enhancing the user experience of your site.
 
@@ -50,7 +50,7 @@ iLoveIMG optimizes your visual assets to improve your page load speed, deliverin
 
 **Can I use the plugin for free?**
 
-Absolutely. As a free user, you can optimise a maximum of 500 images per month. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
+Absolutely. As a free user, we let you process your first 2500 monthly credits. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
 
 **Can I make a one-time payment?**
 
@@ -70,7 +70,7 @@ iLoveIMG Compression plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
 
 **Do you care about the privacy of my images?**
 
