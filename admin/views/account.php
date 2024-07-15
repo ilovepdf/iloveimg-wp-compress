@@ -3,6 +3,21 @@ $ilove_img_is_logged = false;
 $ilove_img_account   = array();
 
 if ( get_option( 'iloveimg_account' ) ) {
+
+    if ( ! get_option( 'iloveimg_user_is_migrated' ) ) {
+
+        delete_option( 'iloveimg_account' );
+        delete_option( 'iloveimg_proyect' );
+        $ilove_img_options = json_decode( get_option( 'iloveimg_options_compress' ), true );
+        unset( $ilove_img_options['iloveimg_field_compress_activated'] );
+        unset( $ilove_img_options['iloveimg_field_autocompress'] );
+        unset( $ilove_img_options['iloveimg_field_resize_full'] );
+        update_option( 'iloveimg_options_compress', wp_json_encode( $ilove_img_options ) );
+
+        wp_safe_redirect( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) );
+        exit();
+    }
+
 	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
 
 	$ilove_img_is_logged = true;
