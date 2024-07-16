@@ -1,13 +1,13 @@
 === Image Compressor & Optimizer - iLoveIMG ===
 Plugin Name: Image Compressor & Optimizer - iLoveIMG
-Version: 2.1.0
+Version: 2.2.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 5.3
-Tested up to: 6.5.3
-Stable tag: 2.1.0
+Tested up to: 6.6
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -36,7 +36,7 @@ Trust reliable developers. **iLoveIMG Image Compressor** is brought to you by th
 -   **Good for eCommerce** - Works great for eCommerce websites using WooCommerce, NextGen Gallery and other plugins for e-commerce.
 -   **Security first** -  Your data is not stored nor collect on our services. We are GDPR compliant.
 -   **Robust and frequently updated**
--   **Freemium service** - Freely process up to 500 images per month. Need more? Subscribe our [Premium plan](https://developer.iloveimg.com/pricing) or buy a [prepaid package](https://developer.iloveimg.com/pricing) to use at your convenience.
+-   **Freemium service** - Freely up to 2500 credits per month. Need more? Subscribe our [Premium plan](https://iloveapi.com/pricing) or buy a [prepaid package](https://iloveapi.com/pricing) to use at your convenience.
 
 iLoveIMG optimizes your visual assets to improve your page load speed, delivering high-quality images rescaled for every device. With a quick and easy installation, you can start enhancing the user experience of your site.
 
@@ -50,7 +50,7 @@ iLoveIMG optimizes your visual assets to improve your page load speed, deliverin
 
 **Can I use the plugin for free?**
 
-Absolutely. As a free user, you can optimise a maximum of 500 images per month. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
+Absolutely. As a free user, we let you process your first 2500 monthly credits. Once this limit is reached, you cannot compress new images until next month unless you purchase credits. 
 
 **Can I make a one-time payment?**
 
@@ -70,7 +70,7 @@ iLoveIMG Compression plugin can optimize images in JPG, PNG and GIF format.
 
 **Do you have an API REST?**
 
-Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://developer.iloveimg.com).
+Yes, in fact this plugin is powered by our API. And you can integrate our image optimization tools into your software apps too! Learn more about [iLoveIMG API for developers](https://iloveapi.com).
 
 **Do you care about the privacy of my images?**
 
@@ -79,6 +79,16 @@ All our servers are strictly monitored as we comply with the European Data Priva
 Moreover, all processed files are automatically deleted from our servers after being processed in a time range of one, two and twenty-four hours (depending on your user status). You can check detailed info at our [Privacy Policy](https://www.iloveimg.com/help/privacy) and our [Terms and Conditions](https://www.iloveimg.com/help/terms)
 
 == Changelog ==
+
+== 2.2.0 ==
+Improved
+* Update Libraries.
+* Now IloveIMG will use credits to process the files.
+* Now iloveimg accounts have been migrated to ilovepdf.
+* Improved the function to restore all files.
+
+Fixed
+* When autocompress is activated and you wanted to restore a specific file, it was compressed again.
 
 == 2.1.0 ==
 Added

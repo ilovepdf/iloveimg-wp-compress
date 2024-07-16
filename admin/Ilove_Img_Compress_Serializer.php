@@ -64,6 +64,7 @@ class Ilove_Img_Compress_Serializer {
                 );
                 if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
                     update_option( 'iloveimg_account', $response['body'] );
+                    update_option( 'iloveimg_user_is_migrated', 1 );
                     $options                                      = json_decode( get_option( 'iloveimg_options_compress' ), true );
                     $options['iloveimg_field_compress_activated'] = 1;
                     $options['iloveimg_field_autocompress']       = 1;

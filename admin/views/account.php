@@ -3,6 +3,21 @@ $ilove_img_is_logged = false;
 $ilove_img_account   = array();
 
 if ( get_option( 'iloveimg_account' ) ) {
+
+    if ( ! get_option( 'iloveimg_user_is_migrated' ) ) {
+
+        delete_option( 'iloveimg_account' );
+        delete_option( 'iloveimg_proyect' );
+        $ilove_img_options = json_decode( get_option( 'iloveimg_options_compress' ), true );
+        unset( $ilove_img_options['iloveimg_field_compress_activated'] );
+        unset( $ilove_img_options['iloveimg_field_autocompress'] );
+        unset( $ilove_img_options['iloveimg_field_resize_full'] );
+        update_option( 'iloveimg_options_compress', wp_json_encode( $ilove_img_options ) );
+
+        wp_safe_redirect( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) );
+        exit();
+    }
+
 	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
 
 	$ilove_img_is_logged = true;
@@ -41,7 +56,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                         <div>
                             <input type="password" class="iloveimg_field_password" name="iloveimg_field_password" placeholder="Password" required/>
                         </div>
-                        <a class="forget" href="https://developer.iloveimg.com/login/reset" target="_blank">Forget Password?</a>
+                        <a class="forget" href="https://iloveapi.com/login/reset" target="_blank">Forget Password?</a>
                         <?php
                         wp_nonce_field();
                         submit_button( 'Login' );
@@ -98,7 +113,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                     <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                         <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                     </div>
-                    <p><?php echo (int) $ilove_img_account['files_used']; ?>/<?php echo (int) $ilove_img_account['free_files_limit']; ?> processed files this month. Free Tier.</p>
+                    <p><?php echo (int) $ilove_img_account['files_used']; ?>/<?php echo (int) $ilove_img_account['free_files_limit']; ?> credits used this month. Free Tier.</p>
                     <?php if ( $ilove_img_account['subscription_files_limit'] ) : ?>
                         <h4>Subscription files</h4>
                         <?php
@@ -110,7 +125,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                             <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? (int) $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo (int) $ilove_img_account['subscription_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo ( isset( $ilove_img_account['subscription_files_used'] ) ) ? (int) $ilove_img_account['subscription_files_used'] : 0; ?>/<?php echo (int) $ilove_img_account['subscription_files_limit']; ?> credits used this month.</p>
                     <?php endif; ?>
                     <?php if ( $ilove_img_account['package_files_limit'] ) : ?>
                         <h4>Package files</h4>
@@ -118,13 +133,13 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                         <div class="iloveimg_percent <?php echo ( $ilove_img_percent >= 100 ) ? 'iloveimg_percent-exceeded' : ''; ?> <?php echo ( $ilove_img_percent >= 90 && $ilove_img_percent < 100 ) ? 'iloveimg_percent-warning' : ''; ?>">
                             <div class="iloveimg_percent-total" style="width: <?php echo (float) $ilove_img_percent; ?>%;"></div>
                         </div>
-                        <p><?php echo (int) $ilove_img_account['package_files_used']; ?>/<?php echo (int) $ilove_img_account['package_files_limit']; ?> processed files this month.</p>
+                        <p><?php echo (int) $ilove_img_account['package_files_used']; ?>/<?php echo (int) $ilove_img_account['package_files_limit']; ?> credits used this month.</p>
                     <?php endif; ?>
                 </div>
                 <div class="iloveimg_settings__overview__account-logged__column_left__details">
-                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo (int) $ilove_img_account['free_files_limit']; ?> free file processes to use to compress or stamp your images.</p>
-                    <p>To increase your file processes amount you can either open one of our <a href="https://developer.iloveimg.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional processes per month or buy a <a href="https://developer.iloveimg.com/pricing" target="_blank">single package</a> of file processes.</p>
-                    <a class="button button-secondary" href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a>
+                    <p style="margin-top: 22px;">Every month since your registry you will get <?php echo (int) $ilove_img_account['free_files_limit']; ?> free credits to use to compress or stamp your images.</p>
+                    <p>To increase your credits amount you can either open one of our <a href="https://iloveapi.com/pricing" target="_blank">subscription plans</a> to get a fixed amount of additional credits per month or buy a <a href="https://iloveapi.com/pricing" target="_blank">single package</a> of credits.</p>
+                    <a class="button button-secondary" href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a>
                 </div>
             </div>
             <div class="iloveimg_settings__overview__account-logged__column_right">
