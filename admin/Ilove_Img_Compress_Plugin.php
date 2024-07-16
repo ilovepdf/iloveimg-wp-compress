@@ -258,7 +258,10 @@ class Ilove_Img_Compress_Plugin {
      */
     public function process_attachment( $metadata, $attachment_id ) {
         update_post_meta( $attachment_id, 'iloveimg_status_compress', 0 ); // status no compressed
-        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 && Ilove_Img_Compress_Resources::is_loggued() && (int) Ilove_Img_Compress_Resources::is_activated() === 1 ) {
+
+        $images_restore = null !== get_option( 'iloveimg_images_to_restore', null ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+
+        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 && Ilove_Img_Compress_Resources::is_loggued() && (int) Ilove_Img_Compress_Resources::is_activated() === 1 && ! in_array( $attachment_id, $images_restore, true ) ) {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_compress( $attachment_id );
         }
@@ -502,8 +505,10 @@ class Ilove_Img_Compress_Plugin {
         delete_post_meta( $attachment_id, 'iloveimg_status_compress' );
         delete_post_meta( $attachment_id, 'iloveimg_compress' );
 
-        if ( ! $key_founded ) {
+        if ( false !== $key_founded ) {
             unset( $images_restore[ $key_founded ] );
+            wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ) );
+            update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
         wp_send_json_success( __( 'It was restored correctly', 'iloveimg' ), 200 );
