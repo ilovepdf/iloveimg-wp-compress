@@ -451,20 +451,21 @@ class Ilove_Img_Compress_Plugin {
      */
     public function ilove_img_restore_all() {
         if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
-            $folders = array_diff( scandir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ), array( '..', '.' ) );
 
-            foreach ( $folders as $key => $folder ) {
-                Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . $folder, ILOVE_IMG_COMPRESS_UPLOAD_FOLDER . '/' . $folder );
-            }
-
-            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore' ), true );
+            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore', array() ), true );
 
             foreach ( $images_restore as $key => $value ) {
+                Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
                 delete_post_meta( $value, 'iloveimg_status_compress' );
                 delete_post_meta( $value, 'iloveimg_compress' );
+
+                wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ) );
+
                 delete_option( 'iloveimg_images_to_restore' );
+
             }
         }
 
