@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.1.0';
+    const VERSION = '2.2.0';
 
     /**
 	 * The unique identifier of this plugin.
