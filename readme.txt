@@ -6,7 +6,7 @@ Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 5.3
-Tested up to: 6.5.5
+Tested up to: 6.6
 Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
