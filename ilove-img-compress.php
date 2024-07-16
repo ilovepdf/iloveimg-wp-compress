@@ -13,9 +13,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
- * Plugin URI:        https://developer.iloveimg.com/
+ * Plugin URI:        https://iloveapi.com/
  * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
- * Version:           2.1.0
+ * Version:           2.2.0
  * Requires at least: 5.3
  * Requires PHP:      7.4
  * Author:            iLoveIMG
@@ -38,9 +38,9 @@ if ( ini_get( 'max_execution_time' ) < 300 ) {
 
 $ilove_img_compress_upload_path = wp_upload_dir();
 
-define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.iloveimg.com/v1/user' );
-define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.iloveimg.com/v1/user/login' );
-define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.iloveimg.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.ilovepdf.com/v1/user' );
+define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login' );
+define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
 define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.1' );
 define( 'ILOVE_IMG_COMPRESS_UPLOAD_FOLDER', $ilove_img_compress_upload_path['basedir'] );

@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.1.0';
+    const VERSION = '2.2.0';
 
     /**
 	 * The unique identifier of this plugin.
@@ -200,7 +200,7 @@ class Ilove_Img_Compress_Plugin {
             } elseif ( 2 === (int) $status_compress ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } elseif ( 0 === (int) $status_compress && ! $status_compress ) {
-                echo 'Try again or buy more files';
+                echo 'Try again or buy more credits';
             }
         }
         wp_die();
@@ -258,7 +258,10 @@ class Ilove_Img_Compress_Plugin {
      */
     public function process_attachment( $metadata, $attachment_id ) {
         update_post_meta( $attachment_id, 'iloveimg_status_compress', 0 ); // status no compressed
-        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 && Ilove_Img_Compress_Resources::is_loggued() && (int) Ilove_Img_Compress_Resources::is_activated() === 1 ) {
+
+        $images_restore = null !== get_option( 'iloveimg_images_to_restore', null ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+
+        if ( (int) Ilove_Img_Compress_Resources::is_auto_compress() === 1 && Ilove_Img_Compress_Resources::is_loggued() && (int) Ilove_Img_Compress_Resources::is_activated() === 1 && ! in_array( $attachment_id, $images_restore, true ) ) {
             wp_update_attachment_metadata( $attachment_id, $metadata );
             $this->async_compress( $attachment_id );
         }
@@ -351,7 +354,7 @@ class Ilove_Img_Compress_Plugin {
                     ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more files. <a href="https://developer.iloveimg.com/pricing" target="_blank">Buy more files</a></p>
+                            <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
                         </div>
                         <?php
                     }
@@ -448,20 +451,21 @@ class Ilove_Img_Compress_Plugin {
      */
     public function ilove_img_restore_all() {
         if ( is_dir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
-            $folders = array_diff( scandir( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ), array( '..', '.' ) );
 
-            foreach ( $folders as $key => $folder ) {
-                Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . $folder, ILOVE_IMG_COMPRESS_UPLOAD_FOLDER . '/' . $folder );
-            }
-
-            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore' ), true );
+            $images_restore = json_decode( get_option( 'iloveimg_images_to_restore', array() ), true );
 
             foreach ( $images_restore as $key => $value ) {
+                Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
                 delete_post_meta( $value, 'iloveimg_status_compress' );
                 delete_post_meta( $value, 'iloveimg_compress' );
+
+                wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ) );
+
                 delete_option( 'iloveimg_images_to_restore' );
+
             }
         }
 
@@ -502,8 +506,10 @@ class Ilove_Img_Compress_Plugin {
         delete_post_meta( $attachment_id, 'iloveimg_status_compress' );
         delete_post_meta( $attachment_id, 'iloveimg_compress' );
 
-        if ( ! $key_founded ) {
+        if ( false !== $key_founded ) {
             unset( $images_restore[ $key_founded ] );
+            wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ) );
+            update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
         wp_send_json_success( __( 'It was restored correctly', 'iloveimg' ), 200 );

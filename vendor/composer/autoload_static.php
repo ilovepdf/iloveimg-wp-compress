@@ -7,39 +7,43 @@ namespace Composer\Autoload;
 class ComposerStaticInit96ba3e56cd403440af21e22afd622759
 {
     public static $files = array (
-        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'SzepeViktor\\PHPStan\\WordPress\\' => 30,
-            'Symfony\\Polyfill\\Php73\\' => 23,
-        ),
         'P' => 
         array (
-            'PHPStan\\ExtensionInstaller\\' => 27,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
         ),
         'I' => 
         array (
             'Iloveimg\\' => 9,
             'Ilove_Img_Compress\\' => 19,
         ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'SzepeViktor\\PHPStan\\WordPress\\' => 
+        'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/szepeviktor/phpstan-wordpress/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Symfony\\Polyfill\\Php73\\' => 
+        'Psr\\Http\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
-        ),
-        'PHPStan\\ExtensionInstaller\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpstan/extension-installer/src',
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'Iloveimg\\' => 
         array (
@@ -49,11 +53,26 @@ class ComposerStaticInit96ba3e56cd403440af21e22afd622759
         array (
             0 => __DIR__ . '/../..' . '/admin',
         ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
