@@ -149,17 +149,33 @@ class Ilove_Img_Compress_Process {
                 update_post_meta( $images_id, 'iloveimg_compress', $images );
                 update_post_meta( $images_id, 'iloveimg_status_compress', 2 ); // status compressed
 
-                return $images;
+                return array(
+                    'error'  => false,
+                    'images' => $images,
+                );
 
             } else {
                 update_post_meta( $images_id, 'iloveimg_status_compress', 3 ); // status queue
 
-                return false;
+                return array(
+                    'error'     => true,
+                    'error_msg' => __( 'There was a problem processing your image.', 'iloveimg' ),
+                );
             }
 		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
             error_log('Exception on Compress Method: ' . print_r($e, true)); // phpcs:ignore
-            return false;
+
+            $error_msg = 'There was a problem processing your image.';
+
+            if ( 401 === $e->getCode() ) {
+                $error_msg = 'Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys.';
+            }
+
+            return array(
+                'error'     => true,
+                'error_msg' => $error_msg,
+            );
         }
     }
 }
