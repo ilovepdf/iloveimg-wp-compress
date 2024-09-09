@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.0';
+    const VERSION = '2.2.1';
 
     /**
 	 * The unique identifier of this plugin.
@@ -152,11 +152,11 @@ class Ilove_Img_Compress_Plugin {
             $attachment_id = intval( $_POST['id'] );
             $images        = $ilove->compress( $attachment_id );
 
-            if ( false !== $images ) {
+            if ( ! $images['error'] ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
                 ?>
-                <p>There was a problem processing your image.</p>
+                <p><?php echo esc_html( $images['error_msg'] ); ?></p>
                 <?php
             }
         }
