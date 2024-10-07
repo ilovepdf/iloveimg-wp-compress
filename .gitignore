@@ -4,6 +4,9 @@ vendor/*
 !/vendor/autoload.php
 !/vendor/composer/
 !/vendor/ilovepdf/
+!/vendor/guzzlehttp/
+!/vendor/ralouphie/
+!/vendor/symfony/
 composer.lock
 package-lock.json
 dev/package-lock.json
