@@ -7,6 +7,8 @@ vendor/*
 !/vendor/guzzlehttp/
 !/vendor/ralouphie/
 !/vendor/symfony/
+!/vendor/firebase/
+!/vendor/psr/
 composer.lock
 package-lock.json
 dev/package-lock.json
