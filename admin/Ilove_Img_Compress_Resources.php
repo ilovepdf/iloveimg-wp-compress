@@ -567,4 +567,27 @@ class Ilove_Img_Compress_Resources {
 
         wp_update_attachment_metadata( $attachment_id, $metadata ); // Update new attachment metadata
     }
+
+    /**
+	 * Update option, works with multisite if enabled
+	 *
+	 * @since  2.2.5
+	 * @param  string    $option Name of the option to update. Expected to not be SQL-escaped.
+	 * @param  mixed     $value Option value. Must be serializable if non-scalar. Expected to not be SQL-escaped.
+	 * @param  bool|null $autoload Optional. Whether to load the option when WordPress starts up. Accepts a boolean, or null.
+	 */
+	public static function update_option( $option, $value, $autoload = null ) {
+
+		if ( ! is_multisite() ) {
+			update_option( $option, $value, $autoload );
+			return;
+		}
+
+		$sites = get_sites();
+		foreach ( $sites as $site ) {
+			switch_to_blog( (int) $site->blog_id );
+			update_option( $option, $value, $autoload );
+			restore_current_blog();
+		}
+	}
 }

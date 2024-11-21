@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 body.toplevel_page_iloveimg-admin-page,
 body.media_page_iloveimg-media-page,
 body.admin_page_iloveimg-watermark-admin-page,
@@ -118,6 +120,12 @@ body.post-php {
 			@media  (max-width: $width_medium){
 				width: calc(100% - 20px);
 			}
+			
+			.iloveimg_percent-total{
+				height: 8px;
+				background: $primary_color;
+				max-width: 100%;
+			}
 			&.iloveimg_percent-exceeded{
 				&:after{
 					content: "";
@@ -143,11 +151,6 @@ body.post-php {
 					right: -25px;
 					bottom: -3px;
 				}
-			}
-			.iloveimg_percent-total{
-				height: 8px;
-				background: $primary_color;
-				max-width: 100%;
 			}
 			& + p{
 				margin: 5px 0 12px 0;

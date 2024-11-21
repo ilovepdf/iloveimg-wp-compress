@@ -4,7 +4,8 @@
   "description": "=== Best Compress - Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp"
+    "dev": "NODE_ENV='development' gulp",
+    "build": "NODE_ENV='production' gulp"
   },
   "author": "ilovepdf",
   "license": "ISC",
@@ -12,10 +13,12 @@
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
-    "sass": "^1.79"
+    "sass": "^1.81"
   }
 }
