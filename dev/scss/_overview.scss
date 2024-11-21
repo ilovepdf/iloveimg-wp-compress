@@ -1,4 +1,6 @@
-body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, , body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page{
+@use "variables" as *;
+
+body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, body.admin_page_iloveimg-watermark-admin-page, body.iloveimg_page_iloveimg-compress-admin-page, body.iloveimg_page_iloveimg-watermark-options-admin-page, body.iloveimg_page_iloveimg-watermark-admin-page{
 	.iloveimg_settings{
 		.iloveimg_settings__overview{
 			.iloveimg_settings__overview__statistics{
@@ -30,9 +32,7 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				}
 				.iloveimg_saving{
 					padding: 20px;
-					*{
-						color:  $primary_color;
-					}
+					
 					p{
 						margin: 0
 					}
@@ -46,6 +46,9 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 						letter-spacing: 0;
 						line-height: 44px;
 						margin-right: 10px;
+					}
+					*{
+						color:  $primary_color;
 					}
 				}
 				.iloveimg_settings__overview__statistics__column_right{
@@ -89,10 +92,6 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				    	position: relative;
 				    	z-index: 10;
 				    }
-				    &:hover{
-						border: 0;
-						opacity: .9;
-				    }
 				    .iloveimg-compress-all__percent{
 				    	background: #6fe21c;
 				    	position: absolute;
@@ -102,6 +101,10 @@ body.toplevel_page_iloveimg-admin-page, body.media_page_iloveimg-media-page, bod
 				    	z-index: 0;
 				    	-webkit-transition: width 1s; /* Safari */
   						transition: width 1s;
+				    }
+					&:hover{
+						border: 0;
+						opacity: .9;
 				    }
 				}
 			}

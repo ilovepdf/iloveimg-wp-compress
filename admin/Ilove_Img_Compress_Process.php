@@ -87,7 +87,7 @@ class Ilove_Img_Compress_Process {
 
                     $images_restore = array_unique( $images_restore );
 
-					update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore, JSON_FORCE_OBJECT ) );
+                    Ilove_Img_Compress_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore, JSON_FORCE_OBJECT ) );
                 }
 
                 foreach ( $_sizes as $_size ) {

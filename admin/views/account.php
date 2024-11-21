@@ -1,4 +1,6 @@
 <?php
+use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
+
 $ilove_img_is_logged = false;
 $ilove_img_account   = array();
 
@@ -12,7 +14,7 @@ if ( get_option( 'iloveimg_account' ) ) {
         unset( $ilove_img_options['iloveimg_field_compress_activated'] );
         unset( $ilove_img_options['iloveimg_field_autocompress'] );
         unset( $ilove_img_options['iloveimg_field_resize_full'] );
-        update_option( 'iloveimg_options_compress', wp_json_encode( $ilove_img_options ) );
+        Ilove_Img_Compress_Resources::update_option( 'iloveimg_options_compress', wp_json_encode( $ilove_img_options ) );
 
         wp_safe_redirect( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) );
         exit();
@@ -21,7 +23,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	$ilove_img_account = json_decode( get_option( 'iloveimg_account' ), true );
 
 	$ilove_img_is_logged = true;
-	update_option( 'iloveimg_first_loggued', 1 );
+    Ilove_Img_Compress_Resources::update_option( 'iloveimg_first_loggued', 1 );
 	$ilove_img_token    = $ilove_img_account['token'];
 	$ilove_img_response = wp_remote_get(
         ILOVE_IMG_COMPRESS_USER_URL . '/' . $ilove_img_account['id'],
@@ -33,7 +35,7 @@ if ( get_option( 'iloveimg_account' ) ) {
 	if ( isset( $ilove_img_response['response']['code'] ) && 200 === (int) $ilove_img_response['response']['code'] ) {
 		$ilove_img_account          = json_decode( $ilove_img_response['body'], true );
 		$ilove_img_account['token'] = $ilove_img_token;
-		update_option( 'iloveimg_account', wp_json_encode( $ilove_img_account ) );
+        Ilove_Img_Compress_Resources::update_option( 'iloveimg_account', wp_json_encode( $ilove_img_account ) );
 	}
 } elseif ( get_option( 'iloveimg_account_error' ) ) {
 		$ilove_img_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );

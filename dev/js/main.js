@@ -147,40 +147,52 @@
 
 			let element = jQuery( event.currentTarget );
 
-            Swal.fire({
-                title: 'Attention!',
-                text: 'The changes applied by all the tools will be lost. Do you want to continue?',
-                icon: 'warning',
-                confirmButtonText: 'Yes',
-                showCloseButton: true,
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'button-primary',
-                },
-            }).then(
-                (result) => {
-                    if (result.isConfirmed) {
-                        element.attr( 'disabled', 'disabled' );
+            const dialogComponent = `
+                    <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
+                        <h2 class="iloveimg-title-dialog">Attention!</h2>
+                        <p class="iloveimg-content-dialog">The changes applied by all the tools will be lost. Do you want to continue?</p>
+                        <div class="iloveimg-btn-groups">
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
+                        </div>
+                    </dialog>`;
 
-                        jQuery.ajax(
-                            {
-                                url: ajaxurl,
-                                type: 'POST',
-                                data: {
-                                    action: 'ilove_img_compress_restore_all'
-                                },
-                                success: function () {
-                                    element.removeAttr( 'disabled' );
-                                    location.reload();
-                                },
-                                error: function () {
-                                    element.removeAttr( 'disabled' );
-                                }
-                            }
-                        );
+            element.parent().append(dialogComponent)
+
+            const dialogElem = document.getElementById("iloveimg-compress-restore-dialog")
+            const btnConfirmDialog = document.getElementById("iloveimg-compress-dialog-aceptted")
+            const btnCloseDialog = document.getElementById("iloveimg-compress-dialog-close")
+
+            dialogElem.showModal();
+            btnConfirmDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                element.attr( 'disabled', 'disabled' );
+                dialogElem.close();
+                dialogElem.remove();
+
+                jQuery.ajax(
+                    {
+                        url: ajaxurl,
+                        type: 'POST',
+                        data: {
+                            action: 'ilove_img_compress_restore_all'
+                        },
+                        success: function () {
+                            element.removeAttr( 'disabled' );
+                            location.reload();
+                        },
+                        error: function () {
+                            element.removeAttr( 'disabled' );
+                        }
                     }
-                }
-            );
+                );
+            })
+
+            btnCloseDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                dialogElem.close();
+                dialogElem.remove();
+            })
 		}
     );
 
@@ -191,40 +203,52 @@
 
             let element = jQuery( event.currentTarget );
 
-            Swal.fire({
-                title: 'Attention!',
-                text: 'All files inside iloveimg-backup folder will be deleted. Do you want to continue?',
-                icon: 'warning',
-                confirmButtonText: 'Yes',
-                showCloseButton: true,
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'button-primary',
-                },
-            }).then(
-                (result) => {
-                    if (result.isConfirmed) {
-                        element.attr( 'disabled', 'disabled' );
+            const dialogComponent = `
+                    <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
+                        <h2 class="iloveimg-title-dialog">Attention!</h2>
+                        <p class="iloveimg-content-dialog">All files inside iloveimg-backup folder will be deleted. Do you want to continue?</p>
+                        <div class="iloveimg-btn-groups">
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
+                        </div>
+                    </dialog>`;
 
-                        jQuery.ajax(
-                            {
-                                url: ajaxurl,
-                                type: 'POST',
-                                data: {
-                                    action: 'ilove_img_compress_clear_backup'
-                                },
-                                success: function () {
-                                    element.removeAttr( 'disabled' );
-                                    location.reload();
-                                },
-                                error: function () {
-                                    element.removeAttr( 'disabled' );
-                                }
-                            }
-                        );
+            element.parent().append(dialogComponent)
+
+            const dialogElem = document.getElementById("iloveimg-compress-restore-dialog")
+            const btnConfirmDialog = document.getElementById("iloveimg-compress-dialog-aceptted")
+            const btnCloseDialog = document.getElementById("iloveimg-compress-dialog-close")
+
+            dialogElem.showModal();
+            btnConfirmDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                element.attr( 'disabled', 'disabled' );
+                dialogElem.close();
+                dialogElem.remove();
+
+                jQuery.ajax(
+                    {
+                        url: ajaxurl,
+                        type: 'POST',
+                        data: {
+                            action: 'ilove_img_compress_clear_backup'
+                        },
+                        success: function () {
+                            element.removeAttr( 'disabled' );
+                            location.reload();
+                        },
+                        error: function () {
+                            element.removeAttr( 'disabled' );
+                        }
                     }
-                }
-            );
+                );
+            })
+
+            btnCloseDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                dialogElem.close();
+                dialogElem.remove();
+            })
 		}
     );
 
@@ -242,47 +266,60 @@
 			element.hide();
             element.nextAll('.loading').show();
 
-            Swal.fire({
-                title: 'Attention!',
-                text: 'The changes applied by all the tools will be lost. Do you want to continue?',
-                icon: 'warning',
-                confirmButtonText: 'Yes',
-                showCloseButton: true,
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'button-primary',
-                },
-            }).then(
-                (result) => {
-                    if (result.isConfirmed) {
-                        jQuery.ajax(
-                            {
-                                url: ajaxurl,
-                                type: 'POST',
-                                data: {
-                                    'action': action,
-                                    'id': imageId,
-                                    '_wpnonce': fieldNonce
-                                },
-                                dataType: 'json',
-                                success: function (data) {
-                                    element.nextAll('.loading').hide();
-                                    element.nextAll('.success').html( data.data ).show();
-                                    location.reload();
-                                },
-                                error: function (error) {
-                                    element.nextAll('.loading').hide();
-                                    element.nextAll('.error').html( error.responseJSON.data ).show();
-                                    element.show();
-                                }
-                            }
-                        );
-                    } else {
-                        element.show();
-                        element.nextAll('.loading').hide();
+            const dialogComponent = `
+                    <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
+                        <h2 class="iloveimg-title-dialog">Attention!</h2>
+                        <p class="iloveimg-content-dialog">The changes applied by all the tools will be lost. Do you want to continue?</p>
+                        <div class="iloveimg-btn-groups">
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
+                        </div>
+                    </dialog>`;
+            
+            element.parent().append(dialogComponent)
+
+            const dialogElem = document.getElementById("iloveimg-compress-restore-dialog")
+            const btnConfirmDialog = document.getElementById("iloveimg-compress-dialog-aceptted")
+            const btnCloseDialog = document.getElementById("iloveimg-compress-dialog-close")
+
+            dialogElem.showModal();
+            btnConfirmDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                element.attr( 'disabled', 'disabled' );
+                dialogElem.close();
+                dialogElem.remove();
+
+                jQuery.ajax(
+                    {
+                        url: ajaxurl,
+                        type: 'POST',
+                        data: {
+                            'action': action,
+                            'id': imageId,
+                            '_wpnonce': fieldNonce
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            element.nextAll('.loading').hide();
+                            element.nextAll('.success').html( data.data ).show();
+                            location.reload();
+                        },
+                        error: function (error) {
+                            element.nextAll('.loading').hide();
+                            element.nextAll('.error').html( error.responseJSON.data ).show();
+                            element.show();
+                        }
                     }
-                }
-            );
+                );
+            })
+
+            btnCloseDialog.addEventListener("click", (e) => {
+                e.preventDefault();
+                element.show();
+                element.nextAll('.loading').hide();
+                dialogElem.close();
+                dialogElem.remove();
+            })
 		}
     );
 

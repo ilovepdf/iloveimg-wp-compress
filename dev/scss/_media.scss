@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 body.media_page_iloveimg-media-page{
 	input#doaction,
 	input#doaction2{
@@ -34,9 +36,6 @@ body.media_page_iloveimg-media-page{
 		}
 		tbody{
 			tr{
-				&:nth-child(odd){
-					background-color: #F3F4F5;
-				}
 				th, td{
 					vertical-align: middle;
 					&:first-child{
@@ -57,6 +56,9 @@ body.media_page_iloveimg-media-page{
 							}
 						}
 					}
+				}
+				&:nth-child(odd){
+					background-color: #F3F4F5;
 				}
 			}
 		}
