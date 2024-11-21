@@ -330,6 +330,53 @@ body.iloveimg_page_iloveimg-watermark-admin-page {
 				}
 			}
 		}
+		.iloveimg-restore-dialog,
+		#poststuff .iloveimg-restore-dialog {
+			border: none;
+			border-radius: 20px;
+			padding: 40px;
+			animation: fade-out 0.2s ease-out;
+
+			.iloveimg-title-dialog {
+				text-align: center;
+				font-size: 2.8em;
+				color: $primary_color;
+			}
+
+			.iloveimg-content-dialog {
+				font-size: 18px;
+				font-weight: 500;
+				color: #838383;
+			}
+
+			.iloveimg-btn-groups {
+				margin-top: 30px;
+				display: flex;
+				justify-content: center;
+				gap: 30px;
+
+				.button-primary {
+					font-size: 14px;
+					line-height: auto;
+					height: auto;
+					width: auto;
+					background-color: #4d90fe;
+					color: #fff;
+					border: 0;
+					position: relative;
+					overflow: hidden;
+				}
+			}
+
+			&::backdrop {
+				background-color: rgba(56,56,56,0.75);
+			}
+
+			&[open] {
+				animation: openDialog 300ms ease-in-out 0s 1 normal forwards;
+			}
+		}
+
 		*{
 			font-size: $body_font_size;
 			color: $text_color;
@@ -346,5 +393,65 @@ body{
 		&:hover{
 			color: $primary_color;
 		}
+	}
+
+	.iloveimg_status_compress .iloveimg-restore-dialog,
+	#poststuff .iloveimg-restore-dialog {
+		border: none;
+		border-radius: 20px;
+		padding: 40px;
+		animation: fade-out 0.2s ease-out;
+
+		.iloveimg-title-dialog {
+			text-align: center;
+			font-size: 2.8em;
+			color: $primary_color;
+		}
+
+		.iloveimg-content-dialog {
+			font-size: 18px;
+			font-weight: 500;
+			color: #838383;
+		}
+
+		.iloveimg-btn-groups {
+			margin-top: 30px;
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+
+			.button-primary {
+				font-size: 14px;
+				line-height: auto;
+				height: auto;
+				width: auto;
+				background-color: #4d90fe;
+				color: #fff;
+				border: 0;
+				position: relative;
+				overflow: hidden;
+			}
+		}
+
+		&::backdrop {
+			background-color: rgba(56,56,56,0.75);
+		}
+
+		&[open] {
+			animation: openDialog 300ms ease-in-out 0s 1 normal forwards;
+		}
+	}
+}
+
+/* Animation keyframes */
+@keyframes openDialog {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
 	}
 }

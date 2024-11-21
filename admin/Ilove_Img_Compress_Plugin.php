@@ -109,20 +109,11 @@ class Ilove_Img_Compress_Plugin {
 
 		if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
 
-            // Enqueue the Sweet alert JavaScript file.
-            wp_enqueue_script(
-                self::NAME . '_sweetalert2',
-                plugins_url( '/assets/js/sweetalert2.all.min.js', __DIR__ ),
-                array(),
-                '11.11.0',
-                true
-            );
-
             // Enqueue the main JavaScript file.
             wp_enqueue_script(
                 self::NAME . '_admin',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
-                array( self::NAME . '_sweetalert2' ),
+                array(),
                 self::VERSION,
                 true
             );
