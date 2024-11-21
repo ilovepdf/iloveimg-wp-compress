@@ -500,7 +500,7 @@ class Ilove_Img_Compress_Plugin {
         if ( false !== $key_founded ) {
             unset( $images_restore[ $key_founded ] );
             wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ) );
-            update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
+            Ilove_Img_Compress_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
         wp_send_json_success( __( 'It was restored correctly', 'iloveimg' ), 200 );
