@@ -99,7 +99,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_com
  * @since 1.0.0
  */
 function ilove_img_compress_activate() {
-    Ilove_Img_Compress_Resources::update_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION );
+    Ilove_Img_Compress_Resources::update_option( 'ilove_img_compress_db_version', ILOVE_IMG_COMPRESS_DB_VERSION, true );
 
     if ( ! file_exists( ILOVE_IMG_COMPRESS_BACKUP_FOLDER ) ) {
         wp_mkdir_p( ILOVE_IMG_COMPRESS_BACKUP_FOLDER );
@@ -121,14 +121,15 @@ function ilove_img_compress_activate() {
 					'iloveimg_field_size_full_height' => 2048,
 					'iloveimg_field_backup'           => 'on',
                 )
-            )
+            ),
+            true
         );
     } else {
         $old_data = get_option( 'iloveimg_options_compress' );
 
         if ( is_serialized( $old_data ) ) {
             $old_data_serialize = unserialize( get_option( 'iloveimg_options_compress' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
-            Ilove_Img_Compress_Resources::update_option( 'iloveimg_options_compress', wp_json_encode( $old_data_serialize ) );
+            Ilove_Img_Compress_Resources::update_option( 'iloveimg_options_compress', wp_json_encode( $old_data_serialize ), true );
         }
     }
 }
