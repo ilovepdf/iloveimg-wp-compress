@@ -7,6 +7,6 @@ parameters:
 	excludePaths:
 			analyseAndScan:
 					- vendor
-					- node_modules
+					- node_modules?
 			analyse:
 					- vendor/ilovepdf/iloveimg-php
