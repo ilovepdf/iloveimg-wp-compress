@@ -80,7 +80,8 @@ class Ilove_Img_Compress_Plugin {
         add_action( 'wp_ajax_ilove_img_compress_restore', array( $this, 'ilove_img_restore' ) );
 
         // Process attachment metadata.
-        add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 10, 2 );
+        add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 11, 2 );
+        add_filter( 'delete_attachment', array( $this, 'before_delete_attachment' ) );
 
         // Display media information in the attachment submit box.
         add_action( 'attachment_submitbox_misc_actions', array( $this, 'show_media_info' ) );
@@ -527,5 +528,28 @@ class Ilove_Img_Compress_Plugin {
         }
 
         wp_die();
+    }
+
+    /**
+     * Delete a file from the backup.
+     *
+     * It is activated before deleting an attached file. This allows us to delete the file from the backup.
+     *
+     * @since 2.2.6
+     * @param int $post_id Attachment ID.
+     */
+    public function before_delete_attachment( $post_id ) {
+        $images_restore = null !== get_option( 'iloveimg_images_to_restore', null ) ? json_decode( get_option( 'iloveimg_images_to_restore' ), true ) : array();
+        $key_founded    = array_search( $post_id, $images_restore, true );
+
+        if ( ! in_array( $post_id, $images_restore, true ) ) {
+            return;
+        }
+
+        if ( false !== $key_founded ) {
+            unset( $images_restore[ $key_founded ] );
+            wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $post_id ) ) );
+            Ilove_Img_Compress_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
+        }
     }
 }
