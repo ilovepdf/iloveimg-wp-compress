@@ -273,7 +273,7 @@ class Ilove_Img_Compress_Resources {
 
         $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce();
 
-        if ( strpos( $post->post_mime_type, 'image/jpg' ) !== false || strpos( $post->post_mime_type, 'image/jpeg' ) !== false || strpos( $post->post_mime_type, 'image/png' ) !== false || strpos( $post->post_mime_type, 'image/gif' ) !== false ) :
+        if ( in_array( $post->post_mime_type, Ilove_Img_Compress_Plugin::$accepted_file_format, true ) ) :
             $_sizes            = get_post_meta( $column_id, 'iloveimg_compress', true );
             $status_compress   = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
             $images_compressed = self::get_sizes_compressed( $column_id );
