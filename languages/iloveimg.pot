@@ -1,0 +1,456 @@
+# Copyright (C) 2025 iLoveIMG
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Image Compressor & Optimizer - iLoveIMG 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
+"Last-Translator: ilovepdf <info@ilovepdf.com>\n"
+"Language-Team: ilovepdf <info@ilovepdf.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
+"PO-Revision-Date: \n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: iloveimg\n"
+
+#. Plugin Name of the plugin
+#: ilove-img-compress.php
+msgid "Image Compressor & Optimizer - iLoveIMG"
+msgstr ""
+
+#. Description of the plugin
+#: ilove-img-compress.php
+msgid "Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:102
+msgid "File"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:103
+msgid "Author"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:104
+msgid "Date"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:105
+msgid "Status"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:135
+msgid "Delete"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:151
+msgid "Items deleted (or they would be if we had items to delete)!"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:204
+msgid "Try again or buy more credits"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:226
+msgid "Status Compress"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:317
+msgid "Please you need to be logged or registered."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:317
+#: admin/Ilove_Img_Compress_Resources.php:298
+#: admin/Ilove_Img_Compress_Resources.php:304
+msgid "Go to settings"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:328
+msgid "Your email or password is wrong."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:333
+msgid "This email address has already been taken."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:338
+msgid "You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:364
+msgid "Please you need more credits."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:364
+#: admin/views/account.php:144
+msgid "Buy more credits"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:491
+msgid "Error processing your request. Invalid Nonce code"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:495
+msgid "Error processing your request. Invalid Image ID"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:503
+msgid "Sorry. There is no backup for this file"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Plugin.php:521
+msgid "It was restored correctly"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Process.php:162
+#: admin/Ilove_Img_Compress_Process.php:169
+msgid "There was a problem processing your image."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Process.php:172
+msgid "Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:37
+msgid "Original image"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:205
+#: admin/views/account.php:81
+msgid "Name"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:206
+msgid "Initial"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:207
+msgid "Compressed"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:230
+#: admin/Ilove_Img_Compress_Resources.php:233
+msgid "Not compressed"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:292
+msgid "Compress"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:303
+msgid "You need to be registered"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:398
+#: admin/Ilove_Img_Compress_Resources.php:434
+msgid "Unable to connect to the filesystem"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:543
+msgid "Restore original file"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:547
+msgid "Loading"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:548
+msgid "Error"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:549
+msgid "Completed, please refresh the page."
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Submenu.php:54
+#: admin/Ilove_Img_Compress_Submenu.php:55
+#: admin/views/compress.php:25
+#: admin/views/watermark.php:23
+msgid "Compress settings"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Submenu.php:66
+#: admin/Ilove_Img_Compress_Submenu.php:67
+#: admin/views/compress.php:31
+#: admin/views/watermark.php:29
+msgid "Watermark settings"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Submenu.php:78
+#: ilove-img-compress.php:92
+msgid "Bulk Optimization"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Submenu.php:93
+msgid "This is the page content"
+msgstr ""
+
+#: admin/views/account.php:53
+#: admin/views/account.php:102
+msgid "Login to your account"
+msgstr ""
+
+#: admin/views/account.php:59
+#: admin/views/account.php:87
+msgid "Password"
+msgstr ""
+
+#: admin/views/account.php:61
+msgid "Forget Password?"
+msgstr ""
+
+#: admin/views/account.php:64
+msgid "Login"
+msgstr ""
+
+#: admin/views/account.php:67
+#: admin/views/account.php:76
+msgid "Register as iLoveAPI developer"
+msgstr ""
+
+#: admin/views/account.php:84
+msgid "Email"
+msgstr ""
+
+#: admin/views/account.php:93
+msgid "Confirm Password"
+msgstr ""
+
+#: admin/views/account.php:99
+msgid "Register"
+msgstr ""
+
+#: admin/views/account.php:111
+msgid "Free"
+msgstr ""
+
+#: admin/views/account.php:118
+msgid "credits used this month. Free Tier."
+msgstr ""
+
+#: admin/views/account.php:120
+msgid "Subscription plan"
+msgstr ""
+
+#: admin/views/account.php:130
+#: admin/views/account.php:138
+msgid "credits used this month."
+msgstr ""
+
+#: admin/views/account.php:133
+msgid "Prepaid packages."
+msgstr ""
+
+#: admin/views/account.php:142
+msgid "Every month since your registry you will get"
+msgstr ""
+
+#: admin/views/account.php:142
+msgid "free credits to use to compress or stamp your images."
+msgstr ""
+
+#: admin/views/account.php:143
+msgid "To increase your credits amount you can either open one of our"
+msgstr ""
+
+#: admin/views/account.php:143
+msgid "subscription plans"
+msgstr ""
+
+#: admin/views/account.php:143
+msgid "to get a fixed amount of additional credits per month or buy a"
+msgstr ""
+
+#: admin/views/account.php:143
+msgid "single package"
+msgstr ""
+
+#: admin/views/account.php:143
+msgid "of credits."
+msgstr ""
+
+#: admin/views/account.php:151
+msgid "Account"
+msgstr ""
+
+#: admin/views/account.php:156
+msgid "Logout"
+msgstr ""
+
+#: admin/views/account.php:163
+msgid "Select your working proyect"
+msgstr ""
+
+#: admin/views/account.php:176
+msgid "Save"
+msgstr ""
+
+#: admin/views/compress.php:13
+#: admin/views/watermark.php:11
+msgid "The power of iLoveIMG in your WordPress!"
+msgstr ""
+
+#: admin/views/compress.php:14
+#: admin/views/watermark.php:12
+msgid "Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr ""
+
+#: admin/views/compress.php:15
+#: admin/views/watermark.php:13
+msgid "Register now to get 2500 free credits and start working with iLoveIMG plugin now!"
+msgstr ""
+
+#: admin/views/compress.php:41
+#: admin/views/compress.php:138
+msgid "Save Changes"
+msgstr ""
+
+#: admin/views/compress.php:42
+#: admin/views/compress.php:139
+msgid "Register and login with us to save settings changes"
+msgstr ""
+
+#: admin/views/compress.php:45
+msgid "Configure your Compress Images settings"
+msgstr ""
+
+#: admin/views/compress.php:52
+msgid "Compress Activated"
+msgstr ""
+
+#: admin/views/compress.php:53
+msgid "Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer."
+msgstr ""
+
+#: admin/views/compress.php:62
+msgid "Enable Autocompress Images"
+msgstr ""
+
+#: admin/views/compress.php:63
+msgid "With autocompress enabled any image uploaded to your Media folder will be automatically compressed. Anyway you still will be able to compress uncompressed images from Media."
+msgstr ""
+
+#: admin/views/compress.php:68
+msgid "Images Sizes:"
+msgstr ""
+
+#: admin/views/compress.php:70
+msgid "All uploaded images to media create alternative size versions. Select here which image versions you want to compress."
+msgstr ""
+
+#: admin/views/compress.php:91
+msgid "Resize full size image:"
+msgstr ""
+
+#: admin/views/compress.php:92
+msgid "Any uploaded image bigger than the maximum size fixed here, will be downsized to fit into these width and height boundaries. All images will be  resized according to the aspect ratio of the original image."
+msgstr ""
+
+#: admin/views/compress.php:95
+msgid "Max width"
+msgstr ""
+
+#: admin/views/compress.php:97
+msgid "Original image width won't exceed this value in pixels."
+msgstr ""
+
+#: admin/views/compress.php:100
+msgid "Max height"
+msgstr ""
+
+#: admin/views/compress.php:102
+msgid "Original image height won't exceed this value in pixels."
+msgstr ""
+
+#: admin/views/compress.php:114
+msgid "Backup original Images"
+msgstr ""
+
+#: admin/views/compress.php:115
+msgid "Enable this option to make a backup of your images before being compress or watermarked. These backups will allow you to restore your original images at cost of taking server memory space."
+msgstr ""
+
+#: admin/views/compress.php:116
+msgid "You can find the original files at:"
+msgstr ""
+
+#: admin/views/compress.php:122
+msgid "Restore Original Images"
+msgstr ""
+
+#: admin/views/compress.php:123
+msgid "All backup images can be restored. This action will recover the original images as they were before being stamped with Compress or Watermark."
+msgstr ""
+
+#: admin/views/compress.php:123
+msgid "Warning: Any changes made AFTER Watermark/Compress would be also restored."
+msgstr ""
+
+#: admin/views/compress.php:124
+msgid "You can also clear all your backup images to free memory space."
+msgstr ""
+
+#: admin/views/compress.php:124
+msgid "Warning: Clear backups will prevent you to restore original images."
+msgstr ""
+
+#: admin/views/compress.php:125
+msgid "Restore All"
+msgstr ""
+
+#: admin/views/compress.php:127
+msgid "Clear backup"
+msgstr ""
+
+#: admin/views/media-bulk.php:23
+msgid "Compress all"
+msgstr ""
+
+#: admin/views/overview.php:5
+msgid "Overview"
+msgstr ""
+
+#: admin/views/overview.php:9
+msgid "Original size"
+msgstr ""
+
+#: admin/views/overview.php:9
+msgid "Optimized size"
+msgstr ""
+
+#: admin/views/overview.php:15
+msgid "Thats the size you saved by using iLoveIMG"
+msgstr ""
+
+#: admin/views/overview.php:19
+msgid "Original Compressed images"
+msgstr ""
+
+#: admin/views/overview.php:19
+msgid "Uploaded images"
+msgstr ""
+
+#: admin/views/overview.php:25
+msgid "Total images you optimized with iLoveIMG"
+msgstr ""
+
+#: admin/views/overview.php:31
+msgid "Compress All"
+msgstr ""
+
+#: admin/views/watermark.php:35
+msgid "You can get also a powerful, easy to use, and reliable Watermark plugin for your image protection needs. With full automation and powerful features, iLoveIMG makes it easy to prevent unauthorized usage of your images by helping you create highly customized watermarks in just a few seconds."
+msgstr ""
+
+#: admin/views/watermark.php:36
+msgid "Discover all Watermark - iLoveIMG features soon "
+msgstr ""
+
+#: admin/views/watermark.php:36
+msgid "and combine it with your Image Compressor & Optimizer – iLoveIMG!"
+msgstr ""
+
+#: ilove-img-compress.php:89
+msgid "Settings"
+msgstr ""

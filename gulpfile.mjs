@@ -8,6 +8,7 @@ import rename from 'gulp-rename';
 import merge from 'merge-stream';
 import sourcemaps from 'gulp-sourcemaps';
 import gulpIf from 'gulp-if';
+import babel from 'gulp-babel';
 
 const sass = gulpSass(dartSass);
 
@@ -34,6 +35,9 @@ gulp.task('build-css', function() {
 gulp.task('build-js', function() {
     // Process main.js in this file you can import others files js
     const mainJsStream = gulp.src('dev/js/main.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' })) // Rename file to main.min.js
         .pipe(gulp.dest('assets/js'));

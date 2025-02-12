@@ -34,7 +34,7 @@ class Ilove_Img_Compress_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => 'Original image',
+            'label'    => __( 'Original image', 'iloveimg' ),
             'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
@@ -202,7 +202,9 @@ class Ilove_Img_Compress_Resources {
         <div id="iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th>Name</th><th>Initial</th><th>Compressed</th>
+                    <th><?php esc_html_e( 'Name', 'iloveimg' ); ?></th>
+                    <th><?php esc_html_e( 'Initial', 'iloveimg' ); ?></th>
+                    <th><?php esc_html_e( 'Compressed', 'iloveimg' ); ?></th>
                     <?php
                     $total_size       = 0;
                     $total_compressed = 0;
@@ -225,10 +227,10 @@ class Ilove_Img_Compress_Resources {
                                         <small class="iloveimg__badge__percent">-<?php echo (int) $percent; ?>%</small>
                                         <?php
                                     } else {
-                                        echo 'Not compressed';
+                                        esc_html_e( 'Not compressed', 'iloveimg' );
                                     }
                                 } else {
-                                    echo 'Not compressed';
+                                    esc_html_e( 'Not compressed', 'iloveimg' );
                                 }
                                 ?>
                                     </td>
@@ -287,19 +289,19 @@ class Ilove_Img_Compress_Resources {
                     <?php if ( self::is_loggued() ) : ?>
                         <!-- <p><?php echo (int) self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>>Compress</button>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>><?php esc_html_e( 'Compress', 'iloveimg' ); ?></button>
                             <img class="iloveimg-spinner" src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_compress ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></button>
 							<?php
                         endif;
                     else :
 						?>
-                        <p>You need to be registered</p>
-                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link">Go to settings</button>
+                        <p><?php esc_html_e( 'You need to be registered', 'iloveimg' ); ?></p>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></button>
 						<?php
                     endif;
                     if ( 1 === $status_compress || 3 === $status_compress ) :
