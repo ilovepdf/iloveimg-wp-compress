@@ -51,8 +51,8 @@ class Ilove_Img_Compress_Submenu {
 
 		add_submenu_page(
 			'iloveimg-admin-page',
-			'Compress settings',
-			'Compress settings',
+			__( 'Compress settings', 'iloveimg' ),
+			__( 'Compress settings', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-compress-admin-page',
 			array(
@@ -63,8 +63,8 @@ class Ilove_Img_Compress_Submenu {
 
 		add_submenu_page(
 			'iloveimg-admin-page',
-			'Watermark settings',
-			'Watermark settings',
+			__( 'Watermark settings', 'iloveimg' ),
+			__( 'Watermark settings', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-watermark-admin-page',
 			array(
@@ -75,7 +75,7 @@ class Ilove_Img_Compress_Submenu {
 
 		add_media_page(
 			'iLoveIMG Media',
-			'Bulk Optimization',
+			__( 'Bulk Optimization', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-media-page',
 			array(
@@ -90,6 +90,6 @@ class Ilove_Img_Compress_Submenu {
 	 * Placeholder for the settings page content.
 	 */
 	public function settings_page() {
-		echo 'This is the page content';
+		esc_html_e( 'This is the page content', 'iloveimg' );
 	}
 }
