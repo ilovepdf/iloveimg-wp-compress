@@ -219,6 +219,12 @@ body.iloveimg_page_iloveimg-watermark-admin-page {
 							border-radius: 2px;
 							svg{
 								margin-right: 10px;
+								min-width: max-content;
+							}
+
+							span {
+								line-height: normal;
+								text-wrap: auto;
 							}
 						}
 						&.iloveimg_settings__options-nav__selected,
