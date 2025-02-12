@@ -201,7 +201,7 @@ class Ilove_Img_Compress_Plugin {
             } elseif ( 2 === (int) $status_compress ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } elseif ( 0 === (int) $status_compress && ! $status_compress ) {
-                echo 'Try again or buy more credits';
+                esc_html_e( 'Try again or buy more credits', 'iloveimg' );
             }
         }
         wp_die();
@@ -314,7 +314,7 @@ class Ilove_Img_Compress_Plugin {
         if ( ! Ilove_Img_Compress_Resources::is_loggued() ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - Please you need to be logged or registered. <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>">Go to settings</a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></a></p>
             </div>
             <?php
         }
@@ -325,17 +325,17 @@ class Ilove_Img_Compress_Plugin {
             if ( 'login' === $iloveimg_account_error['action'] ) :
                 ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>Your email or password is wrong.</p>
+                    <p><?php esc_html_e( 'Your email or password is wrong.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>This email address has already been taken.</p>
+                    <p><?php esc_html_e( 'This email address has already been taken.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p>You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.</p>
+                    <p><?php esc_html_e( 'You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -361,7 +361,7 @@ class Ilove_Img_Compress_Plugin {
                     ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - Please you need more credits. <a href="https://iloveapi.com/pricing" target="_blank">Buy more credits</a></p>
+                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php esc_html_e( 'Buy more credits', 'iloveimg' ); ?></a></p>
                         </div>
                         <?php
                     }
@@ -488,11 +488,11 @@ class Ilove_Img_Compress_Plugin {
     public function ilove_img_restore() {
 
         if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
-            wp_send_json_error( 'Error processing your request. Invalid Nonce code', 401 );
+            wp_send_json_error( __( 'Error processing your request. Invalid Nonce code', 'iloveimg' ), 401 );
         }
 
         if ( ! isset( $_POST['id'] ) ) {
-            wp_send_json_error( 'Error processing your request. Invalid Image ID', 400 );
+            wp_send_json_error( __( 'Error processing your request. Invalid Image ID', 'iloveimg' ), 400 );
         }
 
         $attachment_id  = intval( $_POST['id'] );
@@ -500,7 +500,7 @@ class Ilove_Img_Compress_Plugin {
         $key_founded    = array_search( $attachment_id, $images_restore, true );
 
         if ( ! in_array( $attachment_id, $images_restore, true ) ) {
-            wp_send_json_error( 'Sorry. There is no backup for this file', 404 );
+            wp_send_json_error( __( 'Sorry. There is no backup for this file', 'iloveimg' ), 404 );
         }
 
         Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
