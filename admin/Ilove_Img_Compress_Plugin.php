@@ -311,7 +311,7 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function show_notices() {
-        if ( ! Ilove_Img_Compress_Resources::is_loggued() ) {
+        if ( ! Ilove_Img_Compress_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></a></p>
