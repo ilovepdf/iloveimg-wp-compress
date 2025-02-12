@@ -238,7 +238,7 @@ msgstr "Confirmar Contraseña"
 
 #: admin/views/account.php:99
 msgid "Register"
-msgstr "Primero debe iniciar sesión o registrarse para usar este complemento"
+msgstr "Registro"
 
 #: admin/views/account.php:111
 msgid "Free"
