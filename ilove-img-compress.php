@@ -47,6 +47,7 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 use Ilove_Img_Compress\Ilove_Img_Compress_Serializer;
 use Ilove_Img_Compress\Ilove_Img_Compress_Submenu;
 use Ilove_Img_Compress\Ilove_Img_Compress_Submenu_Page;
+use Ilove_Img_Compress\Ilove_Img_Compress_I18n;
 
 add_action( 'plugins_loaded', 'ilove_img_compress_custom_admin_settings' );
 
@@ -65,6 +66,9 @@ function ilove_img_compress_custom_admin_settings() {
 
     $plugin = new Ilove_Img_Compress_Submenu( new Ilove_Img_Compress_Submenu_Page() );
     $plugin->init();
+
+    $i18 = new Ilove_Img_Compress_I18n();
+    $i18->init();
 }
 
 /**
