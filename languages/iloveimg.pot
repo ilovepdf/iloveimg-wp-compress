@@ -444,7 +444,11 @@ msgid "You can get also a powerful, easy to use, and reliable Watermark plugin f
 msgstr ""
 
 #: admin/views/watermark.php:36
-msgid "Discover all Watermark - iLoveIMG features soon and combine it with your Image Compressor & Optimizer – iLoveIMG!"
+msgid "Discover all Watermark - iLoveIMG features soon "
+msgstr ""
+
+#: admin/views/watermark.php:36
+msgid "and combine it with your Image Compressor & Optimizer – iLoveIMG!"
 msgstr ""
 
 #: ilove-img-compress.php:89
