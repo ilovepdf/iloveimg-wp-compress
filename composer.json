@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "php": ">=7.4",
         "ilovepdf/iloveimg-php": "dev-master"
     },
     "require-dev": {
@@ -20,6 +21,9 @@
         "wp-coding-standards/wpcs": "^3.1"
     },
     "config": {
+        "platform": {
+            "php": "7.4"
+        },
         "allow-plugins": {
             "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
