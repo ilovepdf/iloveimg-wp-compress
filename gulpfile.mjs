@@ -23,8 +23,7 @@ gulp.task('build-css', function() {
         .pipe(gulpIf(config.sourceMaps, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-                overrideBrowserslist: ["last 2 versions"],
-                cascade: false,
+                cascade: false
          }))
          .pipe(gulpIf(config.cleanCSS, cleanCSS()))
         .pipe(rename({ suffix: '.min' }))
