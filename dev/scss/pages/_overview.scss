@@ -1,0 +1,131 @@
+@use "variables" as *;
+@use "components" as *;
+
+body {
+	&.toplevel_page_iloveimg-admin-page,
+	&.media_page_iloveimg-media-page,
+	&.admin_page_iloveimg-watermark-admin-page,
+	&.iloveimg_page_iloveimg-compress-admin-page,
+	&.iloveimg_page_iloveimg-watermark-options-admin-page,
+	&.iloveimg_page_iloveimg-watermark-admin-page {
+		.iloveimg_settings {
+			.iloveimg_settings__overview {
+				.iloveimg_settings__overview__statistics {
+					background-color: $light_300_color;
+					padding: 20px 24px;
+	
+					h4 {
+						font-weight: normal;
+						color: $primary_color;
+	
+						strong {
+							color: $primary_color;
+						}
+					}
+	
+					>div {
+						display: flex;
+						justify-content: space-between;
+						margin-bottom: 30px;
+	
+						@media (max-width: $width_small) {
+							flex-direction: column;
+						}
+	
+						>div {
+							width: 45%;
+	
+							@media (max-width: $width_small) {
+								width: 100%;
+	
+								&.iloveimg_settings__overview__statistics__column_left {
+									margin-bottom: 30px;
+								}
+							}
+						}
+					}
+	
+					.iloveimg_saving {
+						padding: 20px;
+	
+						p {
+							margin: 0
+						}
+	
+						margin-top: 10px;
+						display: flex;
+						align-items: center;
+						background-color: $white;
+	
+						.iloveimg_saving__number {
+							font-weight: bold;
+							font-size: 44px;
+							letter-spacing: 0;
+							line-height: 44px;
+							margin-right: 10px;
+						}
+	
+						* {
+							color: $primary_color;
+						}
+					}
+	
+					.iloveimg_settings__overview__statistics__column_right {
+						h4 {
+	
+							color: $secondary_color;
+	
+							strong {
+								color: $secondary_color;
+							}
+						}
+	
+						.iloveimg_saving {
+							* {
+								color: $secondary_color;
+							}
+						}
+	
+						.iloveimg_percent {
+							.iloveimg_percent-total {
+								background: $secondary_color;
+							}
+						}
+					}
+				}
+	
+				.iloveimg_settings__overview__compressAll {
+					display: flex;
+					justify-content: center;
+					margin-top: 16px;
+					margin-bottom: -14px;
+	
+					button {
+						@extend %button-primary-rounded;
+	
+						span {
+							color: $white;
+							position: relative;
+							z-index: 10;
+						}
+	
+						.iloveimg-compress-all__percent {
+							background: $success_color;
+							position: absolute;
+							top: 0px;
+							left: 0px;
+							bottom: 0px;
+							z-index: 0;
+							transition: width 1s;
+						}
+	
+						&:hover {
+							border: 0;
+							opacity: .9;
+						}
+					}
+				}
+			}
+		}
+	}
+}

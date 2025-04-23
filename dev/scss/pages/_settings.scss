@@ -1,0 +1,438 @@
+@use "variables" as *;
+@use "components" as *;
+
+body {
+	&.toplevel_page_iloveimg-admin-page,
+	&.media_page_iloveimg-media-page,
+	&.admin_page_iloveimg-watermark-admin-page,
+	&.iloveimg_page_iloveimg-compress-admin-page,
+	&.iloveimg_page_iloveimg-watermark-options-admin-page,
+	&.iloveimg_page_iloveimg-watermark-admin-page {
+		background-color: $background_color;
+	
+		.iloveimg_settings {
+			font-family: $font_family;
+
+			h1 {
+				padding: 0;
+			}
+
+			h3 {
+				margin-top: 0;
+			}
+	
+			input::placeholder {
+				opacity: 0.5;
+				color: $secondary_500_color;
+				letter-spacing: 0.45px;
+				line-height: 18px;
+				font-weight: normal;
+			}
+	
+			p {
+				a {
+					&:hover {
+						color: $primary_color !important;
+					}
+				}
+
+				&.submit {
+					margin-bottom: 10px;
+				}
+			}
+	
+			.logo {
+				width: 125px;
+				height: 32px;
+				display: block;
+				margin: 30px 30px;
+			}
+	
+			.iloveimg_settings__overview {
+				background-color: $white;
+				padding: 30px;
+				box-shadow: $box_shadow;
+				border-radius: $radius;
+				margin-bottom: 30px;
+	
+				.forget {
+					display: block;
+					color: $primary_color;
+					text-decoration: none;
+					margin-bottom: 10px;
+				}
+	
+				.iloveimg_settings__overview__account {
+					display: flex;
+					flex-direction: row;
+					align-items: flex-start;
+					justify-content: space-between;
+	
+					@media (max-width: $width_small) {
+						flex-direction: column;
+					}
+	
+					.iloveimg_settings__overview__account__picture {
+						margin-right: 30px;
+						width: 100%;
+						height: 238px;
+						background: url("../images/iloveimg_picture_login.svg") no-repeat left center;
+						background: auto 100%;
+	
+						@media (max-width: $width_small) {
+							margin-bottom: 20px;
+						}
+					}
+	
+					&.iloveimg_settings__overview__account-login {
+						>img {
+							width: calc(100% - 240px - 30px - 56px);
+							max-width: 870px;
+						}
+	
+						>form {
+							width: 240px;
+							margin-right: 56px;
+						}
+					}
+	
+					&.iloveimg_settings__overview__account-register {
+	
+						>img {
+							width: calc(100% - 30px - 460px);
+							max-width: 656px;
+						}
+	
+						form {
+							width: 350px;
+	
+							p.submit {
+								padding-top: 8px;
+							}
+	
+							>div {
+								>div {
+									&:first-child {
+										margin-right: 12px;
+									}
+	
+									width: 50%;
+								}
+							}
+						}
+					}
+	
+					&.iloveimg_settings__overview__account-logged {
+						.iloveimg_settings__overview__account-logged__column_left {
+							flex: 1;
+							display: flex;
+							justify-content: space-between;
+							background-color: $light_300_color;
+							margin-right: 30px;
+							padding: 20px 24px;
+							min-height: 280px;
+	
+							h4 {
+								margin: 0 0 10px 0;
+							}
+	
+							@media (max-width: $width_medium) {
+								flex-direction: column;
+							}
+	
+							>div {
+								width: 45%;
+	
+								@media (max-width: $width_medium) {
+									width: 100%;
+								}
+	
+								&.iloveimg_settings__overview__account-logged__column_left__details {
+									position: relative;
+	
+									p {
+										margin-top: 0;
+	
+										@media (max-width: $width_medium) {
+											display: none;
+										}
+									}
+	
+									.button {
+										position: absolute;
+										right: 0px;
+										bottom: 0;
+	
+										@media (max-width: $width_medium) {
+											position: static;
+											margin-top: 20px;
+										}
+									}
+								}
+							}
+	
+							@media (max-width: $width_small) {
+								width: 100%;
+								margin-bottom: 20px;
+							}
+	
+							* {
+								color: $secondary_500_color;
+							}
+						}
+	
+						.iloveimg_settings__overview__account-logged__column_right {
+							width: 240px;
+	
+							form {
+								&.iloveimg_settings__overview__account-logged__column_right-proyects {
+									border-top: 1px solid $light_500_color;
+									margin-top: 20px;
+									padding-top: 10px;
+	
+									label {
+										display: block;
+										margin-bottom: 5px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+	
+			.iloveimg_settings__info {
+				background-color: $primary_color;
+				padding: 30px;
+				margin-bottom: 30px;
+				border-radius: 4px 4px 0px 0px;
+				position: relative;
+	
+				button {
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					display: none;
+				}
+	
+				h3 {
+					font-size: 18px;
+				}
+	
+				* {
+					color: $white;
+				}
+			}
+	
+			.iloveimg_settings__options {
+				display: flex;
+	
+				@media (max-width: $width_small) {
+					flex-direction: column;
+				}
+	
+				.iloveimg_settings__options-nav {
+					margin-right: 30px;
+	
+					@media (max-width: $width_small) {
+						margin-right: 0;
+					}
+	
+					ul {
+						margin: 0;
+						padding: 0;
+						list-style: none;
+						width: 173px;
+	
+						@media (max-width: $width_small) {
+							display: flex;
+						}
+	
+						li {
+							margin: 0 0 10px 0;
+	
+							a {
+								color: $secondary_color;
+								text-decoration: none;
+								display: block;
+								line-height: 32px;
+								height: 32px;
+								padding: 0 8px;
+								$white-space: nowrap;
+								display: flex;
+								align-items: center;
+								border-radius: 2px;
+	
+								svg {
+									margin-right: 10px;
+									min-width: max-content;
+								}
+	
+								span {
+									line-height: normal;
+									text-wrap: wrap;
+								}
+							}
+	
+							&.iloveimg_settings__options-nav__selected,
+							&:hover {
+								a {
+									background-color: $white;
+								}
+							}
+						}
+					}
+				}
+	
+				.iloveimg_settings__options-container {
+					flex: 1;
+					background-color: $white;
+					padding: 30px;
+					box-shadow: $box_shadow;
+					border-radius: $radius;
+	
+					h3 {
+						border-bottom: 1px solid $light_500_color;
+						padding-bottom: 15px;
+						margin-bottom: 0px;
+					}
+	
+					input[type="submit"],
+					input[type="button"] {
+						text-shadow: none !important;
+	
+						&:disabled {
+							opacity: 1;
+							background-color: $secondary_500_color !important;
+							cursor: not-allowed;
+						}
+					}
+	
+					p.submit {
+						margin: 0;
+						display: flex;
+						align-items: flex-end;
+						flex-direction: column;
+	
+						button {
+							position: relative;
+						}
+					}
+	
+					form {
+						>p.submit {
+							margin-bottom: 20px;
+						}
+					}
+	
+					.iloveimg_settings__options__field-backup {
+						display: flex;
+						justify-content: space-between;
+	
+						@media (max-width: $width_medium) {
+							flex-direction: column;
+						}
+	
+						.iloveimg_settings__options__field {
+							width: 50%;
+							border: 0;
+	
+							@media (max-width: $width_medium) {
+								width: 100%;
+							}
+						}
+	
+						button.button {
+							+span {
+								display: inline-block;
+								margin-top: 8px;
+								margin-left: 6px;
+								font-style: italic;
+							}
+						}
+					}
+	
+					.iloveimg_settings__options__field {
+						padding: 30px 0;
+						border-bottom: 1px solid $light_500_color;
+	
+						.switch+label {
+							margin-left: 5px;
+						}
+	
+						p {
+							color: $secondary_300_color;
+						}
+	
+						.iloveimg_settings__options__field__imagessizes {
+							display: flex;
+	
+							>* {
+								width: calc(50% - 30px);
+	
+								&:first-child {
+									margin-right: 30px;
+								}
+							}
+						}
+	
+						.iloveimg_settings__options__field__resize {
+							display: flex;
+	
+							div {
+								margin-right: 20px;
+								width: 170px;
+	
+								label {
+									display: block;
+									margin-bottom: 5px;
+								}
+	
+								input {
+									width: 100%;
+									border: 1px solid $secondary_color;
+									background-color: $white;
+								}
+	
+								p {
+									margin-top: 5px;
+									font-size: 10px;
+									color: $secondary_color;
+									letter-spacing: 0.35px;
+									line-height: 13px;
+								}
+							}
+						}
+					}
+				}
+			}
+	
+			.iloveimg-restore-dialog,
+			#poststuff .iloveimg-restore-dialog {
+				@include iloveimg-restore-dialog;
+			}
+	
+			* {
+				font-size: $body_font_size;
+				color: $text_color;
+				letter-spacing: $letter_spacing;
+				box-sizing: border-box;
+			}
+		}
+	}
+	
+	a.thickbox.iloveimg_sizes_compressed,
+	a.iloveimg_link {
+		color: $text_light;
+		text-decoration: underline;
+
+		&:hover {
+			color: $primary_color;
+		}
+	}
+
+	.iloveimg_status_compress .iloveimg-restore-dialog,
+	#poststuff .iloveimg-restore-dialog {
+		@include iloveimg-restore-dialog;
+	}
+}
