@@ -1,12 +1,30 @@
-$primary_color: #4D90FE;
-$secondary_color: #383E45;
-$text_color: #383E45;
+// Typography
 $font_family: 'Roboto', sans-serif;
 $body_font_size: 13px;
-$background_color: #F9F8F6;
-$box_shadow: 0 2px 6px 0 rgba(0,0,0,0.10);
-$radius: 5px;
 $letter_spacing: 0.45px;
 
+// Colors
+$white: #FFFFFF;
+$dark: #000000;
+$primary_color: #4D90FE;
+$secondary_color: #383E45;
+$secondary_500_color: #626870;
+$secondary_300_color: #969696;
+$success_color: #6FE21C;
+$danger_color: #A00A00;
+$light_color: #F9F8F6;
+$light_300_color: #F3F4F5;
+$light_500_color: #E1E1E1;
+$light_600_color: #CCCCCC;
+
+$text_color: $secondary_color;
+$text_light: $secondary_500_color;
+$background_color: $light_color;
+
+// Grid - Layout
 $width_small: 700px;
 $width_medium: 1024px;
+
+// Base
+$box_shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.10);
+$radius: 5px;

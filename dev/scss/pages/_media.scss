@@ -1,0 +1,157 @@
+@use "variables" as *;
+@use "components" as *;
+
+body {
+	&.media_page_iloveimg-media-page {
+		input {
+			&#doaction,
+			&#doaction2 {
+				background-color: $secondary_color;
+			}
+		}
+	
+		.tablenav {
+			height: auto;
+	
+			&.top {
+				margin-bottom: 14px;
+			}
+	
+			&.bottom {
+				margin-top: 14px;
+			}
+		}
+	
+		table.wp-list-table {
+			border: 0;
+			box-shadow: $box_shadow;
+			border-radius: 4px;
+	
+			thead {
+				>tr {
+					height: 50px;
+	
+					th,
+					td {
+						border: 0;
+						padding-top: 0px;
+						padding-bottom: 0px;
+	
+						&.check-column {
+							width: 3em;
+	
+							@media (max-width: 2000px) {}
+						}
+					}
+				}
+			}
+	
+			tbody {
+				tr {
+	
+					th,
+					td {
+						vertical-align: middle;
+	
+						&:first-child {
+							vertical-align: top;
+						}
+	
+						.attachment-thumbnail {
+							width: 60px;
+							height: 60px;
+							margin-right: 5px;
+						}
+					}
+	
+					td {
+						&.column-file {
+							>a {
+								display: flex;
+	
+								&:hover {
+									color: $primary_color;
+								}
+							}
+						}
+					}
+	
+					&:nth-child(odd) {
+						background-color: $light_300_color;
+					}
+				}
+			}
+	
+			tr {
+	
+				th {
+					color: $primary_color;
+					font-weight: bold;
+	
+					a {
+						color: $primary_color;
+	
+						span {
+							color: $primary_color;
+						}
+					}
+				}
+			}
+		}
+	
+		.iloveimg_settings__overview__compress-all {
+			display: flex;
+			justify-content: center;
+	
+			#iloveimg_allcompress {
+				margin-top: 20px;
+			}
+		}
+	}
+	
+	small.iloveimg__badge__percent {
+		background-color: $success_color;
+		color: $text-color;
+		padding: 1px 8px;
+		border-radius: 4px;
+		margin-left: 8px;
+		font-size: 10px !important;
+		display: inline !important;
+	}
+
+	button {
+		&.button {
+			&.iloveimg-compress,
+			&.iloveimg-compress-all,
+			&.button-style-iloveimg {
+				@extend %button-outline-primary;
+			}
+		}
+	}
+
+	table.table__details__sizes {
+		font-family: $font_family;
+		font-size: 13px;
+		color: $text_light;
+		letter-spacing: 0.2px;
+		width: 360px;
+		margin: 20px auto;
+		border-spacing: 0;
+
+		tbody {
+			tr {
+
+				td,
+				th {
+					line-height: 34px;
+					padding: 0 15px;
+					border: 0;
+				}
+
+				&:nth-child(even) {
+					background-color: $light_300_color;
+				}
+			}
+		}
+	}
+}
