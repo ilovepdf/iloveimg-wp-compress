@@ -543,7 +543,7 @@ class Ilove_Img_Compress_Resources {
                         <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
                     </button>
                     <br/>
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_compress_restore" value="<?php echo esc_html( $img_nonce ); ?>">
                     <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg' ); ?>...</span></p>
                     <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg' ); ?></span></p>
                     <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg' ); ?></span></p>
