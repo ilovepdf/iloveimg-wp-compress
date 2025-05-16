@@ -243,7 +243,7 @@ class Ilove_Img_Compress_Resources {
             </table>
         </div>
         <!-- <p>Now <?php echo (float) self::get_saving( $_sizes ); ?>% smaller!</p> -->
-        <p><a href="#TB_inline?&width=450&height=340&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
+        <p><a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
             <?php echo (int) $images_compressed; ?> sizes compressed
         </a>
         <small class="iloveimg__badge__percent">
@@ -543,7 +543,7 @@ class Ilove_Img_Compress_Resources {
                         <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
                     </button>
                     <br/>
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo esc_html( $img_nonce ); ?>">
+                    <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_compress_restore" value="<?php echo esc_html( $img_nonce ); ?>">
                     <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg' ); ?>...</span></p>
                     <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg' ); ?></span></p>
                     <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg' ); ?></span></p>
