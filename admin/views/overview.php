@@ -27,6 +27,3 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 		</div>
 	</div>
 </div>
-<!-- <div class="iloveimg_settings__overview__compress-all">
-	<button type="button" id="iloveimg_allcompress" class="iloveimg-compress-all button button-small button-primary"><?php esc_html_e( 'Compress All', 'iloveimg' ); ?></button>
-</div> -->
