@@ -100,9 +100,11 @@ Improved
 * Added bulk compression functionality compatible with WordPress core.
 * Improvement in details box.
 * Enhanced titles.
+* Refactoring.
 
 Fixed
 * Before compressing an image, the file type is checked.
+* SUV images are not regenerated when all images are restored from backup.
 
 = 2.2.10 =
 Improved
