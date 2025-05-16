@@ -134,8 +134,8 @@ body {
 		font-size: 13px;
 		color: $text_light;
 		letter-spacing: 0.2px;
-		width: 360px;
-		margin: 20px auto;
+		width: 100%;
+		margin: 10px auto;
 		border-spacing: 0;
 
 		tbody {
@@ -144,7 +144,7 @@ body {
 				td,
 				th {
 					line-height: 34px;
-					padding: 0 15px;
+					padding: 5px 15px;
 					border: 0;
 				}
 

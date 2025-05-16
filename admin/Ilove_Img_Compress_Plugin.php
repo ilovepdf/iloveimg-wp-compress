@@ -19,7 +19,7 @@ class Ilove_Img_Compress_Plugin {
 	 * @access   public
 	 * @var      string    VERSION    The current version of the plugin.
 	 */
-    const VERSION = '2.2.10';
+    const VERSION = '2.2.11';
 
     /**
 	 * The unique identifier of this plugin.
@@ -80,6 +80,9 @@ class Ilove_Img_Compress_Plugin {
         // Manage media columns.
         add_filter( 'manage_media_columns', array( $this, 'column_id' ) );
         add_filter( 'manage_media_custom_column', array( $this, 'column_id_row' ), 10, 2 );
+        add_filter( 'bulk_actions-upload', array( $this, 'add_bulk_compression_action' ) );
+        add_filter( 'handle_bulk_actions-upload', array( $this, 'handle_bulk_compression_action' ), 10, 3 );
+        add_filter( 'query_vars', array( $this, 'add_custom_query_vars' ) );
 
         // Handle AJAX requests for the library.
         add_action( 'wp_ajax_ilove_img_compress_library', array( $this, 'ilove_img_compress_library' ) );
@@ -368,6 +371,67 @@ class Ilove_Img_Compress_Plugin {
                 }
             }
         }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'success' ) {
+            $files_success = get_transient( 'iloveimg_bulk_success' );
+
+            foreach ( $files_success as $file ) {
+                ?>
+                <div class="notice notice-success is-dismissible">
+                    <p>
+                    <?php
+                    printf(
+                        /* translators: %d: ID of File */
+                        esc_html__( 'The image %d was compressed correctly', 'iloveimg' ),
+                        esc_html( $file )
+                    );
+					?>
+                    </p>
+                </div>
+                <?php
+            }
+        }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'error' ) {
+            $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
+
+            foreach ( $files_with_errors as $file ) {
+                ?>
+                <div class="notice notice-error is-dismissible">
+                    <p><?php echo esc_html( $file['message'] ); ?></p>
+                </div>
+                <?php
+            }
+        }
+
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'partial' ) {
+            $files_success     = get_transient( 'iloveimg_bulk_success' );
+            $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
+
+            foreach ( $files_success as $file ) {
+                ?>
+                <div class="notice notice-success is-dismissible">
+                    <p>
+                    <?php
+                    printf(
+                        /* translators: %d: ID of File */
+                        esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
+                        esc_html( $file )
+                    );
+					?>
+                    </p>
+                </div>
+                <?php
+            }
+
+			foreach ( $files_with_errors as $file ) {
+                ?>
+                <div class="notice notice-error is-dismissible">
+                    <p><?php echo esc_html( $file['message'] ); ?></p>
+                </div>
+                <?php
+            }
+        }
     }
 
     /**
@@ -385,7 +449,7 @@ class Ilove_Img_Compress_Plugin {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
-            esc_html_e( 'iLoveIMG', 'iloveimg' );
+            esc_html_e( 'iLoveIMG Compress', 'iloveimg' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
@@ -462,6 +526,7 @@ class Ilove_Img_Compress_Plugin {
 
             foreach ( $images_restore as $key => $value ) {
                 Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ), get_attached_file( $value ) );
+                Ilove_Img_Compress_Resources::regenerate_attachment_data( $value );
 
                 delete_post_meta( $value, 'iloveimg_status_watermark' );
                 delete_post_meta( $value, 'iloveimg_watermark' );
@@ -558,5 +623,85 @@ class Ilove_Img_Compress_Plugin {
             wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $post_id ) ) );
             Ilove_Img_Compress_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
+    }
+
+    /**
+     * Add bulk action
+     *
+     * @since 2.2.11
+     * @param array $actions An array of the available bulk actions.
+     */
+    public function add_bulk_compression_action( $actions ) {
+
+        if ( get_option( 'iloveimg_account' ) ) {
+            $actions['iloveimg_compress'] = __( 'Compress Images', 'iloveimg' );
+        }
+
+        return $actions;
+    }
+
+    /**
+     * Handle bulk compression action
+     *
+     * @since 2.2.11
+     * @param string $redirect_to The redirect URL.
+     * @param string $doaction The action being taken.
+     * @param array  $post_ids An array of post IDs.
+     */
+    public function handle_bulk_compression_action( $redirect_to, $doaction, $post_ids ) {
+        if ( 'iloveimg_compress' !== $doaction ) {
+            return $redirect_to;
+        }
+
+        $iloveimg_process = new Ilove_Img_Compress_Process();
+
+		$success_ids = array();
+		$error_items = array();
+
+		foreach ( $post_ids as $id ) {
+			$image = $iloveimg_process->compress( $id );
+
+			if ( ! empty( $image['error'] ) ) {
+				$error_items[] = array(
+					'id'      => $id,
+					'message' => $image['error_msg'],
+				);
+			} else {
+				$success_ids[] = $id;
+			}
+		}
+
+		set_transient( 'iloveimg_bulk_success', $success_ids, 600 );
+		set_transient( 'iloveimg_bulk_errors', $error_items, 600 );
+
+		$status = 'success';
+
+		if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
+			$status = 'partial';
+		} elseif ( ! empty( $error_items ) ) {
+			$status = 'error';
+		}
+
+		wp_safe_redirect(
+            add_query_arg(
+                array(
+					'iloveimg-bulk-compression' => $status,
+                ),
+                'upload.php'
+            )
+		);
+		exit();
+    }
+
+    /**
+     * Add custom query variables
+     *
+     * @since 2.2.11
+     * @param array $qvars An array of query variables.
+     */
+    public function add_custom_query_vars( $qvars ) {
+        $qvars[] = 'iloveimg-bulk-compression';
+
+        return $qvars;
     }
 }

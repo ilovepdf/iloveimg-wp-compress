@@ -60,6 +60,8 @@
     var totalImagesToCompress = 0;
     switch (adminpage) {
         case 'upload-php':
+            jQuery( document ).on( "click", "button.iloveimg-compress", compressImage );
+            break;
         case 'media_page_iloveimg-media-page':
         case 'post-php':
             jQuery( document ).on( "click", "button.iloveimg-compress", compressImage );
