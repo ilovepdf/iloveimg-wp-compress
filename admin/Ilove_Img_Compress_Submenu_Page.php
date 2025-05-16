@@ -59,7 +59,6 @@ class Ilove_Img_Compress_Submenu_Page {
 	 * @access public
 	 */
 	public function render_media_optimization() {
-		$options_value = json_decode( get_option( 'iloveimg_options_compress' ), true );
 		require_once 'views/media-bulk.php';
 	}
 }
