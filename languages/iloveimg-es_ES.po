@@ -40,36 +40,26 @@ msgstr ""
 "visitantes y, en última instancia, incrementar las ventas."
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:102
-#, fuzzy
-#| msgid "File"
 msgctxt "column name"
 msgid "File"
 msgstr "Archivo"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:103
-#, fuzzy
-#| msgid "Author"
 msgctxt "column name"
 msgid "Author"
 msgstr "Autor"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:104
-#, fuzzy
-#| msgid "Date"
 msgctxt "column name"
 msgid "Date"
 msgstr "Fecha"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:105
-#, fuzzy
-#| msgid "Status"
 msgctxt "column name"
 msgid "Status"
 msgstr "Estado"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
-#, fuzzy
-#| msgid "Delete"
 msgctxt "button"
 msgid "Delete"
 msgstr "Borrar"
@@ -79,39 +69,35 @@ msgid "Items deleted (or they would be if we had items to delete)!"
 msgstr ""
 "¡Artículos eliminados (o lo serían si tuviéramos artículos para eliminar)!"
 
-#: admin/Ilove_Img_Compress_Plugin.php:209
+#: admin/Ilove_Img_Compress_Plugin.php:207
 msgid "Try again or buy more credits"
 msgstr "Inténtalo de nuevo o compra más créditos"
 
-#: admin/Ilove_Img_Compress_Plugin.php:231
-#, fuzzy
-#| msgid "Status Compress"
+#: admin/Ilove_Img_Compress_Plugin.php:229
 msgctxt "column name"
 msgid "Status Compress"
 msgstr "Estado de Compresión"
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:320
 msgid "Please you need to be logged or registered."
 msgstr "Por favor, debes estar logueado o registrado."
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
-#: admin/Ilove_Img_Compress_Resources.php:298
+#: admin/Ilove_Img_Compress_Plugin.php:320
 #: admin/Ilove_Img_Compress_Resources.php:304
-#, fuzzy
-#| msgid "Go to settings"
+#: admin/Ilove_Img_Compress_Resources.php:310
 msgctxt "button"
 msgid "Go to settings"
 msgstr "Ir a Configuraciones"
 
-#: admin/Ilove_Img_Compress_Plugin.php:333
+#: admin/Ilove_Img_Compress_Plugin.php:331
 msgid "Your email or password is wrong."
 msgstr "Su correo electrónico o contraseña es incorrecto."
 
-#: admin/Ilove_Img_Compress_Plugin.php:338
+#: admin/Ilove_Img_Compress_Plugin.php:336
 msgid "This email address has already been taken."
 msgstr "Esta dirección de correo electrónico ya ha sido tomada."
 
-#: admin/Ilove_Img_Compress_Plugin.php:343
+#: admin/Ilove_Img_Compress_Plugin.php:341
 msgid ""
 "You have reached limit of different users to use this WordPress plugin. "
 "Please relogin with one of your existing users."
@@ -120,46 +106,44 @@ msgstr ""
 "complemento de WordPress. Vuelve a iniciar sesión con uno de tus usuarios "
 "existentes."
 
-#: admin/Ilove_Img_Compress_Plugin.php:375
+#: admin/Ilove_Img_Compress_Plugin.php:373
 msgid "Please you need more credits."
 msgstr "Por favor, necesitas más créditos."
 
-#: admin/Ilove_Img_Compress_Plugin.php:375 admin/views/account.php:197
-#, fuzzy
-#| msgid "Buy more credits"
+#: admin/Ilove_Img_Compress_Plugin.php:373 admin/views/account.php:197
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "Comprar más créditos"
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:393
-#: admin/Ilove_Img_Compress_Plugin.php:426
+#: admin/Ilove_Img_Compress_Plugin.php:391
+#: admin/Ilove_Img_Compress_Plugin.php:424
 #, php-format
 msgid "The image %s was compressed correctly"
 msgstr "La imagen %s fue comprimida correctamente"
 
-#: admin/Ilove_Img_Compress_Plugin.php:460
+#: admin/Ilove_Img_Compress_Plugin.php:458
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
 msgstr "iLoveIMG Compresión"
 
-#: admin/Ilove_Img_Compress_Plugin.php:564
+#: admin/Ilove_Img_Compress_Plugin.php:562
 msgid "Error processing your request. Invalid Nonce code"
 msgstr "Error al procesar su solicitud. Código Nonce no válido"
 
-#: admin/Ilove_Img_Compress_Plugin.php:568
+#: admin/Ilove_Img_Compress_Plugin.php:566
 msgid "Error processing your request. Invalid Image ID"
 msgstr "Error al procesar su solicitud. ID de imagen no válida"
 
-#: admin/Ilove_Img_Compress_Plugin.php:576
+#: admin/Ilove_Img_Compress_Plugin.php:574
 msgid "Sorry. There is no backup for this file"
 msgstr "Lo sentimos, no hay respaldo para este archivo"
 
-#: admin/Ilove_Img_Compress_Plugin.php:594
+#: admin/Ilove_Img_Compress_Plugin.php:592
 msgid "It was restored correctly"
 msgstr "Fue restaurado correctamente"
 
-#: admin/Ilove_Img_Compress_Plugin.php:645
+#: admin/Ilove_Img_Compress_Plugin.php:643
 msgctxt "button"
 msgid "Compress Images"
 msgstr "Comprimir imágenes"
@@ -186,29 +170,21 @@ msgstr ""
 "cambiar a otro proyecto para guardar correctamente tus claves API."
 
 #: admin/Ilove_Img_Compress_Resources.php:37
-#, fuzzy
-#| msgid "Original image"
 msgctxt "input checkbox"
 msgid "Original image"
 msgstr "Imagen Original"
 
 #: admin/Ilove_Img_Compress_Resources.php:205
-#, fuzzy
-#| msgid "Name"
 msgctxt "column name"
 msgid "Name"
 msgstr "Nombre"
 
 #: admin/Ilove_Img_Compress_Resources.php:206
-#, fuzzy
-#| msgid "Initial"
 msgctxt "column name"
 msgid "Initial"
 msgstr "Inicial"
 
 #: admin/Ilove_Img_Compress_Resources.php:207
-#, fuzzy
-#| msgid "Compressed"
 msgctxt "column name"
 msgid "Compressed"
 msgstr "Comprimido"
@@ -218,102 +194,84 @@ msgstr "Comprimido"
 msgid "Not compressed"
 msgstr "No comprimido"
 
-#: admin/Ilove_Img_Compress_Resources.php:292
-#, fuzzy
-#| msgid "Compress"
+#. translators: %d: number of compressed images
+#: admin/Ilove_Img_Compress_Resources.php:250
+#, php-format
+msgid "%d sizes compressed"
+msgstr "%d tamaños comprimidos"
+
+#: admin/Ilove_Img_Compress_Resources.php:298
 msgctxt "button"
 msgid "Compress"
 msgstr "Comprimir"
 
-#: admin/Ilove_Img_Compress_Resources.php:303
+#: admin/Ilove_Img_Compress_Resources.php:309
 msgid "You need to be registered"
 msgstr "Necesitas estar registrado"
 
-#: admin/Ilove_Img_Compress_Resources.php:398
-#: admin/Ilove_Img_Compress_Resources.php:434
+#: admin/Ilove_Img_Compress_Resources.php:404
+#: admin/Ilove_Img_Compress_Resources.php:440
 msgid "Unable to connect to the filesystem"
 msgstr "No se puede conectar al sistema de archivos"
 
-#: admin/Ilove_Img_Compress_Resources.php:543
-#, fuzzy
-#| msgid "Restore original file"
+#: admin/Ilove_Img_Compress_Resources.php:549
 msgctxt "button"
 msgid "Restore original file"
 msgstr "Restaurar archivo original"
 
-#: admin/Ilove_Img_Compress_Resources.php:547
+#: admin/Ilove_Img_Compress_Resources.php:553
 msgctxt "The file is being processed"
 msgid "Loading..."
 msgstr "Cargando…"
 
-#: admin/Ilove_Img_Compress_Resources.php:548
-#, fuzzy
-#| msgid "Error"
+#: admin/Ilove_Img_Compress_Resources.php:554
 msgctxt "File processing had an error"
 msgid "Error"
 msgstr "Error"
 
-#: admin/Ilove_Img_Compress_Resources.php:549
-#, fuzzy
-#| msgid "Completed, please refresh the page."
+#: admin/Ilove_Img_Compress_Resources.php:555
 msgctxt "File processing was successful"
 msgid "Completed, please refresh the page."
 msgstr "Completado, por favor vuelva a cargar la página."
 
 #: admin/Ilove_Img_Compress_Submenu.php:54
 #: admin/Ilove_Img_Compress_Submenu.php:55
-#, fuzzy
-#| msgid "Compress settings"
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr "Configuraciones de compresión"
 
 #: admin/Ilove_Img_Compress_Submenu.php:66
 #: admin/Ilove_Img_Compress_Submenu.php:67
-#, fuzzy
-#| msgid "Watermark settings"
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr "Configuraciones de Marca de Agua"
 
 #: admin/Ilove_Img_Compress_Submenu.php:78
-#, fuzzy
-#| msgid "Bulk Optimization"
 msgctxt "submenu"
 msgid "Bulk Optimization"
 msgstr "Optimización en Lote"
 
 #: admin/views/account.php:53
-#, fuzzy
-#| msgid "Login to your account"
 msgctxt "form title"
 msgid "Login to your account"
 msgstr "Inicie sesión en su cuenta"
 
 #: admin/views/account.php:56 admin/views/account.php:84
-#, fuzzy
-#| msgid "Email"
 msgctxt "input email"
 msgid "Email"
 msgstr "Correo"
 
 #: admin/views/account.php:59 admin/views/account.php:87
-#, fuzzy
-#| msgid "Password"
 msgctxt "input password"
 msgid "Password"
 msgstr "Contraseña"
 
 #: admin/views/account.php:61
-#, fuzzy
-#| msgid "Forget Password?"
 msgctxt "button"
 msgid "Forget Password?"
 msgstr "¿Olvidaste tu contraseña?"
 
 #: admin/views/account.php:64
-#, fuzzy
-#| msgid "Login"
 msgctxt "button"
 msgid "Login"
 msgstr "Iniciar Sesión"
@@ -323,29 +281,21 @@ msgid "Register as iLoveAPI developer"
 msgstr "Registrarse como desarrollador iLoveAPI"
 
 #: admin/views/account.php:81
-#, fuzzy
-#| msgid "Name"
 msgctxt "Input text"
 msgid "Name"
 msgstr "Nombre"
 
 #: admin/views/account.php:93
-#, fuzzy
-#| msgid "Register"
 msgctxt "button"
 msgid "Register"
 msgstr "Registro"
 
 #: admin/views/account.php:96
-#, fuzzy
-#| msgid "Login to your account"
 msgctxt "button"
 msgid "Login to your account"
 msgstr "Inicie sesión en su cuenta"
 
 #: admin/views/account.php:105
-#, fuzzy
-#| msgid "Free"
 msgctxt "subtitle section: free credits"
 msgid "Free"
 msgstr "Gratis"
@@ -357,8 +307,6 @@ msgid "%1$d / %2$d credits used this month. Free Tier."
 msgstr "%1$d / %2$d créditos utilizados este mes. Nivel gratuito."
 
 #: admin/views/account.php:123
-#, fuzzy
-#| msgid "Subscription plan"
 msgctxt "subtitle section: subscription credits"
 msgid "Subscription plan"
 msgstr "Plan de suscripción"
@@ -370,8 +318,6 @@ msgid "%1$d / %2$d credits used this month. Subscription plan."
 msgstr "%1$d / %2$d créditos utilizados este mes. Plan  de suscripción."
 
 #: admin/views/account.php:145
-#, fuzzy
-#| msgid "Prepaid packages."
 msgctxt "subtitle section: package credits"
 msgid "Prepaid packages."
 msgstr "Paquetes prepagos."
@@ -393,15 +339,11 @@ msgstr ""
 "comprimir o sellar tus imágenes."
 
 #: admin/views/account.php:176
-#, fuzzy
-#| msgid "subscription plans"
 msgctxt "1: subscription plan link"
 msgid "subscription plans"
 msgstr "planes de suscripción"
 
 #: admin/views/account.php:181
-#, fuzzy
-#| msgid "single package"
 msgctxt "2: single package link"
 msgid "single package"
 msgstr "paquete único"
@@ -418,15 +360,11 @@ msgstr ""
 "%2$s de créditos."
 
 #: admin/views/account.php:204
-#, fuzzy
-#| msgid "Account"
 msgctxt "subtitle: Connected user section"
 msgid "Account"
 msgstr "Cuenta"
 
 #: admin/views/account.php:209
-#, fuzzy
-#| msgid "Logout"
 msgctxt "button"
 msgid "Logout"
 msgstr "Cerrar sesión"
@@ -436,8 +374,6 @@ msgid "Select your working proyect"
 msgstr "Seleccione su proyecto de trabajo"
 
 #: admin/views/account.php:229
-#, fuzzy
-#| msgid "Save"
 msgctxt "Button: save changes"
 msgid "Save"
 msgstr "Guardar"
@@ -490,8 +426,6 @@ msgid "Configure your Compress Images settings"
 msgstr "Configura tus ajustes de Comprimir imágenes"
 
 #: admin/views/compress.php:52
-#, fuzzy
-#| msgid "Compress Activated"
 msgctxt "checkbox field label"
 msgid "Compress Activated"
 msgstr "Comprimir Activado"
@@ -506,8 +440,6 @@ msgstr ""
 "iLoveAPI."
 
 #: admin/views/compress.php:62
-#, fuzzy
-#| msgid "Enable Autocompress Images"
 msgctxt "checkbox field label"
 msgid "Enable Autocompress Images"
 msgstr "Habilitar la compresión automática de imágenes"
@@ -523,8 +455,6 @@ msgstr ""
 "comprimir imágenes sin comprimir desde Medios."
 
 #: admin/views/compress.php:68
-#, fuzzy
-#| msgid "Images Sizes:"
 msgctxt "checkbox field label"
 msgid "Images Sizes:"
 msgstr "Tamaño de Imagenes:"
@@ -538,8 +468,6 @@ msgstr ""
 "Seleccione aquí qué versiones de imagen desea comprimir."
 
 #: admin/views/compress.php:91
-#, fuzzy
-#| msgid "Resize full size image:"
 msgctxt "checkbox field label"
 msgid "Resize full size image:"
 msgstr "Cambiar el tamaño de la imagen a tamaño completo:"
@@ -556,8 +484,6 @@ msgstr ""
 "imagen original."
 
 #: admin/views/compress.php:95
-#, fuzzy
-#| msgid "Max width"
 msgctxt "input number label"
 msgid "Max width"
 msgstr "Ancho maximo"
@@ -567,8 +493,6 @@ msgid "Original image width won't exceed this value in pixels."
 msgstr "El ancho de la imagen original no excederá este valor en píxeles."
 
 #: admin/views/compress.php:100
-#, fuzzy
-#| msgid "Max height"
 msgctxt "input number label"
 msgid "Max height"
 msgstr "Altura máxima"
@@ -578,8 +502,6 @@ msgid "Original image height won't exceed this value in pixels."
 msgstr "La altura de la imagen original no excederá este valor en píxeles."
 
 #: admin/views/compress.php:114
-#, fuzzy
-#| msgid "Backup original Images"
 msgctxt "checkbox field label"
 msgid "Backup original Images"
 msgstr "Copia de seguridad de imágenes originales"
@@ -602,8 +524,6 @@ msgid "Backup images will be stored at: %s"
 msgstr "Las imágenes de respaldo se almacenarán en: %s"
 
 #: admin/views/compress.php:132
-#, fuzzy
-#| msgid "Restore Original Images"
 msgctxt "checkbox field label"
 msgid "Restore Original Images"
 msgstr "Restaurar imágenes originales"
@@ -633,15 +553,11 @@ msgstr ""
 "restaurar las imágenes originales. %2$s"
 
 #: admin/views/compress.php:157
-#, fuzzy
-#| msgid "Restore All"
 msgctxt "button"
 msgid "Restore All"
 msgstr "Restaurar Todo"
 
 #: admin/views/compress.php:159
-#, fuzzy
-#| msgid "Clear backup"
 msgctxt "button"
 msgid "Clear backup"
 msgstr "Borrar copia de seguridad"
@@ -653,22 +569,16 @@ msgid "Backup size: %s"
 msgstr "Tamaño de la copia de seguridad: %s"
 
 #: admin/views/compress.php:181
-#, fuzzy
-#| msgid "Save Changes"
 msgctxt "button"
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
 #: admin/views/media-bulk.php:23
-#, fuzzy
-#| msgid "Compress all"
 msgctxt "button"
 msgid "Compress all"
 msgstr "Comprimir todo"
 
 #: admin/views/overview.php:5
-#, fuzzy
-#| msgid "Overview"
 msgctxt "title: admin settings overview"
 msgid "Overview"
 msgstr "Resumen"
@@ -721,15 +631,11 @@ msgstr ""
 "combínalas con tu compresor y optimizador de imágenes: iLoveIMG!"
 
 #: ilove-img-compress.php:89
-#, fuzzy
-#| msgid "Settings"
 msgctxt "button"
 msgid "Settings"
 msgstr "Configuraciones"
 
 #: ilove-img-compress.php:92
-#, fuzzy
-#| msgid "Bulk Optimization"
 msgctxt "button"
 msgid "Bulk Optimization"
 msgstr "Optimización en Lote"

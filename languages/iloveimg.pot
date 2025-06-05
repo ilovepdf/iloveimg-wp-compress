@@ -53,77 +53,77 @@ msgstr ""
 msgid "Items deleted (or they would be if we had items to delete)!"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:209
+#: admin/Ilove_Img_Compress_Plugin.php:207
 msgid "Try again or buy more credits"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:231
+#: admin/Ilove_Img_Compress_Plugin.php:229
 msgctxt "column name"
 msgid "Status Compress"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:320
 msgid "Please you need to be logged or registered."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
-#: admin/Ilove_Img_Compress_Resources.php:298
+#: admin/Ilove_Img_Compress_Plugin.php:320
 #: admin/Ilove_Img_Compress_Resources.php:304
+#: admin/Ilove_Img_Compress_Resources.php:310
 msgctxt "button"
 msgid "Go to settings"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:333
+#: admin/Ilove_Img_Compress_Plugin.php:331
 msgid "Your email or password is wrong."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:338
+#: admin/Ilove_Img_Compress_Plugin.php:336
 msgid "This email address has already been taken."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:343
+#: admin/Ilove_Img_Compress_Plugin.php:341
 msgid "You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:375
+#: admin/Ilove_Img_Compress_Plugin.php:373
 msgid "Please you need more credits."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:375
+#: admin/Ilove_Img_Compress_Plugin.php:373
 #: admin/views/account.php:197
 msgctxt "button"
 msgid "Buy more credits"
 msgstr ""
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:393
-#: admin/Ilove_Img_Compress_Plugin.php:426
+#: admin/Ilove_Img_Compress_Plugin.php:391
+#: admin/Ilove_Img_Compress_Plugin.php:424
 #, php-format
 msgid "The image %s was compressed correctly"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:460
+#: admin/Ilove_Img_Compress_Plugin.php:458
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:564
+#: admin/Ilove_Img_Compress_Plugin.php:562
 msgid "Error processing your request. Invalid Nonce code"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:568
+#: admin/Ilove_Img_Compress_Plugin.php:566
 msgid "Error processing your request. Invalid Image ID"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:576
+#: admin/Ilove_Img_Compress_Plugin.php:574
 msgid "Sorry. There is no backup for this file"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:594
+#: admin/Ilove_Img_Compress_Plugin.php:592
 msgid "It was restored correctly"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Plugin.php:645
+#: admin/Ilove_Img_Compress_Plugin.php:643
 msgctxt "button"
 msgid "Compress Images"
 msgstr ""
@@ -168,36 +168,42 @@ msgstr ""
 msgid "Not compressed"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:292
+#. translators: %d: number of compressed images
+#: admin/Ilove_Img_Compress_Resources.php:250
+#, php-format
+msgid "%d sizes compressed"
+msgstr ""
+
+#: admin/Ilove_Img_Compress_Resources.php:298
 msgctxt "button"
 msgid "Compress"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:303
+#: admin/Ilove_Img_Compress_Resources.php:309
 msgid "You need to be registered"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:398
-#: admin/Ilove_Img_Compress_Resources.php:434
+#: admin/Ilove_Img_Compress_Resources.php:404
+#: admin/Ilove_Img_Compress_Resources.php:440
 msgid "Unable to connect to the filesystem"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:543
+#: admin/Ilove_Img_Compress_Resources.php:549
 msgctxt "button"
 msgid "Restore original file"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:547
+#: admin/Ilove_Img_Compress_Resources.php:553
 msgctxt "The file is being processed"
 msgid "Loading..."
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:548
+#: admin/Ilove_Img_Compress_Resources.php:554
 msgctxt "File processing had an error"
 msgid "Error"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:549
+#: admin/Ilove_Img_Compress_Resources.php:555
 msgctxt "File processing was successful"
 msgid "Completed, please refresh the page."
 msgstr ""
