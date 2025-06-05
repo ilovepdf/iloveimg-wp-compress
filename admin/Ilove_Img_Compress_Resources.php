@@ -244,7 +244,13 @@ class Ilove_Img_Compress_Resources {
         </div>
         <!-- <p>Now <?php echo (float) self::get_saving( $_sizes ); ?>% smaller!</p> -->
         <p><a href="#TB_inline?&width=550&height=440&inlineId=iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" class="thickbox iloveimg_sizes_compressed" title="<?php echo esc_html( get_the_title( $image_id ) ); ?>">
-            <?php echo (int) $images_compressed; ?> sizes compressed
+            <?php
+            printf(
+                /* translators: %d: number of compressed images */
+                esc_html__( '%d sizes compressed', 'iloveimg' ),
+                (int) $images_compressed
+            );
+            ?>
         </a>
         <small class="iloveimg__badge__percent">
             <?php
