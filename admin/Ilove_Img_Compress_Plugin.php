@@ -356,7 +356,13 @@ class Ilove_Img_Compress_Plugin {
                     )
                 );
 
-                if ( isset( $response['response']['code'] ) && 200 === (int) $response['response']['code'] ) {
+                if ( is_wp_error( $response ) ) {
+                    ?>
+                        <div class="notice notice-error is-dismissible">
+                            <p><strong>iLoveIMG</strong> - <?php echo wp_kses_post( $response->get_error_message() ); ?> </p>
+                        </div>
+                    <?php
+                } elseif ( 200 === (int) $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
 
                     if ( (int) $account['files_used'] >= (int) $account['free_files_limit'] &&
