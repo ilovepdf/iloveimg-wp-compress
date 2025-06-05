@@ -34,7 +34,7 @@ class Ilove_Img_Compress_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => __( 'Original image', 'iloveimg' ),
+            'label'    => _x( 'Original image', 'input checkbox', 'iloveimg' ),
             'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
@@ -202,9 +202,9 @@ class Ilove_Img_Compress_Resources {
         <div id="iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th><?php esc_html_e( 'Name', 'iloveimg' ); ?></th>
-                    <th><?php esc_html_e( 'Initial', 'iloveimg' ); ?></th>
-                    <th><?php esc_html_e( 'Compressed', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'Name', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'Initial', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'Compressed', 'column name', 'iloveimg' ); ?></th>
                     <?php
                     $total_size       = 0;
                     $total_compressed = 0;
@@ -289,19 +289,19 @@ class Ilove_Img_Compress_Resources {
                     <?php if ( self::is_loggued() ) : ?>
                         <!-- <p><?php echo (int) self::get_sizes_enabled(); ?> sizes to be compressed</p> -->
                         <?php if ( self::get_sizes_enabled() ) : ?>
-                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>><?php esc_html_e( 'Compress', 'iloveimg' ); ?></button>
+                            <button type="button" class="iloveimg-compress button button-small button-primary" data-imgnonce="<?php echo sanitize_key( wp_unslash( $img_nonce ) ); ?>" data-id="<?php echo (int) $column_id; ?>" <?php echo ( 1 === $status_compress || 3 === $status_compress ) ? 'disabled="disabled"' : ''; ?>><?php echo esc_html_x( 'Compress', 'button', 'iloveimg' ); ?></button>
                             <img class="iloveimg-spinner" src="<?php echo esc_url( plugins_url( '/assets/images/spinner.gif', __DIR__ ) ); ?>" width="20" height="20" style="<?php echo ( 1 === $status_compress || 3 === $status_compress ) ? '' : 'display: none;'; ?>; margin-top: 7px" />
                             <?php if ( 3 === $status_compress ) : ?>
                                 <!-- <p>In queue...</p> -->
                             <?php endif; ?>
                         <?php else : ?>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></button>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></button>
 							<?php
                         endif;
                     else :
 						?>
                         <p><?php esc_html_e( 'You need to be registered', 'iloveimg' ); ?></p>
-                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></button>
+                        <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></button>
 						<?php
                     endif;
                     if ( 1 === $status_compress || 3 === $status_compress ) :
@@ -540,13 +540,13 @@ class Ilove_Img_Compress_Resources {
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
                 <div class="iloveimg-compress iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
-                        <?php esc_html_e( 'Restore original file', 'iloveimg' ); ?>
+                        <?php echo esc_html_x( 'Restore original file', 'button', 'iloveimg' ); ?>
                     </button>
                     <br/>
                     <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_compress_restore" value="<?php echo esc_html( $img_nonce ); ?>">
-                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php esc_html_e( 'Loading', 'iloveimg' ); ?>...</span></p>
-                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Error', 'iloveimg' ); ?></span></p>
-                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php esc_html_e( 'Completed, please refresh the page.', 'iloveimg' ); ?></span></p>
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php echo esc_html_x( 'Loading...', 'The file is being processed', 'iloveimg' ); ?></span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Error', 'File processing had an error', 'iloveimg' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Completed, please refresh the page.', 'File processing was successful', 'iloveimg' ); ?></span></p>
                 </div>
             <?php endif; ?>
         <?php

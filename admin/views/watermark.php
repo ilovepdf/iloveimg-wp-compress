@@ -33,7 +33,18 @@
         </div>
         <div class="iloveimg_settings__options-container">
             <p><?php esc_html_e( 'You can get also a powerful, easy to use, and reliable Watermark plugin for your image protection needs. With full automation and powerful features, iLoveIMG makes it easy to prevent unauthorized usage of your images by helping you create highly customized watermarks in just a few seconds.', 'iloveimg' ); ?></p>
-            <p><a href="/wp-admin/plugin-install.php?tab=plugin-information&plugin=watermark-protect-images" target="_blank"><?php esc_html_e( 'Discover all Watermark - iLoveIMG features soon ', 'iloveimg' ); ?></a><?php esc_html_e( 'and combine it with your Image Compressor & Optimizer – iLoveIMG!', 'iloveimg' ); ?></p>
+            <p>
+                <?php
+                printf(
+                    wp_kses_post(
+                        // translators: %1$s and %2$s are HTML link tags
+                        __( '%1$s Discover all Watermark - iLoveIMG %2$s features soon and combine it with your Image Compressor & Optimizer – iLoveIMG!', 'iloveimg' )
+                    ),
+                    '<a href="/wp-admin/plugin-install.php?tab=plugin-information&plugin=watermark-protect-images" target="_blank">',
+                    '</a>'
+                )
+                ?>
+            </p>
         </div>
     </div>
 </div><!-- .wrap -->

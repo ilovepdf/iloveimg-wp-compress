@@ -99,10 +99,10 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
     public function get_columns() {
         $columns = array(
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
-            'file'        => __( 'File', 'iloveimg' ),
-            'post_author' => __( 'Author', 'iloveimg' ),
-            'post_date'   => __( 'Date', 'iloveimg' ),
-            'status'      => __( 'Status', 'iloveimg' ),
+            'file'        => _x( 'File', 'column name', 'iloveimg' ),
+            'post_author' => _x( 'Author', 'column name', 'iloveimg' ),
+            'post_date'   => _x( 'Date', 'column name', 'iloveimg' ),
+            'status'      => _x( 'Status', 'column name', 'iloveimg' ),
         );
         return $columns;
     }
@@ -132,7 +132,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         $actions = array(
-            'delete' => __( 'Delete', 'iloveimg' ),
+            'delete' => _x( 'Delete', 'button', 'iloveimg' ),
         );
         return $actions;
     }

@@ -226,7 +226,7 @@ class Ilove_Img_Compress_Plugin {
         if ( (int) Ilove_Img_Compress_Resources::is_activated() === 0 ) {
             return $columns;
         }
-        $columns['iloveimg_status_compress'] = __( 'Status Compress', 'iloveimg' );
+        $columns['iloveimg_status_compress'] = _x( 'Status Compress', 'column name', 'iloveimg' );
         return $columns;
     }
 
@@ -317,7 +317,7 @@ class Ilove_Img_Compress_Plugin {
         if ( ! Ilove_Img_Compress_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
 			?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php esc_html_e( 'Go to settings', 'iloveimg' ); ?></a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></a></p>
             </div>
             <?php
         }
@@ -364,7 +364,7 @@ class Ilove_Img_Compress_Plugin {
                     ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
                         ?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php esc_html_e( 'Buy more credits', 'iloveimg' ); ?></a></p>
+                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg' ); ?></a></p>
                         </div>
                         <?php
                     }
@@ -381,8 +381,8 @@ class Ilove_Img_Compress_Plugin {
                     <p>
                     <?php
                     printf(
-                        /* translators: %d: ID of File */
-                        esc_html__( 'The image %d was compressed correctly', 'iloveimg' ),
+                        /* translators: %s: ID of File */
+                        esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
                         esc_html( $file )
                     );
 					?>
@@ -414,7 +414,7 @@ class Ilove_Img_Compress_Plugin {
                     <p>
                     <?php
                     printf(
-                        /* translators: %d: ID of File */
+                        /* translators: %s: ID of File */
                         esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
                         esc_html( $file )
                     );
@@ -449,7 +449,7 @@ class Ilove_Img_Compress_Plugin {
 
             echo '<div class="misc-pub-section iloveimg-compress-images">';
             echo '<h4>';
-            esc_html_e( 'iLoveIMG Compress', 'iloveimg' );
+            echo esc_attr_x( 'iLoveIMG Compress', 'Subtitle for individual page of the file', 'iloveimg' );
             echo '</h4>';
             echo '<div class="iloveimg-container">';
             echo '<table><tr><td>';
@@ -634,7 +634,7 @@ class Ilove_Img_Compress_Plugin {
     public function add_bulk_compression_action( $actions ) {
 
         if ( get_option( 'iloveimg_account' ) ) {
-            $actions['iloveimg_compress'] = __( 'Compress Images', 'iloveimg' );
+            $actions['iloveimg_compress'] = _x( 'Compress Images', 'button', 'iloveimg' );
         }
 
         return $actions;
