@@ -51,8 +51,8 @@ class Ilove_Img_Compress_Submenu {
 
 		add_submenu_page(
 			'iloveimg-admin-page',
-			__( 'Compress settings', 'iloveimg' ),
-			__( 'Compress settings', 'iloveimg' ),
+			_x( 'Compress settings', 'submenu', 'iloveimg' ),
+			_x( 'Compress settings', 'submenu', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-compress-admin-page',
 			array(
@@ -63,8 +63,8 @@ class Ilove_Img_Compress_Submenu {
 
 		add_submenu_page(
 			'iloveimg-admin-page',
-			__( 'Watermark settings', 'iloveimg' ),
-			__( 'Watermark settings', 'iloveimg' ),
+			_x( 'Watermark settings', 'submenu', 'iloveimg' ),
+			_x( 'Watermark settings', 'submenu', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-watermark-admin-page',
 			array(
@@ -75,7 +75,7 @@ class Ilove_Img_Compress_Submenu {
 
 		add_media_page(
 			'iLoveIMG Media',
-			__( 'Bulk Optimization', 'iloveimg' ),
+			_x( 'Bulk Optimization', 'submenu', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-media-page',
 			array(
@@ -84,12 +84,5 @@ class Ilove_Img_Compress_Submenu {
 			)
 		);
 		remove_submenu_page( 'iloveimg-admin-page', 'iloveimg-admin-page' );
-	}
-
-	/**
-	 * Placeholder for the settings page content.
-	 */
-	public function settings_page() {
-		esc_html_e( 'This is the page content', 'iloveimg' );
 	}
 }

@@ -49,7 +49,7 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                         <input type="checkbox" name="iloveimg_field_compress_activated" <?php echo isset( $options_value['iloveimg_field_compress_activated'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
                     </div>
-                    <label><?php esc_html_e( 'Compress Activated', 'iloveimg' ); ?></label>
+                    <label><?php echo esc_html_x( 'Compress Activated', 'checkbox field label', 'iloveimg' ); ?></label>
                     <p><?php esc_html_e( 'Activate this plugin in your WordPress dashboard. Activation will work only once you have registered and login as an iLoveAPI developer.', 'iloveimg' ); ?></p>
                 </div>
 
@@ -59,13 +59,13 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                         <input type="checkbox" name="iloveimg_field_autocompress" <?php echo isset( $options_value['iloveimg_field_autocompress'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
                     </div>
-                    <label><?php esc_html_e( 'Enable Autocompress Images', 'iloveimg' ); ?></label>
+                    <label><?php echo esc_html_x( 'Enable Autocompress Images', 'checkbox field label', 'iloveimg' ); ?></label>
                     <p><?php esc_html_e( 'With autocompress enabled any image uploaded to your Media folder will be automatically compressed. Anyway you still will be able to compress uncompressed images from Media.', 'iloveimg' ); ?></p>
                 </div>
                 
                 <?php if ( extension_loaded( 'gd' ) ) : ?>
                     <div class="iloveimg_settings__options__field">
-                        <label><?php esc_html_e( 'Images Sizes:', 'iloveimg' ); ?></label>
+                        <label><?php echo esc_html_x( 'Images Sizes:', 'checkbox field label', 'iloveimg' ); ?></label>
                         <div class="iloveimg_settings__options__field__imagessizes">
                             <p><?php esc_html_e( 'All uploaded images to media create alternative size versions. Select here which image versions you want to compress.', 'iloveimg' ); ?></p>
                             <ul>
@@ -88,16 +88,16 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                         <input type="checkbox" name="iloveimg_field_resize_full" <?php echo isset( $options_value['iloveimg_field_resize_full'] ) ? 'checked' : ''; ?> />
                         <span class="slider"></span>
                     </div>
-                    <label><?php esc_html_e( 'Resize full size image:', 'iloveimg' ); ?></label>
+                    <label><?php echo esc_html_x( 'Resize full size image:', 'checkbox field label', 'iloveimg' ); ?></label>
                     <p><?php esc_html_e( 'Any uploaded image bigger than the maximum size fixed here, will be downsized to fit into these width and height boundaries. All images will be  resized according to the aspect ratio of the original image.', 'iloveimg' ); ?></p>
                     <div class="iloveimg_settings__options__field__resize">
                         <div>
-                            <label><?php esc_html_e( 'Max width', 'iloveimg' ); ?></label>
+                            <label><?php echo esc_html_x( 'Max width', 'input number label', 'iloveimg' ); ?></label>
                             <input type="number" name="iloveimg_field_size_full_width" value="<?php echo (int) $options_value['iloveimg_field_size_full_width']; // @phpstan-ignore-line ?>"  min="1"/>
                             <p><?php esc_html_e( 'Original image width won\'t exceed this value in pixels.', 'iloveimg' ); ?></p>
                         </div>
                         <div>
-                            <label><?php esc_html_e( 'Max height', 'iloveimg' ); ?></label>
+                            <label><?php echo esc_html_x( 'Max height', 'input number label', 'iloveimg' ); ?></label>
                             <input type="number" name="iloveimg_field_size_full_height" value="<?php echo (int) $options_value['iloveimg_field_size_full_height']; // @phpstan-ignore-line ?>"  min="1"/>
                             <p><?php esc_html_e( 'Original image height won\'t exceed this value in pixels.', 'iloveimg' ); ?></p> 
                         </div>
@@ -111,21 +111,64 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                             <input type="checkbox" name="iloveimg_field_backup" <?php echo isset( $options_value['iloveimg_field_backup'] ) ? 'checked' : ''; ?> />
                             <span class="slider"></span>
                         </div>
-                        <label><?php esc_html_e( 'Backup original Images', 'iloveimg' ); ?></label>
+                        <label><?php echo esc_html_x( 'Backup original Images', 'checkbox field label', 'iloveimg' ); ?></label>
                         <p><?php esc_html_e( 'Enable this option to make a backup of your images before being compress or watermarked. These backups will allow you to restore your original images at cost of taking server memory space.', 'iloveimg' ); ?></p>
-                        <p><?php esc_html_e( 'You can find the original files at:', 'iloveimg' ); ?> <code>wp-content/uploads/iloveimg-backup</code></p>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %s: backup folder path */
+                                    __( 'Backup images will be stored at: %s', 'iloveimg' )
+                                ),
+                                '<code>wp-content/uploads/iloveimg-backup</code>'
+                            );
+                            ?>
+                        </p>
                         
                     </div>
                     
                     <div class="iloveimg_settings__options__field">
                         
-                        <label><?php esc_html_e( 'Restore Original Images', 'iloveimg' ); ?></label>
-                        <p><?php esc_html_e( 'All backup images can be restored. This action will recover the original images as they were before being stamped with Compress or Watermark.', 'iloveimg' ); ?> <span style="color: red;"><?php esc_html_e( 'Warning: Any changes made AFTER Watermark/Compress would be also restored.', 'iloveimg' ); ?></span></p>
-                        <p><?php esc_html_e( 'You can also clear all your backup images to free memory space.', 'iloveimg' ); ?> <span style="color: red;"><?php esc_html_e( 'Warning: Clear backups will prevent you to restore original images.', 'iloveimg' ); ?></span></p>
-                            <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php esc_html_e( 'Restore All', 'iloveimg' ); ?></button>
-                        
-                            <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php esc_html_e( 'Clear backup', 'iloveimg' ); ?></button>
-                            <span><?php echo (float) round( Ilove_Img_Compress_Resources::get_size_backup(), 2 ); ?> MB</span>
+                        <label><?php echo esc_html_x( 'Restore Original Images', 'checkbox field label', 'iloveimg' ); ?></label>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %1$s and %2$s: html tags */
+                                    __( 'All backup images can be restored. This will restore the original images as they were before compression or watermarking. %1$s Warning: Any changes made AFTER Watermark/Compress would be also restored. %2$s', 'iloveimg' )
+                                ),
+                                '<span style="color: red;">',
+                                '</span>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %1$s and %2$s: html tags */
+                                    __( 'You can also clear all your backup images to free memory space. %1$s Warning: Clear backups will prevent you to restore original images. %2$s', 'iloveimg' )
+                                ),
+                                '<span style="color: red;">',
+                                '</span>'
+                            );
+                            ?>
+                        </p>
+                        <button type="button" class="button button-style-iloveimg" id="iloveimg_restore_all" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php echo esc_html_x( 'Restore All', 'button', 'iloveimg' ); ?></button>
+                    
+                        <button type="button" class="button button-remove button-style-iloveimg" id="iloveimg_clear_backup" <?php echo ( isset( $options_value['iloveimg_field_backup'] ) && Ilove_Img_Compress_Resources::get_size_backup() ) ? '' : 'disabled'; ?>><?php echo esc_html_x( 'Clear backup', 'button', 'iloveimg' ); ?></button>
+
+                        <span>
+                            <?php
+                            printf(
+                                wp_kses_post(
+                                    /* translators: %s: backup size */
+                                    __( 'Backup size: %s', 'iloveimg' )
+                                ),
+                                (float) round( Ilove_Img_Compress_Resources::get_size_backup(), 2 ) . ' MB'
+                            );
+                            ?>
+                        </span>
                     </div>
                 </div>
                 
@@ -135,7 +178,7 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
                 ?>
                 <p class="submit">
                     <button <?php echo ( ! $ilove_img_is_logged ) ? 'disabled' : ''; ?> type="submit" name="submit" id="submit" class="button button-secondary tooltip">
-                        <?php esc_html_e( 'Save Changes', 'iloveimg' ); ?>
+                        <?php echo esc_html_x( 'Save Changes', 'button', 'iloveimg' ); ?>
                         <span class="tooltiptext"><?php esc_html_e( 'Register and login with us to save settings changes', 'iloveimg' ); ?></span>
                     </button>
                 </p>
