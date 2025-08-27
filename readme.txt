@@ -96,8 +96,7 @@ Moreover, all processed files are automatically deleted from our servers after b
 
 = 2.2.13 =
 Improved
-* Updated development dependencies:
-
+* Updated Libraries.
 
 = 2.2.12 =
 Improved
