@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2025-06-05T14:20:55+00:00\n"
+"PO-Revision-Date: 2025-11-20T15:06:13+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 
@@ -19,9 +19,24 @@ msgstr ""
 msgid "Image Compressor & Optimizer - iLoveIMG"
 msgstr ""
 
+#. Plugin URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveapi.com/"
+msgstr ""
+
 #. Description of the plugin
 #: ilove-img-compress.php
 msgid "Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr ""
+
+#. Author of the plugin
+#: ilove-img-compress.php
+msgid "iLoveIMG"
+msgstr ""
+
+#. Author URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveimg.com/"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:102
@@ -496,31 +511,19 @@ msgctxt "button"
 msgid "Compress all"
 msgstr ""
 
-#: admin/views/overview.php:5
-msgctxt "title: admin settings overview"
-msgid "Overview"
-msgstr ""
-
-#. translators: %1$s and %2$s images sizes
-#: admin/views/overview.php:14
-#, php-format
-msgid "Original size %1$s / Optimized size %2$s"
+#: admin/views/overview.php:12
+msgctxt "Overview: tool title"
+msgid "Compress image"
 msgstr ""
 
 #. translators: %s porcentage of size saved
-#: admin/views/overview.php:32
+#: admin/views/overview.php:28
 #, php-format
 msgid "%s Thats the size you saved by using iLoveIMG"
 msgstr ""
 
-#. translators: %1$s and %2$s images sizes
-#: admin/views/overview.php:46
-#, php-format
-msgid "Original Compressed images %1$s / Uploaded images %2$s"
-msgstr ""
-
 #. translators: %s porcentage optimized images
-#: admin/views/overview.php:63
+#: admin/views/overview.php:64
 #, php-format
 msgid "%s Total images you optimized with iLoveIMG"
 msgstr ""
