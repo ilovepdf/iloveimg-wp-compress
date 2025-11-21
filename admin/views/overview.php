@@ -2,82 +2,82 @@
 
 use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 ?>
-<h2><?php echo esc_html_x( 'Overview', 'title: admin settings overview', 'iloveimg' ); ?></h2>
+<h2><?php echo esc_html_x('Overview', 'title: admin settings overview', 'iloveimg'); ?></h2>
 <article class="iloveimg_settings__overview__statistics">
 	<h3 class="ilovepdf-base__layout-flex ilovepdf-base__layout-gap--small ilovepdf-base__layout-items-center">
 		<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 50 50">
 			<path d="M31.523 28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H31.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04-.242-.45-.367-.895-.367-2.117V31.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04.45-.242.895-.367 2.117-.367zm0-28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H31.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04-.242-.45-.367-.895-.367-2.117V3.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04C29.855.125 30.3 0 31.523 0zm-28 28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H3.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04C.125 48.145 0 47.7 0 46.477V31.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04.45-.242.895-.367 2.117-.367zm0-28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H3.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04C.125 20.145 0 19.7 0 18.477V3.523C0 2.3.13 1.852.367 1.406A2.56 2.56 0 0 1 1.406.367C1.855.13 2.3 0 3.523 0zm0 0" fill-rule="evenodd" fill="rgb(56.078431%,73.72549%,36.470588%)"></path>
 			<path d="M35 41.8c0 .48.398.867.883.867a.88.88 0 0 0 .883-.867v-3.844l5.145 5.05a.89.89 0 0 0 1.246 0 .85.85 0 0 0 .262-.613c0-.23-.094-.45-.262-.613l-5.14-5.047h3.914a.88.88 0 0 0 .883-.867c0-.48-.395-.867-.883-.867h-6.05c-.117 0-.23.023-.34.066-.215.086-.387.258-.477.47-.047.102-.066.22-.066.328zm7.3-26.387c.48 0 .867-.398.867-.883a.88.88 0 0 0-.867-.883h-3.844l5.05-5.14a.9.9 0 0 0 0-1.25.86.86 0 0 0-1.227 0l-5.047 5.148V8.492c0-.488-.39-.883-.867-.883a.87.87 0 0 0-.867.879v6.05c0 .113.023.23.066.336.086.215.254.387.47.477.105.047.215.07.332.07H42.3zM8.46 35c-.48 0-.867.398-.867.883s.387.883.867.883h3.844L7.254 41.9c-.34.348-.34.902 0 1.25a.86.86 0 0 0 .613.258c.23 0 .45-.094.613-.258l5.047-5.145v3.914c0 .488.387.883.867.883s.867-.402.867-.883v-6.05c0-.113-.023-.23-.066-.336-.086-.215-.258-.387-.47-.477a.82.82 0 0 0-.332-.07H8.46zm6.074-27.406c-.488 0-.883.387-.883.867v3.844l-5.145-5.05a.9.9 0 0 0-1.25 0A.86.86 0 0 0 7 7.867c0 .23.094.45.258.613l5.145 5.047H8.488c-.488 0-.883.387-.883.867s.402.867.883.867h6.05a.89.89 0 0 0 .336-.066c.215-.1.39-.258.477-.47.05-.102.07-.22.07-.332V8.46c0-.48-.395-.867-.883-.867zm0 0" fill="rgb(100%,100%,100%)"></path>
 		</svg>
-		<?php echo esc_html_x( 'Compress image', 'Overview: tool title', 'iloveimg' ); ?>
+		<?php echo esc_html_x('Compress image', 'Overview: tool title', 'iloveimg'); ?>
 	</h3>
-	<div style="margin-top: 20;">
+	<div style="margin-top: 20px;">
 		<div class="iloveimg_settings__overview__statistics__column_left">
 			<?php $ilove_img_images_sizes = Ilove_Img_Compress_Resources::get_files_sizes(); ?>
 			<div class="iloveimg_percent  ">
-				<div class="iloveimg_percent-total" style="width: <?php echo ( $ilove_img_images_sizes[0] > 0 ) ? (float) ( 100 - ( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) ) : 0; ?>%;"></div>
+				<div class="iloveimg_percent-total" style="width: <?php echo ($ilove_img_images_sizes[0] > 0) ? (float) (100 - (($ilove_img_images_sizes[1] * 100) / $ilove_img_images_sizes[0])) : 0; ?>%;"></div>
 			</div>
 			<div class="iloveimg_saving">
 
 				<?php
-				$ilove_img_porcentage_saved = $ilove_img_images_sizes[0] > 0 ? 100 - round( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) : 0;
+				$ilove_img_porcentage_saved = $ilove_img_images_sizes[0] > 0 ? 100 - round(($ilove_img_images_sizes[1] * 100) / $ilove_img_images_sizes[0]) : 0;
 
 				printf(
 					wp_kses_post(
 						/* translators: %s porcentage of size saved */
-						__( '%s Thats the size you saved by using iLoveIMG', 'iloveimg' )
+						__('%s Space saved', 'iloveimg')
 					),
-					'<p class="iloveimg_saving__number">' . (float) $ilove_img_porcentage_saved . '%</p>'
+					'<span class="iloveimg_saving__number">' . (float) $ilove_img_porcentage_saved . '%</span>'
 				);
 				?>
 			</div>
-			<h4>
+			<h4 style="margin-bottom: 0;">
 				<?php
-				$ilove_img_compress_line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal size %1\$s\nOptimized size %2\$s", 'Overview: image size summary', 'iloveimg' );
-				$ilove_img_compress_formatted_summary   = nl2br( $ilove_img_compress_line_scaped_summary );
+				$ilove_img_compress_line_scaped_summary = esc_html_x("Your images, summary:\nOriginal size: %1\$s\nCompressed size: %2\$s", 'Overview: image size summary', 'iloveimg');
+				$ilove_img_compress_formatted_summary   = nl2br($ilove_img_compress_line_scaped_summary);
 				$ilove_img_compress_allowed_tags        = array(
 					'br'   => array(),
 					'br/'  => array(),
 					'br /' => array(),
 				);
-				$ilove_img_compress_output_html         = wp_kses( $ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags );
+				$ilove_img_compress_output_html         = wp_kses($ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags);
 				printf(
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
 					$ilove_img_compress_output_html,
 					/* translators: %s optimized size */
-					'<strong>' . (float) round( $ilove_img_images_sizes[0] / 1024 / 1024, 2 ) . ' MB</strong>',
-					'<strong>' . (float) round( $ilove_img_images_sizes[1] / 1024 / 1024, 2 ) . ' MB</strong>'
+					'<strong>' . (float) round($ilove_img_images_sizes[0] / 1024 / 1024, 2) . ' MB</strong>',
+					'<strong>' . (float) round($ilove_img_images_sizes[1] / 1024 / 1024, 2) . ' MB</strong>'
 				);
 				?>
 			</h4>
 		</div>
 		<div class="iloveimg_settings__overview__statistics__column_right">
 			<div class="iloveimg_percent  ">
-				<div class="iloveimg_percent-total" style="width: <?php echo ( Ilove_Img_Compress_Resources::get_total_images() > 0 ) ? (float) round( ( Ilove_Img_Compress_Resources::get_files_compressed() * 100 ) / Ilove_Img_Compress_Resources::get_total_images() ) : 0; ?>%;"></div>
+				<div class="iloveimg_percent-total" style="width: <?php echo (Ilove_Img_Compress_Resources::get_total_images() > 0) ? (float) round((Ilove_Img_Compress_Resources::get_files_compressed() * 100) / Ilove_Img_Compress_Resources::get_total_images()) : 0; ?>%;"></div>
 			</div>
 			<div class="iloveimg_saving">
 				<?php
-				$ilove_img_porcentage_optimized = Ilove_Img_Compress_Resources::get_total_images() > 0 ? round( ( Ilove_Img_Compress_Resources::get_files_compressed() * 100 ) / Ilove_Img_Compress_Resources::get_total_images() ) : 0;
+				$ilove_img_porcentage_optimized = Ilove_Img_Compress_Resources::get_total_images() > 0 ? round((Ilove_Img_Compress_Resources::get_files_compressed() * 100) / Ilove_Img_Compress_Resources::get_total_images()) : 0;
 
 				printf(
 					wp_kses_post(
 						/* translators: %s porcentage optimized images */
-						__( '%s Total images you optimized with iLoveIMG', 'iloveimg' )
+						__('%s Images compressed', 'iloveimg')
 					),
-					'<p class="iloveimg_saving__number">' . (float) $ilove_img_porcentage_optimized . '%</p>'
+					'<span class="iloveimg_saving__number">' . (float) $ilove_img_porcentage_optimized . '%</span>'
 				);
 				?>
 			</div>
-			<h4>
+			<h4 style="margin-bottom: 0;">
 				<?php
-				$ilove_img_compress_line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal Compressed images %1\$s\nUploaded images %2\$s", 'Overview: compressed images summary', 'iloveimg' );
-				$ilove_img_compress_formatted_summary   = nl2br( $ilove_img_compress_line_scaped_summary );
+				$ilove_img_compress_line_scaped_summary = esc_html_x("Your images, summary:\nTotal images: %1\$s\nCompressed images: %2\$s", 'Overview: compressed images summary', 'iloveimg');
+				$ilove_img_compress_formatted_summary   = nl2br($ilove_img_compress_line_scaped_summary);
 				$ilove_img_compress_allowed_tags        = array(
 					'br'   => array(),
 					'br/'  => array(),
 					'br /' => array(),
 				);
-				$ilove_img_compress_output_html         = wp_kses( $ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags );
+				$ilove_img_compress_output_html         = wp_kses($ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags);
 				printf(
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
 					$ilove_img_compress_output_html,
