@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2025-11-20T15:06:13+00:00\n"
+"PO-Revision-Date: 2025-11-21T11:27:48+00:00\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 
@@ -511,6 +511,11 @@ msgctxt "button"
 msgid "Compress all"
 msgstr ""
 
+#: admin/views/overview.php:5
+msgctxt "title: admin settings overview"
+msgid "Overview"
+msgstr ""
+
 #: admin/views/overview.php:12
 msgctxt "Overview: tool title"
 msgid "Compress image"
@@ -522,10 +527,28 @@ msgstr ""
 msgid "%s Thats the size you saved by using iLoveIMG"
 msgstr ""
 
+#: admin/views/overview.php:36
+#, php-format
+msgctxt "Overview: image size summary"
+msgid ""
+"Your images, summary:\n"
+"Original size %1$s\n"
+"Optimized size %2$s"
+msgstr ""
+
 #. translators: %s porcentage optimized images
-#: admin/views/overview.php:64
+#: admin/views/overview.php:65
 #, php-format
 msgid "%s Total images you optimized with iLoveIMG"
+msgstr ""
+
+#: admin/views/overview.php:73
+#, php-format
+msgctxt "Overview: compressed images summary"
+msgid ""
+"Your images, summary:\n"
+"Original Compressed images %1$s\n"
+"Uploaded images %2$s"
 msgstr ""
 
 #: admin/views/watermark.php:35
