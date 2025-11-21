@@ -12,7 +12,7 @@
   "devDependencies": {
     "@babel/core": "^7.28",
     "@babel/preset-env": "^7.28",
-    "cross-env": "^10.0.0",
+    "cross-env": "^10.1.0",
     "gulp": "^5.0.1",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-babel": "^8.0.0",
