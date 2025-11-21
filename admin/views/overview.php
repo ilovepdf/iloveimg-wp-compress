@@ -2,7 +2,7 @@
 
 use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 ?>
-<h2><?php echo esc_html_x( 'Overview', 'title: admin settings overview', 'iloveimg-compress' ); ?></h2>
+<h2><?php echo esc_html_x( 'Overview', 'title: admin settings overview', 'iloveimg' ); ?></h2>
 <article class="iloveimg_settings__overview__statistics">
 	<h3 class="ilovepdf-base__layout-flex ilovepdf-base__layout-gap--small ilovepdf-base__layout-items-center">
 		<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 50 50">
@@ -33,17 +33,18 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 			</div>
 			<h4>
 				<?php
-				$line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal size %1\$s\nOptimized size %2\$s", 'iloveimg' );
-				$formatted_summary   = nl2br( $line_scaped_summary );
-				$allowed_tags        = array(
+				$ilove_img_compress_line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal size %1\$s\nOptimized size %2\$s", 'Overview: image size summary', 'iloveimg' );
+				$ilove_img_compress_formatted_summary   = nl2br( $ilove_img_compress_line_scaped_summary );
+				$ilove_img_compress_allowed_tags        = array(
 					'br'   => array(),
 					'br/'  => array(),
 					'br /' => array(),
 				);
-				$output_html         = wp_kses( $formatted_summary, $allowed_tags );
+				$ilove_img_compress_output_html         = wp_kses( $ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags );
 				printf(
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
+					$ilove_img_compress_output_html,
 					/* translators: %s optimized size */
-					$output_html,
 					'<strong>' . (float) round( $ilove_img_images_sizes[0] / 1024 / 1024, 2 ) . ' MB</strong>',
 					'<strong>' . (float) round( $ilove_img_images_sizes[1] / 1024 / 1024, 2 ) . ' MB</strong>'
 				);
@@ -69,16 +70,17 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 			</div>
 			<h4>
 				<?php
-				$line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal Compressed images %1\$s\nUploaded images %2\$s", 'iloveimg' );
-				$formatted_summary   = nl2br( $line_scaped_summary );
-				$allowed_tags        = array(
+				$ilove_img_compress_line_scaped_summary = esc_html_x( "Your images, summary:\nOriginal Compressed images %1\$s\nUploaded images %2\$s", 'Overview: compressed images summary', 'iloveimg' );
+				$ilove_img_compress_formatted_summary   = nl2br( $ilove_img_compress_line_scaped_summary );
+				$ilove_img_compress_allowed_tags        = array(
 					'br'   => array(),
 					'br/'  => array(),
 					'br /' => array(),
 				);
-				$output_html         = wp_kses( $formatted_summary, $allowed_tags );
+				$ilove_img_compress_output_html         = wp_kses( $ilove_img_compress_formatted_summary, $ilove_img_compress_allowed_tags );
 				printf(
-					$output_html,
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
+					$ilove_img_compress_output_html,
 					/* translators: %s number of compressed files and total images */
 					'<strong>' . (int) Ilove_Img_Compress_Resources::get_files_compressed() . '</strong>',
 					'<strong>' . (int) Ilove_Img_Compress_Resources::get_total_images() . '</strong>'
