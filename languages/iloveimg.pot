@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2025-11-21T14:42:41+00:00\n"
+"PO-Revision-Date: 2025-11-25T14:41:28+00:00\\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 
@@ -506,10 +506,17 @@ msgctxt "button"
 msgid "Save Changes"
 msgstr ""
 
-#: admin/views/media-bulk.php:23
+#: admin/views/media-bulk.php:24
 msgctxt "button"
 msgid "Compress all"
 msgstr ""
+
+#: admin/views/media-bulk.php:34
+#, php-format
+msgid "%s image deleted successfully."
+msgid_plural "%s images deleted successfully."
+msgstr[0] ""
+msgstr[1] ""
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
