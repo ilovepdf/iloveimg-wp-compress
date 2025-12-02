@@ -1,4 +1,5 @@
 <?php
+
 namespace Ilove_Img_Compress;
 
 /**
@@ -9,6 +10,7 @@ namespace Ilove_Img_Compress;
  * @since 1.0.0
  */
 class Ilove_Img_Compress_Submenu {
+
 
 	/**
 	 * A reference the class responsible for rendering the submenu page.
@@ -75,7 +77,7 @@ class Ilove_Img_Compress_Submenu {
 
 		add_media_page(
 			'iLoveIMG Media',
-			_x( 'Bulk Optimization', 'submenu', 'iloveimg' ),
+			_x( 'Bulk Compress', 'submenu', 'iloveimg' ),
 			'manage_options',
 			'iloveimg-media-page',
 			array(
