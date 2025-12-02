@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Media Bulk View.
  *
@@ -15,13 +14,13 @@ $ilove_img_test_list_table->prepare_items();
 
 ?>
 <div class="wrap iloveimg_settings">
-    <img src="<?php echo esc_url(ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg'); ?>" class="logo" />
+    <img src="<?php echo esc_url( ILOVE_IMG_COMPRESS_PLUGIN_URL . 'assets/images/logo.svg' ); ?>" class="logo" />
     <div class="iloveimg_settings__overview">
         <?php require_once 'overview.php'; ?>
-        <?php if ($ilove_img_test_list_table->total_items) : ?>
+        <?php if ( $ilove_img_test_list_table->total_items ) : ?>
             <div class="iloveimg_settings__overview__compressAll">
                 <button type="button" id="iloveimg_allcompress" class="iloveimg-compress-all button button-small button-primary">
-                    <span><?php echo esc_html_x('Compress all', 'button', 'iloveimg'); ?></span>
+                    <span><?php echo esc_html_x( 'Compress all', 'button', 'iloveimg' ); ?></span>
                     <div class="iloveimg-compress-all__percent" style="width: 0%;"></div>
                 </button>
             </div>
@@ -31,17 +30,17 @@ $ilove_img_test_list_table->prepare_items();
     <div class="wrap">
         <?php
         // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Displaying success message from redirect, no action taken
-        if (isset($_GET['deleted']) && intval($_GET['deleted']) > 0) :
-        ?>
+        if ( isset( $_GET['deleted'] ) && intval( $_GET['deleted'] ) > 0 ) :
+			?>
             <div class="notice notice-success is-dismissible">
                 <p>
                     <?php
                     /* translators: %s: number of images deleted */
-                    echo esc_html(sprintf(_n('%s image deleted successfully.', '%s images deleted successfully.', intval($_GET['deleted']), 'iloveimg'), intval($_GET['deleted'])));
+                    echo esc_html( sprintf( _n( '%s image deleted successfully.', '%s images deleted successfully.', intval( $_GET['deleted'] ), 'iloveimg' ), intval( $_GET['deleted'] ) ) );
                     ?>
                 </p>
             </div>
-        <?php
+			<?php
         endif;
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
         ?>
