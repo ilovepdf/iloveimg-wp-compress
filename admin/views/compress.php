@@ -10,9 +10,9 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 
     <?php if ( ! $ilove_img_is_logged ) : // @phpstan-ignore-line ?>    
         <div class="iloveimg_settings__info">
-            <h3><?php esc_html_e( 'The power of iLoveIMG in your WordPress!', 'iloveimg' ); ?></h3>
-            <p><?php esc_html_e( 'Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.', 'iloveimg' ); ?></p>
-            <p><?php esc_html_e( 'Register now to get 2500 free credits and start working with iLoveIMG plugin now!', 'iloveimg' ); ?></p>
+            <h3><?php esc_html_e( 'Easily optimize your images in WordPress!', 'iloveimg' ); ?></h3>
+            <p><?php esc_html_e( 'Make your site faster and sharper by compressing images. iLoveIMG reduces file size without losing quality, helping improve your SEO, visitor engagement, and loading speed.', 'iloveimg' ); ?></p>
+            <p><?php esc_html_e( 'Sign up and get 2,500 free credits to start optimizing with iLoveIMG.', 'iloveimg' ); ?></p>
         </div>
     <?php endif ?>
     
