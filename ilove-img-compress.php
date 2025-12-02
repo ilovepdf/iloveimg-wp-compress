@@ -7,9 +7,9 @@
  * @package           iloveimgcompress
  *
  * @wordpress-plugin
- * Plugin Name:       Image Compressor & Optimizer - iLoveIMG
+ * Plugin Name:       iLoveIMG
  * Plugin URI:        https://iloveapi.com/
- * Description:       Get your images delivered quickly. Now you can get a powerful, easy to use, and reliable image compression plugin for your image optimization needs. With full automation and powerful features, iLoveIMG makes it easy to speed up your website by lightening past and new images with just a click. Compress JPG, PNG and GIF images in your WordPress to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales.
+ * Description:       Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement.
  * Version:           2.2.13
  * Requires at least: 5.3
  * Requires PHP:      7.4
@@ -72,25 +72,25 @@ function ilove_img_compress_custom_admin_settings() {
 }
 
 /**
- * Add settings and bulk optimization links to the plugin in the WordPress admin menu.
+ * Add settings and bulk compress links to the plugin in the WordPress admin menu.
  *
- * This function adds links to the plugin's settings and bulk optimization pages in the WordPress
+ * This function adds links to the plugin's settings and bulk compress pages in the WordPress
  * admin menu.
  *
  * @since 1.0.0
  *
  * @param array $links An array of existing plugin links.
  *
- * @return array An updated array of plugin links with added settings and bulk optimization links.
+ * @return array An updated array of plugin links with added settings and bulk compress links.
  */
 function ilove_img_compress_add_plugin_page_settings_link( $links ) {
-	$links[] = '<a href="' .
-		admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
-		'">' . _x( 'Settings', 'button', 'iloveimg' ) . '</a>';
+    $links[] = '<a href="' .
+        admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) .
+        '">' . _x( 'Settings', 'button', 'iloveimg' ) . '</a>';
     $links[] = '<a href="' .
         admin_url( 'upload.php?page=iloveimg-media-page' ) .
-        '">' . _x( 'Bulk Optimization', 'button', 'iloveimg' ) . '</a>';
-	return $links;
+        '">' . _x( 'Bulk Compress', 'button', 'iloveimg' ) . '</a>';
+    return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'ilove_img_compress_add_plugin_page_settings_link' );
 
@@ -119,11 +119,11 @@ function ilove_img_compress_activate() {
             'iloveimg_options_compress',
             wp_json_encode(
                 array(
-					'iloveimg_field_sizes'            => $iloveimg_thumbnails,
-					'iloveimg_field_resize_full'      => 0,
-					'iloveimg_field_size_full_width'  => 2048,
-					'iloveimg_field_size_full_height' => 2048,
-					'iloveimg_field_backup'           => 'on',
+                    'iloveimg_field_sizes'            => $iloveimg_thumbnails,
+                    'iloveimg_field_resize_full'      => 0,
+                    'iloveimg_field_size_full_width'  => 2048,
+                    'iloveimg_field_size_full_height' => 2048,
+                    'iloveimg_field_backup'           => 'on',
                 )
             ),
             true
