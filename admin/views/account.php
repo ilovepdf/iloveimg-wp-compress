@@ -195,7 +195,7 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                     );
                     ?>
                 </p>
-                <a class="button button-secondary" href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg' ); ?></a>
+                <a class="button button-secondary" href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy credits', 'button', 'iloveimg' ); ?></a>
             </div>
         </div>
         <div class="iloveimg_settings__overview__account-logged__column_right">
@@ -207,15 +207,16 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                 <p style="margin-top: 0; color: #4D90FE;"><?php echo esc_html( $ilove_img_account['email'] ); ?></p>
 
                 <?php wp_nonce_field(); ?>
-                <?php submit_button( _x( 'Logout', 'button', 'iloveimg' ) ); ?>
+                <?php submit_button( _x( 'Log out', 'button', 'iloveimg' ) ); ?>
             </form>
 
             <form class="iloveimg_settings__overview__account-logged__column_right-proyects" method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
                 <input type="hidden" name="action" value="update_compress" />
                 <input type="hidden" name="iloveimg_action" value="iloveimg_action_proyect" />
-                <p><label>
-                        <?php esc_html_e( 'Select your working proyect', 'iloveimg' ); ?>
-                    </label>
+                <label>
+                    <?php esc_html_e( 'Select project', 'iloveimg' ); ?>
+                </label>
+                <div class="iloveimg_project_selector">
                     <select name="iloveimg_field_proyect">
                         <?php foreach ( $ilove_img_account['projects'] as $ilove_img_key => $ilove_img_project ) : ?>
                             <option value="<?php echo esc_attr( $ilove_img_project['public_key'] ); ?>#<?php echo esc_attr( $ilove_img_project['secret_key'] ); ?>"
@@ -227,8 +228,8 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                                 ><?php echo esc_html( $ilove_img_project['name'] ); ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <button type="submit" class="button button-secondary"><?php echo esc_html_x( 'Save', 'Button: save changes', 'iloveimg' ); ?></button>
-                </p>
+                    <button type="submit" class="button button-secondary"><?php echo esc_html_x( 'Change project', 'Button: save changes', 'iloveimg' ); ?></button>
+                </div>
                 <?php wp_nonce_field(); ?>
 
             </form>
