@@ -1,4 +1,5 @@
 <?php
+
 namespace Ilove_Img_Compress;
 
 /**
@@ -12,64 +13,65 @@ namespace Ilove_Img_Compress;
  */
 class Ilove_Img_Compress_Plugin {
 
+
     /**
-	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 * @var      string    VERSION    The current version of the plugin.
-	 */
+     * The current version of the plugin.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      string    VERSION    The current version of the plugin.
+     */
     const VERSION = '2.2.13';
 
     /**
-	 * The unique identifier of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 * @var      string    NAME    The string used to uniquely identify this plugin.
-	 */
-	const NAME = 'Ilove_Img_Compress_plugin';
+     * The unique identifier of this plugin.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      string    NAME    The string used to uniquely identify this plugin.
+     */
+    const NAME = 'Ilove_Img_Compress_plugin';
 
     /**
-	 * The unique nonce identifier.
-	 *
-	 * @since    1.0.6
-	 * @access   public
-	 * @var      string    $img_nonce    The string used to uniquely nonce identify.
-	 */
-	protected static $img_nonce;
+     * The unique nonce identifier.
+     *
+     * @since    1.0.6
+     * @access   public
+     * @var      string    $img_nonce    The string used to uniquely nonce identify.
+     */
+    protected static $img_nonce;
 
     /**
-	 * File formats.
-	 *
-	 * @since    2.2.6
-	 * @access   public
-	 * @var      array    $accepted_file_format    List of accepted file formats.
-	 */
-	public static $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/svg+xml' );
+     * File formats.
+     *
+     * @since    2.2.6
+     * @access   public
+     * @var      array    $accepted_file_format    List of accepted file formats.
+     */
+    public static $accepted_file_format = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/svg+xml' );
 
     /**
-	 * This constructor defines the core functionality of the plugin.
+     * This constructor defines the core functionality of the plugin.
      *
      * In this method, we set the plugin's name and version for reference throughout the codebase. We also load any necessary dependencies, define the plugin's locale for translation purposes, and set up hooks for the admin area.
      *
      * This constructor is executed when the plugin is initialized.
-	 *
-	 * @since    1.0.0
-	 */
+     *
+     * @since    1.0.0
+     */
     public function __construct() {
         add_action( 'admin_init', array( $this, 'admin_init' ) );
     }
 
     /**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
+     * Register all of the hooks related to the admin area functionality
+     * of the plugin.
      *
      * This method is responsible for registering various hooks and filters specific to the admin area functionality of the plugin. These hooks and filters handle tasks such as enqueueing scripts, managing media columns, processing attachment metadata, and displaying notices.
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 */
+     *
+     * @since    1.0.0
+     * @access   public
+     */
     public function admin_init() {
         // create nonce
         self::$img_nonce = wp_create_nonce();
@@ -109,18 +111,18 @@ class Ilove_Img_Compress_Plugin {
     }
 
     /**
-	 * Register scripts and styles for the admin area functionality of the plugin.
+     * Register scripts and styles for the admin area functionality of the plugin.
      *
      * This method is responsible for registering the necessary scripts and styles for the admin area functionality of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 */
+     *
+     * @since    1.0.0
+     * @access   public
+     */
     public function enqueue_scripts() {
 
         global $pagenow, $hook_suffix;
 
-		if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
+        if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
 
             // Enqueue the main JavaScript file.
             wp_enqueue_script(
@@ -138,7 +140,7 @@ class Ilove_Img_Compress_Plugin {
                 array(),
                 self::VERSION
             );
-		}
+        }
     }
 
     /**
@@ -159,9 +161,9 @@ class Ilove_Img_Compress_Plugin {
             if ( ! $images['error'] ) {
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
             } else {
-                ?>
+				?>
                 <p><?php echo esc_html( $images['error_msg'] ); ?></p>
-                <?php
+				<?php
             }
         }
         wp_die();
@@ -295,10 +297,10 @@ class Ilove_Img_Compress_Plugin {
             'timeout'   => 0.01,
             'blocking'  => false,
             'body'      => array(
-				'action'   => 'ilove_img_compress_library',
-				'id'       => $attachment_id,
+                'action'   => 'ilove_img_compress_library',
+                'id'       => $attachment_id,
                 'imgnonce' => self::get_img_nonce(),
-			),
+            ),
             'cookies'   => $_COOKIE,
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
         );
@@ -315,7 +317,7 @@ class Ilove_Img_Compress_Plugin {
      */
     public function show_notices() {
         if ( ! Ilove_Img_Compress_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
-			?>
+            ?>
             <div class="notice notice-warning is-dismissible">
                 <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></a></p>
             </div>
@@ -326,19 +328,19 @@ class Ilove_Img_Compress_Plugin {
             $iloveimg_account_error = json_decode( get_option( 'iloveimg_account_error' ), true );
 
             if ( 'login' === $iloveimg_account_error['action'] ) :
-                ?>
+				?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'Your email or password is wrong.', 'iloveimg' ); ?></p>
+                    <p><?php esc_html_e( 'Incorrect email or password.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'This email address has already been taken.', 'iloveimg' ); ?></p>
+                    <p><?php esc_html_e( 'This email is already in use.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php if ( 'register_limit' === $iloveimg_account_error['action'] ) : ?>
                 <div class="notice notice-error is-dismissible">
-                    <p><?php esc_html_e( 'You have reached limit of different users to use this WordPress plugin. Please relogin with one of your existing users.', 'iloveimg' ); ?></p>
+                    <p><?php esc_html_e( 'You\'ve reached the maximum number of users for this plugin. Please log in with an existing user.', 'iloveimg' ); ?></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -357,22 +359,24 @@ class Ilove_Img_Compress_Plugin {
                 );
 
                 if ( is_wp_error( $response ) ) {
-                    ?>
-                        <div class="notice notice-error is-dismissible">
-                            <p><strong>iLoveIMG</strong> - <?php echo wp_kses_post( $response->get_error_message() ); ?> </p>
-                        </div>
+					?>
+                    <div class="notice notice-error is-dismissible">
+                        <p><strong>iLoveIMG</strong> - <?php echo wp_kses_post( $response->get_error_message() ); ?> </p>
+                    </div>
                     <?php
                 } elseif ( 200 === (int) $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
 
-                    if ( (int) $account['files_used'] >= (int) $account['free_files_limit'] &&
-                    (int) $account['package_files_used'] >= (int) $account['package_files_limit'] &&
-                    ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] ) ) {
-                        ?>
+                    if (
+                        (int) $account['files_used'] >= (int) $account['free_files_limit'] &&
+                        (int) $account['package_files_used'] >= (int) $account['package_files_limit'] &&
+                        ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] )
+                    ) {
+						?>
                         <div class="notice notice-warning is-dismissible">
-                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need more credits.', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg' ); ?></a></p>
+                            <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'You\'re out of credits!', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg' ); ?></a></p>
                         </div>
-                        <?php
+						<?php
                     }
                 }
             }
@@ -385,16 +389,16 @@ class Ilove_Img_Compress_Plugin {
                 ?>
                 <div class="notice notice-success is-dismissible">
                     <p>
-                    <?php
-                    printf(
-                        /* translators: %s: ID of File */
-                        esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
-                        esc_html( $file )
-                    );
-					?>
+                        <?php
+                        printf(
+                            /* translators: %s: ID of File */
+                            esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
+                            esc_html( $file )
+                        );
+                        ?>
                     </p>
                 </div>
-                <?php
+				<?php
             }
         }
 
@@ -402,11 +406,11 @@ class Ilove_Img_Compress_Plugin {
             $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
 
             foreach ( $files_with_errors as $file ) {
-                ?>
+				?>
                 <div class="notice notice-error is-dismissible">
                     <p><?php echo esc_html( $file['message'] ); ?></p>
                 </div>
-                <?php
+				<?php
             }
         }
 
@@ -415,27 +419,27 @@ class Ilove_Img_Compress_Plugin {
             $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
 
             foreach ( $files_success as $file ) {
-                ?>
+				?>
                 <div class="notice notice-success is-dismissible">
                     <p>
-                    <?php
-                    printf(
-                        /* translators: %s: ID of File */
-                        esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
-                        esc_html( $file )
-                    );
-					?>
+                        <?php
+                        printf(
+                            /* translators: %s: ID of File */
+                            esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
+                            esc_html( $file )
+                        );
+                        ?>
                     </p>
                 </div>
-                <?php
+				<?php
             }
 
-			foreach ( $files_with_errors as $file ) {
-                ?>
+            foreach ( $files_with_errors as $file ) {
+				?>
                 <div class="notice notice-error is-dismissible">
                     <p><?php echo esc_html( $file['message'] ); ?></p>
                 </div>
-                <?php
+				<?php
             }
         }
     }
@@ -542,7 +546,6 @@ class Ilove_Img_Compress_Plugin {
                 wp_delete_file( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $value ) ) );
 
                 delete_option( 'iloveimg_images_to_restore' );
-
             }
         }
 
@@ -559,7 +562,7 @@ class Ilove_Img_Compress_Plugin {
     public function ilove_img_restore() {
 
         if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) ) ) {
-            wp_send_json_error( __( 'Error processing your request. Invalid Nonce code', 'iloveimg' ), 401 );
+            wp_send_json_error( __( 'Couldn\'t complete the request. Please refresh and try again.', 'iloveimg' ), 401 );
         }
 
         if ( ! isset( $_POST['id'] ) ) {
@@ -661,42 +664,42 @@ class Ilove_Img_Compress_Plugin {
 
         $iloveimg_process = new Ilove_Img_Compress_Process();
 
-		$success_ids = array();
-		$error_items = array();
+        $success_ids = array();
+        $error_items = array();
 
-		foreach ( $post_ids as $id ) {
-			$image = $iloveimg_process->compress( $id );
+        foreach ( $post_ids as $id ) {
+            $image = $iloveimg_process->compress( $id );
 
-			if ( ! empty( $image['error'] ) ) {
-				$error_items[] = array(
-					'id'      => $id,
-					'message' => $image['error_msg'],
-				);
-			} else {
-				$success_ids[] = $id;
-			}
-		}
+            if ( ! empty( $image['error'] ) ) {
+                $error_items[] = array(
+                    'id'      => $id,
+                    'message' => $image['error_msg'],
+                );
+            } else {
+                $success_ids[] = $id;
+            }
+        }
 
-		set_transient( 'iloveimg_bulk_success', $success_ids, 600 );
-		set_transient( 'iloveimg_bulk_errors', $error_items, 600 );
+        set_transient( 'iloveimg_bulk_success', $success_ids, 600 );
+        set_transient( 'iloveimg_bulk_errors', $error_items, 600 );
 
-		$status = 'success';
+        $status = 'success';
 
-		if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
-			$status = 'partial';
-		} elseif ( ! empty( $error_items ) ) {
-			$status = 'error';
-		}
+        if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
+            $status = 'partial';
+        } elseif ( ! empty( $error_items ) ) {
+            $status = 'error';
+        }
 
-		wp_safe_redirect(
+        wp_safe_redirect(
             add_query_arg(
                 array(
-					'iloveimg-bulk-compression' => $status,
+                    'iloveimg-bulk-compression' => $status,
                 ),
                 'upload.php'
             )
-		);
-		exit();
+        );
+        exit();
     }
 
     /**
