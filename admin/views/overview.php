@@ -15,12 +15,12 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 		<div class="iloveimg_settings__overview__statistics__column_left">
 			<?php $ilove_img_images_sizes = Ilove_Img_Compress_Resources::get_files_sizes(); ?>
 			<div class="iloveimg_percent  ">
-				<div class="iloveimg_percent-total" style="width: <?php echo ( $ilove_img_images_sizes[0] > 0 ) ? (float) ( 100 - ( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) ) : 0; ?>%;"></div>
+				<div class="iloveimg_percent-total" style="width: <?php echo ( $ilove_img_images_sizes[0] > 0 ) ? (float) round( ( ( $ilove_img_images_sizes[0] - $ilove_img_images_sizes[1] ) * 100 ) / $ilove_img_images_sizes[0] ) : 0; ?>%;"></div>
 			</div>
 			<div class="iloveimg_saving">
 
 				<?php
-				$ilove_img_porcentage_saved = $ilove_img_images_sizes[0] > 0 ? 100 - round( ( $ilove_img_images_sizes[1] * 100 ) / $ilove_img_images_sizes[0] ) : 0;
+				$ilove_img_porcentage_saved = $ilove_img_images_sizes[0] > 0 ? round( ( ( $ilove_img_images_sizes[0] - $ilove_img_images_sizes[1] ) * 100 ) / $ilove_img_images_sizes[0] ) : 0;
 
 				printf(
 					wp_kses_post(
@@ -81,9 +81,9 @@ use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 				printf(
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped via wp_kses above
 					$ilove_img_compress_output_html,
-					/* translators: %s number of compressed files and total images */
-					'<strong>' . (int) Ilove_Img_Compress_Resources::get_files_compressed() . '</strong>',
-					'<strong>' . (int) Ilove_Img_Compress_Resources::get_total_images() . '</strong>'
+					/* translators: %s number of total images and compressed files */
+					'<strong>' . (int) Ilove_Img_Compress_Resources::get_total_images() . '</strong>',
+					'<strong>' . (int) Ilove_Img_Compress_Resources::get_files_compressed() . '</strong>'
 				);
 				?>
 			</h4>
