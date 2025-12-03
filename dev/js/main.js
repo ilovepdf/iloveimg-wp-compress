@@ -152,9 +152,9 @@
             const dialogComponent = `
                     <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
                         <h2 class="iloveimg-title-dialog">Warning!</h2>
-                        <p class="iloveimg-content-dialog">The changes applied by all the tools will be lost. Do you want to continue?</p>
+                        <p class="iloveimg-content-dialog">All tool changes will be lost. Do you want to continue?</p>
                         <div class="iloveimg-btn-groups">
-                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Continue</button>
                             <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
                         </div>
                     </dialog>`;
@@ -208,9 +208,9 @@
             const dialogComponent = `
                     <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
                         <h2 class="iloveimg-title-dialog">Warning!</h2>
-                        <p class="iloveimg-content-dialog">All files inside iloveimg-backup folder will be deleted. Do you want to continue?</p>
+                        <p class="iloveimg-content-dialog">All files in the iloveimg-backup folder will be deleted. Continue?</p>
                         <div class="iloveimg-btn-groups">
-                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Continue</button>
                             <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
                         </div>
                     </dialog>`;
@@ -271,9 +271,9 @@
             const dialogComponent = `
                     <dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog">
                         <h2 class="iloveimg-title-dialog">Warning!</h2>
-                        <p class="iloveimg-content-dialog">The changes applied by all the tools will be lost. Do you want to continue?</p>
+                        <p class="iloveimg-content-dialog">All tool changes will be lost. Do you want to continue?</p>
                         <div class="iloveimg-btn-groups">
-                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Yes</button>
+                            <button id="iloveimg-compress-dialog-aceptted" class="button button-primary">Continue</button>
                             <button id="iloveimg-compress-dialog-close" class="button button-secondary">Close</button>
                         </div>
                     </dialog>`;
