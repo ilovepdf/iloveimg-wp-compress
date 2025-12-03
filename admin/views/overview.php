@@ -2,7 +2,7 @@
 
 use Ilove_Img_Compress\Ilove_Img_Compress_Resources;
 ?>
-<h2><?php echo esc_html_x( 'Overview', 'title: admin settings overview', 'iloveimg' ); ?></h2>
+<h2><?php echo esc_html_x( 'Summary', 'title: admin settings overview', 'iloveimg' ); ?></h2>
 <article class="iloveimg_settings__overview__statistics">
 	<h3 class="ilovepdf-base__layout-flex ilovepdf-base__layout-gap--small ilovepdf-base__layout-items-center">
 		<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 50 50">
