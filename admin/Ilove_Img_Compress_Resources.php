@@ -34,7 +34,7 @@ class Ilove_Img_Compress_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => _x( 'Original image', 'input checkbox', 'iloveimg' ),
+            'label'    => _x( 'Original', 'input checkbox', 'iloveimg' ),
             'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
