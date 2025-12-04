@@ -204,8 +204,8 @@ class Ilove_Img_Compress_Resources {
         <div id="iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th><?php echo esc_html_x( 'Name', 'column name', 'iloveimg' ); ?></th>
-                    <th><?php echo esc_html_x( 'Initial', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'File Name', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'Original', 'column name', 'iloveimg' ); ?></th>
                     <th><?php echo esc_html_x( 'Compressed', 'column name', 'iloveimg' ); ?></th>
                     <?php
                     $total_size       = 0;
@@ -308,7 +308,7 @@ class Ilove_Img_Compress_Resources {
                         endif;
                     else :
 						?>
-                        <p><?php esc_html_e( 'You need to be registered', 'iloveimg' ); ?></p>
+                        <p><?php esc_html_e( 'Sign up required', 'iloveimg' ); ?></p>
                         <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></button>
 						<?php
                     endif;
@@ -431,7 +431,7 @@ class Ilove_Img_Compress_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg' )
 			);
 		}
 
@@ -467,7 +467,7 @@ class Ilove_Img_Compress_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg' )
 			);
 		}
 
@@ -576,13 +576,13 @@ class Ilove_Img_Compress_Resources {
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
                 <div class="iloveimg-compress iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
-                        <?php echo esc_html_x( 'Restore original file', 'button', 'iloveimg' ); ?>
+                        <?php echo esc_html_x( 'Restore original', 'button', 'iloveimg' ); ?>
                     </button>
                     <br/>
                     <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_compress_restore" value="<?php echo esc_html( $img_nonce ); ?>">
-                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php echo esc_html_x( 'Loading...', 'The file is being processed', 'iloveimg' ); ?></span></p>
-                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Error', 'File processing had an error', 'iloveimg' ); ?></span></p>
-                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Completed, please refresh the page.', 'File processing was successful', 'iloveimg' ); ?></span></p>
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php echo esc_html_x( 'Processing…', 'The file is being processed', 'iloveimg' ); ?></span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Error processing. Please refresh and try again.', 'File processing had an error', 'iloveimg' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Done. Please refresh the page.', 'File processing was successful', 'iloveimg' ); ?></span></p>
                 </div>
             <?php endif; ?>
         <?php
