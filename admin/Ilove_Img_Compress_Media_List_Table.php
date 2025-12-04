@@ -101,8 +101,8 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
             'file'        => _x( 'File', 'column name', 'iloveimg' ),
             'post_author' => _x( 'Author', 'column name', 'iloveimg' ),
-            'post_date'   => _x( 'Date', 'column name', 'iloveimg' ),
-            'status'      => _x( 'Status', 'column name', 'iloveimg' ),
+            'post_date'   => _x( 'Upload Date', 'column name', 'iloveimg' ),
+            'status'      => _x( 'Actions', 'column name', 'iloveimg' ),
         );
         return $columns;
     }
