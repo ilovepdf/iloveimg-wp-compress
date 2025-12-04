@@ -91,8 +91,8 @@
                     );
                 }
             );
-            jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action]');
-            jQuery('<option>').val('iloveimg_bulk_action').text("Compress Images").appendTo('select[name=action2]');
+            jQuery('<option>').val('iloveimg_bulk_action').text("Compress").appendTo('select[name=action]');
+            jQuery('<option>').val('iloveimg_bulk_action').text("Compress").appendTo('select[name=action2]');
             jQuery('.iloveimg_compressing').each(
                 function (index, element) {
                     timesIntervals["ref_" + index] = setInterval(
