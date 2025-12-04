@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2025-12-03T15:23:02+00:00\\n"
+"PO-Revision-Date: 2025-12-04T12:17:34+00:00\\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 
@@ -47,12 +47,12 @@ msgstr ""
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:104
 msgctxt "column name"
-msgid "Date"
+msgid "Upload Date"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:105
 msgctxt "column name"
-msgid "Status"
+msgid "Actions"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
@@ -70,11 +70,11 @@ msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:231
 msgctxt "column name"
-msgid "Status Compress"
+msgid "Compression status"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:322
-msgid "Please you need to be logged or registered."
+msgid "Please log in or sign up to continue."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:322
@@ -109,7 +109,7 @@ msgstr ""
 #: admin/Ilove_Img_Compress_Plugin.php:395
 #: admin/Ilove_Img_Compress_Plugin.php:428
 #, php-format
-msgid "The image %s was compressed correctly"
+msgid "Image compressed successfully: %s"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:462
@@ -126,31 +126,32 @@ msgid "Error processing your request. Invalid Image ID"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:577
-msgid "Sorry. There is no backup for this file"
+msgid "No backup found."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:595
-msgid "It was restored correctly"
+msgid "File restored successfully."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Plugin.php:646
+#: admin/Ilove_Img_Compress_Resources.php:300
 msgctxt "button"
-msgid "Compress Images"
+msgid "Compress"
 msgstr ""
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Compress_Process.php:62
 #, php-format
-msgid "The file %d is not an image."
+msgid "File %d is not a valid image."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Process.php:175
 #: admin/Ilove_Img_Compress_Process.php:182
-msgid "There was a problem processing your image."
+msgid "Could not process the request."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Process.php:185
-msgid "Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys."
+msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:37
@@ -160,12 +161,12 @@ msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:207
 msgctxt "column name"
-msgid "Name"
+msgid "File Name"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:208
 msgctxt "column name"
-msgid "Initial"
+msgid "Original"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:209
@@ -184,38 +185,33 @@ msgstr ""
 msgid "%d sizes compressed"
 msgstr ""
 
-#: admin/Ilove_Img_Compress_Resources.php:300
-msgctxt "button"
-msgid "Compress"
-msgstr ""
-
 #: admin/Ilove_Img_Compress_Resources.php:311
-msgid "You need to be registered"
+msgid "Sign up required"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:434
 #: admin/Ilove_Img_Compress_Resources.php:470
-msgid "Unable to connect to the filesystem"
+msgid "Filesystem connection failed."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:579
 msgctxt "button"
-msgid "Restore original file"
+msgid "Restore original"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:583
 msgctxt "The file is being processed"
-msgid "Loading..."
+msgid "Processing…"
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:584
 msgctxt "File processing had an error"
-msgid "Error"
+msgid "Error processing. Please refresh and try again."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Resources.php:585
 msgctxt "File processing was successful"
-msgid "Completed, please refresh the page."
+msgid "Done. Please refresh the page."
 msgstr ""
 
 #: admin/Ilove_Img_Compress_Submenu.php:56
