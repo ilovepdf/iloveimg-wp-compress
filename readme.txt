@@ -1,5 +1,5 @@
-=== Image Compressor & Optimizer - iLoveIMG ===
-Plugin Name: Image Compressor & Optimizer - iLoveIMG
+=== iLoveIMG ===
+Plugin Name: iLoveIMG
 Version: 2.2.13
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/

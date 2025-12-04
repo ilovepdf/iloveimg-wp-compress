@@ -1,6 +1,6 @@
 <?php
 /**
- * Image Compressor & Optimizer - iLoveIMG
+ * IloveIMG
  *
  * @link              https://iloveimg.com/
  * @since             1.0.4
