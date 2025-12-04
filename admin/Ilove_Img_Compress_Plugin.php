@@ -228,7 +228,7 @@ class Ilove_Img_Compress_Plugin {
         if ( (int) Ilove_Img_Compress_Resources::is_activated() === 0 ) {
             return $columns;
         }
-        $columns['iloveimg_status_compress'] = _x( 'Status Compress', 'column name', 'iloveimg' );
+        $columns['iloveimg_status_compress'] = _x( 'Compression status', 'column name', 'iloveimg' );
         return $columns;
     }
 
@@ -319,7 +319,7 @@ class Ilove_Img_Compress_Plugin {
         if ( ! Ilove_Img_Compress_Resources::is_loggued() && get_current_screen()->parent_base !== 'iloveimg-admin-page' ) {
             ?>
             <div class="notice notice-warning is-dismissible">
-                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please you need to be logged or registered.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></a></p>
+                <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'Please log in or sign up to continue.', 'iloveimg' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></a></p>
             </div>
             <?php
         }
@@ -392,7 +392,7 @@ class Ilove_Img_Compress_Plugin {
                         <?php
                         printf(
                             /* translators: %s: ID of File */
-                            esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
+                            esc_html__( 'Image compressed successfully: %s', 'iloveimg' ),
                             esc_html( $file )
                         );
                         ?>
@@ -425,7 +425,7 @@ class Ilove_Img_Compress_Plugin {
                         <?php
                         printf(
                             /* translators: %s: ID of File */
-                            esc_html__( 'The image %s was compressed correctly', 'iloveimg' ),
+                            esc_html__( 'Image compressed successfully: %s', 'iloveimg' ),
                             esc_html( $file )
                         );
                         ?>
@@ -574,7 +574,7 @@ class Ilove_Img_Compress_Plugin {
         $key_founded    = array_search( $attachment_id, $images_restore, true );
 
         if ( ! in_array( $attachment_id, $images_restore, true ) ) {
-            wp_send_json_error( __( 'Sorry. There is no backup for this file', 'iloveimg' ), 404 );
+            wp_send_json_error( __( 'No backup found.', 'iloveimg' ), 404 );
         }
 
         Ilove_Img_Compress_Resources::rcopy( ILOVE_IMG_COMPRESS_BACKUP_FOLDER . basename( get_attached_file( $attachment_id ) ), get_attached_file( $attachment_id ) );
@@ -592,7 +592,7 @@ class Ilove_Img_Compress_Plugin {
             Ilove_Img_Compress_Resources::update_option( 'iloveimg_images_to_restore', wp_json_encode( $images_restore ) );
         }
 
-        wp_send_json_success( __( 'It was restored correctly', 'iloveimg' ), 200 );
+        wp_send_json_success( __( 'File restored successfully.', 'iloveimg' ), 200 );
     }
 
     /**
@@ -643,7 +643,7 @@ class Ilove_Img_Compress_Plugin {
     public function add_bulk_compression_action( $actions ) {
 
         if ( get_option( 'iloveimg_account' ) ) {
-            $actions['iloveimg_compress'] = _x( 'Compress Images', 'button', 'iloveimg' );
+            $actions['iloveimg_compress'] = _x( 'Compress', 'button', 'iloveimg' );
         }
 
         return $actions;
