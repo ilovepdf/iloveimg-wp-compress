@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2025-12-04T12:17:34+00:00\\n"
+"PO-Revision-Date: 2025-12-11T14:59:00+00:00\\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 
@@ -314,40 +314,35 @@ msgstr ""
 
 #: admin/views/account.php:177
 msgctxt "1: subscription plan link"
-msgid "Upgrade your plan"
-msgstr ""
-
-#: admin/views/account.php:182
-msgctxt "2: single package link"
-msgid "credit package"
+msgid "Upgrade your plan or buy a credit package"
 msgstr ""
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
-#: admin/views/account.php:188
+#: admin/views/account.php:183
 #, php-format
-msgid "Need more credits? %1$s or buy a %2$s."
+msgid "Need more credits? %1$s."
 msgstr ""
 
-#: admin/views/account.php:198
+#: admin/views/account.php:192
 msgctxt "button"
 msgid "Buy credits"
 msgstr ""
 
-#: admin/views/account.php:205
+#: admin/views/account.php:199
 msgctxt "subtitle: Connected user section"
 msgid "Account"
 msgstr ""
 
-#: admin/views/account.php:210
+#: admin/views/account.php:204
 msgctxt "button"
 msgid "Log out"
 msgstr ""
 
-#: admin/views/account.php:217
+#: admin/views/account.php:211
 msgid "Select project"
 msgstr ""
 
-#: admin/views/account.php:231
+#: admin/views/account.php:225
 msgctxt "Button: save changes"
 msgid "Change project"
 msgstr ""
