@@ -174,24 +174,18 @@ $ilove_img_get_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_uns
                     <?php
                     $ilove_img_subscription_link = sprintf(
                         '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'Upgrade your plan', '1: subscription plan link', 'iloveimg' )
-                    );
-
-                    $ilove_img_single_package_link = sprintf(
-                        '<a href="https://iloveapi.com/pricing" target="_blank" rel="noopener noreferrer">%s</a>',
-                        _x( 'credit package', '2: single package link', 'iloveimg' )
+                        _x( 'Upgrade your plan or buy a credit package', '1: subscription plan link', 'iloveimg' )
                     );
 
                     printf(
                         wp_kses_post(
                             /* translators: %1$s: subscription plan link, %2$s: single package link */
                             __(
-                                'Need more credits? %1$s or buy a %2$s.',
+                                'Need more credits? %1$s.',
                                 'iloveimg'
                             )
                         ),
-                        wp_kses_post( $ilove_img_subscription_link ),
-                        wp_kses_post( $ilove_img_single_package_link )
+                        wp_kses_post( $ilove_img_subscription_link )
                     );
                     ?>
                 </p>
