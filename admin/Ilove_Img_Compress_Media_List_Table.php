@@ -148,7 +148,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
 
         // Detect when a bulk action is being triggered...
         if ( 'delete' === $this->current_action() ) {
-            wp_die( esc_html__( 'Items deleted (or they would be if we had items to delete)!', 'iloveimg' ) );
+            wp_die( esc_html__( 'Items deleted.', 'iloveimg' ) );
         }
     }
 
