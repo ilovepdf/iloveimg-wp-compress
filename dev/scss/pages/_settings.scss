@@ -298,6 +298,11 @@ body {
 							}
 
 							&:hover {
+								background-color: $light_color;
+								width: auto;
+							}
+
+							&.iloveimg_settings__options-nav__selected {
 								a {
 									background-color: $light_color;
 									border-radius: $radius;
