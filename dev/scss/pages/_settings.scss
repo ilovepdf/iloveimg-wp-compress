@@ -260,7 +260,8 @@ body {
 						}
 
 						li {
-							padding: 5px 15px;
+							margin-bottom: 8px;
+							padding: 0;
 							border-radius: $radius;
 							transition: background-color 0.2s ease;
 
@@ -269,19 +270,26 @@ body {
 								min-height: 24px;
 								display: flex;
 								align-items: center;
+								gap: 10px;
+								text-decoration: none;
+								padding: 6px 8px;
 
 								svg {
-									min-width: max-content;
-									padding: 0
+									flex-shrink: 0;
+									min-width: 20px;
+									width: 20px;
+									height: 20px;
+									padding: 0;
 								}
 
 								span {
 									flex: 1;
-									width: 100%;
+									max-width: 100%;
 									word-wrap: break-word;
 									overflow-wrap: break-word;
 									white-space: normal;
 									line-height: 1.4;
+									min-width: 0;
 								}
 
 								&:hover {
@@ -290,13 +298,16 @@ body {
 							}
 
 							&:hover {
-								background-color: $light_color;
-								width: auto;
+								a {
+									background-color: $light_color;
+									border-radius: $radius;
+								}
 							}
 
 							&.iloveimg_settings__options-nav__selected {
 								a {
 									background-color: $white;
+									border-radius: $radius;
 								}
 							}
 						}
