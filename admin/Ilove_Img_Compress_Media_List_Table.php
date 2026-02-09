@@ -132,7 +132,8 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         $actions = array(
-            'delete' => _x( 'Delete', 'button', 'iloveimg' ),
+            'compress' => _x( 'Compress', 'button', 'iloveimg' ),
+            'delete'   => _x( 'Delete', 'button', 'iloveimg' ),
         );
         return $actions;
     }

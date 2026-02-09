@@ -124,13 +124,26 @@ class Ilove_Img_Compress_Plugin {
 
         if ( ( 'upload.php' === $pagenow || 'iloveimg_page_iloveimg-compress-admin-page' === $hook_suffix || 'iloveimg_page_iloveimg-watermark-admin-page' === $hook_suffix || 'media-new.php' === $pagenow || 'post.php' === $pagenow ) && get_current_screen()->post_type !== 'product' ) {
 
-            // Enqueue the main JavaScript file.
+            // Enqueue the main JavaScript file with jQuery and wp-i18n dependencies.
             wp_enqueue_script(
-                self::NAME . '_admin',
+                'iloveimg-compress-main',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
-                array(),
+                array( 'jquery', 'wp-i18n' ),
                 self::VERSION,
                 true
+            );
+
+            // Set translations for the script.
+            wp_set_script_translations( 'iloveimg-compress-main', 'iloveimg', plugin_dir_path( __DIR__ ) . 'languages' );
+
+            // Localize script with necessary data.
+            wp_localize_script(
+                'iloveimg-compress-main',
+                'iloveimgCompress',
+                array(
+                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                    'nonce'   => wp_create_nonce( 'iloveimg_compress_nonce' ),
+                )
             );
 
             // Enqueue the main CSS file.
