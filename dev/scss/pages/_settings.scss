@@ -444,17 +444,16 @@ body {
 					}
 				}
 
-				.iloveimg-restore-dialog,
-				#poststuff .iloveimg-restore-dialog {
-					@include iloveimg-restore-dialog;
-				}
-
 				* {
 					font-size: $body_font_size;
 					color: $text_color;
 					letter-spacing: $letter_spacing;
 					box-sizing: border-box;
 				}
+			}
+
+			.iloveimg-restore-dialog {
+				@include iloveimg-restore-dialog;
 			}
 		}
 
@@ -467,10 +466,10 @@ body {
 				color: $primary_color;
 			}
 		}
+	}
 
-		.iloveimg_status_compress .iloveimg-restore-dialog,
-		#poststuff .iloveimg-restore-dialog {
-			@include iloveimg-restore-dialog;
-		}
+	.iloveimg_status_compress .iloveimg-restore-dialog,
+	#poststuff .iloveimg-restore-dialog {
+		@include iloveimg-restore-dialog;
 	}
 }
