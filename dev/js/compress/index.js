@@ -86,6 +86,9 @@ export function handleBulkAction(event) {
 	
 	if (selectedAction === 'iloveimg_compress') {
 		event.preventDefault();
+		var totalToProcess = jQuery('table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr').find("th.check-column input[type='checkbox']:checked").length;
+		var timeReload;
+		
 		jQuery('table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr').each(function (
 			index,
 			element
@@ -94,5 +97,15 @@ export function handleBulkAction(event) {
 				jQuery(element).find('button.iloveimg-compress').trigger('click');
 			}
 		});
+		
+		if (totalToProcess > 0) {
+			timeReload = setInterval(function () {
+				var remaining = jQuery('table.wp-list-table.images tbody tr, table.wp-list-table.media tbody tr').find('button.iloveimg-compress').length;
+				if (remaining === 0) {
+					clearInterval(timeReload);
+					location.reload();
+				}
+			}, 500);
+		}
 	}
 }
