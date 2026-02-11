@@ -12,8 +12,8 @@ export const createDialogComponent = (content, title, buttonActionText) => {
     const dialogComponent = `<dialog id="iloveimg-compress-restore-dialog" class="iloveimg-restore-dialog"><h2 class="iloveimg-title-dialog">${title}</h2>
                 <p class="iloveimg-content-dialog">${content}</p>
                 <div class="iloveimg-btn-groups">
-                    <button id="iloveimg-compress-dialog-aceptted" class="ipdf-btn ipdf-btn--primary">${buttonActionText}</button>
-                    <button id="iloveimg-compress-dialog-close" class="ipdf-btn ipdf-btn--secondary">${_x(
+                    <button id="iloveimg-compress-dialog-aceptted" class="button-primary">${buttonActionText}</button>
+                    <button id="iloveimg-compress-dialog-close" class="button-secondary">${_x(
         'Cancel',
         'button dialog box',
         'iloveimg'

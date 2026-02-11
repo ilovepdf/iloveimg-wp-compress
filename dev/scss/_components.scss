@@ -106,12 +106,8 @@
 			@extend %button-primary;
 		}
 
-		.iloveimg-compress-dialog-accepted {
-			@extend %button-primary-rounded;
-		}
-
-		.iloveimg-compress-dialog-close {
-			@extend %button-outline-primary;
+		.button-secondary {
+			@extend %button-secondary;
 		}
 	}
 
