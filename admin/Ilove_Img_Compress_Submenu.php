@@ -79,7 +79,7 @@ class Ilove_Img_Compress_Submenu {
 		add_media_page(
 			'iLoveIMG Media',
 			_x( 'Bulk Compress', 'submenu', 'iloveimg' ),
-			'manage_options',
+			'upload_files',
 			'iloveimg-media-page',
 			array(
 				$this->submenu_page,
