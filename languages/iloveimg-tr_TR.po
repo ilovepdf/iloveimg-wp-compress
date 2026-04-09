@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
 "Language-Team: Turkish\n"
@@ -10,15 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2026-01-13 13:58\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
-"X-Crowdin-Project-ID: 5\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /Wordpress/iloveimg.pot\n"
-"X-Crowdin-File-ID: 1574\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
 "Language: tr_TR\n"
 
 #. Plugin Name of the plugin
@@ -63,88 +63,89 @@ msgid "Actions"
 msgstr "Eylemler"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "Sıkıştır"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
 msgctxt "button"
 msgid "Delete"
 msgstr "Sil"
 
-#: admin/Ilove_Img_Compress_Media_List_Table.php:151
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
 msgid "Items deleted."
 msgstr "Öğeler silindi."
 
-#: admin/Ilove_Img_Compress_Plugin.php:209
+#: admin/Ilove_Img_Compress_Plugin.php:222
 msgid "Try again or buy more credits"
 msgstr "Tekrar dene veya daha fazla kredi satın al"
 
-#: admin/Ilove_Img_Compress_Plugin.php:231
+#: admin/Ilove_Img_Compress_Plugin.php:244
 msgctxt "column name"
 msgid "Compression status"
 msgstr "Sıkıştırma durumu"
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 msgid "Please log in or sign up to continue."
 msgstr "Devam etmek için lütfen giriş yap veya kaydol."
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 #: admin/Ilove_Img_Compress_Resources.php:306
 #: admin/Ilove_Img_Compress_Resources.php:312
 msgctxt "button"
 msgid "Go to settings"
 msgstr "Ayarlara git"
 
-#: admin/Ilove_Img_Compress_Plugin.php:333
+#: admin/Ilove_Img_Compress_Plugin.php:346
 msgid "Incorrect email or password."
 msgstr "Hatalı e-posta veya şifre."
 
-#: admin/Ilove_Img_Compress_Plugin.php:338
+#: admin/Ilove_Img_Compress_Plugin.php:351
 msgid "This email is already in use."
 msgstr "Bu e-posta zaten kullanılıyor."
 
-#: admin/Ilove_Img_Compress_Plugin.php:343
+#: admin/Ilove_Img_Compress_Plugin.php:356
 msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
 msgstr "Bu eklenti için maksimum kullanıcı sayısına ulaştın. Lütfen mevcut bir kullanıcı ile giriş yap."
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgid "You're out of credits!"
 msgstr "Kredin kalmadı!"
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "Daha fazla kredi satın al"
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:395
-#: admin/Ilove_Img_Compress_Plugin.php:428
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
 #, php-format
 msgid "Image compressed successfully: %s"
 msgstr "Görüntü başarıyla sıkıştırıldı: %s"
 
-#: admin/Ilove_Img_Compress_Plugin.php:462
+#: admin/Ilove_Img_Compress_Plugin.php:475
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
 msgstr "iLoveIMG Sıkıştırma"
 
-#: admin/Ilove_Img_Compress_Plugin.php:565
+#: admin/Ilove_Img_Compress_Plugin.php:578
 msgid "Couldn't complete the request. Please refresh and try again."
 msgstr "Talep tamamlanamadı. Lütfen yenileyip tekrar dene."
 
-#: admin/Ilove_Img_Compress_Plugin.php:569
+#: admin/Ilove_Img_Compress_Plugin.php:582
 msgid "Error processing your request. Invalid Image ID"
 msgstr "İsteğin işlenirken hata oluştu. Geçersiz Görüntü Kimliği"
 
-#: admin/Ilove_Img_Compress_Plugin.php:577
+#: admin/Ilove_Img_Compress_Plugin.php:590
 msgid "No backup found."
 msgstr "Yedek bulunamadı."
 
-#: admin/Ilove_Img_Compress_Plugin.php:595
+#: admin/Ilove_Img_Compress_Plugin.php:608
 msgid "File restored successfully."
 msgstr "Dosya başarıyla geri yüklendi."
-
-#: admin/Ilove_Img_Compress_Plugin.php:646
-#: admin/Ilove_Img_Compress_Resources.php:300
-msgctxt "button"
-msgid "Compress"
-msgstr "Sıkıştır"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Compress_Process.php:62
@@ -221,19 +222,19 @@ msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
 msgstr "Tamamlandı. Lütfen sayfayı yenile."
 
-#: admin/Ilove_Img_Compress_Submenu.php:56
 #: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr "Sıkıştırma ayarları"
 
-#: admin/Ilove_Img_Compress_Submenu.php:68
 #: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr "Filigran ayarları"
 
-#: admin/Ilove_Img_Compress_Submenu.php:80
+#: admin/Ilove_Img_Compress_Submenu.php:81
 msgctxt "submenu"
 msgid "Bulk Compress"
 msgstr "Toplu Sıkıştırma"
@@ -273,7 +274,7 @@ msgstr "iLoveAPI hesabı oluştur"
 #: admin/views/account.php:82
 msgctxt "Input text"
 msgid "Name"
-msgstr "Ad"
+msgstr "İsim"
 
 #: admin/views/account.php:94
 msgctxt "button"
@@ -501,8 +502,31 @@ msgctxt "button"
 msgid "Compress all uploaded images"
 msgstr "Yüklenen tüm görüntüleri sıkıştır"
 
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "%s görüntü başarıyla sıkıştırıldı."
+msgstr[1] "%s görüntü başarıyla sıkıştırıldı."
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "%1$s görüntü sıkıştırıldı, %2$s görüntü sıkıştırılamadı."
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "%s görüntü sıkıştırılamadı."
+msgstr[1] "%s görüntü sıkıştırılamadı."
+
 #. translators: %s: number of images deleted
-#: admin/views/media-bulk.php:39
+#: admin/views/media-bulk.php:86
 #, php-format
 msgid "%s image deleted successfully."
 msgid_plural "%s images deleted successfully."
@@ -582,4 +606,29 @@ msgstr "Ayarlar"
 msgctxt "button"
 msgid "Bulk Compress"
 msgstr "Toplu Sıkıştırma"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "İptal"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "Tüm araç değişiklikleri kaybolacak. Devam etmek istiyor musun?"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "Uyarı!"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "Devam"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "iloveimg-backup klasöründeki tüm dosyalar silinecek. Devam edilsin mi?"
 
