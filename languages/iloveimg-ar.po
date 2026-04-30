@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
 "Language-Team: Arabic\n"
@@ -10,15 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2026-01-13 13:58\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
-"X-Crowdin-Project-ID: 5\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /Wordpress/iloveimg.pot\n"
-"X-Crowdin-File-ID: 1574\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
 "Language: ar_SA\n"
 
 #. Plugin Name of the plugin
@@ -45,7 +45,7 @@ msgstr "https://iloveimg.com/"
 #: admin/Ilove_Img_Compress_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "الملف"
+msgstr "File"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:103
 msgctxt "column name"
@@ -63,88 +63,89 @@ msgid "Actions"
 msgstr "الإجراءات"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "ضغط"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
 msgctxt "button"
 msgid "Delete"
 msgstr "حذف"
 
-#: admin/Ilove_Img_Compress_Media_List_Table.php:151
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
 msgid "Items deleted."
 msgstr "تم حذف العناصر."
 
-#: admin/Ilove_Img_Compress_Plugin.php:209
+#: admin/Ilove_Img_Compress_Plugin.php:222
 msgid "Try again or buy more credits"
 msgstr "حاوِل مرة أخرى أو اشترِ المزيد من الأرصدة"
 
-#: admin/Ilove_Img_Compress_Plugin.php:231
+#: admin/Ilove_Img_Compress_Plugin.php:244
 msgctxt "column name"
 msgid "Compression status"
 msgstr "حالة الضغط"
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 msgid "Please log in or sign up to continue."
 msgstr "يُرجى تسجيل الدخول أو التسجيل للمتابعة."
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 #: admin/Ilove_Img_Compress_Resources.php:306
 #: admin/Ilove_Img_Compress_Resources.php:312
 msgctxt "button"
 msgid "Go to settings"
 msgstr "الذهاب إلى الإعدادات"
 
-#: admin/Ilove_Img_Compress_Plugin.php:333
+#: admin/Ilove_Img_Compress_Plugin.php:346
 msgid "Incorrect email or password."
 msgstr "البريد الإلكتروني أو كلمة المرور غير صحيحين."
 
-#: admin/Ilove_Img_Compress_Plugin.php:338
+#: admin/Ilove_Img_Compress_Plugin.php:351
 msgid "This email is already in use."
-msgstr "هذا البريد الإلكتروني مستخدم مسبقًا."
+msgstr "هذا البريد الإلكتروني مستخدَم مسبقًا."
 
-#: admin/Ilove_Img_Compress_Plugin.php:343
+#: admin/Ilove_Img_Compress_Plugin.php:356
 msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
 msgstr "لقد وصلت إلى الحد الأقصى لعدد المستخدمين لهذه الإضافة. يُرجى تسجيل الدخول باستخدام مستخدم موجود."
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgid "You're out of credits!"
 msgstr "نفدت أرصدتك!"
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "شراء المزيد من الأرصدة"
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:395
-#: admin/Ilove_Img_Compress_Plugin.php:428
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
 #, php-format
 msgid "Image compressed successfully: %s"
 msgstr "تم ضغط الصورة بنجاح: %s"
 
-#: admin/Ilove_Img_Compress_Plugin.php:462
+#: admin/Ilove_Img_Compress_Plugin.php:475
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
 msgstr "أداة ضغط iLoveIMG"
 
-#: admin/Ilove_Img_Compress_Plugin.php:565
+#: admin/Ilove_Img_Compress_Plugin.php:578
 msgid "Couldn't complete the request. Please refresh and try again."
 msgstr "تعذر إكمال الطلب. يُرجى التحديث وإعادة المحاولة."
 
-#: admin/Ilove_Img_Compress_Plugin.php:569
+#: admin/Ilove_Img_Compress_Plugin.php:582
 msgid "Error processing your request. Invalid Image ID"
 msgstr "خطأ في معالجة طلبك. معرف الصورة غير صالح"
 
-#: admin/Ilove_Img_Compress_Plugin.php:577
+#: admin/Ilove_Img_Compress_Plugin.php:590
 msgid "No backup found."
 msgstr "لم يتم العثور على نسخة احتياطية."
 
-#: admin/Ilove_Img_Compress_Plugin.php:595
+#: admin/Ilove_Img_Compress_Plugin.php:608
 msgid "File restored successfully."
-msgstr "تمت استعادة الملف بنجاح."
-
-#: admin/Ilove_Img_Compress_Plugin.php:646
-#: admin/Ilove_Img_Compress_Resources.php:300
-msgctxt "button"
-msgid "Compress"
-msgstr "ضغط"
+msgstr "تمت استعادة المِلَف بنجاح."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Compress_Process.php:62
@@ -221,19 +222,19 @@ msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
 msgstr "تم. يُرجى تحديث الصفحة."
 
-#: admin/Ilove_Img_Compress_Submenu.php:56
 #: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr "إعدادات الضغط"
 
-#: admin/Ilove_Img_Compress_Submenu.php:68
 #: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr "إعدادات العلامة المائية"
 
-#: admin/Ilove_Img_Compress_Submenu.php:80
+#: admin/Ilove_Img_Compress_Submenu.php:81
 msgctxt "submenu"
 msgid "Bulk Compress"
 msgstr "ضغط مجموعة ملفات"
@@ -253,7 +254,7 @@ msgstr "البريد الإلكتروني"
 #: admin/views/account.php:88
 msgctxt "input password"
 msgid "Password"
-msgstr "كلمة المرور"
+msgstr "Password"
 
 #: admin/views/account.php:62
 msgctxt "button"
@@ -501,17 +502,48 @@ msgctxt "button"
 msgid "Compress all uploaded images"
 msgstr "ضغط جميع الصور المرفوعة"
 
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "تم ضغط %s صورة بنجاح."
+msgstr[1] "تم ضغط %s صورة بنجاح."
+msgstr[2] "تم ضغط %s من الصور بنجاح."
+msgstr[3] "تم ضغط %s صور بنجاح."
+msgstr[4] "تم ضغط %s صورة بنجاح."
+msgstr[5] "تم ضغط %s صورة بنجاح."
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "تم ضغط %1$s من الصور، بينما فشلت %2$s من الصور."
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "لم ينجح ضغط %s صورة."
+msgstr[1] "لم ينجح ضغط %s صورة."
+msgstr[2] "لم ينجح ضغط %s من الصور."
+msgstr[3] "لم ينجح ضغط %s صور."
+msgstr[4] "لم ينجح ضغط %s صورة."
+msgstr[5] "لم ينجح ضغط %s صورة."
+
 #. translators: %s: number of images deleted
-#: admin/views/media-bulk.php:39
+#: admin/views/media-bulk.php:86
 #, php-format
 msgid "%s image deleted successfully."
 msgid_plural "%s images deleted successfully."
-msgstr[0] "تم حذف %s ملف بنجاح."
+msgstr[0] "تم حذف %s ملفًا بنجاح."
 msgstr[1] "تم حذف %s ملف بنجاح."
 msgstr[2] "تم حذف ملفين بنجاح."
 msgstr[3] "تم حذف %s ملفات بنجاح."
 msgstr[4] "تم حذف %s ملفًا بنجاح."
-msgstr[5] "تم حذف %s ملف بنجاح."
+msgstr[5] "تم حذف %s ملفًا بنجاح."
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
@@ -521,7 +553,7 @@ msgstr "ملخّص"
 #: admin/views/overview.php:12
 msgctxt "Overview: tool title"
 msgid "Compress image"
-msgstr "ضغط الصورة"
+msgstr "Compress image"
 
 #. translators: %s porcentage of size saved
 #: admin/views/overview.php:28
@@ -580,10 +612,35 @@ msgstr "%1$sثبّت العلامة المائية لـ iLoveIMG ‏%2$s لتط�
 #: ilove-img-compress.php:89
 msgctxt "button"
 msgid "Settings"
-msgstr "الإعدادات"
+msgstr "Settings"
 
 #: ilove-img-compress.php:92
 msgctxt "button"
 msgid "Bulk Compress"
 msgstr "ضغط مجموعة ملفات"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "جميع تغييرات الأدوات ستفقد. هل ترغب في المتابعة؟"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "تحذير!"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "المتابعة"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "سيتم حذف جميع الملفات في مجلد النسخ الاحتياطي iloveimg. هل ترغب في المتابعة؟"
 

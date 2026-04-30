@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: f77715d6d2ed986a477e9b7ddb58a66c\n"
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
 "Last-Translator: ilovepdf <info@ilovepdf.com>\n"
 "Language-Team: Malay\n"
@@ -10,15 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: 2026-01-13 13:58\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: f77715d6d2ed986a477e9b7ddb58a66c\n"
-"X-Crowdin-Project-ID: 5\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
 "X-Crowdin-Language: ms\n"
-"X-Crowdin-File: /Wordpress/iloveimg.pot\n"
-"X-Crowdin-File-ID: 1574\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
 "Language: ms_MY\n"
 
 #. Plugin Name of the plugin
@@ -45,7 +45,7 @@ msgstr "https://iloveimg.com/"
 #: admin/Ilove_Img_Compress_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Fail"
+msgstr "File"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:103
 msgctxt "column name"
@@ -63,88 +63,89 @@ msgid "Actions"
 msgstr "Tindakan"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "Mampatkan"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
 msgctxt "button"
 msgid "Delete"
 msgstr "Padam"
 
-#: admin/Ilove_Img_Compress_Media_List_Table.php:151
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
 msgid "Items deleted."
-msgstr "Item telah dipadam."
+msgstr "Item dipadam."
 
-#: admin/Ilove_Img_Compress_Plugin.php:209
+#: admin/Ilove_Img_Compress_Plugin.php:222
 msgid "Try again or buy more credits"
 msgstr "Cuba semula atau beli lebih banyak kredit"
 
-#: admin/Ilove_Img_Compress_Plugin.php:231
+#: admin/Ilove_Img_Compress_Plugin.php:244
 msgctxt "column name"
 msgid "Compression status"
 msgstr "Status mampatan"
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 msgid "Please log in or sign up to continue."
 msgstr "Sila log masuk atau daftar untuk meneruskan."
 
-#: admin/Ilove_Img_Compress_Plugin.php:322
+#: admin/Ilove_Img_Compress_Plugin.php:335
 #: admin/Ilove_Img_Compress_Resources.php:306
 #: admin/Ilove_Img_Compress_Resources.php:312
 msgctxt "button"
 msgid "Go to settings"
 msgstr "Pergi ke tetapan"
 
-#: admin/Ilove_Img_Compress_Plugin.php:333
+#: admin/Ilove_Img_Compress_Plugin.php:346
 msgid "Incorrect email or password."
 msgstr "E-mel atau kata laluan adalah salah."
 
-#: admin/Ilove_Img_Compress_Plugin.php:338
+#: admin/Ilove_Img_Compress_Plugin.php:351
 msgid "This email is already in use."
 msgstr "E-mel ini sudah digunakan."
 
-#: admin/Ilove_Img_Compress_Plugin.php:343
+#: admin/Ilove_Img_Compress_Plugin.php:356
 msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
 msgstr "Anda telah mencapai bilangan maksimum pengguna untuk pemalam ini. Sila log masuk dengan pengguna sedia ada."
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgid "You're out of credits!"
-msgstr "Anda telah kehabisan kredit!"
+msgstr "Anda kehabisan kredit!"
 
-#: admin/Ilove_Img_Compress_Plugin.php:377
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "Beli lebih banyak kredit"
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:395
-#: admin/Ilove_Img_Compress_Plugin.php:428
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
 #, php-format
 msgid "Image compressed successfully: %s"
 msgstr "Imej berjaya dimampatkan: %s"
 
-#: admin/Ilove_Img_Compress_Plugin.php:462
+#: admin/Ilove_Img_Compress_Plugin.php:475
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
 msgstr "Mampatan iLoveIMG"
 
-#: admin/Ilove_Img_Compress_Plugin.php:565
+#: admin/Ilove_Img_Compress_Plugin.php:578
 msgid "Couldn't complete the request. Please refresh and try again."
 msgstr "Permintaan tidak dapat diselesaikan. Sila segar semula dan cuba lagi."
 
-#: admin/Ilove_Img_Compress_Plugin.php:569
+#: admin/Ilove_Img_Compress_Plugin.php:582
 msgid "Error processing your request. Invalid Image ID"
 msgstr "Ralat semasa memproses permintaan anda. ID Imej tidak sah"
 
-#: admin/Ilove_Img_Compress_Plugin.php:577
+#: admin/Ilove_Img_Compress_Plugin.php:590
 msgid "No backup found."
 msgstr "Tiada sandaran ditemui."
 
-#: admin/Ilove_Img_Compress_Plugin.php:595
+#: admin/Ilove_Img_Compress_Plugin.php:608
 msgid "File restored successfully."
 msgstr "Fail berjaya dipulihkan."
-
-#: admin/Ilove_Img_Compress_Plugin.php:646
-#: admin/Ilove_Img_Compress_Resources.php:300
-msgctxt "button"
-msgid "Compress"
-msgstr "Mampatkan"
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Compress_Process.php:62
@@ -221,19 +222,19 @@ msgctxt "File processing was successful"
 msgid "Done. Please refresh the page."
 msgstr "Selesai. Sila segar semula halaman."
 
-#: admin/Ilove_Img_Compress_Submenu.php:56
 #: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
 msgstr "Tetapan Pemampatan"
 
-#: admin/Ilove_Img_Compress_Submenu.php:68
 #: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
 msgctxt "submenu"
 msgid "Watermark settings"
 msgstr "Tetapan tera air"
 
-#: admin/Ilove_Img_Compress_Submenu.php:80
+#: admin/Ilove_Img_Compress_Submenu.php:81
 msgctxt "submenu"
 msgid "Bulk Compress"
 msgstr "Mampat pukal"
@@ -253,7 +254,7 @@ msgstr "E-mel"
 #: admin/views/account.php:88
 msgctxt "input password"
 msgid "Password"
-msgstr "Kata laluan"
+msgstr "Password"
 
 #: admin/views/account.php:62
 msgctxt "button"
@@ -294,7 +295,7 @@ msgstr "Percuma"
 #: admin/views/account.php:117
 #, php-format
 msgid "%1$d / %2$d credits used this month. Free Tier."
-msgstr "%1$d / %2$d telah digunakan pada bulan ini. Pelan Percuma."
+msgstr "%1$d / %2$d kredit telah digunakan pada bulan ini. Pelan Percuma."
 
 #: admin/views/account.php:124
 msgctxt "subtitle section: subscription credits"
@@ -483,7 +484,7 @@ msgstr "Pulih Semua"
 #: admin/views/compress.php:159
 msgctxt "button"
 msgid "Clear backup"
-msgstr "Kosongkan sandaran"
+msgstr "Kosongkan Sandaran"
 
 #. translators: %s: backup size
 #: admin/views/compress.php:166
@@ -501,8 +502,29 @@ msgctxt "button"
 msgid "Compress all uploaded images"
 msgstr "Mampatkan semua imej yang dimuat naik"
 
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "%s imej berjaya dimampatkan."
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "%1$s imej dimampatkan, %2$s imej gagal."
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "%s imej gagal dimampatkan."
+
 #. translators: %s: number of images deleted
-#: admin/views/media-bulk.php:39
+#: admin/views/media-bulk.php:86
 #, php-format
 msgid "%s image deleted successfully."
 msgid_plural "%s images deleted successfully."
@@ -516,7 +538,7 @@ msgstr "Ringkasan"
 #: admin/views/overview.php:12
 msgctxt "Overview: tool title"
 msgid "Compress image"
-msgstr "Mampatkan imej"
+msgstr "Compress image"
 
 #. translators: %s porcentage of size saved
 #: admin/views/overview.php:28
@@ -575,10 +597,35 @@ msgstr "%1$s Pasangkan tera air iLoveIMG %2$s untuk menggunakan logo atau teks p
 #: ilove-img-compress.php:89
 msgctxt "button"
 msgid "Settings"
-msgstr "Tetapan"
+msgstr "Settings"
 
 #: ilove-img-compress.php:92
 msgctxt "button"
 msgid "Bulk Compress"
 msgstr "Mampat pukal"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "Batal"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "Semua perubahan alat akan hilang. Adakah anda mahu meneruskan?"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "Amaran!"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "Teruskan"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "Semua fail dalam folder iloveimg-backup akan dipadam. Teruskan?"
 
