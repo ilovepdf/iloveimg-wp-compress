@@ -32,13 +32,13 @@
             </ul>
         </div>
         <div class="iloveimg_settings__options-container">
-            <p><?php esc_html_e( 'You can get also a powerful, easy to use, and reliable Watermark plugin for your image protection needs. With full automation and powerful features, iLoveIMG makes it easy to prevent unauthorized usage of your images by helping you create highly customized watermarks in just a few seconds.', 'iloveimg' ); ?></p>
+            <p><?php esc_html_e( 'Protect your visuals as well as you optimize them.', 'iloveimg' ); ?></p>
             <p>
                 <?php
                 printf(
                     wp_kses_post(
                         // translators: %1$s and %2$s are HTML link tags
-                        __( '%1$s Discover all Watermark - iLoveIMG %2$s features soon and combine it with your Image Compressor & Optimizer – iLoveIMG!', 'iloveimg' )
+                        __( '%1$s Install iLoveIMG Watermark %2$s to apply a logo or text to many images at once, with precise position, size, opacity, and rotation. You can also enable auto-watermark on upload to keep branding consistent without extra steps.', 'iloveimg' )
                     ),
                     '<a href="/wp-admin/plugin-install.php?tab=plugin-information&plugin=watermark-protect-images" target="_blank">',
                     '</a>'

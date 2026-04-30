@@ -12,7 +12,12 @@
   "devDependencies": {
     "@babel/core": "^7.28",
     "@babel/preset-env": "^7.28",
-    "cross-env": "^10.0.0",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/jquery": "^3.5.33",
+    "@wordpress/i18n": "^6.12.0",
+    "cross-env": "^10.1.0",
     "gulp": "^5.0.1",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-babel": "^8.0.0",
@@ -23,6 +28,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
+    "rollup": "^4.57.1",
     "sass": "^1.91.0"
   }
 }

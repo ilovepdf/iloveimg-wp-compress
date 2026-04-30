@@ -2,47 +2,50 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Image Compressor & Optimizer - iLoveIMG 1.0.0\n"
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
-"POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: ilovepdf <info@ilovepdf.com>\n"
-"Language: es_ES\n"
+"Last-Translator: ilovepdf <info@ilovepdf.com>\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: iloveimg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
+"X-Crowdin-Language: es\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
+"Language: es_ES\n"
 
 #. Plugin Name of the plugin
+#. Author of the plugin
 #: ilove-img-compress.php
-msgid "Image Compressor & Optimizer - iLoveIMG"
-msgstr "Compresor de Imagen & Optimizador - iLoveIMG"
+msgid "iLoveIMG"
+msgstr "iLoveIMG"
+
+#. Plugin URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveapi.com/"
+msgstr "https://iloveapi.com/"
 
 #. Description of the plugin
 #: ilove-img-compress.php
-msgid ""
-"Get your images delivered quickly. Now you can get a powerful, easy to use, "
-"and reliable image compression plugin for your image optimization needs. "
-"With full automation and powerful features, iLoveIMG makes it easy to speed "
-"up your website by lightening past and new images with just a click. "
-"Compress JPG, PNG and GIF images in your WordPress to improve the "
-"positioning of your site, boost visitor’s engagement and ultimately increase "
-"sales."
-msgstr ""
-"Obtén tus imágenes rápidamente. Ahora puedes tener un potente, fácil de usar "
-"y confiable plugin de compresión de imágenes para optimizar tus imágenes. "
-"Con automatización completa y funciones avanzadas, iLoveIMG facilita la "
-"aceleración de tu sitio web al reducir el peso de imágenes antiguas y nuevas "
-"con solo un clic. Comprime imágenes JPG, PNG y GIF en tu WordPress para "
-"mejorar el posicionamiento de tu sitio, aumentar la interacción de los "
-"visitantes y, en última instancia, incrementar las ventas."
+msgid "Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement."
+msgstr "Comprime imágenes JPG, PNG, y GIF en WordPress para optimizar tu sitio web, mejorar el SEO, y aumentar la interacción."
+
+#. Author URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveimg.com/"
+msgstr "https://iloveimg.com/"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:102
 msgctxt "column name"
 msgid "File"
-msgstr "Archivo"
+msgstr "File"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:103
 msgctxt "column name"
@@ -51,446 +54,386 @@ msgstr "Autor"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:104
 msgctxt "column name"
-msgid "Date"
-msgstr "Fecha"
+msgid "Upload Date"
+msgstr "Fecha de subida"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:105
 msgctxt "column name"
-msgid "Status"
-msgstr "Estado"
+msgid "Actions"
+msgstr "Acciones"
 
 #: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "Comprimir"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
 msgctxt "button"
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Eliminar"
 
-#: admin/Ilove_Img_Compress_Media_List_Table.php:151
-msgid "Items deleted (or they would be if we had items to delete)!"
-msgstr ""
-"¡Artículos eliminados (o lo serían si tuviéramos artículos para eliminar)!"
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
+msgid "Items deleted."
+msgstr "Elementos eliminados."
 
-#: admin/Ilove_Img_Compress_Plugin.php:207
+#: admin/Ilove_Img_Compress_Plugin.php:222
 msgid "Try again or buy more credits"
 msgstr "Inténtalo de nuevo o compra más créditos"
 
-#: admin/Ilove_Img_Compress_Plugin.php:229
+#: admin/Ilove_Img_Compress_Plugin.php:244
 msgctxt "column name"
-msgid "Status Compress"
-msgstr "Estado de Compresión"
+msgid "Compression status"
+msgstr "Estado de la compresión"
 
-#: admin/Ilove_Img_Compress_Plugin.php:320
-msgid "Please you need to be logged or registered."
-msgstr "Por favor, debes estar logueado o registrado."
+#: admin/Ilove_Img_Compress_Plugin.php:335
+msgid "Please log in or sign up to continue."
+msgstr "Por favor, inicia sesión o regístrate para continuar."
 
-#: admin/Ilove_Img_Compress_Plugin.php:320
-#: admin/Ilove_Img_Compress_Resources.php:304
-#: admin/Ilove_Img_Compress_Resources.php:310
+#: admin/Ilove_Img_Compress_Plugin.php:335
+#: admin/Ilove_Img_Compress_Resources.php:306
+#: admin/Ilove_Img_Compress_Resources.php:312
 msgctxt "button"
 msgid "Go to settings"
-msgstr "Ir a Configuraciones"
+msgstr "Ir a Ajustes"
 
-#: admin/Ilove_Img_Compress_Plugin.php:331
-msgid "Your email or password is wrong."
-msgstr "Su correo electrónico o contraseña es incorrecto."
+#: admin/Ilove_Img_Compress_Plugin.php:346
+msgid "Incorrect email or password."
+msgstr "Mail o contraseña incorrecta."
 
-#: admin/Ilove_Img_Compress_Plugin.php:336
-msgid "This email address has already been taken."
-msgstr "Esta dirección de correo electrónico ya ha sido tomada."
+#: admin/Ilove_Img_Compress_Plugin.php:351
+msgid "This email is already in use."
+msgstr "Este correo electrónico ya está en uso."
 
-#: admin/Ilove_Img_Compress_Plugin.php:341
-msgid ""
-"You have reached limit of different users to use this WordPress plugin. "
-"Please relogin with one of your existing users."
-msgstr ""
-"Has alcanzado el límite de usuarios diferentes que pueden usar este "
-"complemento de WordPress. Vuelve a iniciar sesión con uno de tus usuarios "
-"existentes."
+#: admin/Ilove_Img_Compress_Plugin.php:356
+msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
+msgstr "Has alcanzado el número máximo de usuarios para usar este plugin. Por favor, inicia sesión con un usuario existente."
 
-#: admin/Ilove_Img_Compress_Plugin.php:373
-msgid "Please you need more credits."
-msgstr "Por favor, necesitas más créditos."
+#: admin/Ilove_Img_Compress_Plugin.php:390
+msgid "You're out of credits!"
+msgstr "¡Te has quedado sin créditos!"
 
-#: admin/Ilove_Img_Compress_Plugin.php:373 admin/views/account.php:197
+#: admin/Ilove_Img_Compress_Plugin.php:390
 msgctxt "button"
 msgid "Buy more credits"
 msgstr "Comprar más créditos"
 
 #. translators: %s: ID of File
-#: admin/Ilove_Img_Compress_Plugin.php:391
-#: admin/Ilove_Img_Compress_Plugin.php:424
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
 #, php-format
-msgid "The image %s was compressed correctly"
-msgstr "La imagen %s fue comprimida correctamente"
+msgid "Image compressed successfully: %s"
+msgstr "Imagen comprimida correctamente: %s"
 
-#: admin/Ilove_Img_Compress_Plugin.php:458
+#: admin/Ilove_Img_Compress_Plugin.php:475
 msgctxt "Subtitle for individual page of the file"
 msgid "iLoveIMG Compress"
-msgstr "iLoveIMG Compresión"
+msgstr "iLoveIMG Comprimir"
 
-#: admin/Ilove_Img_Compress_Plugin.php:562
-msgid "Error processing your request. Invalid Nonce code"
-msgstr "Error al procesar su solicitud. Código Nonce no válido"
+#: admin/Ilove_Img_Compress_Plugin.php:578
+msgid "Couldn't complete the request. Please refresh and try again."
+msgstr "No se ha podido completar la solicitud. Actualiza e inténtalo de nuevo."
 
-#: admin/Ilove_Img_Compress_Plugin.php:566
+#: admin/Ilove_Img_Compress_Plugin.php:582
 msgid "Error processing your request. Invalid Image ID"
-msgstr "Error al procesar su solicitud. ID de imagen no válida"
+msgstr "Error al procesar tu solicitud. Identificador de imagen no válido"
 
-#: admin/Ilove_Img_Compress_Plugin.php:574
-msgid "Sorry. There is no backup for this file"
-msgstr "Lo sentimos, no hay respaldo para este archivo"
+#: admin/Ilove_Img_Compress_Plugin.php:590
+msgid "No backup found."
+msgstr "No se ha encontrado ninguna copia de seguridad."
 
-#: admin/Ilove_Img_Compress_Plugin.php:592
-msgid "It was restored correctly"
-msgstr "Fue restaurado correctamente"
-
-#: admin/Ilove_Img_Compress_Plugin.php:643
-msgctxt "button"
-msgid "Compress Images"
-msgstr "Comprimir imágenes"
+#: admin/Ilove_Img_Compress_Plugin.php:608
+msgid "File restored successfully."
+msgstr "Archivo restaurado correctamente."
 
 #. translators: %d: ID of File
 #: admin/Ilove_Img_Compress_Process.php:62
 #, php-format
-msgid "The file %d is not an image."
-msgstr "El archivo %d no es una imagen."
+msgid "File %d is not a valid image."
+msgstr "El archivo %d no es una imagen válida."
 
 #: admin/Ilove_Img_Compress_Process.php:175
 #: admin/Ilove_Img_Compress_Process.php:182
-msgid "There was a problem processing your image."
-msgstr "Hubo un problema al procesar tu imagen."
+msgid "Could not process the request."
+msgstr "No se ha podido procesar la solicitud."
 
 #: admin/Ilove_Img_Compress_Process.php:185
-msgid ""
-"Check your credentials in the plugin settings page. If you recently deleted "
-"a project in your iloveapi account, try switching to another project to "
-"correctly save your API Keys."
-msgstr ""
-"Comprueba tus credenciales en la página de configuración del complemento. Si "
-"eliminaste recientemente un proyecto en tu cuenta de iloveapi, intenta "
-"cambiar a otro proyecto para guardar correctamente tus claves API."
+msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
+msgstr "Comprueba las credenciales de tu plugin. Si has eliminado un proyecto en tu cuenta iLoveAPI, intenta cambiar de proyecto para almacenar correctamente tus claves API."
 
 #: admin/Ilove_Img_Compress_Resources.php:37
 msgctxt "input checkbox"
-msgid "Original image"
-msgstr "Imagen Original"
-
-#: admin/Ilove_Img_Compress_Resources.php:205
-msgctxt "column name"
-msgid "Name"
-msgstr "Nombre"
-
-#: admin/Ilove_Img_Compress_Resources.php:206
-msgctxt "column name"
-msgid "Initial"
-msgstr "Inicial"
+msgid "Original"
+msgstr "Original"
 
 #: admin/Ilove_Img_Compress_Resources.php:207
+msgctxt "column name"
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+#: admin/Ilove_Img_Compress_Resources.php:208
+msgctxt "column name"
+msgid "Original"
+msgstr "Original"
+
+#: admin/Ilove_Img_Compress_Resources.php:209
 msgctxt "column name"
 msgid "Compressed"
 msgstr "Comprimido"
 
-#: admin/Ilove_Img_Compress_Resources.php:230
-#: admin/Ilove_Img_Compress_Resources.php:233
+#: admin/Ilove_Img_Compress_Resources.php:232
+#: admin/Ilove_Img_Compress_Resources.php:235
 msgid "Not compressed"
-msgstr "No comprimido"
+msgstr "Sin comprimir"
 
 #. translators: %d: number of compressed images
-#: admin/Ilove_Img_Compress_Resources.php:250
+#: admin/Ilove_Img_Compress_Resources.php:252
 #, php-format
 msgid "%d sizes compressed"
 msgstr "%d tamaños comprimidos"
 
-#: admin/Ilove_Img_Compress_Resources.php:298
+#: admin/Ilove_Img_Compress_Resources.php:311
+msgid "Sign up required"
+msgstr "Es necesario registrarse"
+
+#: admin/Ilove_Img_Compress_Resources.php:434
+#: admin/Ilove_Img_Compress_Resources.php:470
+msgid "Filesystem connection failed."
+msgstr "Falló la conexión del sistema de archivos."
+
+#: admin/Ilove_Img_Compress_Resources.php:579
 msgctxt "button"
-msgid "Compress"
-msgstr "Comprimir"
+msgid "Restore original"
+msgstr "Restaurar original"
 
-#: admin/Ilove_Img_Compress_Resources.php:309
-msgid "You need to be registered"
-msgstr "Necesitas estar registrado"
-
-#: admin/Ilove_Img_Compress_Resources.php:404
-#: admin/Ilove_Img_Compress_Resources.php:440
-msgid "Unable to connect to the filesystem"
-msgstr "No se puede conectar al sistema de archivos"
-
-#: admin/Ilove_Img_Compress_Resources.php:549
-msgctxt "button"
-msgid "Restore original file"
-msgstr "Restaurar archivo original"
-
-#: admin/Ilove_Img_Compress_Resources.php:553
+#: admin/Ilove_Img_Compress_Resources.php:583
 msgctxt "The file is being processed"
-msgid "Loading..."
-msgstr "Cargando…"
+msgid "Processing…"
+msgstr "Procesando…"
 
-#: admin/Ilove_Img_Compress_Resources.php:554
+#: admin/Ilove_Img_Compress_Resources.php:584
 msgctxt "File processing had an error"
-msgid "Error"
-msgstr "Error"
+msgid "Error processing. Please refresh and try again."
+msgstr "Error al procesar. Por favor, actualiza e inténtalo de nuevo."
 
-#: admin/Ilove_Img_Compress_Resources.php:555
+#: admin/Ilove_Img_Compress_Resources.php:585
 msgctxt "File processing was successful"
-msgid "Completed, please refresh the page."
-msgstr "Completado, por favor vuelva a cargar la página."
+msgid "Done. Please refresh the page."
+msgstr "Completado. Por favor, actualiza la página."
 
-#: admin/Ilove_Img_Compress_Submenu.php:54
-#: admin/Ilove_Img_Compress_Submenu.php:55
+#: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
 msgctxt "submenu"
 msgid "Compress settings"
-msgstr "Configuraciones de compresión"
+msgstr "Ajustes de compresión"
 
-#: admin/Ilove_Img_Compress_Submenu.php:66
-#: admin/Ilove_Img_Compress_Submenu.php:67
+#: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
 msgctxt "submenu"
 msgid "Watermark settings"
-msgstr "Configuraciones de Marca de Agua"
+msgstr "Ajustes de marca de agua"
 
-#: admin/Ilove_Img_Compress_Submenu.php:78
+#: admin/Ilove_Img_Compress_Submenu.php:81
 msgctxt "submenu"
-msgid "Bulk Optimization"
-msgstr "Optimización en Lote"
+msgid "Bulk Compress"
+msgstr "Compresión masiva"
 
-#: admin/views/account.php:53
+#: admin/views/account.php:54
 msgctxt "form title"
-msgid "Login to your account"
-msgstr "Inicie sesión en su cuenta"
+msgid "Log in to your account"
+msgstr "Acceder a mi cuenta"
 
-#: admin/views/account.php:56 admin/views/account.php:84
+#: admin/views/account.php:57
+#: admin/views/account.php:85
 msgctxt "input email"
 msgid "Email"
-msgstr "Correo"
+msgstr "Email"
 
-#: admin/views/account.php:59 admin/views/account.php:87
+#: admin/views/account.php:60
+#: admin/views/account.php:88
 msgctxt "input password"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "Password"
 
-#: admin/views/account.php:61
+#: admin/views/account.php:62
 msgctxt "button"
-msgid "Forget Password?"
-msgstr "¿Olvidaste tu contraseña?"
+msgid "Forgot your password?"
+msgstr "¿Contraseña olvidada?"
 
-#: admin/views/account.php:64
+#: admin/views/account.php:65
 msgctxt "button"
-msgid "Login"
-msgstr "Iniciar Sesión"
+msgid "Log in"
+msgstr "Acceder"
 
-#: admin/views/account.php:67 admin/views/account.php:76
-msgid "Register as iLoveAPI developer"
-msgstr "Registrarse como desarrollador iLoveAPI"
+#: admin/views/account.php:68
+#: admin/views/account.php:77
+msgid "Create an iLoveAPI account"
+msgstr "Crear una cuenta de iLoveAPI"
 
-#: admin/views/account.php:81
+#: admin/views/account.php:82
 msgctxt "Input text"
 msgid "Name"
 msgstr "Nombre"
 
-#: admin/views/account.php:93
+#: admin/views/account.php:94
 msgctxt "button"
-msgid "Register"
-msgstr "Registro"
+msgid "Sign up"
+msgstr "Registrarse"
 
-#: admin/views/account.php:96
+#: admin/views/account.php:97
 msgctxt "button"
-msgid "Login to your account"
-msgstr "Inicie sesión en su cuenta"
+msgid "Log in to your account"
+msgstr "Acceder a mi cuenta"
 
-#: admin/views/account.php:105
+#: admin/views/account.php:106
 msgctxt "subtitle section: free credits"
 msgid "Free"
 msgstr "Gratis"
 
 #. translators: %1$d: credits used / %2$d: credits limit
-#: admin/views/account.php:116
+#: admin/views/account.php:117
 #, php-format
 msgid "%1$d / %2$d credits used this month. Free Tier."
-msgstr "%1$d / %2$d créditos utilizados este mes. Nivel gratuito."
+msgstr "%1$d / %2$d créditos usados este mes. Plan gratuito."
 
-#: admin/views/account.php:123
+#: admin/views/account.php:124
 msgctxt "subtitle section: subscription credits"
-msgid "Subscription plan"
-msgstr "Plan de suscripción"
+msgid "Monthly plan"
+msgstr "Plan mensual"
 
 #. translators: %1$d: credits used / %2$d: credits limit
-#: admin/views/account.php:137
+#: admin/views/account.php:138
+#: admin/views/account.php:155
 #, php-format
-msgid "%1$d / %2$d credits used this month. Subscription plan."
-msgstr "%1$d / %2$d créditos utilizados este mes. Plan  de suscripción."
+msgid "%1$d / %2$d credits used this month."
+msgstr "%1$d / %2$d créditos usados este mes."
 
-#: admin/views/account.php:145
+#: admin/views/account.php:146
 msgctxt "subtitle section: package credits"
-msgid "Prepaid packages."
-msgstr "Paquetes prepagos."
-
-#. translators: %1$d: credits used / %2$d: credits limit
-#: admin/views/account.php:154
-#, php-format
-msgid "%1$d / %2$d credits used this month. Prepaid packages."
-msgstr "%1$d / %2$d créditos utilizados este mes. Paquetes prepago."
+msgid "Packages"
+msgstr "Packs"
 
 #. translators: %d: free credits
-#: admin/views/account.php:167
+#: admin/views/account.php:168
 #, php-format
-msgid ""
-"Every month since your registry you will get %d free credits to use to "
-"compress or stamp your images."
-msgstr ""
-"Cada mes desde tu registro recibirás %d créditos gratis para usar para "
-"comprimir o sellar tus imágenes."
+msgid "You get %d free credits each month to process your files."
+msgstr "Cada mes, obtienes %d créditos gratis para procesar tus archivos."
 
-#: admin/views/account.php:176
+#: admin/views/account.php:177
 msgctxt "1: subscription plan link"
-msgid "subscription plans"
-msgstr "planes de suscripción"
-
-#: admin/views/account.php:181
-msgctxt "2: single package link"
-msgid "single package"
-msgstr "paquete único"
+msgid "Upgrade your plan or buy a credit package"
+msgstr "Cambia al plan superior o compra un paquete de créditos"
 
 #. translators: %1$s: subscription plan link, %2$s: single package link
-#: admin/views/account.php:187
+#: admin/views/account.php:183
 #, php-format
-msgid ""
-"To increase your credits amount you can either open one of our %1$s to get a "
-"fixed amount of additional credits per month or buy a %2$s of credits."
-msgstr ""
-"Para aumentar la cantidad de créditos, puedes obtener uno de nuestros %1$s "
-"para obtener una cantidad fija de créditos adicionales por mes o comprar "
-"%2$s de créditos."
+msgid "Need more credits? %1$s."
+msgstr "¿Necesitas más créditos? %1$s."
 
-#: admin/views/account.php:204
+#: admin/views/account.php:192
+msgctxt "button"
+msgid "Buy credits"
+msgstr "Comprar créditos"
+
+#: admin/views/account.php:199
 msgctxt "subtitle: Connected user section"
 msgid "Account"
 msgstr "Cuenta"
 
-#: admin/views/account.php:209
+#: admin/views/account.php:204
 msgctxt "button"
-msgid "Logout"
+msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: admin/views/account.php:216
-msgid "Select your working proyect"
-msgstr "Seleccione su proyecto de trabajo"
+#: admin/views/account.php:211
+msgid "Select project"
+msgstr "Seleccionar proyecto"
 
-#: admin/views/account.php:229
+#: admin/views/account.php:225
 msgctxt "Button: save changes"
-msgid "Save"
-msgstr "Guardar"
+msgid "Change project"
+msgstr "Cambiar proyecto"
 
-#: admin/views/compress.php:13 admin/views/watermark.php:11
-msgid "The power of iLoveIMG in your WordPress!"
-msgstr "¡El poder de iLoveIMG en tu WordPress!"
+#: admin/views/compress.php:13
+msgid "Easily optimize your images in WordPress!"
+msgstr "¡Optimiza fácilmente tus imágenes en WordPress!"
 
-#: admin/views/compress.php:14 admin/views/watermark.php:12
-msgid ""
-"Optimize your website images and improve your page load speed. Reduce the "
-"file size of your photos and gain maximum compression while keeping sharp "
-"images. Compress your WordPress images to improve the positioning of your "
-"site, boost visitor’s engagement and ultimately increase sales."
-msgstr ""
-"Optimice las imágenes de su sitio web y mejore la velocidad de carga de sus "
-"páginas. Reduzca el tamaño de archivo de sus fotos y obtenga la máxima "
-"compresión manteniendo la nitidez de las imágenes. Comprima sus imágenes de "
-"WordPress para mejorar el posicionamiento de su sitio, aumentar la "
-"participación de los visitantes y, en última instancia, aumentar las ventas."
+#: admin/views/compress.php:14
+msgid "Make your site faster and sharper by compressing images. iLoveIMG reduces file size without losing quality, helping improve your SEO, visitor engagement, and loading speed."
+msgstr "Haz que tu sitio sea más rápido y nítido al comprimir imágenes. iLoveIMG reduce el tamaño de archivo sin perder calidad, ayuda a mejorar el SEO, las interacciones de los visitantes y la velocidad de carga."
 
-#: admin/views/compress.php:15 admin/views/watermark.php:13
-msgid ""
-"Register now to get 2500 free credits and start working with iLoveIMG plugin "
-"now!"
-msgstr ""
-"¡Regístrese ahora para obtener 2500 créditos gratis y comenzar a trabajar "
-"con el complemento iLoveIMG ahora!"
+#: admin/views/compress.php:15
+msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
+msgstr "Regístrate y consigue 2.500 créditos gratis para empezar a optimizar con iLoveIMG."
 
-#: admin/views/compress.php:25 admin/views/watermark.php:23
+#: admin/views/compress.php:25
+#: admin/views/watermark.php:23
 msgid "Compress settings"
-msgstr "Configuraciones de compresión"
+msgstr "Ajustes de compresión"
 
-#: admin/views/compress.php:31 admin/views/watermark.php:29
+#: admin/views/compress.php:31
+#: admin/views/watermark.php:29
 msgid "Watermark settings"
-msgstr "Configuraciones de Marca de Agua"
+msgstr "Ajustes de marca de agua"
 
 #: admin/views/compress.php:41
 msgid "Save Changes"
-msgstr "Guardar Cambios"
+msgstr "Guardar cambios"
 
-#: admin/views/compress.php:42 admin/views/compress.php:182
-msgid "Register and login with us to save settings changes"
-msgstr ""
-"Regístrese e inicie sesión con nosotros para guardar los cambios de "
-"configuración"
+#: admin/views/compress.php:42
+#: admin/views/compress.php:182
+msgid "Log in to save your settings"
+msgstr "Inicia sesión para guardar tus ajustes"
 
 #: admin/views/compress.php:45
-msgid "Configure your Compress Images settings"
-msgstr "Configura tus ajustes de Comprimir imágenes"
+msgid "Compress Settings"
+msgstr "Ajustes de compresión"
 
 #: admin/views/compress.php:52
 msgctxt "checkbox field label"
-msgid "Compress Activated"
-msgstr "Comprimir Activado"
+msgid "Compress enabled"
+msgstr "Compresión activada"
 
 #: admin/views/compress.php:53
-msgid ""
-"Activate this plugin in your WordPress dashboard. Activation will work only "
-"once you have registered and login as an iLoveAPI developer."
-msgstr ""
-"Activa este complemento en tu panel de WordPress. La activación funcionará "
-"solo una vez que te hayas registrado e iniciado sesión como desarrollador de "
-"iLoveAPI."
+msgid "Reduce the file size of your images for easy sharing and storage."
+msgstr "Reduce el tamaño de tus imágenes para compartirlas y guardarlas fácilmente."
 
 #: admin/views/compress.php:62
 msgctxt "checkbox field label"
-msgid "Enable Autocompress Images"
-msgstr "Habilitar la compresión automática de imágenes"
+msgid "Automatically apply to uploaded files"
+msgstr "Aplicar automáticamente a los archivos subidos"
 
 #: admin/views/compress.php:63
-msgid ""
-"With autocompress enabled any image uploaded to your Media folder will be "
-"automatically compressed. Anyway you still will be able to compress "
-"uncompressed images from Media."
-msgstr ""
-"Si habilita la compresión automática, cualquier imagen que cargue en su "
-"carpeta de Medios se comprimirá automáticamente. De todos modos, podrá "
-"comprimir imágenes sin comprimir desde Medios."
+msgid "With auto-compression enabled, any image uploaded to the Media folder will be automatically compressed."
+msgstr "Con la autocompresión activada, cualquier imagen cargada en la carpeta Medios se comprimirá automáticamente."
 
 #: admin/views/compress.php:68
 msgctxt "checkbox field label"
 msgid "Images Sizes:"
-msgstr "Tamaño de Imagenes:"
+msgstr "Tamaños de las imágenes:"
 
 #: admin/views/compress.php:70
-msgid ""
-"All uploaded images to media create alternative size versions. Select here "
-"which image versions you want to compress."
-msgstr ""
-"Todas las imágenes cargadas en medios crean versiones de tamaño alternativo. "
-"Seleccione aquí qué versiones de imagen desea comprimir."
+msgid "Choose which image versions to compress. WordPress creates multiple sizes for each upload."
+msgstr "Elige qué versiones de imagen quieres comprimir. WordPress crea múltiples tamaños para cada subida."
 
 #: admin/views/compress.php:91
 msgctxt "checkbox field label"
-msgid "Resize full size image:"
-msgstr "Cambiar el tamaño de la imagen a tamaño completo:"
+msgid "Resize full-size image:"
+msgstr "Redimensionar la imagen a tamaño completo:"
 
 #: admin/views/compress.php:92
-msgid ""
-"Any uploaded image bigger than the maximum size fixed here, will be "
-"downsized to fit into these width and height boundaries. All images will be  "
-"resized according to the aspect ratio of the original image."
-msgstr ""
-"Cualquier imagen que se cargue y que sea más grande que el tamaño máximo "
-"establecido aquí se reducirá para ajustarse a estos límites de ancho y alto. "
-"Todas las imágenes se redimensionarán según la relación de aspecto de la "
-"imagen original."
+msgid "Images larger than the limits below will be resized automatically while keeping their aspect ratio."
+msgstr "Las imágenes que sean más grandes de lo que se indica a continuación se redimensionarán automáticamente manteniendo su relación de aspecto intacta."
 
 #: admin/views/compress.php:95
 msgctxt "input number label"
 msgid "Max width"
-msgstr "Ancho maximo"
+msgstr "Ancho máximo"
 
 #: admin/views/compress.php:97
-msgid "Original image width won't exceed this value in pixels."
-msgstr "El ancho de la imagen original no excederá este valor en píxeles."
+msgid "Set maximum width in pixels"
+msgstr "Establecer el ancho máximo en píxeles"
 
 #: admin/views/compress.php:100
 msgctxt "input number label"
@@ -498,64 +441,45 @@ msgid "Max height"
 msgstr "Altura máxima"
 
 #: admin/views/compress.php:102
-msgid "Original image height won't exceed this value in pixels."
-msgstr "La altura de la imagen original no excederá este valor en píxeles."
+msgid "Set maximum height in pixels"
+msgstr "Establecer la altura máxima en píxeles"
 
 #: admin/views/compress.php:114
 msgctxt "checkbox field label"
-msgid "Backup original Images"
-msgstr "Copia de seguridad de imágenes originales"
+msgid "Backup original files"
+msgstr "Crear una copia de seguridad de los archivos originales"
 
 #: admin/views/compress.php:115
-msgid ""
-"Enable this option to make a backup of your images before being compress or "
-"watermarked. These backups will allow you to restore your original images at "
-"cost of taking server memory space."
-msgstr ""
-"Habilite esta opción para crear una copia de seguridad de sus imágenes antes "
-"de comprimirlas o añadirles una marca de agua. Estas copias de seguridad le "
-"permitirán restaurar sus imágenes originales sin ocupar espacio en la "
-"memoria del servidor."
+msgid "Save a backup before processing so you can restore the original later. Uses server space."
+msgstr "Guarda una copia de seguridad antes de procesarla para que puedas restaurar el original más tarde. Utiliza el espacio del servidor."
 
 #. translators: %s: backup folder path
 #: admin/views/compress.php:121
 #, php-format
-msgid "Backup images will be stored at: %s"
-msgstr "Las imágenes de respaldo se almacenarán en: %s"
+msgid "Backups are stored at: %s"
+msgstr "Las copias de seguridad se guardan en: %s"
 
 #: admin/views/compress.php:132
 msgctxt "checkbox field label"
-msgid "Restore Original Images"
-msgstr "Restaurar imágenes originales"
+msgid "Restore Original Files"
+msgstr "Restaurar los archivos originales"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/compress.php:138
 #, php-format
-msgid ""
-"All backup images can be restored. This will restore the original images as "
-"they were before compression or watermarking. %1$s Warning: Any changes made "
-"AFTER Watermark/Compress would be also restored. %2$s"
-msgstr ""
-"Se pueden restaurar todas las imágenes de respaldo. Esto restaurará las "
-"imágenes originales tal como estaban antes de la compresión o la marca de "
-"agua. %1$s Advertencia: Cualquier cambio realizado DESPUÉS de la marca de "
-"agua/compresión también se restaurará. %2$s"
+msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
+msgstr "Puedes restaurar los archivos originales a partir de una copia de seguridad. La restauración hará que los archivos vuelvan al estado en el que estaban antes de los cambios. %1$s Aviso: Esta acción eliminará todos los cambios que se hayan hecho con las herramientas.%2$s"
 
 #. translators: %1$s and %2$s: html tags
 #: admin/views/compress.php:150
 #, php-format
-msgid ""
-"You can also clear all your backup images to free memory space. %1$s "
-"Warning: Clear backups will prevent you to restore original images. %2$s"
-msgstr ""
-"También puede borrar todas sus imágenes de respaldo para liberar espacio en "
-"la memoria. %1$s Advertencia: Borrar las copias de seguridad le impedirá "
-"restaurar las imágenes originales. %2$s"
+msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
+msgstr "Puedes eliminar todos los archivos de la copia de seguridad para liberar espacio. %1$s Aviso: Esto eliminará tu capacidad de restaurar archivos. %2$s"
 
 #: admin/views/compress.php:157
 msgctxt "button"
 msgid "Restore All"
-msgstr "Restaurar Todo"
+msgstr "Restaurar todo"
 
 #: admin/views/compress.php:159
 msgctxt "button"
@@ -571,131 +495,140 @@ msgstr "Tamaño de la copia de seguridad: %s"
 #: admin/views/compress.php:181
 msgctxt "button"
 msgid "Save Changes"
-msgstr "Guardar Cambios"
+msgstr "Guardar cambios"
 
 #: admin/views/media-bulk.php:23
 msgctxt "button"
-msgid "Compress all"
-msgstr "Comprimir todo"
+msgid "Compress all uploaded images"
+msgstr "Comprimir todas las imágenes subidas"
+
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "%s imagen comprimida correctamente."
+msgstr[1] "%s imágenes comprimidas correctamente."
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "Se han comprimido %1$s imágenes; no se han podido comprimir %2$s imágenes."
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "No se ha podido comprimir %s imagen."
+msgstr[1] "No se han podido comprimir %s imágenes."
+
+#. translators: %s: number of images deleted
+#: admin/views/media-bulk.php:86
+#, php-format
+msgid "%s image deleted successfully."
+msgid_plural "%s images deleted successfully."
+msgstr[0] "%s imagen eliminada correctamente."
+msgstr[1] "%s imágenes eliminadas correctamente."
 
 #: admin/views/overview.php:5
 msgctxt "title: admin settings overview"
-msgid "Overview"
+msgid "Summary"
 msgstr "Resumen"
 
-#. translators: %1$s and %2$s images sizes
-#: admin/views/overview.php:14
-#, php-format
-msgid "Original size %1$s / Optimized size %2$s"
-msgstr "Tamaño original %1$s / Tamaño optimizado %2$s"
+#: admin/views/overview.php:12
+msgctxt "Overview: tool title"
+msgid "Compress image"
+msgstr "Compress image"
 
 #. translators: %s porcentage of size saved
-#: admin/views/overview.php:32
+#: admin/views/overview.php:28
 #, php-format
-msgid "%s Thats the size you saved by using iLoveIMG"
-msgstr "%s Ese es el tamaño que ahorraste al usar iLoveIMG"
+msgid "%s Space saved"
+msgstr "%s de espacio ahorrado"
 
-#. translators: %1$s and %2$s images sizes
-#: admin/views/overview.php:46
+#: admin/views/overview.php:36
 #, php-format
-msgid "Original Compressed images %1$s / Uploaded images %2$s"
-msgstr "Imágenes comprimidas originales %1$s / Imágenes cargadas %2$s"
+msgctxt "Overview: image size summary"
+msgid "Your images, summary:\n"
+"Original size: %1$s\n"
+"Compressed size: %2$s"
+msgstr "Un resumen de tus imágenes:\n"
+"Tamaño original: %1$s\n"
+"Tamaño comprimido: %2$s"
 
 #. translators: %s porcentage optimized images
-#: admin/views/overview.php:63
+#: admin/views/overview.php:65
 #, php-format
-msgid "%s Total images you optimized with iLoveIMG"
-msgstr "%s Total de imágenes optimizadas con iLoveIMG"
+msgid "%s Images compressed"
+msgstr "%s de imágenes comprimidas"
+
+#: admin/views/overview.php:73
+#, php-format
+msgctxt "Overview: compressed images summary"
+msgid "Your images, summary:\n"
+"Total images: %1$s\n"
+"Compressed images: %2$s"
+msgstr "Un resumen de tus imágenes:\n"
+"Imágenes totales: %1$s\n"
+"Imágenes comprimidas: %2$s"
+
+#: admin/views/watermark.php:11
+msgid "The power of iLoveIMG in your WordPress!"
+msgstr "¡El poder de iLoveIMG en tu WordPress!"
+
+#: admin/views/watermark.php:12
+msgid "Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr "Optimiza las imágenes de tu sitio web y mejora la velocidad de carga de su página. Reduce el tamaño de archivo de las fotos y obtén la máxima compresión mientras mantiene la nitidez de las imágenes. Comprime tus imágenes de WordPress para mejorar la posición de tu sitio, aumentar la interacción de los visitantes y, en última instancia, aumentar las ventas."
+
+#: admin/views/watermark.php:13
+msgid "Register now to get 2500 free credits and start working with iLoveIMG plugin now!"
+msgstr "¡Regístrate para obtener 2.500 créditos gratis y empieza a usar el plugin iLoveIMG ahora!"
 
 #: admin/views/watermark.php:35
-msgid ""
-"You can get also a powerful, easy to use, and reliable Watermark plugin for "
-"your image protection needs. With full automation and powerful features, "
-"iLoveIMG makes it easy to prevent unauthorized usage of your images by "
-"helping you create highly customized watermarks in just a few seconds."
-msgstr ""
-"También puedes obtener un plugin de marca de agua potente, fácil de usar y "
-"confiable para proteger tus imágenes. Con automatización completa y potentes "
-"funciones, iLoveIMG facilita la prevención del uso no autorizado de tus "
-"imágenes, ayudándote a crear marcas de agua altamente personalizadas en tan "
-"solo unos segundos."
+msgid "Protect your visuals as well as you optimize them."
+msgstr "Protege y optimiza tus imágenes."
 
 #. translators: %1$s and %2$s are HTML link tags
 #: admin/views/watermark.php:41
 #, php-format
-msgid ""
-"%1$s Discover all Watermark - iLoveIMG %2$s features soon and combine it "
-"with your Image Compressor & Optimizer – iLoveIMG!"
-msgstr ""
-"%1$s ¡Descubre pronto todas las funciones de Watermark - iLoveIMG %2$s y "
-"combínalas con tu compresor y optimizador de imágenes: iLoveIMG!"
+msgid "%1$s Install iLoveIMG Watermark %2$s to apply a logo or text to many images at once, with precise position, size, opacity, and rotation. You can also enable auto-watermark on upload to keep branding consistent without extra steps."
+msgstr "%1$s Instala iLoveIMG %2$s para aplicar un logo o texto a muchas imágenes a la vez, con posición, tamaño, opacidad y rotación precisos. También puedes habilitar la marca de agua automática en la subida para mantener la imagen de la marca de forma consistente sin pasos adicionales."
 
 #: ilove-img-compress.php:89
 msgctxt "button"
 msgid "Settings"
-msgstr "Configuraciones"
+msgstr "Settings"
 
 #: ilove-img-compress.php:92
 msgctxt "button"
-msgid "Bulk Optimization"
-msgstr "Optimización en Lote"
+msgid "Bulk Compress"
+msgstr "Compresión masiva"
 
-#, php-format
-#~ msgid "The image %d was compressed correctly"
-#~ msgstr "La imagen %d fue comprimida correctamente"
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "Cancelar"
 
-#~ msgid "This is the page content"
-#~ msgstr "Este es el contenido de la página"
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "Se perderán todos los cambios de la herramienta. ¿Quieres continuar?"
 
-#~ msgid "Confirm Password"
-#~ msgstr "Confirmar Contraseña"
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "¡Cuidado!"
 
-#~ msgid "credits used this month."
-#~ msgstr "créditos utilizados este mes."
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "Continuar"
 
-#~ msgid "Every month since your registry you will get"
-#~ msgstr "Cada mes desde tu registro recibirás"
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "Se eliminarán todos los archivos de la carpeta de la copia de seguridad de iLoveIMG. ¿Quieres continuar?"
 
-#~ msgid "To increase your credits amount you can either open one of our"
-#~ msgstr ""
-#~ "Para aumentar la cantidad de sus créditos puede abrir uno de nuestros"
-
-#~ msgid "to get a fixed amount of additional credits per month or buy a"
-#~ msgstr ""
-#~ "para obtener una cantidad fija de créditos adicionales por mes o comprar "
-#~ "un"
-
-#~ msgid "of credits."
-#~ msgstr "de créditos."
-
-#~ msgid "You can find the original files at:"
-#~ msgstr "Puedes encontrar los archivos originales en:"
-
-#~ msgid ""
-#~ "Warning: Any changes made AFTER Watermark/Compress would be also restored."
-#~ msgstr ""
-#~ "Advertencia: Cualquier cambio realizado DESPUÉS de Marca de agua/"
-#~ "Comprimir también será restaurado."
-
-#~ msgid "You can also clear all your backup images to free memory space."
-#~ msgstr ""
-#~ "También puede borrar todas las imágenes de respaldo para liberar espacio "
-#~ "en la memoria."
-
-#~ msgid "Original size"
-#~ msgstr "Tamaño original"
-
-#~ msgid "Optimized size"
-#~ msgstr "Tamaño Optimizado"
-
-#~ msgid "Uploaded images"
-#~ msgstr "Imágenes cargadas"
-
-#~ msgid "Compress All"
-#~ msgstr "Comprimir Todo"
-
-#~ msgid "Discover all Watermark - iLoveIMG features soon "
-#~ msgstr "¡Descubre pronto todas las funciones de Watermark - iLoveIMG "
-
-#~ msgid "Package files."
-#~ msgstr "Paquete de archivos"
