@@ -10,9 +10,9 @@
  * Plugin Name:       iLoveIMG
  * Plugin URI:        https://iloveapi.com/
  * Description:       Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement.
- * Version:           2.2.13
- * Requires at least: 5.3
- * Requires PHP:      7.4
+ * Version:           2.2.14
+ * Requires at least: 6.1
+ * Requires PHP:      8.2
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+

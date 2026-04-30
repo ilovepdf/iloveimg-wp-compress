@@ -1,14 +1,14 @@
 === iLoveIMG ===
 Plugin Name: iLoveIMG
-Version: 2.2.13
+Version: 2.2.14
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
-Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 2.2.13
-Requires PHP: 7.4
+Requires at least: 6.1
+Tested up to: 6.9
+Stable tag: 2.2.14
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,16 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Compression details.
 
 == Changelog ==
+
+= 2.2.14 =
+Improved
+
+Improvements to all existing features.
+Update of translation template file.
+New available languages have been added (ar, bg, ca, de, el, es, fr, hi, id, it, ja, ko, ms, nl, pl, pt, ru, sv, sw, th, tr, uk, vi, zh_CN, zh_TW).
+Update of libraries.
+Update of PHP to ^8.2
+Compatibility with Wordpress 6.9.
 
 = 2.2.13 =
 Improved
