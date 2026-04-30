@@ -1,0 +1,634 @@
+# Copyright (C) 2025 iLoveIMG
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
+"Last-Translator: ilovepdf <info@ilovepdf.com>\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: iloveimg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
+"X-Crowdin-Language: hi\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
+"Language: hi_IN\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: ilove-img-compress.php
+msgid "iLoveIMG"
+msgstr "iLoveIMG"
+
+#. Plugin URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveapi.com/"
+msgstr "https://iloveapi.com/"
+
+#. Description of the plugin
+#: ilove-img-compress.php
+msgid "Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement."
+msgstr "अपनी WordPress साइट की स्पीड बढ़ाने, SEO सुधारने और एंगेजमेंट बढ़ाने के लिए JPG, PNG और GIF इमेजेस को कंप्रेस करें।"
+
+#. Author URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveimg.com/"
+msgstr "https://iloveimg.com/"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:102
+msgctxt "column name"
+msgid "File"
+msgstr "File"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:103
+msgctxt "column name"
+msgid "Author"
+msgstr "लेखक"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:104
+msgctxt "column name"
+msgid "Upload Date"
+msgstr "तारीख को अपलोड करें"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:105
+msgctxt "column name"
+msgid "Actions"
+msgstr "कार्रवाई"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "कंप्रेस करें"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
+msgctxt "button"
+msgid "Delete"
+msgstr "मिटाएँ"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
+msgid "Items deleted."
+msgstr "आइटम्स हटा दिए गए।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:222
+msgid "Try again or buy more credits"
+msgstr "दोबारा कोशिश करें या ज़्यादा क्रेडिट्स खरीदें"
+
+#: admin/Ilove_Img_Compress_Plugin.php:244
+msgctxt "column name"
+msgid "Compression status"
+msgstr "कंप्रेशन की स्थिति"
+
+#: admin/Ilove_Img_Compress_Plugin.php:335
+msgid "Please log in or sign up to continue."
+msgstr "कृपया जारी रखने के लिए लॉग इन करें या साइन अप करें।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:335
+#: admin/Ilove_Img_Compress_Resources.php:306
+#: admin/Ilove_Img_Compress_Resources.php:312
+msgctxt "button"
+msgid "Go to settings"
+msgstr "सेटिंग्स में जाएँ"
+
+#: admin/Ilove_Img_Compress_Plugin.php:346
+msgid "Incorrect email or password."
+msgstr "गलत ईमेल या पासवर्ड।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:351
+msgid "This email is already in use."
+msgstr "यह ईमेल पहले से इस्तेमाल में है।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:356
+msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
+msgstr "आप इस प्लगइन के लिए उपयोगकर्ताओं की अधिकतम सीमा तक पहुँच चुके हैं। कृपया किसी मौजूदा उपयोगकर्ता से लॉग इन करें।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:390
+msgid "You're out of credits!"
+msgstr "आपके क्रेडिट्स समाप्त हो गए हैं!"
+
+#: admin/Ilove_Img_Compress_Plugin.php:390
+msgctxt "button"
+msgid "Buy more credits"
+msgstr "ज़्यादा क्रेडिट्स खरीदें"
+
+#. translators: %s: ID of File
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
+#, php-format
+msgid "Image compressed successfully: %s"
+msgstr "इमेज सफलतापूर्वक कंप्रेस हो गई है: %s"
+
+#: admin/Ilove_Img_Compress_Plugin.php:475
+msgctxt "Subtitle for individual page of the file"
+msgid "iLoveIMG Compress"
+msgstr "iLoveIMG कंप्रेस"
+
+#: admin/Ilove_Img_Compress_Plugin.php:578
+msgid "Couldn't complete the request. Please refresh and try again."
+msgstr "अनुरोध पूरा नहीं हो सका। कृपया पेज रीफ़्रेश करें और दोबारा कोशिश करें।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:582
+msgid "Error processing your request. Invalid Image ID"
+msgstr "आपके अनुरोध को प्रोसेस करने में एक गड़बड़ी हुई। अमान्य इमेज ID"
+
+#: admin/Ilove_Img_Compress_Plugin.php:590
+msgid "No backup found."
+msgstr "कोई बैकअप नहीं मिला।"
+
+#: admin/Ilove_Img_Compress_Plugin.php:608
+msgid "File restored successfully."
+msgstr "फ़ाइल सफलतापूर्वक रिस्टोर कर दी गई है।"
+
+#. translators: %d: ID of File
+#: admin/Ilove_Img_Compress_Process.php:62
+#, php-format
+msgid "File %d is not a valid image."
+msgstr "फ़ाइल %d एक मान्य इमेज नहीं है।"
+
+#: admin/Ilove_Img_Compress_Process.php:175
+#: admin/Ilove_Img_Compress_Process.php:182
+msgid "Could not process the request."
+msgstr "अनुरोध को प्रोसेस नहीं किया जा सका।"
+
+#: admin/Ilove_Img_Compress_Process.php:185
+msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
+msgstr "अपने प्लगइन क्रेडेंशियल्स को जाँचें। अगर आपने अपने iLoveAPI अकाउंट में कोई प्रोजेक्ट हटाया है, तो API कुंजी को सही तरीके से स्टोर करने के लिए प्रोजेक्ट स्विच करके देखें।"
+
+#: admin/Ilove_Img_Compress_Resources.php:37
+msgctxt "input checkbox"
+msgid "Original"
+msgstr "ऑरिजनल"
+
+#: admin/Ilove_Img_Compress_Resources.php:207
+msgctxt "column name"
+msgid "File Name"
+msgstr "फ़ाइल का नाम"
+
+#: admin/Ilove_Img_Compress_Resources.php:208
+msgctxt "column name"
+msgid "Original"
+msgstr "ऑरिजनल"
+
+#: admin/Ilove_Img_Compress_Resources.php:209
+msgctxt "column name"
+msgid "Compressed"
+msgstr "कंप्रेस किया गया"
+
+#: admin/Ilove_Img_Compress_Resources.php:232
+#: admin/Ilove_Img_Compress_Resources.php:235
+msgid "Not compressed"
+msgstr "कंप्रेस नहीं किया गया"
+
+#. translators: %d: number of compressed images
+#: admin/Ilove_Img_Compress_Resources.php:252
+#, php-format
+msgid "%d sizes compressed"
+msgstr "%d साइज़ कंप्रेस किया गया है"
+
+#: admin/Ilove_Img_Compress_Resources.php:311
+msgid "Sign up required"
+msgstr "साइन अप आवश्यक है"
+
+#: admin/Ilove_Img_Compress_Resources.php:434
+#: admin/Ilove_Img_Compress_Resources.php:470
+msgid "Filesystem connection failed."
+msgstr "फ़ाइल सिस्टम कनेक्शन विफल हो गया।"
+
+#: admin/Ilove_Img_Compress_Resources.php:579
+msgctxt "button"
+msgid "Restore original"
+msgstr "ऑरिजनल को रिस्टोर करें"
+
+#: admin/Ilove_Img_Compress_Resources.php:583
+msgctxt "The file is being processed"
+msgid "Processing…"
+msgstr "संसाधित किया जा रहा है…"
+
+#: admin/Ilove_Img_Compress_Resources.php:584
+msgctxt "File processing had an error"
+msgid "Error processing. Please refresh and try again."
+msgstr "प्रोसेसिंग में गड़बड़ी। कृपया पेज रीफ़्रेश करें और दोबारा कोशिश करें।"
+
+#: admin/Ilove_Img_Compress_Resources.php:585
+msgctxt "File processing was successful"
+msgid "Done. Please refresh the page."
+msgstr "पूरा हो गया, कृपया पेज को रीफ़्रेश करें।"
+
+#: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
+msgctxt "submenu"
+msgid "Compress settings"
+msgstr "कंप्रेस से जुड़ी सेटिंग"
+
+#: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
+msgctxt "submenu"
+msgid "Watermark settings"
+msgstr "वॉटरमार्क सेटिंग्स"
+
+#: admin/Ilove_Img_Compress_Submenu.php:81
+msgctxt "submenu"
+msgid "Bulk Compress"
+msgstr "बल्क कंप्रेस"
+
+#: admin/views/account.php:54
+msgctxt "form title"
+msgid "Log in to your account"
+msgstr "अपने अकाउंट में लॉग इन करें"
+
+#: admin/views/account.php:57
+#: admin/views/account.php:85
+msgctxt "input email"
+msgid "Email"
+msgstr "ईमेल"
+
+#: admin/views/account.php:60
+#: admin/views/account.php:88
+msgctxt "input password"
+msgid "Password"
+msgstr "Password"
+
+#: admin/views/account.php:62
+msgctxt "button"
+msgid "Forgot your password?"
+msgstr "अपना पासवर्ड भूल गए हैं?"
+
+#: admin/views/account.php:65
+msgctxt "button"
+msgid "Log in"
+msgstr "लॉग इन करें"
+
+#: admin/views/account.php:68
+#: admin/views/account.php:77
+msgid "Create an iLoveAPI account"
+msgstr "iLoveAPI अकाउंट बनाएँ"
+
+#: admin/views/account.php:82
+msgctxt "Input text"
+msgid "Name"
+msgstr "नाम"
+
+#: admin/views/account.php:94
+msgctxt "button"
+msgid "Sign up"
+msgstr "साइन अप करें"
+
+#: admin/views/account.php:97
+msgctxt "button"
+msgid "Log in to your account"
+msgstr "अपने अकाउंट में लॉग इन करें"
+
+#: admin/views/account.php:106
+msgctxt "subtitle section: free credits"
+msgid "Free"
+msgstr "मुफ़्त"
+
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:117
+#, php-format
+msgid "%1$d / %2$d credits used this month. Free Tier."
+msgstr "इस महीने %1$d / %2$d क्रेडिट्स का इस्तेमाल किया गया है। फ़्री टियर।"
+
+#: admin/views/account.php:124
+msgctxt "subtitle section: subscription credits"
+msgid "Monthly plan"
+msgstr "मासिक प्लान"
+
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:138
+#: admin/views/account.php:155
+#, php-format
+msgid "%1$d / %2$d credits used this month."
+msgstr "इस महीने %1$d / %2$d क्रेडिट्स इस्तेमाल किए गए हैं।"
+
+#: admin/views/account.php:146
+msgctxt "subtitle section: package credits"
+msgid "Packages"
+msgstr "पैकेज"
+
+#. translators: %d: free credits
+#: admin/views/account.php:168
+#, php-format
+msgid "You get %d free credits each month to process your files."
+msgstr "आपको हर महीने अपने फ़ाइलों को प्रोसेस करने के लिए %d मुफ़्त क्रेडिट्स मिलते हैं।"
+
+#: admin/views/account.php:177
+msgctxt "1: subscription plan link"
+msgid "Upgrade your plan or buy a credit package"
+msgstr "अपना प्लान अपग्रेड करें या क्रेडिट पैकेज खरीदें"
+
+#. translators: %1$s: subscription plan link, %2$s: single package link
+#: admin/views/account.php:183
+#, php-format
+msgid "Need more credits? %1$s."
+msgstr "ज़्यादा क्रेडिट्स की ज़रूरत है? %1$s।"
+
+#: admin/views/account.php:192
+msgctxt "button"
+msgid "Buy credits"
+msgstr "क्रेडिट्स खरीदें"
+
+#: admin/views/account.php:199
+msgctxt "subtitle: Connected user section"
+msgid "Account"
+msgstr "अकाउंट"
+
+#: admin/views/account.php:204
+msgctxt "button"
+msgid "Log out"
+msgstr "लॉग आउट"
+
+#: admin/views/account.php:211
+msgid "Select project"
+msgstr "प्रोजेक्ट चुनें"
+
+#: admin/views/account.php:225
+msgctxt "Button: save changes"
+msgid "Change project"
+msgstr "प्रोजेक्ट बदलें"
+
+#: admin/views/compress.php:13
+msgid "Easily optimize your images in WordPress!"
+msgstr "अपने WordPress में आसानी से अपनी इमेजेस को ऑप्टिमाइज़ करें!"
+
+#: admin/views/compress.php:14
+msgid "Make your site faster and sharper by compressing images. iLoveIMG reduces file size without losing quality, helping improve your SEO, visitor engagement, and loading speed."
+msgstr "इमेजेस को कंप्रेस करके अपनी साइट को तेज़ और स्पष्ट बनाएं। iLoveIMG बिना क्वालिटी खोए फ़ाइल साइज को कम करता है, जिससे आपकी SEO, विज़िटर एंगेजमेंट और लोडिंग स्पीड बेहतर होती है।"
+
+#: admin/views/compress.php:15
+msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
+msgstr "साइन अप करें और iLoveIMG के साथ ऑप्टिमाइजेशन शुरू करने के लिए 2,500 मुफ़्त क्रेडिट पाएँ।"
+
+#: admin/views/compress.php:25
+#: admin/views/watermark.php:23
+msgid "Compress settings"
+msgstr "कंप्रेस से जुड़ी सेटिंग"
+
+#: admin/views/compress.php:31
+#: admin/views/watermark.php:29
+msgid "Watermark settings"
+msgstr "वॉटरमार्क सेटिंग्स"
+
+#: admin/views/compress.php:41
+msgid "Save Changes"
+msgstr "बदलाव सेव करें"
+
+#: admin/views/compress.php:42
+#: admin/views/compress.php:182
+msgid "Log in to save your settings"
+msgstr "अपनी सेटिंग्स सेव करने के लिए लॉग इन करें"
+
+#: admin/views/compress.php:45
+msgid "Compress Settings"
+msgstr "कंप्रेस सेटिंग्स"
+
+#: admin/views/compress.php:52
+msgctxt "checkbox field label"
+msgid "Compress enabled"
+msgstr "कंप्रेस चालू किया गया"
+
+#: admin/views/compress.php:53
+msgid "Reduce the file size of your images for easy sharing and storage."
+msgstr "अपनी इमेजेस का फ़ाइल साइज कम करें, ताकि उन्हें आसानी से शेयर और स्टोर किया जा सके।"
+
+#: admin/views/compress.php:62
+msgctxt "checkbox field label"
+msgid "Automatically apply to uploaded files"
+msgstr "अपलोड की गई फ़ाइलों पर ऑटोमैटिक रूप से लागू करें"
+
+#: admin/views/compress.php:63
+msgid "With auto-compression enabled, any image uploaded to the Media folder will be automatically compressed."
+msgstr "ऑटो-कंप्रेशन चालू होने पर, मीडिया फ़ोल्डर में अपलोड की गई कोई भी इमेज ऑटोमैटिक रूप से कंप्रेस हो जाएगी।"
+
+#: admin/views/compress.php:68
+msgctxt "checkbox field label"
+msgid "Images Sizes:"
+msgstr "इमेजेस का साइज़:"
+
+#: admin/views/compress.php:70
+msgid "Choose which image versions to compress. WordPress creates multiple sizes for each upload."
+msgstr "तय करें कि कौन-कौन से इमेज वर्ज़न को कंप्रेस करना है। WordPress हर एक अपलोड के लिए कई साइज़ बनाता है।"
+
+#: admin/views/compress.php:91
+msgctxt "checkbox field label"
+msgid "Resize full-size image:"
+msgstr "फुल-साइज़ इमेज को रीसाइज़ करें:"
+
+#: admin/views/compress.php:92
+msgid "Images larger than the limits below will be resized automatically while keeping their aspect ratio."
+msgstr "नीचे दिए गए लिमिट्स से बड़ी इमेजेस को उनके आसपेक्ट रेशियो को बनाए रखते हुए ऑटोमैटिक रूप से रीसाइज़ किया जाएगा।"
+
+#: admin/views/compress.php:95
+msgctxt "input number label"
+msgid "Max width"
+msgstr "अधिकतम चौड़ाई"
+
+#: admin/views/compress.php:97
+msgid "Set maximum width in pixels"
+msgstr "अधिकतम चौड़ाई पिक्सल में सेट करें"
+
+#: admin/views/compress.php:100
+msgctxt "input number label"
+msgid "Max height"
+msgstr "अधिकतम ऊँचाई"
+
+#: admin/views/compress.php:102
+msgid "Set maximum height in pixels"
+msgstr "अधिकतम ऊँचाई पिक्सल में सेट करें"
+
+#: admin/views/compress.php:114
+msgctxt "checkbox field label"
+msgid "Backup original files"
+msgstr "ऑरिजनल फ़ाइलों का बैकअप लें"
+
+#: admin/views/compress.php:115
+msgid "Save a backup before processing so you can restore the original later. Uses server space."
+msgstr "प्रोसेसिंग से पहले बैकअप सेव करें, ताकि आप बाद में ऑरिजनल को रिस्टोर कर सकें। इससे सर्वर स्पेस इस्तेमाल होगा।"
+
+#. translators: %s: backup folder path
+#: admin/views/compress.php:121
+#, php-format
+msgid "Backups are stored at: %s"
+msgstr "बैकअप इस जगह पर स्टोर किए जाते हैं: %s"
+
+#: admin/views/compress.php:132
+msgctxt "checkbox field label"
+msgid "Restore Original Files"
+msgstr "ऑरिजनल फ़ाइलें रिस्टोर करें"
+
+#. translators: %1$s and %2$s: html tags
+#: admin/views/compress.php:138
+#, php-format
+msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
+msgstr "आप बैकअप से ऑरिजनल फ़ाइलें रिस्टोर कर सकते हैं। रिस्टोर करने से फ़ाइलें उन स्थितियों में लौट जाएँगी जैसी वे किसी भी बदलाव से पहले थीं। %1$s चेतावनी: इससे टूल्स का इस्तेमाल करके किए गए सभी संशोधन हटा दिए जाएँगे। %2$s"
+
+#. translators: %1$s and %2$s: html tags
+#: admin/views/compress.php:150
+#, php-format
+msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
+msgstr "सर्वर स्पेस खाली करने के लिए आप सभी बैकअप फ़ाइलें हटा सकते हैं। %1$s चेतावनी: ऐसा करने से आप फ़ाइलों को रिस्टोर करने की क्षमता खो देंगे। %2$s"
+
+#: admin/views/compress.php:157
+msgctxt "button"
+msgid "Restore All"
+msgstr "सभी को रिस्टोर करें"
+
+#: admin/views/compress.php:159
+msgctxt "button"
+msgid "Clear backup"
+msgstr "बैकअप क्लियर करें"
+
+#. translators: %s: backup size
+#: admin/views/compress.php:166
+#, php-format
+msgid "Backup size: %s"
+msgstr "बैकअप साइज़: %s"
+
+#: admin/views/compress.php:181
+msgctxt "button"
+msgid "Save Changes"
+msgstr "बदलाव सेव करें"
+
+#: admin/views/media-bulk.php:23
+msgctxt "button"
+msgid "Compress all uploaded images"
+msgstr "सभी अपलोड की गई इमेजेस को कंप्रेस करें"
+
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "%s इमेज सफलतापूर्वक कंप्रेस की गई।"
+msgstr[1] "%s इमेजेस सफलतापूर्वक कंप्रेस की गई।"
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "%1$s इमेज सफलतापूर्वक कंप्रेस की गईं, %2$s इमेजेस कंप्रेस नहीं हो सकीं।"
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "%s इमेज को कंप्रेस नहीं किया जा सका।"
+msgstr[1] "%s इमेजेस को कंप्रेस नहीं किया जा सका।"
+
+#. translators: %s: number of images deleted
+#: admin/views/media-bulk.php:86
+#, php-format
+msgid "%s image deleted successfully."
+msgid_plural "%s images deleted successfully."
+msgstr[0] "%s इमेज सफलतापूर्वक हटाई गई।"
+msgstr[1] "%s इमेजेस सफलतापूर्वक हटाई गईं।"
+
+#: admin/views/overview.php:5
+msgctxt "title: admin settings overview"
+msgid "Summary"
+msgstr "सारांश"
+
+#: admin/views/overview.php:12
+msgctxt "Overview: tool title"
+msgid "Compress image"
+msgstr "Compress image"
+
+#. translators: %s porcentage of size saved
+#: admin/views/overview.php:28
+#, php-format
+msgid "%s Space saved"
+msgstr "%s स्पेस बचाया गया"
+
+#: admin/views/overview.php:36
+#, php-format
+msgctxt "Overview: image size summary"
+msgid "Your images, summary:\n"
+"Original size: %1$s\n"
+"Compressed size: %2$s"
+msgstr "आपकी इमेजेस का सारांश:\n"
+"ऑरिजनल साइज़: %1$s\n"
+"कंप्रेस्ड साइज़: %2$s"
+
+#. translators: %s porcentage optimized images
+#: admin/views/overview.php:65
+#, php-format
+msgid "%s Images compressed"
+msgstr "%s इमेजेस कंप्रेस की गईं"
+
+#: admin/views/overview.php:73
+#, php-format
+msgctxt "Overview: compressed images summary"
+msgid "Your images, summary:\n"
+"Total images: %1$s\n"
+"Compressed images: %2$s"
+msgstr "आपकी इमेजेस का सारांश:\n"
+"कुल इमेजेस: %1$s\n"
+"कंप्रेस की गईं इमेजेस: %2$s"
+
+#: admin/views/watermark.php:11
+msgid "The power of iLoveIMG in your WordPress!"
+msgstr "आपके WordPress में iLoveIMG की पावर!"
+
+#: admin/views/watermark.php:12
+msgid "Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr "अपनी वेबसाइट की इमेजेस को ऑप्टिमाइज़ करें और पेज लोड स्पीड को सुधारें। अपनी फ़ोटो का फ़ाइल साइज कम करें और इमेज की क्वालिटी बनाए रखते हुए अधिकतम कंप्रेसन पाएँ। अपनी WordPress इमेजेस को कंप्रेस करें, ताकि आपकी साइट की रैंकिंग बेहतर हो, विज़िटर्स की एंगेजमेंट बढ़े, जिससे बिक्री में बढ़ोतरी हो।"
+
+#: admin/views/watermark.php:13
+msgid "Register now to get 2500 free credits and start working with iLoveIMG plugin now!"
+msgstr "अभी रजिस्टर करें और पाएँ 2500 फ़्री क्रेडिट्स — iLoveIMG प्लगइन के साथ काम करना शुरू करें!"
+
+#: admin/views/watermark.php:35
+msgid "Protect your visuals as well as you optimize them."
+msgstr "अपनी इमेजेस को ऑप्टिमाइज़ करने के साथ-साथ उन्हें सुरक्षित भी रखें।"
+
+#. translators: %1$s and %2$s are HTML link tags
+#: admin/views/watermark.php:41
+#, php-format
+msgid "%1$s Install iLoveIMG Watermark %2$s to apply a logo or text to many images at once, with precise position, size, opacity, and rotation. You can also enable auto-watermark on upload to keep branding consistent without extra steps."
+msgstr "%1$s iLoveIMG वॉटरमार्क इंस्टॉल करें, %2$s ताकि आप सटीक स्थिति, साइज़, अपारदर्शिता और रोटेशन के साथ कई इमेजेस पर एक साथ लोगो या टेक्स्ट लगा सकें। आप अपलोड पर ऑटो-वॉटरमार्क भी चालू कर सकते हैं, ताकि ब्रांडिंग बिना अतिरिक्त स्टेप्स के लगातार बनी रहे।"
+
+#: ilove-img-compress.php:89
+msgctxt "button"
+msgid "Settings"
+msgstr "Settings"
+
+#: ilove-img-compress.php:92
+msgctxt "button"
+msgid "Bulk Compress"
+msgstr "बल्क कंप्रेस"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "कैंसल करें"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "टूल में किए गए सभी बदलाव खो जाएँगे। क्या आप जारी रखना चाहते हैं?"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "चेतावनी!"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "जारी रखें"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "iloveimg-backup फ़ोल्डर में सभी फ़ाइलें हटा दी जाएँगी। क्या आप जारी रखना चाहते हैं?"
+

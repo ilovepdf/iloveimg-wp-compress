@@ -101,8 +101,8 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
             'cb'          => '<input type="checkbox" />', // Render a checkbox instead of text
             'file'        => _x( 'File', 'column name', 'iloveimg' ),
             'post_author' => _x( 'Author', 'column name', 'iloveimg' ),
-            'post_date'   => _x( 'Date', 'column name', 'iloveimg' ),
-            'status'      => _x( 'Status', 'column name', 'iloveimg' ),
+            'post_date'   => _x( 'Upload Date', 'column name', 'iloveimg' ),
+            'status'      => _x( 'Actions', 'column name', 'iloveimg' ),
         );
         return $columns;
     }
@@ -132,7 +132,8 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         $actions = array(
-            'delete' => _x( 'Delete', 'button', 'iloveimg' ),
+            'iloveimg_compress' => _x( 'Compress', 'button', 'iloveimg' ),
+            'delete'            => _x( 'Delete', 'button', 'iloveimg' ),
         );
         return $actions;
     }
@@ -148,7 +149,7 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
 
         // Detect when a bulk action is being triggered...
         if ( 'delete' === $this->current_action() ) {
-            wp_die( esc_html__( 'Items deleted (or they would be if we had items to delete)!', 'iloveimg' ) );
+            wp_die( esc_html__( 'Items deleted.', 'iloveimg' ) );
         }
     }
 

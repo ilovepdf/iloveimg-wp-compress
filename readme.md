@@ -1,4 +1,4 @@
-# Image Compressor & Optimizer - iLoveIMG
+# iLoveIMG
 
 Optimize your website images and improve page load speed. Compress images while maintaining sharp quality for a faster, more efficient website.
 

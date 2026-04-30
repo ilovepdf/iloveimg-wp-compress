@@ -34,7 +34,7 @@ class Ilove_Img_Compress_Resources {
         $sizes[] = array(
             'field_id' => 'full',
             'type'     => 'checkbox',
-            'label'    => _x( 'Original image', 'input checkbox', 'iloveimg' ),
+            'label'    => _x( 'Original', 'input checkbox', 'iloveimg' ),
             'default'  => true,
         );
         foreach ( get_intermediate_image_sizes() as $_size ) {
@@ -72,7 +72,8 @@ class Ilove_Img_Compress_Resources {
         $initial    = 0;
         $compressed = 0;
         foreach ( $images as $image ) {
-            if ( ! is_null( $image['compressed'] ) ) {
+            // Only count sizes that were actually compressed (not null, > 0, and less than initial)
+            if ( ! is_null( $image['compressed'] ) && $image['compressed'] > 0 && $image['compressed'] < $image['initial'] ) {
                 $initial    += $image['initial'];
                 $compressed += $image['compressed'];
             }
@@ -154,7 +155,8 @@ class Ilove_Img_Compress_Resources {
             return $count;
         }
         foreach ( $images as $image ) {
-            if ( ! is_null( $image['compressed'] ) ) {
+            // Only count sizes that were actually compressed (not null, > 0, and less than initial)
+            if ( ! is_null( $image['compressed'] ) && $image['compressed'] > 0 && $image['compressed'] < $image['initial'] ) {
                 ++$count;
             }
         }
@@ -202,8 +204,8 @@ class Ilove_Img_Compress_Resources {
         <div id="iloveimg_detaills_compress_<?php echo (int) $image_id; ?>" style="display:none;">
             <table class="table__details__sizes">
                 <tr>
-                    <th><?php echo esc_html_x( 'Name', 'column name', 'iloveimg' ); ?></th>
-                    <th><?php echo esc_html_x( 'Initial', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'File Name', 'column name', 'iloveimg' ); ?></th>
+                    <th><?php echo esc_html_x( 'Original', 'column name', 'iloveimg' ); ?></th>
                     <th><?php echo esc_html_x( 'Compressed', 'column name', 'iloveimg' ); ?></th>
                     <?php
                     $total_size       = 0;
@@ -306,7 +308,7 @@ class Ilove_Img_Compress_Resources {
                         endif;
                     else :
 						?>
-                        <p><?php esc_html_e( 'You need to be registered', 'iloveimg' ); ?></p>
+                        <p><?php esc_html_e( 'Sign up required', 'iloveimg' ); ?></p>
                         <a href="<?php echo esc_url( admin_url( 'admin.php?page=iloveimg-compress-admin-page' ) ); ?>" class="iloveimg_link"><?php echo esc_html_x( 'Go to settings', 'button', 'iloveimg' ); ?></button>
 						<?php
                     endif;
@@ -332,7 +334,28 @@ class Ilove_Img_Compress_Resources {
     public static function get_files_compressed() {
         global $wpdb;
 
-        return (int) $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" ); // phpcs:ignore
+        $rows = $wpdb->get_results( "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_compress'" ); // phpcs:ignore
+        $count = 0;
+
+        foreach ( $rows as $row ) {
+            $images = maybe_unserialize( $row->meta_value );
+
+            if ( ! is_array( $images ) ) {
+                $images = json_decode( $row->meta_value, true );
+            }
+
+            if ( is_array( $images ) ) {
+                // Check if at least one size was actually compressed (compressed < initial)
+                foreach ( $images as $image ) {
+                    if ( ! is_null( $image['compressed'] ) && $image['compressed'] > 0 && $image['compressed'] < $image['initial'] ) {
+                        ++$count;
+                        break; // Count this image once and move to next
+                    }
+                }
+            }
+        }
+
+        return (int) $count;
     }
 
     /**
@@ -376,12 +399,19 @@ class Ilove_Img_Compress_Resources {
         $total            = 0;
         $total_compressed = 0;
         foreach ( $rows as $row ) {
-            $stadistics = json_decode( $row->meta_value, true );
+            $stadistics = maybe_unserialize( $row->meta_value );
 
-            if ( $stadistics ) {
+            if ( ! is_array( $stadistics ) ) {
+                $stadistics = json_decode( $row->meta_value, true );
+            }
+
+            if ( is_array( $stadistics ) ) {
                 foreach ( $stadistics as $key => $value ) {
-                    $total            = $total + (int) $value['initial'];
-                    $total_compressed = $total_compressed + (int) $value['compressed'];
+                    // Only count sizes that were actually compressed (compressed < initial)
+                    if ( ! is_null( $value['compressed'] ) && $value['compressed'] > 0 && $value['compressed'] < $value['initial'] ) {
+                        $total            = $total + (int) $value['initial'];
+                        $total_compressed = $total_compressed + (int) $value['compressed'];
+                    }
                 }
             }
         }
@@ -401,7 +431,7 @@ class Ilove_Img_Compress_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg' )
 			);
 		}
 
@@ -437,7 +467,7 @@ class Ilove_Img_Compress_Resources {
         if ( ! WP_Filesystem() ) {
 			return new \WP_Error(
 				'Unable Filesystem',
-				esc_html__( 'Unable to connect to the filesystem', 'iloveimg' )
+				esc_html__( 'Filesystem connection failed.', 'iloveimg' )
 			);
 		}
 
@@ -546,13 +576,13 @@ class Ilove_Img_Compress_Resources {
             <?php if ( $backup_activated && in_array( $image_id, $images_restore, true ) ) : ?>
                 <div class="iloveimg-compress iloveimg_restore_button_wrapper">
                     <button class="iloveimg_restore_button button button-secondary" data-id="<?php echo intval( $image_id ); ?>" data-action="ilove_img_compress_restore">
-                        <?php echo esc_html_x( 'Restore original file', 'button', 'iloveimg' ); ?>
+                        <?php echo esc_html_x( 'Restore original', 'button', 'iloveimg' ); ?>
                     </button>
                     <br/>
                     <input type="hidden" id="_wpnonce" name="_wpnonce_iloveimg_compress_restore" value="<?php echo esc_html( $img_nonce ); ?>">
-                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php echo esc_html_x( 'Loading...', 'The file is being processed', 'iloveimg' ); ?></span></p>
-                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Error', 'File processing had an error', 'iloveimg' ); ?></span></p>
-                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Completed, please refresh the page.', 'File processing was successful', 'iloveimg' ); ?></span></p>
+                    <p class="loading iloveimg-status" style="display: none; margin-top: 5px;"><span><?php echo esc_html_x( 'Processing…', 'The file is being processed', 'iloveimg' ); ?></span></p>
+                    <p class="error iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Error processing. Please refresh and try again.', 'File processing had an error', 'iloveimg' ); ?></span></p>
+                    <p class="success iloveimg-status" style="margin-top: 5px;"><span><?php echo esc_html_x( 'Done. Please refresh the page.', 'File processing was successful', 'iloveimg' ); ?></span></p>
                 </div>
             <?php endif; ?>
         <?php

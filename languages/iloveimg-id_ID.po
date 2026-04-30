@@ -1,0 +1,631 @@
+# Copyright (C) 2025 iLoveIMG
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/iloveimg\n"
+"Last-Translator: ilovepdf <info@ilovepdf.com>\n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-11T17:04:36+00:00\n"
+"PO-Revision-Date: 2026-03-23 16:27\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: iloveimg\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: dd0be64bcfa1aeedc0243ed319b425c9\n"
+"X-Crowdin-Project-ID: 26\n"
+"X-Crowdin-Language: id\n"
+"X-Crowdin-File: iloveimg.pot\n"
+"X-Crowdin-File-ID: 2420\n"
+"Language: id_ID\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: ilove-img-compress.php
+msgid "iLoveIMG"
+msgstr "iLoveIMG"
+
+#. Plugin URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveapi.com/"
+msgstr "https://iloveapi.com/"
+
+#. Description of the plugin
+#: ilove-img-compress.php
+msgid "Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement."
+msgstr "Kompres gambar JPG, PNG, dan GIF di WordPress untuk mempercepat performa situs Anda, meningkatkan SEO, dan meningkatkan keterlibatan."
+
+#. Author URI of the plugin
+#: ilove-img-compress.php
+msgid "https://iloveimg.com/"
+msgstr "https://iloveimg.com/"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:102
+msgctxt "column name"
+msgid "File"
+msgstr "File"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:103
+msgctxt "column name"
+msgid "Author"
+msgstr "Penulis"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:104
+msgctxt "column name"
+msgid "Upload Date"
+msgstr "Tanggal Unggah"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:105
+msgctxt "column name"
+msgid "Actions"
+msgstr "Tindakan"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:135
+#: admin/Ilove_Img_Compress_Plugin.php:659
+#: admin/Ilove_Img_Compress_Resources.php:300
+msgctxt "button"
+msgid "Compress"
+msgstr "Kompres"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:136
+msgctxt "button"
+msgid "Delete"
+msgstr "Hapus"
+
+#: admin/Ilove_Img_Compress_Media_List_Table.php:152
+msgid "Items deleted."
+msgstr "Item dihapus."
+
+#: admin/Ilove_Img_Compress_Plugin.php:222
+msgid "Try again or buy more credits"
+msgstr "Coba lagi atau beli kredit tambahan"
+
+#: admin/Ilove_Img_Compress_Plugin.php:244
+msgctxt "column name"
+msgid "Compression status"
+msgstr "Status kompresi"
+
+#: admin/Ilove_Img_Compress_Plugin.php:335
+msgid "Please log in or sign up to continue."
+msgstr "Harap masuk atau daftar untuk melanjutkan."
+
+#: admin/Ilove_Img_Compress_Plugin.php:335
+#: admin/Ilove_Img_Compress_Resources.php:306
+#: admin/Ilove_Img_Compress_Resources.php:312
+msgctxt "button"
+msgid "Go to settings"
+msgstr "Buka pengaturan"
+
+#: admin/Ilove_Img_Compress_Plugin.php:346
+msgid "Incorrect email or password."
+msgstr "Email atau kata sandi salah."
+
+#: admin/Ilove_Img_Compress_Plugin.php:351
+msgid "This email is already in use."
+msgstr "Email ini sudah digunakan."
+
+#: admin/Ilove_Img_Compress_Plugin.php:356
+msgid "You've reached the maximum number of users for this plugin. Please log in with an existing user."
+msgstr "Anda telah mencapai jumlah maksimum pengguna untuk plugin ini. Harap masuk dengan akun pengguna yang sudah terdaftar."
+
+#: admin/Ilove_Img_Compress_Plugin.php:390
+msgid "You're out of credits!"
+msgstr "Kredit habis!"
+
+#: admin/Ilove_Img_Compress_Plugin.php:390
+msgctxt "button"
+msgid "Buy more credits"
+msgstr "Beli kredit tambahan"
+
+#. translators: %s: ID of File
+#: admin/Ilove_Img_Compress_Plugin.php:408
+#: admin/Ilove_Img_Compress_Plugin.php:441
+#, php-format
+msgid "Image compressed successfully: %s"
+msgstr "Gambar berhasil dikompres: %s"
+
+#: admin/Ilove_Img_Compress_Plugin.php:475
+msgctxt "Subtitle for individual page of the file"
+msgid "iLoveIMG Compress"
+msgstr "Kompresi iLoveIMG"
+
+#: admin/Ilove_Img_Compress_Plugin.php:578
+msgid "Couldn't complete the request. Please refresh and try again."
+msgstr "Tidak dapat menyelesaikan permintaan. Harap refresh dan coba lagi."
+
+#: admin/Ilove_Img_Compress_Plugin.php:582
+msgid "Error processing your request. Invalid Image ID"
+msgstr "Tidak dapat memproses permintaan Anda. ID Gambar tidak valid"
+
+#: admin/Ilove_Img_Compress_Plugin.php:590
+msgid "No backup found."
+msgstr "Cadangan tidak ditemukan."
+
+#: admin/Ilove_Img_Compress_Plugin.php:608
+msgid "File restored successfully."
+msgstr "File berhasil dipulihkan."
+
+#. translators: %d: ID of File
+#: admin/Ilove_Img_Compress_Process.php:62
+#, php-format
+msgid "File %d is not a valid image."
+msgstr "File gambar %d tidak valid."
+
+#: admin/Ilove_Img_Compress_Process.php:175
+#: admin/Ilove_Img_Compress_Process.php:182
+msgid "Could not process the request."
+msgstr "Tidak dapat memproses permintaan."
+
+#: admin/Ilove_Img_Compress_Process.php:185
+msgid "Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys."
+msgstr "Periksa kredensial plugin. Jika Anda menghapus proyek di akun iLoveAPI, coba ganti ke proyek lain agar kunci API dapat tersimpan dengan benar."
+
+#: admin/Ilove_Img_Compress_Resources.php:37
+msgctxt "input checkbox"
+msgid "Original"
+msgstr "Asli"
+
+#: admin/Ilove_Img_Compress_Resources.php:207
+msgctxt "column name"
+msgid "File Name"
+msgstr "Nama File"
+
+#: admin/Ilove_Img_Compress_Resources.php:208
+msgctxt "column name"
+msgid "Original"
+msgstr "Asli"
+
+#: admin/Ilove_Img_Compress_Resources.php:209
+msgctxt "column name"
+msgid "Compressed"
+msgstr "Dikompres"
+
+#: admin/Ilove_Img_Compress_Resources.php:232
+#: admin/Ilove_Img_Compress_Resources.php:235
+msgid "Not compressed"
+msgstr "Tidak dikompres"
+
+#. translators: %d: number of compressed images
+#: admin/Ilove_Img_Compress_Resources.php:252
+#, php-format
+msgid "%d sizes compressed"
+msgstr "%d ukuran telah dikurangi"
+
+#: admin/Ilove_Img_Compress_Resources.php:311
+msgid "Sign up required"
+msgstr "Perlu mendaftar"
+
+#: admin/Ilove_Img_Compress_Resources.php:434
+#: admin/Ilove_Img_Compress_Resources.php:470
+msgid "Filesystem connection failed."
+msgstr "Sambungan ke filesystem gagal."
+
+#: admin/Ilove_Img_Compress_Resources.php:579
+msgctxt "button"
+msgid "Restore original"
+msgstr "Pulihkan yang asli"
+
+#: admin/Ilove_Img_Compress_Resources.php:583
+msgctxt "The file is being processed"
+msgid "Processing…"
+msgstr "Memproses…"
+
+#: admin/Ilove_Img_Compress_Resources.php:584
+msgctxt "File processing had an error"
+msgid "Error processing. Please refresh and try again."
+msgstr "Kesalahan memproses. Harap refresh dan coba lagi."
+
+#: admin/Ilove_Img_Compress_Resources.php:585
+msgctxt "File processing was successful"
+msgid "Done. Please refresh the page."
+msgstr "Selesai. Harap refresh halaman."
+
+#: admin/Ilove_Img_Compress_Submenu.php:57
+#: admin/Ilove_Img_Compress_Submenu.php:58
+msgctxt "submenu"
+msgid "Compress settings"
+msgstr "Pengaturan kompresi"
+
+#: admin/Ilove_Img_Compress_Submenu.php:69
+#: admin/Ilove_Img_Compress_Submenu.php:70
+msgctxt "submenu"
+msgid "Watermark settings"
+msgstr "Pengaturan tanda air"
+
+#: admin/Ilove_Img_Compress_Submenu.php:81
+msgctxt "submenu"
+msgid "Bulk Compress"
+msgstr "Kompres Massal"
+
+#: admin/views/account.php:54
+msgctxt "form title"
+msgid "Log in to your account"
+msgstr "Masuk ke akun Anda"
+
+#: admin/views/account.php:57
+#: admin/views/account.php:85
+msgctxt "input email"
+msgid "Email"
+msgstr "Email"
+
+#: admin/views/account.php:60
+#: admin/views/account.php:88
+msgctxt "input password"
+msgid "Password"
+msgstr "Password"
+
+#: admin/views/account.php:62
+msgctxt "button"
+msgid "Forgot your password?"
+msgstr "Lupa kata sandi Anda?"
+
+#: admin/views/account.php:65
+msgctxt "button"
+msgid "Log in"
+msgstr "Masuk"
+
+#: admin/views/account.php:68
+#: admin/views/account.php:77
+msgid "Create an iLoveAPI account"
+msgstr "Buat akun iLoveAPI"
+
+#: admin/views/account.php:82
+msgctxt "Input text"
+msgid "Name"
+msgstr "Nama"
+
+#: admin/views/account.php:94
+msgctxt "button"
+msgid "Sign up"
+msgstr "Daftar"
+
+#: admin/views/account.php:97
+msgctxt "button"
+msgid "Log in to your account"
+msgstr "Masuk ke akun Anda"
+
+#: admin/views/account.php:106
+msgctxt "subtitle section: free credits"
+msgid "Free"
+msgstr "Gratis"
+
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:117
+#, php-format
+msgid "%1$d / %2$d credits used this month. Free Tier."
+msgstr "%1$d / %2$d kredit dipakai bulan ini. Tingkat Gratis."
+
+#: admin/views/account.php:124
+msgctxt "subtitle section: subscription credits"
+msgid "Monthly plan"
+msgstr "Paket bulanan"
+
+#. translators: %1$d: credits used / %2$d: credits limit
+#: admin/views/account.php:138
+#: admin/views/account.php:155
+#, php-format
+msgid "%1$d / %2$d credits used this month."
+msgstr "%1$d/%2$d kredit digunakan bulan ini."
+
+#: admin/views/account.php:146
+msgctxt "subtitle section: package credits"
+msgid "Packages"
+msgstr "Paket"
+
+#. translators: %d: free credits
+#: admin/views/account.php:168
+#, php-format
+msgid "You get %d free credits each month to process your files."
+msgstr "Anda mendapatkan %d kredit gratis setiap bulan untuk memproses file."
+
+#: admin/views/account.php:177
+msgctxt "1: subscription plan link"
+msgid "Upgrade your plan or buy a credit package"
+msgstr "Tingkatkan paket Anda atau beli paket kredit"
+
+#. translators: %1$s: subscription plan link, %2$s: single package link
+#: admin/views/account.php:183
+#, php-format
+msgid "Need more credits? %1$s."
+msgstr "Perlu kredit tambahan? %1$s."
+
+#: admin/views/account.php:192
+msgctxt "button"
+msgid "Buy credits"
+msgstr "Beli kredit"
+
+#: admin/views/account.php:199
+msgctxt "subtitle: Connected user section"
+msgid "Account"
+msgstr "Akun"
+
+#: admin/views/account.php:204
+msgctxt "button"
+msgid "Log out"
+msgstr "Keluar"
+
+#: admin/views/account.php:211
+msgid "Select project"
+msgstr "Pilih proyek"
+
+#: admin/views/account.php:225
+msgctxt "Button: save changes"
+msgid "Change project"
+msgstr "Ubah proyek"
+
+#: admin/views/compress.php:13
+msgid "Easily optimize your images in WordPress!"
+msgstr "Optimalkan gambar dengan mudah di WordPress!"
+
+#: admin/views/compress.php:14
+msgid "Make your site faster and sharper by compressing images. iLoveIMG reduces file size without losing quality, helping improve your SEO, visitor engagement, and loading speed."
+msgstr "Percepat dan pertajam tampilan situs Anda dengan mengompres gambar. iLoveIMG mengurangi ukuran file tanpa menurunkan kualitas sehingga dapat meningkatkan SEO, keterlibatan pengunjung, dan kecepatan pemuatan."
+
+#: admin/views/compress.php:15
+msgid "Sign up and get 2,500 free credits to start optimizing with iLoveIMG."
+msgstr "Daftar dan dapatkan 2.500 kredit gratis untuk mulai mengoptimalkan dengan iLoveIMG."
+
+#: admin/views/compress.php:25
+#: admin/views/watermark.php:23
+msgid "Compress settings"
+msgstr "Pengaturan kompresi"
+
+#: admin/views/compress.php:31
+#: admin/views/watermark.php:29
+msgid "Watermark settings"
+msgstr "Pengaturan tanda air"
+
+#: admin/views/compress.php:41
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: admin/views/compress.php:42
+#: admin/views/compress.php:182
+msgid "Log in to save your settings"
+msgstr "Masuk untuk menyimpan pengaturan Anda"
+
+#: admin/views/compress.php:45
+msgid "Compress Settings"
+msgstr "Pengaturan Kompresi"
+
+#: admin/views/compress.php:52
+msgctxt "checkbox field label"
+msgid "Compress enabled"
+msgstr "Kompresi diaktifkan"
+
+#: admin/views/compress.php:53
+msgid "Reduce the file size of your images for easy sharing and storage."
+msgstr "Kurangi ukuran file gambar Anda supaya mudah dibagikan dan disimpan."
+
+#: admin/views/compress.php:62
+msgctxt "checkbox field label"
+msgid "Automatically apply to uploaded files"
+msgstr "Otomatis terapkan di file yang diunggah"
+
+#: admin/views/compress.php:63
+msgid "With auto-compression enabled, any image uploaded to the Media folder will be automatically compressed."
+msgstr "Dengan fitur kompresi otomatis yang diaktifkan, setiap gambar yang diunggah ke folder Media akan otomatis dikompres."
+
+#: admin/views/compress.php:68
+msgctxt "checkbox field label"
+msgid "Images Sizes:"
+msgstr "Ukuran Gambar:"
+
+#: admin/views/compress.php:70
+msgid "Choose which image versions to compress. WordPress creates multiple sizes for each upload."
+msgstr "Pilih versi gambar yang akan dikompres. WordPress membuat beberapa ukuran untuk setiap unggahan."
+
+#: admin/views/compress.php:91
+msgctxt "checkbox field label"
+msgid "Resize full-size image:"
+msgstr "Ubah ukuran gambar berukuran penuh:"
+
+#: admin/views/compress.php:92
+msgid "Images larger than the limits below will be resized automatically while keeping their aspect ratio."
+msgstr "Gambar yang melebihi batas berikut akan otomatis diubah ukurannya tanpa mengubah rasio aspeknya."
+
+#: admin/views/compress.php:95
+msgctxt "input number label"
+msgid "Max width"
+msgstr "Lebar maksimum"
+
+#: admin/views/compress.php:97
+msgid "Set maximum width in pixels"
+msgstr "Tetapkan lebar maksimum dalam piksel"
+
+#: admin/views/compress.php:100
+msgctxt "input number label"
+msgid "Max height"
+msgstr "Tinggi maksimum"
+
+#: admin/views/compress.php:102
+msgid "Set maximum height in pixels"
+msgstr "Tetapkan tinggi maksimum dalam piksel"
+
+#: admin/views/compress.php:114
+msgctxt "checkbox field label"
+msgid "Backup original files"
+msgstr "Cadangkan file asli"
+
+#: admin/views/compress.php:115
+msgid "Save a backup before processing so you can restore the original later. Uses server space."
+msgstr "Simpan cadangan sebelum memproses agar file asli dapat dipulihkan. Cadangan akan disimpan di ruang server."
+
+#. translators: %s: backup folder path
+#: admin/views/compress.php:121
+#, php-format
+msgid "Backups are stored at: %s"
+msgstr "Cadangan disimpan di: %s"
+
+#: admin/views/compress.php:132
+msgctxt "checkbox field label"
+msgid "Restore Original Files"
+msgstr "Pulihkan File Asli"
+
+#. translators: %1$s and %2$s: html tags
+#: admin/views/compress.php:138
+#, php-format
+msgid "You can restore original files from backup. Restoring will return files to their state before any changes were made. %1$s Warning: This will remove all modifications applied using the tools. %2$s"
+msgstr "Anda dapat memulihkan file asli dari cadangan. Memulihkan file akan mengembalikan file ke kondisi awal sebelum perubahan dibuat. %1$s Perhatian: Ini akan menghapus semua perubahan yang diterapkan dengan alat. %2$s"
+
+#. translators: %1$s and %2$s: html tags
+#: admin/views/compress.php:150
+#, php-format
+msgid "You can delete all backup files to free up space. %1$s Warning: This will remove your ability to restore files. %2$s"
+msgstr "Anda dapat menghapus semua file cadangan untuk mengosongkan ruang. %1$s Perhatian: Jika melakukan ini, Anda tidak akan dapat memulihkan file. %2$s"
+
+#: admin/views/compress.php:157
+msgctxt "button"
+msgid "Restore All"
+msgstr "Pulihkan Semua"
+
+#: admin/views/compress.php:159
+msgctxt "button"
+msgid "Clear backup"
+msgstr "Bersihkan cadangan"
+
+#. translators: %s: backup size
+#: admin/views/compress.php:166
+#, php-format
+msgid "Backup size: %s"
+msgstr "Ukuran cadangan: %s"
+
+#: admin/views/compress.php:181
+msgctxt "button"
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: admin/views/media-bulk.php:23
+msgctxt "button"
+msgid "Compress all uploaded images"
+msgstr "Kompres semua gambar yang diunggah"
+
+#. translators: %s: number of images compressed
+#: admin/views/media-bulk.php:47
+#, php-format
+msgid "%s image compressed successfully."
+msgid_plural "%s images compressed successfully."
+msgstr[0] "%s gambar berhasil dikompres."
+
+#. translators: %1$s: number of compressed, %2$s: number of failed
+#: admin/views/media-bulk.php:59
+#, php-format
+msgctxt "bulk action result"
+msgid "%1$s images compressed, %2$s images failed."
+msgstr "%1$s gambar berhasi dikompres, %2$s gambar gagal dikompres."
+
+#. translators: %s: number of images that failed
+#: admin/views/media-bulk.php:72
+#, php-format
+msgid "%s image failed to compress."
+msgid_plural "%s images failed to compress."
+msgstr[0] "%s gambar gagal dikompres."
+
+#. translators: %s: number of images deleted
+#: admin/views/media-bulk.php:86
+#, php-format
+msgid "%s image deleted successfully."
+msgid_plural "%s images deleted successfully."
+msgstr[0] "%s gambar berhasil dihapus."
+
+#: admin/views/overview.php:5
+msgctxt "title: admin settings overview"
+msgid "Summary"
+msgstr "Ringkasan"
+
+#: admin/views/overview.php:12
+msgctxt "Overview: tool title"
+msgid "Compress image"
+msgstr "Compress image"
+
+#. translators: %s porcentage of size saved
+#: admin/views/overview.php:28
+#, php-format
+msgid "%s Space saved"
+msgstr "%s Ruang dihemat"
+
+#: admin/views/overview.php:36
+#, php-format
+msgctxt "Overview: image size summary"
+msgid "Your images, summary:\n"
+"Original size: %1$s\n"
+"Compressed size: %2$s"
+msgstr "Rangkuman gambar:\n"
+"Ukuran asli: %1$s\n"
+"Ukuran yang dikompres: %2$s"
+
+#. translators: %s porcentage optimized images
+#: admin/views/overview.php:65
+#, php-format
+msgid "%s Images compressed"
+msgstr "%s Gambar dikompres"
+
+#: admin/views/overview.php:73
+#, php-format
+msgctxt "Overview: compressed images summary"
+msgid "Your images, summary:\n"
+"Total images: %1$s\n"
+"Compressed images: %2$s"
+msgstr "Rangkuman gambar:\n"
+"Total gambar: %1$s\n"
+"Gambar yang dikompres: %2$s"
+
+#: admin/views/watermark.php:11
+msgid "The power of iLoveIMG in your WordPress!"
+msgstr "Kekuatan iLoveIMG dalam WordPress Anda!"
+
+#: admin/views/watermark.php:12
+msgid "Optimize your website images and improve your page load speed. Reduce the file size of your photos and gain maximum compression while keeping sharp images. Compress your WordPress images to improve the positioning of your site, boost visitor’s engagement and ultimately increase sales."
+msgstr "Optimalkan gambar situs web dan tingkatkan kecepatan pemuatan halaman Anda. Kurangi ukuran file foto Anda dan dapatkan kompresi maksimum sambil tetap menjaga ketajaman gambar. Kompres gambar WordPress Anda untuk meningkatkan posisi situs, keterlibatan pengunjung, dan pada akhirnya penjualan."
+
+#: admin/views/watermark.php:13
+msgid "Register now to get 2500 free credits and start working with iLoveIMG plugin now!"
+msgstr "Daftar sekarang untuk mendapatkan 2500 kredit gratis dan mulai bekerja dengan plugin iLoveIMG sekarang!"
+
+#: admin/views/watermark.php:35
+msgid "Protect your visuals as well as you optimize them."
+msgstr "Optimalkan sekaligus lindungi gambar Anda."
+
+#. translators: %1$s and %2$s are HTML link tags
+#: admin/views/watermark.php:41
+#, php-format
+msgid "%1$s Install iLoveIMG Watermark %2$s to apply a logo or text to many images at once, with precise position, size, opacity, and rotation. You can also enable auto-watermark on upload to keep branding consistent without extra steps."
+msgstr "%1$s Instal Tanda Air iLoveIMG %2$s untuk menambahkan logo atau teks ke banyak gambar sekaligus, dengan posisi, ukuran, keburaman, dan rotasi yang presisi. Anda juga bisa mengaktifkan tanda air otomatis saat mengunggah agar branding tetap konsisten dan praktis."
+
+#: ilove-img-compress.php:89
+msgctxt "button"
+msgid "Settings"
+msgstr "Settings"
+
+#: ilove-img-compress.php:92
+msgctxt "button"
+msgid "Bulk Compress"
+msgstr "Kompres Massal"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Cancel"
+msgstr "Batalkan"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All tool changes will be lost. Do you want to continue?"
+msgstr "Semua perubahan alat akan hilang. Ingin melanjutkan?"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog title"
+msgid "Warning!"
+msgstr "Peringatan!"
+
+#: assets/js/main.min.js:1
+msgctxt "button dialog box"
+msgid "Continue"
+msgstr "Lanjutkan"
+
+#: assets/js/main.min.js:1
+msgctxt "dialog content"
+msgid "All files in the iloveimg-backup folder will be deleted. Continue?"
+msgstr "Semua file di folder iloveimg-backup akan dihapus. Lanjutkan?"
+

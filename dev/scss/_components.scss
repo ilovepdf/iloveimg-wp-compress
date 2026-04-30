@@ -103,7 +103,11 @@
 		gap: 30px;
 
 		.button-primary {
-            @extend %button-primary;
+			@extend %button-primary;
+		}
+
+		.button-secondary {
+			@extend %button-secondary;
 		}
 	}
 

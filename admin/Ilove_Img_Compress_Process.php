@@ -59,7 +59,7 @@ class Ilove_Img_Compress_Process {
                     'error'     => true,
                     'error_msg' => sprintf(
                         /* translators: %d: ID of File */
-                        __( 'The file %d is not an image.', 'iloveimg' ),
+                        __( 'File %d is not a valid image.', 'iloveimg' ),
                         $images_id
                     ),
                 );
@@ -150,10 +150,10 @@ class Ilove_Img_Compress_Process {
 
                         if ( $execute_compress ) { /* @phpstan-ignore-line */
                             $my_task->download( dirname( $path_file ) );
+                            $compressed_size = filesize( $path_file );
 
-                            if ( $images[ $_size ]['compressed'] < $images[ $_size ]['initial'] ) {
-                                $images[ $_size ]['compressed'] = filesize( $path_file );
-                            }
+                            // Always set the compressed size after compression
+                            $images[ $_size ]['compressed'] = $compressed_size;
                         } else {
                             return false;
                         }
@@ -172,17 +172,17 @@ class Ilove_Img_Compress_Process {
 
                 return array(
                     'error'     => true,
-                    'error_msg' => __( 'There was a problem processing your image.', 'iloveimg' ),
+                    'error_msg' => __( 'Could not process the request.', 'iloveimg' ),
                 );
             }
 		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
             error_log('Exception on Compress Method: ' . print_r($e, true)); // phpcs:ignore
 
-            $error_msg = __( 'There was a problem processing your image.', 'iloveimg' );
+            $error_msg = __( 'Could not process the request.', 'iloveimg' );
 
             if ( 401 === $e->getCode() ) {
-                $error_msg = __( 'Check your credentials in the plugin settings page. If you recently deleted a project in your iloveapi account, try switching to another project to correctly save your API Keys.', 'iloveimg' );
+                $error_msg = __( 'Check your plugin credentials. If you deleted a project in your iLoveAPI account, try switching projects to correctly store your API keys.', 'iloveimg' );
             }
 
             return array(
