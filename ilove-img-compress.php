@@ -12,7 +12,7 @@
  * Description:       Compress JPG, PNG, and GIF images in WordPress to speed up your site, improve SEO, and increase engagement.
  * Version:           2.3.0
  * Requires at least: 6.1
- * Requires PHP:      8.2
+ * Requires PHP:      8.3
  * Author:            iLoveIMG
  * Author URI:        https://iloveimg.com/
  * License:           GPL-2.0+
