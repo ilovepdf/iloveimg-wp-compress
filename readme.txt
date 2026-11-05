@@ -1,14 +1,14 @@
 === iLoveIMG ===
 Plugin Name: iLoveIMG
-Version: 2.3.0
+Version: 3.0.0
 Author: iLovePDF
 Author URI: https://www.iloveimg.com/
 Contributors: iLovePDF
 Tags: compress, image, optimize, performance, image optimizer
 Requires at least: 6.1
 Tested up to: 6.9
-Stable tag: 2.3.0
-Requires PHP: 8.2
+Stable tag: 3.0.0
+Requires PHP: 8.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,14 @@ Moreover, all processed files are automatically deleted from our servers after b
 4. Compression details.
 
 == Changelog ==
+
+= 3.0.0 =
+Improved
+* Raised the minimum PHP requirement to 8.3. The plugin is now developed and analysed against PHP 8.4.
+* Added PHPCompatibility rulesets to the coding standards and static analysis tooling.
+
+Fixed
+* Updated bundled libraries to patch reported vulnerabilities in guzzlehttp/guzzle and guzzlehttp/psr7.
 
 = 2.3.0 =
 Improved
