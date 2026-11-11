@@ -647,4 +647,93 @@ class Ilove_Img_Compress_Resources {
         update_option( $option, $value, $autoload );
         restore_current_blog();
     }
+
+    /**
+     * Read a numeric value from the account data returned by the iLoveAPI.
+     *
+     * @param mixed  $account       The decoded account data, which is null when the stored option is unreadable.
+     * @param string $key           The key to read.
+     * @param int    $default_value Returned when the key is missing or not numeric.
+     *
+     * @return int The value for the key.
+     *
+     * @since 3.0.0
+     */
+    public static function get_account_value( $account, $key, $default_value = 0 ) {
+
+        if ( ! is_array( $account ) || ! isset( $account[ $key ] ) || ! is_numeric( $account[ $key ] ) ) {
+            return $default_value;
+        }
+
+        return (int) $account[ $key ];
+    }
+
+    /**
+     * Get the percentage of credits used, guarded against a missing or zero limit.
+     *
+     * @param int $used  The number of credits used.
+     * @param int $limit The total number of credits available.
+     *
+     * @return float The percentage used, capped at 100.
+     *
+     * @since 3.0.0
+     */
+    public static function get_account_percent( $used, $limit ) {
+
+        $limit = (int) $limit;
+
+        if ( $limit <= 0 ) {
+            return 0;
+        }
+
+        $percent = ( (int) $used * 100 ) / $limit;
+
+        return ( $percent > 100 ) ? 100 : $percent;
+    }
+
+    /**
+     * Check whether any credit tier still has credits available.
+     *
+     * A tier the user does not have reports 0/0, which must not count as exhausted:
+     * otherwise a spent free tier reads as "out of credits" while a package still has
+     * millions of files left.
+     *
+     * @param mixed $account The decoded account data, which is null when the stored option is unreadable.
+     *
+     * @return bool True when at least one funded tier has credits remaining.
+     *
+     * @since 3.0.0
+     */
+    public static function has_credits( $account ) {
+
+        return self::get_remaining_credits( $account ) > 0;
+    }
+
+    /**
+     * Count the credits still available across every funded tier.
+     *
+     * The free tier resets monthly and is usually the first to run out, so reporting it
+     * alone makes a working account look exhausted. This is the number that decides
+     * whether files can still be processed.
+     *
+     * @param mixed $account The decoded account data, which is null when the stored option is unreadable.
+     *
+     * @return int The credits remaining.
+     *
+     * @since 3.0.0
+     */
+    public static function get_remaining_credits( $account ) {
+
+        $remaining = 0;
+
+        foreach ( array( 'free', 'package', 'subscription' ) as $tier ) {
+            $limit = self::get_account_value( $account, $tier . '_files_limit' );
+
+            if ( $limit > 0 ) {
+                $remaining += max( 0, $limit - self::get_account_value( $account, $tier . '_files_used' ) );
+            }
+        }
+
+        return $remaining;
+    }
 }
