@@ -380,11 +380,7 @@ class Ilove_Img_Compress_Plugin {
                 } elseif ( 200 === (int) $response['response']['code'] ) {
                     $account = json_decode( $response['body'], true );
 
-                    if (
-                        (int) $account['files_used'] >= (int) $account['free_files_limit'] &&
-                        (int) $account['package_files_used'] >= (int) $account['package_files_limit'] &&
-                        ( isset( $account['subscription_files_used'] ) && (int) $account['subscription_files_used'] >= (int) $account['subscription_files_limit'] )
-                    ) {
+                    if ( ! Ilove_Img_Compress_Resources::has_credits( $account ) ) {
 						?>
                         <div class="notice notice-warning is-dismissible">
                             <p><strong>iLoveIMG</strong> - <?php esc_html_e( 'You\'re out of credits!', 'iloveimg' ); ?> <a href="https://iloveapi.com/pricing" target="_blank"><?php echo esc_html_x( 'Buy more credits', 'button', 'iloveimg' ); ?></a></p>
