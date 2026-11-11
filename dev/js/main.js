@@ -1,4 +1,4 @@
-import { compressImage, statusCompressing, compressAll, handleBulkAction } from './compress';
+import { compressImage, statusCompressing, compressAll, attachCompressingPoller, initTimesIntervals } from './compress';
 import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/backup';
 
 (function ($) {
@@ -8,20 +8,20 @@ import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/
 	}
 	var timesIntervals = {};
 
+	// Share timesIntervals with the compress module so post-swap re-binding works (C5)
+	initTimesIntervals(timesIntervals);
+
 	// Initialize based on admin page
 	switch (adminpage) {
 		case 'upload-php':
 			$(document).on('click', 'button.iloveimg-compress', compressImage);
 
-			// Check compressing status
+			// Check compressing status — use shared helper for page-load .each (C5)
 			$('.iloveimg_compressing').each(function (index, element) {
-				timesIntervals['ref_' + index] = setInterval(function () {
-					statusCompressing(element, index, timesIntervals);
-				}, 1000);
+				attachCompressingPoller(element, index, timesIntervals);
 			});
 
-			// Handle bulk action form submit
-			$(document).on('submit', 'form#images-filter, form#posts-filter', handleBulkAction);
+			// Native WP bulk dropdown goes server-side — handleBulkAction intercept removed (C7)
 			break;
 
 		case 'media_page_iloveimg-media-page':
@@ -29,15 +29,12 @@ import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/
 			$(document).on('click', 'button.iloveimg-compress', compressImage);
 			$(document).on('click', 'button#iloveimg_allcompress', compressAll);
 
-			// Check compressing status
+			// Check compressing status — use shared helper for page-load .each (C5)
 			$('.iloveimg_compressing').each(function (index, element) {
-				timesIntervals['ref_' + index] = setInterval(function () {
-					statusCompressing(element, index, timesIntervals);
-				}, 1000);
+				attachCompressingPoller(element, index, timesIntervals);
 			});
 
-			// Handle bulk action form submit
-			$(document).on('submit', 'form#images-filter, form#posts-filter', handleBulkAction);
+			// Native WP bulk dropdown goes server-side — handleBulkAction intercept removed (C7)
 			break;
 	}
 

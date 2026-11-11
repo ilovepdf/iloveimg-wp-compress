@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+.ipdf-notice {
+	display: flex;
+	align-items: center;
+	border-radius: $radius;
+	margin-left: 0;
+	gap: 15px;
+
+	.ipdf-logo {
+		margin: 0;
+		display: flex;
+		align-items: center;
+		flex-shrink: 0; /* FR-C7: prevent logo from shrinking on long messages */
+
+		img {
+			width: 28px;
+			height: auto;
+		}
+	}
+
+	p {
+		font-family: $font_family;
+		font-size: 0.85rem;
+		letter-spacing: $letter_spacing;
+		color: $dark;
+		margin: 0.5em 0;
+	}
+
+	&.notice-success {
+		border-left-color: $success_color;
+	}
+
+	&.notice-error {
+		border-left-color: $danger_color;
+	}
+
+	&.notice-warning {
+		border-left-color: #dba617;
+	}
+
+	&.notice-info {
+		border-left-color: $primary_color;
+	}
+}

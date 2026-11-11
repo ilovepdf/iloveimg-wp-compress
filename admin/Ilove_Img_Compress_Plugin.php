@@ -92,6 +92,7 @@ class Ilove_Img_Compress_Plugin {
         add_action( 'wp_ajax_ilove_img_compress_restore_all', array( $this, 'ilove_img_restore_all' ) );
         add_action( 'wp_ajax_ilove_img_compress_clear_backup', array( $this, 'ilove_img_compress_clear_backup' ) );
         add_action( 'wp_ajax_ilove_img_compress_restore', array( $this, 'ilove_img_restore' ) );
+        add_action( 'wp_ajax_ilove_img_compress_get_overview', array( $this, 'ilove_img_compress_get_overview' ) );
 
         // Process attachment metadata.
         add_filter( 'wp_generate_attachment_metadata', array( $this, 'process_attachment' ), 11, 2 );
@@ -143,6 +144,7 @@ class Ilove_Img_Compress_Plugin {
                 array(
                     'ajaxUrl' => admin_url( 'admin-ajax.php' ),
                     'nonce'   => wp_create_nonce( 'iloveimg_compress_nonce' ),
+                    'logoUrl' => esc_url( plugins_url( '/assets/images/logo.svg', __DIR__ ) ),
                 )
             );
 
@@ -721,5 +723,40 @@ class Ilove_Img_Compress_Plugin {
         $qvars[] = 'iloveimg-bulk-compression';
 
         return $qvars;
+    }
+
+    /**
+     * Return current overview statistics as JSON (read-only, nonce + auth guarded).
+     *
+     * Reuses the existing static stat methods from Ilove_Img_Compress_Resources so
+     * no logic is duplicated (YAGNI). Does not modify any data (read-only endpoint).
+     *
+     * @since 3.0.1
+     */
+    public function ilove_img_compress_get_overview() {
+        if ( ! current_user_can( 'upload_files' ) || ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_compress_nonce' ) ) {
+            wp_send_json_error( null, 403 );
+        }
+
+        $files_sizes      = Ilove_Img_Compress_Resources::get_files_sizes();
+        $total_images     = Ilove_Img_Compress_Resources::get_total_images();
+        $files_compressed = Ilove_Img_Compress_Resources::get_files_compressed();
+
+        $original   = (int) $files_sizes[0];
+        $compressed = (int) $files_sizes[1];
+
+        $percent_saved      = $original > 0 ? (float) round( ( ( $original - $compressed ) * 100 ) / $original ) : 0.0;
+        $percent_compressed = $total_images > 0 ? (float) round( ( $files_compressed * 100 ) / $total_images ) : 0.0;
+
+        wp_send_json_success(
+            array(
+                'percent_saved'      => $percent_saved,
+                'original_mb'        => (float) round( $original / 1024 / 1024, 2 ),
+                'compressed_mb'      => (float) round( $compressed / 1024 / 1024, 2 ),
+                'percent_compressed' => $percent_compressed,
+                'total_images'       => $total_images,
+                'files_compressed'   => $files_compressed,
+            )
+        );
     }
 }
