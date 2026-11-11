@@ -129,7 +129,7 @@ class Ilove_Img_Compress_Plugin {
                 'iloveimg-compress-main',
                 plugins_url( '/assets/js/main.min.js', __DIR__ ),
                 array( 'jquery', 'wp-i18n' ),
-                self::VERSION,
+                filemtime( plugin_dir_path( __DIR__ ) . 'assets/js/main.min.js' ),
                 true
             );
 
@@ -151,7 +151,7 @@ class Ilove_Img_Compress_Plugin {
                 self::NAME . '_admin',
                 plugins_url( '/assets/css/app.min.css', __DIR__ ),
                 array(),
-                self::VERSION
+                filemtime( plugin_dir_path( __DIR__ ) . 'assets/css/app.min.css' )
             );
         }
     }
