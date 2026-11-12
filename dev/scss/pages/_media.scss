@@ -68,12 +68,22 @@ body {
 					th,
 					td {
 						&.column-file {
+							max-width: 280px;
+
 							>a {
 								display: flex;
 								align-items: center;
+								max-width: 100%;
 
 								&:hover {
 									color: $primary_color;
+								}
+
+								.iloveimg__filename {
+									min-width: 0;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
 								}
 							}
 						}

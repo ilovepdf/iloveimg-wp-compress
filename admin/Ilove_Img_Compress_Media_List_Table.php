@@ -57,11 +57,13 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
     protected function column_default( $item, $column_name ) {
         switch ( $column_name ) {
             case 'file':
-                return "<a href='" . admin_url( 'post.php?post=' . $item['ID'] . '&action=edit' ) . "'>" . wp_get_attachment_image( $item['ID'] ) . $item['post_title'] . '</a>';
+                return "<a href='" . esc_url( admin_url( 'post.php?post=' . absint( $item['ID'] ) . '&action=edit' ) ) . "'>"
+                    . wp_get_attachment_image( $item['ID'] )
+                    . "<span class='iloveimg__filename'>" . esc_html( $item['post_title'] ) . '</span></a>';
             case 'post_author':
-                return get_the_author_meta( 'nickname', $item[ $column_name ] );
+                return esc_html( get_the_author_meta( 'nickname', $item[ $column_name ] ) );
             case 'post_date':
-                return $item[ $column_name ];
+                return esc_html( $item[ $column_name ] );
             case 'status':
                 return Ilove_Img_Compress_Resources::get_status_of_column( $item['ID'] );
             default:
@@ -204,11 +206,15 @@ class Ilove_Img_Compress_Media_List_Table extends WP_List_Table {
          */
         $order = 'ORDER BY post_date DESC';
 
-        if ( isset( $_GET['orderby'] ) && isset( $_GET['order'] ) ) { // phpcs:ignore
-            $order = 'ORDER BY ' . sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) . ' ' . sanitize_text_field( wp_unslash( $_GET['order'] ) ); // phpcs:ignore
-            if ( 'file' === $_GET['orderby'] ) { // phpcs:ignore
-                $order = 'ORDER BY post_title ' . sanitize_text_field( wp_unslash( $_GET['order'] ) ); // phpcs:ignore
-            }
+        // Allowlist-based ORDER BY: prevent SQL injection via unvalidated $_GET params.
+        $allowed_orderby = array( 'file', 'post_author', 'post_date' );
+        $orderby_req     = isset( $_GET['orderby'] ) ? sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+        $order_dir       = ( isset( $_GET['order'] ) && 'ASC' === strtoupper( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) ) ? 'ASC' : 'DESC'; // phpcs:ignore WordPress.Security.NonceVerification
+
+        if ( in_array( $orderby_req, $allowed_orderby, true ) ) {
+            // 'file' is a UI alias; the real DB column is post_title.
+            $db_column = ( 'file' === $orderby_req ) ? 'post_title' : $orderby_req;
+            $order     = 'ORDER BY ' . $db_column . ' ' . $order_dir;
         }
 
         $data = $wpdb->get_results( // phpcs:ignore
