@@ -37,6 +37,9 @@ define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login' );
 define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
+if ( ! defined( 'ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT' ) ) {
+    define( 'ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT', 300 );
+}
 define( 'ILOVE_IMG_COMPRESS_DB_VERSION', '1.1' );
 define( 'ILOVE_IMG_COMPRESS_UPLOAD_FOLDER', $ilove_img_compress_upload_path['basedir'] );
 define( 'ILOVE_IMG_COMPRESS_BACKUP_FOLDER', $ilove_img_compress_upload_path['basedir'] . '/iloveimg-backup/' );

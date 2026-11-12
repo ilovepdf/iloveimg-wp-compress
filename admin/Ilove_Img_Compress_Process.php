@@ -81,6 +81,7 @@ class Ilove_Img_Compress_Process {
 
             if ( $files_processing < ILOVE_IMG_COMPRESS_NUM_MAX_FILES && 0 === (int) $image_watermark_processing ) {
                 update_post_meta( $images_id, 'iloveimg_status_compress', 1 ); // status compressing
+                update_post_meta( $images_id, 'iloveimg_compress_started', time() );
 
                 $_sizes = get_intermediate_image_sizes();
 
@@ -177,6 +178,7 @@ class Ilove_Img_Compress_Process {
             }
 		} catch ( \Exception $e ) {
             update_post_meta( $images_id, 'iloveimg_status_compress', 0 );
+            delete_post_meta( $images_id, 'iloveimg_compress_started' );
             error_log('Exception on Compress Method: ' . print_r($e, true)); // phpcs:ignore
 
             $error_msg = __( 'Could not process the request.', 'iloveimg' );

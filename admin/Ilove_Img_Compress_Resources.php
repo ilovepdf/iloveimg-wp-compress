@@ -267,6 +267,55 @@ class Ilove_Img_Compress_Resources {
     }
 
     /**
+     * Return the effective compression status for an attachment, resetting stale in-flight rows.
+     *
+     * Only processing (status=1) and queued (status=3) rows can get stuck; 0 and 2 are terminal and
+     * are returned unchanged.  A row is "stale" when its iloveimg_compress_started timestamp is
+     * missing or older than ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT seconds.  On a cold page render an
+     * orphaned status=3 (queued) row is unconditionally reset to 0 because there is no persistent
+     * queue-drain worker; a queued state left over from a previous request will never be processed, and
+     * a missing timestamp can only mean no active worker is running.
+     *
+     * @param int  $column_id   Post/attachment ID.
+     * @param bool $page_render True when called during a cold page render (e.g. get_status_of_column()).
+     *                          A queued (status=3) row is unconditionally reset to idle on cold renders
+     *                          because there is no queue-drain worker; the queued state is only valid
+     *                          while the originating request is still alive.  Default false preserves
+     *                          existing behaviour for poll-endpoint and bulk-action callers.
+     * @return int Effective status (possibly reset to 0).
+     */
+    public static function reset_if_stale( int $column_id, bool $page_render = false ): int {
+        $status = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
+
+        // Only processing (1) and queued (3) rows can be stuck; 0 and 2 are terminal.
+        if ( 1 !== $status && 3 !== $status ) {
+            return $status;
+        }
+
+        // On a cold page render an orphaned status=3 (queued) row must be cleared: there is
+        // no persistent queue-drain worker, so a queued state left over from a previous request
+        // will never be processed.  Status=1 is intentionally NOT cleared here — a genuinely
+        // in-flight job still writes a fresh timestamp and must stay visible as "processing".
+        if ( $page_render && 3 === $status ) {
+            update_post_meta( $column_id, 'iloveimg_status_compress', 0 );
+            delete_post_meta( $column_id, 'iloveimg_compress_started' );
+            return 0;
+        }
+
+        $started = (int) get_post_meta( $column_id, 'iloveimg_compress_started', true );
+
+        // Fresh, genuinely in-flight job: leave it alone to avoid racing the worker.
+        if ( $started && ( time() - $started ) < ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT ) {
+            return $status;
+        }
+
+        // Stale (timed out) or legacy row with no timestamp: treat as failed → idle.
+        update_post_meta( $column_id, 'iloveimg_status_compress', 0 );
+        delete_post_meta( $column_id, 'iloveimg_compress_started' );
+        return 0;
+    }
+
+    /**
      * Get and display the status of image compression for a specific attachment column.
      *
      * This method retrieves and displays the status of image compression for a specific attachment
@@ -284,8 +333,10 @@ class Ilove_Img_Compress_Resources {
         $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce();
 
         if ( in_array( $post->post_mime_type, Ilove_Img_Compress_Plugin::$accepted_file_format, true ) ) :
-            $_sizes            = get_post_meta( $column_id, 'iloveimg_compress', true );
-            $status_compress   = (int) get_post_meta( $column_id, 'iloveimg_status_compress', true );
+            $_sizes = get_post_meta( $column_id, 'iloveimg_compress', true );
+            // reset_if_stale( …, true ) resets timed-out 1/3 rows AND orphaned status=3 rows to 0
+            // so the button renders as enabled and no .iloveimg_compressing poll div is emitted.
+            $status_compress   = self::reset_if_stale( $column_id, true );
             $images_compressed = self::get_sizes_compressed( $column_id );
 
             if ( $_sizes && $images_compressed ) :

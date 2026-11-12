@@ -7,6 +7,11 @@ var batchInProgress = false;
 var batchSuccesses = 0;
 var batchErrors = 0;
 
+// Dedup success notices: track which attachment ids have already received a
+// "compressed successfully" notice in this page-load so a row that resolves
+// "done" via multiple poll cycles only toasts once (REQ-01).
+var notifiedIds = new Set();
+
 /**
  * Store a reference to the shared timesIntervals object so poller re-binding
  * can work after an in-place container swap (C5).
@@ -127,7 +132,11 @@ export function compressImage(event) {
 				} else {
 					// Single-file: show notice; refresh overview on success.
 					if (isDoneFragment(data)) {
-						showAdminNotice(__('Image compressed successfully.', 'iloveimg'), 'success');
+						var id = element.data('id') || element.attr('data-id');
+						if (!notifiedIds.has(id)) {
+							notifiedIds.add(id);
+							showAdminNotice(__('Image compressed successfully.', 'iloveimg'), 'success');
+						}
 						refreshOverviewPanel();
 					} else {
 						showAdminNotice(__('Could not compress image.', 'iloveimg'), 'error');
@@ -197,7 +206,11 @@ export function statusCompressing(element, index, timesIntervals) {
 					// Poll resolved to completion (done or error fragment).
 					if (!batchInProgress) {
 						if (isDoneFragment(data)) {
-							showAdminNotice(__('Image compressed successfully.', 'iloveimg'), 'success');
+							var pollId = $element.data('id') || $element.attr('data-id');
+							if (!notifiedIds.has(pollId)) {
+								notifiedIds.add(pollId);
+								showAdminNotice(__('Image compressed successfully.', 'iloveimg'), 'success');
+							}
 							refreshOverviewPanel();
 						} else {
 							showAdminNotice(__('Could not compress image.', 'iloveimg'), 'error');

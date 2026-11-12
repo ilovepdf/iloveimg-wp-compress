@@ -210,17 +210,20 @@ class Ilove_Img_Compress_Plugin {
      */
     public function ilove_img_compress_library_is_compressed() {
         if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $attachment_id   = intval( $_POST['id'] );
-            $status_compress = get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
+            $attachment_id = intval( $_POST['id'] );
 
-            $images_compressed = Ilove_Img_Compress_Resources::get_sizes_compressed( $attachment_id );
+            // reset_if_stale() resets timed-out 1/3 rows to 0 so they fall through below.
+            // A fresh in-flight job (started within ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT) is left as-is.
+            $status_compress = Ilove_Img_Compress_Resources::reset_if_stale( $attachment_id );
 
-            if ( ( 1 === (int) $status_compress || 3 === (int) $status_compress ) ) {
-                update_post_meta( $attachment_id, 'iloveimg_status_compress', 0 );
+            if ( 1 === $status_compress || 3 === $status_compress ) {
+                // Genuinely in-flight: signal JS to keep polling; return empty body.
                 http_response_code( 500 );
-            } elseif ( 2 === (int) $status_compress ) {
+            } elseif ( 2 === $status_compress ) {
+                // Completed: return the detail fragment so JS can replace the cell in place.
                 Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
-            } elseif ( 0 === (int) $status_compress && ! $status_compress ) {
+            } else {
+                // Status 0 — either never processed, failed, or just reset from a stale 1/3.
                 esc_html_e( 'Try again or buy more credits', 'iloveimg' );
             }
         }
