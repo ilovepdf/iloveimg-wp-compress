@@ -59,3 +59,12 @@ Yes, the plugin is powered by the iloveAPI, which you can integrate into your ow
 
 ### How do you ensure the privacy of my images?
 We comply with the European Data Privacy Regulation (GDPR). All uploaded files are encrypted and automatically deleted after processing. For more details, refer to our [Privacy Policy](https://www.iloveimg.com/help/privacy) and [Terms and Conditions](https://www.iloveimg.com/help/terms).
+
+## Development setup
+
+The `vendor/` directory is committed in production mode (no dev dependencies in the autoloader).
+
+- **Local development**: run `composer install` to get all dependencies (including dev tools), then `composer run autoload-dev` to restore a full autoloader with dev packages.
+- **Before committing `vendor/`**: run `composer run autoload-prod` (alias for `composer dump-autoload --no-dev`) to regenerate the autoloader without dev-only entries. This prevents the `vendor/phpstan/phpstan/bootstrap.php` fatal on deploy.
+
+> `composer.lock` is gitignored intentionally. The CI workflow re-installs from scratch with `composer install` (dev mode) for analysis.

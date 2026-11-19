@@ -1,0 +1,15 @@
+/.github
+/dev
+/node_modules
+.distignore
+.gitignore
+.gitattributes
+composer.json
+package.json
+package-lock.json
+phpstan.neon
+phpcs.xml
+gulpfile.mjs
+jsconfig.json
+*.log
+*.zip
