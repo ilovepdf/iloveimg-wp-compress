@@ -322,21 +322,27 @@ class Ilove_Img_Compress_Resources {
      * column identified by its column ID. It checks the image's MIME type and the status of compression
      * and provides relevant actions or information to the user.
      *
-     * @param int $column_id The ID of the attachment column in the WordPress media library.
+     * @param int  $column_id   The ID of the attachment column in the WordPress media library.
+     * @param bool $page_render Whether to allow reset_if_stale to reset stale/orphaned statuses.
+     *                          Defaults to true (existing behaviour for all current callers).
+     *                          Pass false to suppress only the unconditional status=3 orphan reset;
+     *                          stale/timed-out rows (expired processing timestamp) are still reset
+     *                          to 0 regardless.
      *
      * @since 1.0.0
      */
-    public static function get_status_of_column( $column_id ) {
+    public static function get_status_of_column( int $column_id, bool $page_render = true ) {
 
         $post = get_post( $column_id );
 
-        $img_nonce = Ilove_Img_Compress_Plugin::get_img_nonce();
+        $img_nonce = wp_create_nonce( 'iloveimg_compress_nonce' );
 
         if ( in_array( $post->post_mime_type, Ilove_Img_Compress_Plugin::$accepted_file_format, true ) ) :
             $_sizes = get_post_meta( $column_id, 'iloveimg_compress', true );
-            // reset_if_stale( …, true ) resets timed-out 1/3 rows AND orphaned status=3 rows to 0
-            // so the button renders as enabled and no .iloveimg_compressing poll div is emitted.
-            $status_compress   = self::reset_if_stale( $column_id, true );
+            // reset_if_stale( …, $page_render ) resets timed-out 1/3 rows AND orphaned status=3
+            // rows to 0 when $page_render is true (the default), so the button renders as enabled
+            // and no .iloveimg_compressing poll div is emitted.  Pass false to skip the reset.
+            $status_compress   = self::reset_if_stale( $column_id, $page_render );
             $images_compressed = self::get_sizes_compressed( $column_id );
 
             if ( $_sizes && $images_compressed ) :
