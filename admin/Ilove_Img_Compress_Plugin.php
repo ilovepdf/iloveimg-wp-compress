@@ -142,9 +142,13 @@ class Ilove_Img_Compress_Plugin {
                 'iloveimg-compress-main',
                 'iloveimgCompress',
                 array(
-                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-                    'nonce'   => wp_create_nonce( 'iloveimg_compress_nonce' ),
-                    'logoUrl' => esc_url( plugins_url( '/assets/images/logo.svg', __DIR__ ) ),
+                    'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
+                    'nonce'           => wp_create_nonce( 'iloveimg_compress_nonce' ),
+                    'logoUrl'         => esc_url( plugins_url( '/assets/images/logo.svg', __DIR__ ) ),
+                    // Max concurrent in-flight files for the client-side pool runner.
+                    // Defaults to the (filtered) server gate so the client pool aligns with
+                    // the server unless independently overridden via ilove_img_compress_bulk_concurrency.
+                    'bulkConcurrency' => max( 1, (int) apply_filters( 'ilove_img_compress_bulk_concurrency', (int) apply_filters( 'ilove_img_compress_num_max_files', ILOVE_IMG_COMPRESS_NUM_MAX_FILES ) ) ),
                 )
             );
 
@@ -167,18 +171,42 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function ilove_img_compress_library() {
+        // Guarantee the job always completes even if the proxy/client disconnects mid-request.
+        // The client-side poll loop depends on being able to reach a true terminal status (2 or 0).
+        ignore_user_abort( true );
 
-        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $ilove         = new Ilove_Img_Compress_Process();
-            $attachment_id = intval( $_POST['id'] );
-            $images        = $ilove->compress( $attachment_id );
+        // Nonce check runs first (before capability checks and before reading POST values)
+        // so unauthenticated requests are rejected cheaply without touching user-data APIs.
+        if ( ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_compress_nonce' ) ) {
+            wp_send_json_error( null, 401 );
+        }
 
-            if ( ! $images['error'] ) {
-                Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
+        if ( ! current_user_can( 'upload_files' ) ) {
+            wp_send_json_error( null, 403 );
+        }
+        $attachment_id = isset( $_POST['id'] ) ? absint( wp_unslash( $_POST['id'] ) ) : 0;
+        if ( ! $attachment_id || ! current_user_can( 'edit_post', $attachment_id ) ) {
+            wp_send_json_error( null, 403 );
+        }
+
+        $ilove  = new Ilove_Img_Compress_Process();
+        $images = $ilove->compress( $attachment_id );
+
+        if ( ! $images['error'] ) {
+            Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
+        } else {
+            $current_status = (int) get_post_meta( $attachment_id, 'iloveimg_status_compress', true );
+            if ( 1 === $current_status || 3 === $current_status ) {
+                // Job is queued/in-flight: emit the .iloveimg_compressing div so the
+                // JS poller re-attaches and resolves to the terminal result.
+                // page_render=false: this is the trigger response, NOT a cold render, so
+                // the queued status MUST be kept (reset_if_stale would otherwise wipe a
+                // fresh status=3 to 0 and suppress the poller).
+                Ilove_Img_Compress_Resources::get_status_of_column( $attachment_id, false );
             } else {
-				?>
+                ?>
                 <p><?php echo esc_html( $images['error_msg'] ); ?></p>
-				<?php
+                <?php
             }
         }
         wp_die();
@@ -209,23 +237,36 @@ class Ilove_Img_Compress_Plugin {
      * @access public
      */
     public function ilove_img_compress_library_is_compressed() {
-        if ( isset( $_POST['id'] ) && isset( $_POST['imgnonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ) ) ) {
-            $attachment_id = intval( $_POST['id'] );
 
-            // reset_if_stale() resets timed-out 1/3 rows to 0 so they fall through below.
-            // A fresh in-flight job (started within ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT) is left as-is.
-            $status_compress = Ilove_Img_Compress_Resources::reset_if_stale( $attachment_id );
+        // Nonce check runs first (before capability checks and before reading POST values)
+        // so unauthenticated requests are rejected cheaply without touching user-data APIs.
+        if ( ! isset( $_POST['imgnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['imgnonce'] ) ), 'iloveimg_compress_nonce' ) ) {
+            wp_send_json_error( null, 401 );
+        }
 
-            if ( 1 === $status_compress || 3 === $status_compress ) {
-                // Genuinely in-flight: signal JS to keep polling; return empty body.
-                http_response_code( 500 );
-            } elseif ( 2 === $status_compress ) {
-                // Completed: return the detail fragment so JS can replace the cell in place.
-                Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
-            } else {
-                // Status 0 — either never processed, failed, or just reset from a stale 1/3.
-                esc_html_e( 'Try again or buy more credits', 'iloveimg' );
-            }
+        if ( ! current_user_can( 'upload_files' ) ) {
+            wp_send_json_error( null, 403 );
+        }
+        $attachment_id = isset( $_POST['id'] ) ? absint( wp_unslash( $_POST['id'] ) ) : 0;
+        if ( ! $attachment_id || ! current_user_can( 'edit_post', $attachment_id ) ) {
+            wp_send_json_error( null, 403 );
+        }
+
+        // reset_if_stale() resets timed-out 1/3 rows to 0 so they fall through below.
+        // A fresh in-flight job (started within ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT) is left as-is.
+        $status_compress = Ilove_Img_Compress_Resources::reset_if_stale( $attachment_id );
+
+        if ( 1 === $status_compress || 3 === $status_compress ) {
+            // Genuinely in-flight: signal JS to keep polling with an unambiguous HTTP 202.
+            // Using wp_die() (not http_response_code) so WordPress doesn't silently rewrite
+            // the status to 200 via _ajax_wp_die_handler (the original bug cause).
+            wp_die( '', '', array( 'response' => 202 ) );
+        } elseif ( 2 === $status_compress ) {
+            // Completed: return the detail fragment so JS can replace the cell in place.
+            Ilove_Img_Compress_Resources::render_compress_details( $attachment_id );
+        } else {
+            // Status 0 — either never processed, failed, or just reset from a stale 1/3.
+            esc_html_e( 'Try again or buy more credits', 'iloveimg' );
         }
         wp_die();
     }
@@ -317,7 +358,7 @@ class Ilove_Img_Compress_Plugin {
             'body'      => array(
                 'action'   => 'ilove_img_compress_library',
                 'id'       => $attachment_id,
-                'imgnonce' => self::get_img_nonce(),
+                'imgnonce' => wp_create_nonce( 'iloveimg_compress_nonce' ),
             ),
             'cookies'   => $_COOKIE,
             'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
@@ -396,65 +437,12 @@ class Ilove_Img_Compress_Plugin {
             }
         }
 
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'success' ) {
-            $files_success = get_transient( 'iloveimg_bulk_success' );
-
-            foreach ( $files_success as $file ) {
-                ?>
-                <div class="notice notice-success is-dismissible">
-                    <p>
-                        <?php
-                        printf(
-                            /* translators: %s: ID of File */
-                            esc_html__( 'Image compressed successfully: %s', 'iloveimg' ),
-                            esc_html( $file )
-                        );
-                        ?>
-                    </p>
-                </div>
-				<?php
-            }
-        }
-
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'error' ) {
-            $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
-
-            foreach ( $files_with_errors as $file ) {
-				?>
-                <div class="notice notice-error is-dismissible">
-                    <p><?php echo esc_html( $file['message'] ); ?></p>
-                </div>
-				<?php
-            }
-        }
-
-        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'partial' ) {
-            $files_success     = get_transient( 'iloveimg_bulk_success' );
-            $files_with_errors = get_transient( 'iloveimg_bulk_errors' );
-
-            foreach ( $files_success as $file ) {
-				?>
-                <div class="notice notice-success is-dismissible">
-                    <p>
-                        <?php
-                        printf(
-                            /* translators: %s: ID of File */
-                            esc_html__( 'Image compressed successfully: %s', 'iloveimg' ),
-                            esc_html( $file )
-                        );
-                        ?>
-                    </p>
-                </div>
-				<?php
-            }
-
-            foreach ( $files_with_errors as $file ) {
-				?>
-                <div class="notice notice-error is-dismissible">
-                    <p><?php echo esc_html( $file['message'] ); ?></p>
-                </div>
-				<?php
-            }
+        if ( get_current_screen()->parent_base === 'upload' && get_query_var( 'iloveimg-bulk-compression' ) === 'nojs' ) {
+            ?>
+            <div class="notice notice-info is-dismissible">
+                <p><?php esc_html_e( 'Bulk compression requires JavaScript. Please enable it and try again.', 'iloveimg' ); ?></p>
+            </div>
+            <?php
         }
     }
 
@@ -671,49 +659,15 @@ class Ilove_Img_Compress_Plugin {
      * @param string $doaction The action being taken.
      * @param array  $post_ids An array of post IDs.
      */
-    public function handle_bulk_compression_action( $redirect_to, $doaction, $post_ids ) {
+    public function handle_bulk_compression_action( $redirect_to, $doaction, $post_ids ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- hook signature requires $post_ids; processing is browser-driven so it is intentionally unused.
         if ( 'iloveimg_compress' !== $doaction ) {
             return $redirect_to;
         }
 
-        $iloveimg_process = new Ilove_Img_Compress_Process();
-
-        $success_ids = array();
-        $error_items = array();
-
-        foreach ( $post_ids as $id ) {
-            $image = $iloveimg_process->compress( $id );
-
-            if ( ! empty( $image['error'] ) ) {
-                $error_items[] = array(
-                    'id'      => $id,
-                    'message' => $image['error_msg'],
-                );
-            } else {
-                $success_ids[] = $id;
-            }
-        }
-
-        set_transient( 'iloveimg_bulk_success', $success_ids, 600 );
-        set_transient( 'iloveimg_bulk_errors', $error_items, 600 );
-
-        $status = 'success';
-
-        if ( ! empty( $error_items ) && ! empty( $success_ids ) ) {
-            $status = 'partial';
-        } elseif ( ! empty( $error_items ) ) {
-            $status = 'error';
-        }
-
-        wp_safe_redirect(
-            add_query_arg(
-                array(
-                    'iloveimg-bulk-compression' => $status,
-                ),
-                'upload.php'
-            )
-        );
-        exit();
+        // Processing is browser-driven (sequential per-file AJAX). This server path is reached
+        // only when JS did not intercept the submit (e.g. JS disabled) — never run the old
+        // all-at-once foreach. Inform the user instead.
+        return add_query_arg( 'iloveimg-bulk-compression', 'nojs', $redirect_to );
     }
 
     /**

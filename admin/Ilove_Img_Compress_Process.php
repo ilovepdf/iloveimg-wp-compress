@@ -79,7 +79,7 @@ class Ilove_Img_Compress_Process {
 
             $image_watermark_processing = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = 'iloveimg_status_watermark' AND meta_value = 1 AND post_id =  " . $images_id ); // phpcs:ignore
 
-            if ( $files_processing < ILOVE_IMG_COMPRESS_NUM_MAX_FILES && 0 === (int) $image_watermark_processing ) {
+            if ( $files_processing < (int) apply_filters( 'ilove_img_compress_num_max_files', ILOVE_IMG_COMPRESS_NUM_MAX_FILES ) && 0 === (int) $image_watermark_processing ) {
                 update_post_meta( $images_id, 'iloveimg_status_compress', 1 ); // status compressing
                 update_post_meta( $images_id, 'iloveimg_compress_started', time() );
 
@@ -170,6 +170,9 @@ class Ilove_Img_Compress_Process {
 
             } else {
                 update_post_meta( $images_id, 'iloveimg_status_compress', 3 ); // status queue
+                // Stamp the started time so reset_if_stale() treats this queued row as fresh
+                // and does not immediately reset it to 0 — mirrors watermark's behaviour.
+                update_post_meta( $images_id, 'iloveimg_compress_started', time() );
 
                 return array(
                     'error'     => true,

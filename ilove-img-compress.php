@@ -36,7 +36,7 @@ $ilove_img_compress_upload_path = wp_upload_dir();
 define( 'ILOVE_IMG_COMPRESS_REGISTER_URL', 'https://api.ilovepdf.com/v1/user' );
 define( 'ILOVE_IMG_COMPRESS_LOGIN_URL', 'https://api.ilovepdf.com/v1/user/login' );
 define( 'ILOVE_IMG_COMPRESS_USER_URL', 'https://api.ilovepdf.com/v1/user' );
-define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 2 );
+define( 'ILOVE_IMG_COMPRESS_NUM_MAX_FILES', 3 );
 if ( ! defined( 'ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT' ) ) {
     define( 'ILOVE_IMG_COMPRESS_PROCESS_TIMEOUT', 300 );
 }
