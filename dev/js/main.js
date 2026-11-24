@@ -1,5 +1,6 @@
 import { compressImage, statusCompressing, compressAll, attachCompressingPoller, initTimesIntervals } from './compress';
 import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/backup';
+import { initBulkQueue, initOwnPageBulkQueue } from './bulk';
 
 (function ($) {
 	var adminpage = '';
@@ -21,7 +22,8 @@ import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/
 				attachCompressingPoller(element, index, timesIntervals);
 			});
 
-			// Native WP bulk dropdown goes server-side — handleBulkAction intercept removed (C7)
+			// Intercept the bulk-action form to run compression client-side (C8).
+			initBulkQueue();
 			break;
 
 		case 'media_page_iloveimg-media-page':
@@ -34,7 +36,8 @@ import { initClearBackup, initRestoreAllFiles, initRestoreFile } from './common/
 				attachCompressingPoller(element, index, timesIntervals);
 			});
 
-			// Native WP bulk dropdown goes server-side — handleBulkAction intercept removed (C7)
+			// Intercept the own-page bulk-action form to run compression client-side.
+			initOwnPageBulkQueue();
 			break;
 	}
 
